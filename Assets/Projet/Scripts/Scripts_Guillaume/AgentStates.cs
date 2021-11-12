@@ -11,9 +11,11 @@ public class AgentStates : MonoBehaviour
     public states myState = states.Idle;
 
 
-    [Header("Stats Agent")]
-    public float speed = 1;
-    public float rangeAttaque = 1;
+    [SerializeField][Header("Stats Agent")]
+    private float speed = 1;
+    private float rangeAttaque = 1;
+    private float damage = 0.001f;
+
 
     [Header("Constructions Stats")]
     public GameObject constructionObjet;
@@ -53,8 +55,7 @@ public class AgentStates : MonoBehaviour
             case states.Agressif:
                 if (objectDestination != null)
                 {
-                    navM.SetDestination(objectDestination.transform.position);
-
+                    FollowTarget(objectDestination);
                     if (navM.remainingDistance > rangeAttaque)
                     {
                         navM.isStopped = false;
@@ -62,7 +63,7 @@ public class AgentStates : MonoBehaviour
                     else if (navM.hasPath && navM.remainingDistance < rangeAttaque)
                     {
                         navM.isStopped = true;
-                        AttaqueEnnemi();
+                        AttaqueEnnemi(objectDestination);
                     }
                 }
                 else
@@ -125,9 +126,13 @@ public class AgentStates : MonoBehaviour
     {
         objectDestination = newObject;
     }
-    private void AttaqueEnnemi ()
+    private void AttaqueEnnemi (GameObject target)
     {
         Debug.Log("Attaque");
+        if (target.GetComponent<HealthSystem>() != null)
+        {
+            target.GetComponent<HealthSystem>().HealthChange(-damage);
+        }
     }
     private void RecolteRessources()
     {
@@ -142,6 +147,9 @@ public class AgentStates : MonoBehaviour
         Vector3 constructionPos = transform.position + transform.forward * rangeConstruction;
         Instantiate(constructionObjet, constructionPos, transform.rotation);
     }
-
+    private void FollowTarget(GameObject target)
+    {
+        navM.SetDestination(target.transform.position);
+    }
     
 }

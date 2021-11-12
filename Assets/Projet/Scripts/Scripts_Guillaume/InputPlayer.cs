@@ -52,12 +52,14 @@ public class InputPlayer : MonoBehaviour
                 agent.GetComponent<AgentStates>().MoveAgent(hit.point);
             }
 
-
-            if (hit.collider.name == "Ennemi")
+            if (hit.collider.GetComponent<Agent_Type>() != null)
             {
-                agent.GetComponent<AgentStates>().SetObjectDestination(hit.collider.gameObject);
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                if (hit.collider.GetComponent<Agent_Type>().AgentType == Agent_Type.TypeAgent.Enemy)
+                {
+                    agent.GetComponent<AgentStates>().SetObjectDestination(hit.collider.gameObject);
+                    agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
+                    agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                }
             }
         }
     }
