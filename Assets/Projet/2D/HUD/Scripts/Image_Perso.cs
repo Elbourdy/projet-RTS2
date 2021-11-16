@@ -9,6 +9,8 @@ public class Image_Perso : MonoBehaviour
     // Start is called before the first frame update
     public Sprite SP0, SP1, SP2;
     private float identity;
+    public Text vie;
+    public string valeurvie;
 
     void Start()
     {
@@ -19,8 +21,9 @@ public class Image_Perso : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+         
         identity = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Perso;
+        vie.GetComponent<Text>().text = valeurvie;
 
         if (identity == 1)
         {
