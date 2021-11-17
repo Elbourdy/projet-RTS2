@@ -11,10 +11,12 @@ public class AgentStates : MonoBehaviour
     public states myState = states.Idle;
 
 
-    [SerializeField][Header("Stats Agent")]
-    private float speed = 1;
-    private float rangeAttaque = 1;
-    private float damage = 0.001f;
+    [Header("Stats Agent")]
+    [SerializeField] private float speed = 1;
+    [SerializeField] private float rangeAttaque = 1;
+    [SerializeField] private float damage = 1;
+    [SerializeField] private float rateOfFire = 0.5f;
+    private float rateOfFireCD = 0;
 
 
     [Header("Constructions Stats")]
@@ -48,6 +50,7 @@ public class AgentStates : MonoBehaviour
 
     private void Update()
     {
+        rateOfFireCD -= Time.deltaTime;
         switch (myState)
         {
             case states.Idle:
@@ -55,14 +58,20 @@ public class AgentStates : MonoBehaviour
             case states.Agressif:
                 if (objectDestination != null)
                 {
-                    FollowTarget(objectDestination);
+                    //FollowTarget(objectDestination);
                     if (navM.remainingDistance > rangeAttaque)
                     {
                         navM.isStopped = false;
+                        Debug.Log("nav not stopped : "+ navM.remainingDistance + ">" + rangeAttaque);
                     }
                     else if (navM.hasPath && navM.remainingDistance < rangeAttaque)
                     {
+                        if (Vector3.Distance(gameObject.transform.position, objectDestination.transform.position) > rangeAttaque)
+                        {
+                            FollowTarget(objectDestination);
+                        }
                         navM.isStopped = true;
+                        Debug.Log("nav stopped");
                         AttaqueEnnemi(objectDestination);
                     }
                 }
@@ -126,14 +135,19 @@ public class AgentStates : MonoBehaviour
     {
         objectDestination = newObject;
     }
-    private void AttaqueEnnemi (GameObject target)
+    private void AttaqueEnnemi(GameObject target)
     {
         Debug.Log("Attaque");
         if (target.GetComponent<HealthSystem>() != null)
         {
-            target.GetComponent<HealthSystem>().HealthChange(-damage);
+            if (rateOfFireCD <= 0)
+            {
+                rateOfFireCD = rateOfFire;
+                target.GetComponent<HealthSystem>().HealthChange(-damage);
+            }
         }
     }
+    
     private void RecolteRessources()
     {
         currentRessources += 0.01f;
