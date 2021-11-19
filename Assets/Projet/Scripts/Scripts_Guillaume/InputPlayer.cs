@@ -7,17 +7,30 @@ public class InputPlayer : MonoBehaviour
 {
     public GameObject agent;
 
+
+    private SelectionPlayer sp;
+
+
+    private void Start()
+    {
+        sp = GetComponent<SelectionPlayer>();
+    }
+
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            CheckHitType();
+            if (sp.selectedUnits.Count > 0)
+            {
+                CheckHitType();
+            }
         }
 
-        if (Input.GetKey(KeyCode.Space) && Input.GetMouseButtonDown(1))
-        {
-            ConstructOrder();
-        }
+        //if (Input.GetKey(KeyCode.Space) && Input.GetMouseButtonDown(1))
+        //{
+        //    ConstructOrder();
+        //}
     }
 
     private void ConstructOrder()
@@ -42,28 +55,55 @@ public class InputPlayer : MonoBehaviour
         {
             if (hit.collider.name == "Sol")
             {
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Idle);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                MoveAgents(hit);
             }
 
             if (hit.collider.name == "Ressource")
             {
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                Recolte(hit);
             }
 
             if (hit.collider.GetComponent<Agent_Type>() != null)
             {
-                if (hit.collider.GetComponent<Agent_Type>().AgentType == Agent_Type.TypeAgent.Enemy)
+                if (hit.collider.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Enemy)
                 {
-                    agent.GetComponent<AgentStates>().SetObjectDestination(hit.collider.gameObject);
-                    agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
-                    agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                    AttaqueWithAgent(hit);
                 }
             }
         }
     }
 
 
-    
+    private void MoveAgents (RaycastHit hit)
+    {
+        foreach (var agent in sp.selectedUnits)
+        {
+            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Idle);
+            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+        }
+    }
+
+    private void AttaqueWithAgent (RaycastHit hit)
+    {
+
+        foreach (var agent in sp.selectedUnits)
+        {
+            agent.GetComponent<AgentStates>().SetObjectDestination(hit.collider.gameObject);
+            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
+            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+        }
+    }
+
+    private void Recolte (RaycastHit hit)
+    {
+
+        foreach (var agent in sp.selectedUnits)
+        {
+            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);
+            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+        }
+    }
+
+
+
 }

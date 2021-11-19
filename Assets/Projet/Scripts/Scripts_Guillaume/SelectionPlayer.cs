@@ -10,10 +10,10 @@ public class SelectionPlayer : MonoBehaviour
     //The selection square we draw when we drag the mouse to select units
     public RectTransform selectionSquareTrans;
     //To test the square's corners
-    public Transform sphere1;
-    public Transform sphere2;
-    public Transform sphere3;
-    public Transform sphere4;
+    //public Transform sphere1;
+    //public Transform sphere2;
+    //public Transform sphere3;
+    //public Transform sphere4;
     //The materials
     public Material normalMaterial;
     public Material highlightMaterial;
