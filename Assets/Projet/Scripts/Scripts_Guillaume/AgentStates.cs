@@ -7,7 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AgentStates : MonoBehaviour
 {
-    public enum states { Idle, Agressif, Recolte, Construction};
+    public enum states { Idle, Agressif, Recolte, Construction, Follow};
     public states myState = states.Idle;
 
 
@@ -35,6 +35,7 @@ public class AgentStates : MonoBehaviour
     public Color IdleColor;
     public Color AgressifColor;
     public Color ConstructionColor;
+    public Color FollowColor;
 
 
     private NavMeshAgent navM;
@@ -98,6 +99,14 @@ public class AgentStates : MonoBehaviour
                     Construire();
                 }
                 break;
+
+            case states.Follow:
+                if (navM.hasPath && navM.remainingDistance < 0.5f)
+                {
+                    Debug.Log("dist = " + navM.remainingDistance);
+                    SetState(states.Idle);
+                }
+                    break;
             default:
                 break;
         }
@@ -110,6 +119,8 @@ public class AgentStates : MonoBehaviour
     }
     public void SetState (states newState)
     {
+
+        navM.ResetPath();
         navM.isStopped = false;
         myState = newState;
 
@@ -117,15 +128,24 @@ public class AgentStates : MonoBehaviour
         {
             case states.Idle:
                 GetComponent<MeshRenderer>().material.color = IdleColor;
+                navM.isStopped = true;
                 break;
             case states.Agressif:
                 GetComponent<MeshRenderer>().material.color = AgressifColor;
                 break;
             case states.Recolte:
-                GetComponent<MeshRenderer>().material.color = RecolteColor;
+                if (GetComponent<ClassAgentContainer>().myClass.Job != AgentClass.AgentJob.Worker)
+                {
+                    SetState(states.Idle);
+                    break;
+                }
+                else GetComponent<MeshRenderer>().material.color = RecolteColor;
                 break;
             case states.Construction:
                 GetComponent<MeshRenderer>().material.color = ConstructionColor;
+                break;
+            case states.Follow:
+                GetComponent<MeshRenderer>().material.color = FollowColor;
                 break;
             default:
                 break;

@@ -55,7 +55,7 @@ public class InputPlayer : MonoBehaviour
         {
             if (hit.collider.name == "Sol")
             {
-                MoveAgents(hit);
+                GoToTarget(hit);
             }
 
             if (hit.collider.name == "Ressource")
@@ -73,6 +73,15 @@ public class InputPlayer : MonoBehaviour
         }
     }
 
+
+    private void GoToTarget (RaycastHit hit)
+    {
+        foreach (var agent in sp.selectedUnits)
+        {
+            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
+            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+        }
+    }
 
     private void MoveAgents (RaycastHit hit)
     {

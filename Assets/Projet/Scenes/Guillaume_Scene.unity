@@ -1004,6 +1004,7 @@ MonoBehaviour:
   IdleColor: {r: 1, g: 1, b: 1, a: 0}
   AgressifColor: {r: 1, g: 0, b: 0, a: 0}
   ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
+  FollowColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!136 &1640026707
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1216,6 +1217,7 @@ GameObject:
   - component: {fileID: 1784010060}
   - component: {fileID: 1784010059}
   - component: {fileID: 1784010064}
+  - component: {fileID: 1784010065}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -1284,6 +1286,7 @@ MonoBehaviour:
   IdleColor: {r: 1, g: 1, b: 1, a: 0}
   AgressifColor: {r: 1, g: 0, b: 0, a: 0}
   ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
+  FollowColor: {r: 1, g: 0.9193012, b: 0, a: 0}
 --- !u!136 &1784010061
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1360,6 +1363,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+--- !u!114 &1784010065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784010057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myClass: {fileID: 11400000, guid: f4ab09914208e0e47afd8ec83c5cde5b, type: 2}
 --- !u!1 &2131784498
 GameObject:
   m_ObjectHideFlags: 0
