@@ -5,7 +5,8 @@ using UnityEngine;
 public class SelectionPlayer : MonoBehaviour
 {
     //Add all units in the scene to this array
-    public GameObject[] allUnits;
+    //public GameObject[] allUnits;
+    public List<GameObject> allFriendlyUnits = new List<GameObject>();
     //The selection square we draw when we drag the mouse to select units
     public RectTransform selectionSquareTrans;
     //To test the square's corners
@@ -66,10 +67,11 @@ public class SelectionPlayer : MonoBehaviour
             //We dont yet know if we are drawing a square, but we need the first coordinate in case we do draw a square
             RaycastHit hit;
             //Fire ray from camera
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f, 1 << 8))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
                 //The corner position of the square
                 squareStartPos = hit.point;
+                Debug.Log(squareStartPos);
             }
         }
         //Release the mouse button
@@ -92,9 +94,9 @@ public class SelectionPlayer : MonoBehaviour
                 selectedUnits.Clear();
 
                 //Select the units
-                for (int i = 0; i < allUnits.Length; i++)
+                for (int i = 0; i < allFriendlyUnits.Count; i++)
                 {
-                    GameObject currentUnit = allUnits[i];
+                    GameObject currentUnit = allFriendlyUnits[i];
 
                     //Is this unit within the square
                     if (IsWithinPolygon(currentUnit.transform.position))
@@ -136,10 +138,9 @@ public class SelectionPlayer : MonoBehaviour
             //Try to select a new unit
             RaycastHit hit;
             //Fire ray from camera
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                //Did we hit a friendly unit?
-                if (hit.collider.gameObject.GetComponent<Agent_Type>() != null && hit.collider.gameObject.GetComponent<Agent_Type>().AgentType == Agent_Type.TypeAgent.Ally)
+                if (hit.collider.gameObject.GetComponent<Agent_Type>() != null)
                     //if (hit.collider.CompareTag("Friendly"))
                 {
                     GameObject activeUnit = hit.collider.gameObject;
@@ -169,9 +170,9 @@ public class SelectionPlayer : MonoBehaviour
             //Highlight the units within the selection square, but don't select the units
             if (hasCreatedSquare)
             {
-                for (int i = 0; i < allUnits.Length; i++)
+                for (int i = 0; i < allFriendlyUnits.Count; i++)
                 {
-                    GameObject currentUnit = allUnits[i];
+                    GameObject currentUnit = allFriendlyUnits[i];
 
                     //Is this unit within the square
                     if (IsWithinPolygon(currentUnit.transform.position))
@@ -216,10 +217,10 @@ public class SelectionPlayer : MonoBehaviour
         //Fire a ray from the mouse position to get the unit we want to highlight
         RaycastHit hit;
         //Fire ray from camera
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
             //Did we hit a friendly unit?
-            if (hit.collider.gameObject.GetComponent<Agent_Type>() != null && hit.collider.gameObject.GetComponent<Agent_Type>().AgentType == Agent_Type.TypeAgent.Ally)
+            if (hit.collider.gameObject.GetComponent<Agent_Type>() != null)
             //if (hit.collider.CompareTag("Friendly"))
             {
                 //Get the object we hit
@@ -324,22 +325,22 @@ public class SelectionPlayer : MonoBehaviour
         RaycastHit hit;
         int i = 0;
         //Fire ray from camera
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(TL), out hit, 200f, 1 << 8))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(TL), out hit))
         {
             TL = hit.point;
             i++;
         }
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(TR), out hit, 200f, 1 << 8))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(TR), out hit))
         {
             TR = hit.point;
             i++;
         }
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(BL), out hit, 200f, 1 << 8))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(BL), out hit))
         {
             BL = hit.point;
             i++;
         }
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(BR), out hit, 200f, 1 << 8))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(BR), out hit))
         {
             BR = hit.point;
             i++;
