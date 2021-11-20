@@ -11,6 +11,7 @@ public class Gestion_HUD : MonoBehaviour
     public float Cases;
     public float Perso;
     public float Map;
+    public float vie;
     public GameObject Test;
     private GameObject RC1, RC2, RC3;
 
@@ -31,6 +32,8 @@ public class Gestion_HUD : MonoBehaviour
         Test = GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0];
         Perso = Test.GetComponent<AgentStates>().TypeUnit;
         Cases = Test.GetComponent<AgentStates>().NbrCase;
+        vie = Test.GetComponent<HealthSystem>().health;
+        GameObject.Find("Vie").GetComponent<Text>().text = ""+vie;
 
 
     }

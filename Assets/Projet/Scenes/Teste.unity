@@ -1575,6 +1575,7 @@ GameObject:
   - component: {fileID: 982137593}
   - component: {fileID: 982137592}
   - component: {fileID: 982137591}
+  - component: {fileID: 982137594}
   - component: {fileID: 982137590}
   - component: {fileID: 982137589}
   - component: {fileID: 982137588}
@@ -1740,6 +1741,19 @@ Transform:
   m_Father: {fileID: 173322291}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &982137594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982137585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 35
 --- !u!1 &1018683550 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1243517147065292599, guid: 86132b6663ab09040804a7bff99ddded, type: 3}
@@ -2054,6 +2068,7 @@ GameObject:
   - component: {fileID: 1229922707}
   - component: {fileID: 1229922706}
   - component: {fileID: 1229922705}
+  - component: {fileID: 1229922708}
   - component: {fileID: 1229922704}
   - component: {fileID: 1229922703}
   - component: {fileID: 1229922702}
@@ -2204,6 +2219,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229922700}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1229922708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229922700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 150
 --- !u!1 &1284596636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,6 +2925,7 @@ MonoBehaviour:
   Cases: 0
   Perso: 0
   Map: 0
+  vie: 0
   Test: {fileID: 0}
 --- !u!1 &1675672968
 GameObject:
@@ -3328,6 +3357,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 606750856}
     m_Modifications:
+    - target: {fileID: 6742574882650479904, guid: 38c7feceb644a484397cfd78280dfbb3, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742574882650479904, guid: 38c7feceb644a484397cfd78280dfbb3, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742574882650479904, guid: 38c7feceb644a484397cfd78280dfbb3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6742574882650479918, guid: 38c7feceb644a484397cfd78280dfbb3, type: 3}
       propertyPath: m_Name
       value: Vie
