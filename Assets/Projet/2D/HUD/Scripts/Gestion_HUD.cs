@@ -29,12 +29,14 @@ public class Gestion_HUD : MonoBehaviour
         RC1.GetComponent<Text>().text = RCS1;
         RC2.GetComponent<Text>().text = RCS2;
         RC3.GetComponent<Text>().text = RCS3;
-        Test = GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0];
-        Perso = Test.GetComponent<AgentStates>().TypeUnit;
-        Cases = Test.GetComponent<AgentStates>().NbrCase;
-        vie = Test.GetComponent<HealthSystem>().health;
-        GameObject.Find("Vie").GetComponent<Text>().text = ""+vie;
-
+        if (GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits.Count > 0)
+        {
+            Test = GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0];
+            Perso = Test.GetComponent<AgentStates>().TypeUnit;
+            Cases = Test.GetComponent<AgentStates>().NbrCase;
+            vie = Test.GetComponent<HealthSystem>().health;
+            GameObject.Find("Vie").GetComponent<Text>().text = "" + vie;
+        }
 
     }
 }
