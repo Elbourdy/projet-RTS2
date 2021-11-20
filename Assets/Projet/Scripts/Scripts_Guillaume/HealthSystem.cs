@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HealthSystem : MonoBehaviour
 {
-    public float health = 1f;
+    private float health;
+
+    private void OnEnable()
+    {
+        //check la classe de l'objet en question et récupère la valeur dans la classe
+        if (GetComponent<ClassAgentContainer>() != null) health = GetComponent<ClassAgentContainer>().myClass.health;
+    }
+
 
     public void HealthChange(float damageNumber)
     {
@@ -24,5 +32,11 @@ public class HealthSystem : MonoBehaviour
     private void KillGo()
     {
         Destroy(gameObject);
+    }
+
+
+    public float GetHealth()
+    {
+        return health;
     }
 }

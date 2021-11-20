@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  name: 
+  name: SoldierPlaceHolder
   health: 1
   Job: 1
+  attackDamage: 0
+  rateOfFire: 0
+  movementSpeed: 0
+  constructionSpeed: 0
+  rangeConstruction: 1
+  healthToConstruction: 1

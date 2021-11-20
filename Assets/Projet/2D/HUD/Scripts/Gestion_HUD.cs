@@ -34,7 +34,7 @@ public class Gestion_HUD : MonoBehaviour
             Test = GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0];
             Perso = Test.GetComponent<AgentStates>().TypeUnit;
             Cases = Test.GetComponent<AgentStates>().NbrCase;
-            vie = Test.GetComponent<HealthSystem>().health;
+            vie = Test.GetComponent<HealthSystem>().GetHealth();
             GameObject.Find("Vie").GetComponent<Text>().text = "" + vie;
         }
 

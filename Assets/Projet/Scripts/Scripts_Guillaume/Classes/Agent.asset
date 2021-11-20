@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
-  m_Name: Worker
+  m_Name: Agent
   m_EditorClassIdentifier: 
-  name: WorkerPlaceHolder
+  name: 
   health: 1
-  Job: 0
+  Job: 1
   attackDamage: 0
   rateOfFire: 0
   movementSpeed: 0
-  constructionSpeed: 0
+  constructionSpeed: 1
   rangeConstruction: 1
   healthToConstruction: 1
