@@ -8,9 +8,10 @@ public class Gestion_HUD : MonoBehaviour
 {
     // Variables de Teste
     public string RCS1, RCS2, RCS3;
-    public int Cases;
-    public int Perso;
+    public float Cases;
+    public float Perso;
     public float Map;
+    public GameObject Test;
     private GameObject RC1, RC2, RC3;
 
 
@@ -27,6 +28,9 @@ public class Gestion_HUD : MonoBehaviour
         RC1.GetComponent<Text>().text = RCS1;
         RC2.GetComponent<Text>().text = RCS2;
         RC3.GetComponent<Text>().text = RCS3;
+        Test = GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0];
+        Perso = Test.GetComponent<AgentStates>().TypeUnit;
+        Cases = Test.GetComponent<AgentStates>().NbrCase;
 
 
     }
