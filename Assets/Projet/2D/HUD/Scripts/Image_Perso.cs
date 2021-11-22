@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Image_Perso : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Sprite SP0, SP1, SP2;
+    public Sprite SP0, SP1, SP2, SP3;
     private float identity;
     public Text vie;
     public string valeurvie;

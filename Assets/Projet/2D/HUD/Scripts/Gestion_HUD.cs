@@ -32,10 +32,22 @@ public class Gestion_HUD : MonoBehaviour
         if (GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits.Count > 0)
         {
             Test = GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0];
-            Perso = Test.GetComponent<AgentStates>().TypeUnit;
-            Cases = Test.GetComponent<AgentStates>().NbrCase;
-            vie = Test.GetComponent<HealthSystem>().GetHealth();
-            GameObject.Find("Vie").GetComponent<Text>().text = "" + vie;
+
+
+            if (Test.GetComponent<AgentStates>())
+            {
+                   Perso = Test.GetComponent<AgentStates>().TypeUnit;
+                   Cases = Test.GetComponent<AgentStates>().NbrCase;
+                   vie = Test.GetComponent<HealthSystem>().GetHealth();
+                   GameObject.Find("Vie").GetComponent<Text>().text = "" + vie;
+            }
+            
+        }
+        else
+        {
+            Perso = 0;
+            Cases = 0;
+            GameObject.Find("Vie").GetComponent<Text>().text = "";
         }
 
     }
