@@ -3419,6 +3419,18 @@ PrefabInstance:
       propertyPath: Stocage
       value: 
       objectReference: {fileID: 1121040654}
+    - target: {fileID: 4203146578623816771, guid: 0f5f7977ae840184c8f1839a941ef8d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203146578623816771, guid: 0f5f7977ae840184c8f1839a941ef8d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203146578623816771, guid: 0f5f7977ae840184c8f1839a941ef8d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7433369354125651846, guid: 0f5f7977ae840184c8f1839a941ef8d6, type: 3}
       propertyPath: m_Name
       value: SelectP (1)

@@ -9,9 +9,10 @@ public class IndividualCase : MonoBehaviour
 
     public int ID;
     public Sprite SP0, SP1, SP2, SP3;
-    public Text vie;
+    private float Nvie;
     public float RID;
     public GameObject Stocage;
+    public GameObject txt;
 
 
     void Start()
@@ -39,16 +40,23 @@ public class IndividualCase : MonoBehaviour
                 print("error");
             }
 
-           
-           
-               
-                
-              
+
+            try
+            {
+                Nvie = Stocage.GetComponent<SelectionPlayer>().selectedUnits[ID].GetComponent<HealthSystem>().GetHealth();
+            }
+            catch
+            {
+                print("error");
+            }
 
 
 
+            txt.GetComponent<Text>().text = "" + Nvie;
 
-                if (RID >= 0)
+
+
+            if (RID >= 0)
                 {
                     if (RID == 0)
                     {
