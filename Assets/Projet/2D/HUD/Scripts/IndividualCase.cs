@@ -29,8 +29,18 @@ public class IndividualCase : MonoBehaviour
         if (GameObject.Find("SelectionLisrt").GetComponent<GestionSelect>().NBRS >= ID)
         {
 
-            try  RID = Stocage.GetComponent<SelectionPlayer>().selectedUnits[ID].GetComponent<AgentStates>().TypeUnit;
-           catch ;
+
+            try
+            {
+                RID = Stocage.GetComponent<SelectionPlayer>().selectedUnits[ID].GetComponent<AgentStates>().TypeUnit;
+            }
+            catch 
+            {
+                print("error");
+            }
+
+           
+           
                
                 
               
