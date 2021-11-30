@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 5604847573121560076}
   - component: {fileID: 5675231893747605301}
   - component: {fileID: 4203146578623816771}
+  - component: {fileID: 3207704849767436706}
   m_Layer: 5
   m_Name: SelectP
   m_TagString: Untagged
@@ -200,3 +201,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3207704849767436706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433369354125651846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5c5274397a8f247a9e053bdd839b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  SP0: {fileID: 21300000, guid: 906a05e7afc136144b0e975385a34bcb, type: 3}
+  SP1: {fileID: 21300000, guid: 871f2cbc5c18afd4c8835583845a8ab5, type: 3}
+  SP2: {fileID: 21300000, guid: 1e79ff8363091464bb89d1fd8ed6b65d, type: 3}
+  SP3: {fileID: 21300000, guid: 6774955d4efe32945a8d5499343f534c, type: 3}
+  vie: {fileID: 0}
