@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{26865595-8a28-463e-8520-d16887208e30}">
+		<property name="color">
+			<value>Red Light 2</value>
+		</property>
 		<property name="name">
-			<value>UI_</value>
+			<value>UI</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -30,6 +33,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{85ee6d84-17ee-46d9-8468-95c25f71ce95}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{279dbc46-07b5-4e0a-a33c-cf4a1939a23d}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a189b67d-edef-4342-a05a-80d9c1f82244}">
