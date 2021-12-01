@@ -152,7 +152,7 @@ public class SelectionPlayer : MonoBehaviour
                 {
                     GameObject activeUnit = hit.collider.gameObject;
                     //Set this unit to selected
-                    if (activeUnit.GetComponent<MeshRenderer>().material)
+                    if (activeUnit.GetComponent<MeshRenderer>() != null)
                         activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
 
                     else activeUnit.GetComponentInChildren<MeshRenderer>().material = selectedMaterial;
@@ -218,7 +218,12 @@ public class SelectionPlayer : MonoBehaviour
 
             if (!isSelected)
             {
+                if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
                 highlightThisUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                else
+                {
+                    highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                }
             }
 
             highlightThisUnit = null;
@@ -250,8 +255,12 @@ public class SelectionPlayer : MonoBehaviour
                 if (!isSelected)
                 {
                     highlightThisUnit = currentObj;
-
+                    if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
                     highlightThisUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
+                    else
+                    {
+                        highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
+                    }
                 }
             }
         }
