@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!195 &29476857
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -381,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!195 &63035621
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3607,6 +3609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!195 &982137588
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3828,6 +3831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!195 &1018728050
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4753,6 +4757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!195 &1229922703
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5571,6 +5576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+  isConstruction: 0
 --- !u!195 &1588569688
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6567,10 +6573,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6164494387417573689, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
+      propertyPath: m_Name
+      value: Canvass
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164494387557424394, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
+      propertyPath: m_Name
+      value: Canvass
+      objectReference: {fileID: 0}
     - target: {fileID: 6164494388845671623, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
       propertyPath: m_Name
       value: HQ
       objectReference: {fileID: 0}
+    - target: {fileID: 6164494388845671623, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164494388845671642, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1121040654}
     - target: {fileID: 6164494388845671643, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
       propertyPath: m_RootOrder
       value: 1

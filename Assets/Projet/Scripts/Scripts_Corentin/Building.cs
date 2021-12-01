@@ -10,7 +10,7 @@ public class Building : MonoBehaviour
     public GameObject selectedFeedback;
     public HealthBar productionBar, constructionBar, healthBar;
     public List<Image> recapProduction, UIClickable;
-    public GameObject UIOnScreenSpace, UIOnWorldSpace;
+    public GameObject gameManager;
     public float constructionHealthMax;
 
     private List<DataStorage> roasterUnits = new List<DataStorage>();
@@ -247,5 +247,24 @@ public class Building : MonoBehaviour
     public void SetConstructionHealth(float constructionHealth)
     {
         constructionHealthActual = constructionHealth;
+    }
+
+    public void CheckIfSelected()
+    {
+        int i = 0;
+        List<GameObject> tmp = gameManager.GetComponent<SelectionPlayer>().selectedUnits;
+
+        foreach (GameObject e in tmp)
+        {
+            if (e.gameObject == gameObject)
+            {
+                i++;
+            }
+        }
+
+        if (i > 1)
+            isSelected = true;
+        else
+            isSelected = false;
     }
 }

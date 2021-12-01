@@ -23,10 +23,7 @@ public class HQBehavior : Building
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SetIsSelected(!GetIsSelected());
-        }
+        CheckIfSelected();
 
         if (!GetIsConstructed())
         {

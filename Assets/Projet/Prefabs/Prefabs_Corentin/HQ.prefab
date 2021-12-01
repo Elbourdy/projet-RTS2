@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 1
 --- !u!1 &6164494388958060666
 GameObject:
   m_ObjectHideFlags: 0
