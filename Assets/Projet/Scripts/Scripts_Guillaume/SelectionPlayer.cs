@@ -129,7 +129,14 @@ public class SelectionPlayer : MonoBehaviour
             //Deselect all units
             for (int i = 0; i < selectedUnits.Count; i++)
             {
-                selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
+                if (selectedUnits[i].GetComponent<MeshRenderer>())
+                {
+                    selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
+                }
+                else
+                {
+                    selectedUnits[i].GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                }
             }
 
             //Clear the list with selected units
@@ -145,7 +152,10 @@ public class SelectionPlayer : MonoBehaviour
                 {
                     GameObject activeUnit = hit.collider.gameObject;
                     //Set this unit to selected
-                    activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    if (activeUnit.GetComponent<MeshRenderer>().material)
+                        activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+
+                    else activeUnit.GetComponentInChildren<MeshRenderer>().material = selectedMaterial;
                     //Add it to the list of selected units, which is now just 1 unit
                     selectedUnits.Add(activeUnit);
                 }
