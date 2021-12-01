@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0185863506fb34682b38a3d37b2c93, type: 3}
+  m_Name: WorkerData
+  m_EditorClassIdentifier: 
+  timerCreation: 2
+  unitPrefab: {fileID: 8852057412805433058, guid: 623088e654ff27b44964d43557a4abc8, type: 3}
+  unitSprite: {fileID: 21300000, guid: e2d6f7282c2cc9e4f840e291ce07f093, type: 3}
+  ID: 0

@@ -6,7 +6,7 @@ public class GameDataStorage : MonoBehaviour  //Plus tard automatiser le process
 {
     public List<DataStorage> mainDataStorage = new List<DataStorage>();
 
-    [Header ("Worker")]
+   /* [Header ("Worker")]
     public float timerWorker;
     public GameObject prefabWorker;
     public Sprite spriteWorker;
@@ -24,5 +24,5 @@ public class GameDataStorage : MonoBehaviour  //Plus tard automatiser le process
     {
         mainDataStorage.Add(new DataStorage(timerWorker, prefabWorker, spriteWorker, IDWorker));
         mainDataStorage.Add(new DataStorage(timerSoldier, prefabSoldier, spriteSoldier, IDSoldier));
-    }
+    }*/
 }

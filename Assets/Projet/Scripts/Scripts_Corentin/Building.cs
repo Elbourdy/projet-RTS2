@@ -6,14 +6,18 @@ using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
+    public Transform spawnPosition, rallyPoint;
+    public GameObject selectedFeedback;
+    public HealthBar productionBar, constructionBar, healthBar;
+    public List<Image> recapProduction, UIClickable;
+    public GameObject UIOnScreenSpace, UIOnWorldSpace;
+    public float constructionHealthMax;
+
     private List<DataStorage> roasterUnits = new List<DataStorage>();
-    private List<DataStorage> productionQueue = new List<DataStorage>();
-    private List<Image> recapProduction;
+    private List<DataStorage> productionQueue = new List<DataStorage>(); 
     private float actualTimer, timerCount;
-    private Vector3 spawnPosition, rallyPoint;
-    private GameObject selectedFeedback;
-    private HealthBar productionBar;
-    private bool isSelected;
+    private bool isSelected, isConstructed;
+    private float constructionHealthActual;
 
     public void AddToRoaster(int IDNumberRoaster)
     {
@@ -29,6 +33,22 @@ public class Building : MonoBehaviour
             {
                 roasterUnits.Remove(e);
             }
+        }
+    }
+
+    public void DisplayRoaster()
+    {
+        int i = 0;
+        foreach (DataStorage e in roasterUnits)
+        {
+            UIClickable[i].sprite = e.GetSprite();
+            UIClickable[i].GetComponent<UiSquareStorage>().SetIDNumber(e.GetID());
+            i++;
+        }
+
+        for (int j = i; j < UIClickable.Count; j++)
+        {
+            UIClickable[j].gameObject.SetActive(false);
         }
     }
 
@@ -60,10 +80,41 @@ public class Building : MonoBehaviour
         }
     }
 
-    public void SetSelectedFeedbackActive(bool choice)
+    public void SetFeedbackUI ()
     {
-        selectedFeedback.SetActive(choice);
-        productionBar.transform.parent.gameObject.SetActive(choice);
+        if (isSelected)
+        {
+            selectedFeedback.SetActive(true);
+
+            if (isConstructed)
+            {
+                healthBar.gameObject.SetActive(true);
+                recapProduction[0].transform.parent.gameObject.SetActive(true);
+            }
+            else
+            {
+                healthBar.gameObject.SetActive(false);
+                productionBar.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            selectedFeedback.SetActive(false);
+            healthBar.gameObject.SetActive(false);
+
+            recapProduction[0].transform.parent.gameObject.SetActive(false);
+        }
+
+        if (productionQueue.Count > 0)
+        {
+            productionBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            productionBar.gameObject.SetActive(false);
+        }
+
+        SetRecapProductionTotal();
     }
 
     public void SetSelectedFeedback(GameObject selectedFeedback)
@@ -73,7 +124,7 @@ public class Building : MonoBehaviour
 
     public void SpawnUnit()
     {
-        GameObject instance = Instantiate(productionQueue[0].GetPrefab(), spawnPosition, Quaternion.identity);
+        GameObject instance = Instantiate(productionQueue[0].GetPrefab(), spawnPosition.position, Quaternion.identity);
     }
 
     public void SetOneRecapProduction(int IDInList, int numberUnitCurrentlyProduce, Sprite unitCurrentlyProduce, bool active)
@@ -123,7 +174,22 @@ public class Building : MonoBehaviour
         }
     }
 
-    public void SetSpawnPosition(Vector3 spawnPosition)
+    public void CheckIfBuildingConstructed()
+    {
+        if (constructionHealthActual >= constructionHealthMax)
+        {
+            isConstructed = true;
+            constructionBar.gameObject.SetActive(false);
+        }
+        UpdateConstructionBar();
+    }
+
+    public void UpdateConstructionBar()
+    {
+        constructionBar.SetHealth(constructionHealthActual / constructionHealthMax);
+    }
+
+    public void SetSpawnPosition(Transform spawnPosition)
     {
         this.spawnPosition = spawnPosition;
     }
@@ -138,6 +204,16 @@ public class Building : MonoBehaviour
         return isSelected;
     }
 
+    public void SetIsConstructed(bool choice)
+    {
+        isConstructed = choice;
+    }
+
+    public bool GetIsConstructed()
+    {
+        return isConstructed;
+    }
+
     public void SetProductionBar(HealthBar productionBar)
     {
         this.productionBar = productionBar;
@@ -148,13 +224,28 @@ public class Building : MonoBehaviour
         this.recapProduction = productionRecap;
     }
 
-    public void SetRallyPoint (Vector3 rallyPoint)
+    public void SetRallyPoint (Transform rallyPoint)
     {
         this.rallyPoint = rallyPoint;
     }
 
-    public Vector3 GetRallyPoint()
+    public Transform GetRallyPoint()
     {
         return rallyPoint;
+    }
+
+    public void SetUiClickable(List<Image> UIClickable)
+    {
+        this.UIClickable = UIClickable;
+    }
+
+    public float GetConstructionHealth()
+    {
+        return constructionHealthActual;
+    }
+
+    public void SetConstructionHealth(float constructionHealth)
+    {
+        constructionHealthActual = constructionHealth;
     }
 }
