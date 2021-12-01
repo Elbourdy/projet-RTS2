@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 765614735}
   - component: {fileID: 765614734}
   - component: {fileID: 765614737}
+  - component: {fileID: 765614738}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -561,12 +562,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765614732}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5504b354ce1040d4cb194de321765929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 1
+  isConstruction: 1
+--- !u!114 &765614738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765614732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa160b783ec803046a25f07d0fd484fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myClass: {fileID: 11400000, guid: 01717cd4d5e79df45b2b79f01bca3ebc, type: 2}
 --- !u!1 &1090931294
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +791,7 @@ GameObject:
   - component: {fileID: 1601718507}
   - component: {fileID: 1601718506}
   - component: {fileID: 1601718511}
+  - component: {fileID: 1601718512}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -810,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+  isConstruction: 0
 --- !u!195 &1601718507
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -817,7 +834,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601718504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -907,7 +924,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+--- !u!114 &1601718512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601718504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myClass: {fileID: 11400000, guid: db6feffdebf16f243b8f1257d58a99f4, type: 2}
 --- !u!1 &1640026702
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +952,7 @@ GameObject:
   - component: {fileID: 1640026706}
   - component: {fileID: 1640026705}
   - component: {fileID: 1640026704}
+  - component: {fileID: 1640026710}
   m_Layer: 0
   m_Name: Agent (1)
   m_TagString: Untagged
@@ -957,6 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!195 &1640026705
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -993,7 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myState: 0
   speed: 10
-  rangeAttaque: 1
+  rangeAttaque: 4
   damage: 1
   rateOfFire: 0.5
   constructionObjet: {fileID: 7144872679487563968, guid: 8adab05e36064ba48a7eb59a14e7227a, type: 3}
@@ -1004,7 +1035,9 @@ MonoBehaviour:
   IdleColor: {r: 1, g: 1, b: 1, a: 0}
   AgressifColor: {r: 1, g: 0, b: 0, a: 0}
   ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
-  FollowColor: {r: 0, g: 0, b: 0, a: 0}
+  FollowColor: {r: 1, g: 0.91764706, b: 0, a: 0}
+  TypeUnit: 0
+  NbrCase: 0
 --- !u!136 &1640026707
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1068,6 +1101,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640026702}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1640026710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640026702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myClass: {fileID: 11400000, guid: db6feffdebf16f243b8f1257d58a99f4, type: 2}
 --- !u!1 &1714702775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myState: 0
   speed: 10
-  rangeAttaque: 1
+  rangeAttaque: 4
   damage: 1
   rateOfFire: 0.5
   constructionObjet: {fileID: 7144872679487563968, guid: 8adab05e36064ba48a7eb59a14e7227a, type: 3}
@@ -1287,6 +1333,8 @@ MonoBehaviour:
   AgressifColor: {r: 1, g: 0, b: 0, a: 0}
   ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
   FollowColor: {r: 1, g: 0.9193012, b: 0, a: 0}
+  TypeUnit: 0
+  NbrCase: 0
 --- !u!136 &1784010061
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1363,6 +1411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  isConstruction: 0
 --- !u!114 &1784010065
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     private void OnEnable()
     {
         //check la classe de l'objet en question et récupère la valeur dans la classe
+        if (GetComponent<ClassBatimentContainer>() != null) health = GetComponent<ClassBatimentContainer>().myClass.health;
         if (GetComponent<ClassAgentContainer>() != null) health = GetComponent<ClassAgentContainer>().myClass.health;
     }
 

@@ -15,9 +15,10 @@ MonoBehaviour:
   name: SoldierPlaceHolder
   health: 1
   Job: 1
-  attackDamage: 0
-  rateOfFire: 0
-  movementSpeed: 0
+  attackDamage: 1
+  rangeAttaque: 1
+  rateOfFire: 1
+  movementSpeed: 1
   constructionSpeed: 0
   rangeConstruction: 1
   healthToConstruction: 1
