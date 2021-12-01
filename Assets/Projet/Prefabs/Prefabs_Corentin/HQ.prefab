@@ -585,7 +585,7 @@ Transform:
   m_Children:
   - {fileID: 6164494387417573688}
   m_Father: {fileID: 6164494388845671643}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6164494388217782079
 GameObject:
@@ -1467,10 +1467,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6164494387557424397}
-  - {fileID: 6164494388958060669}
   - {fileID: 6164494389292607975}
   m_Father: {fileID: 6164494388845671643}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6164494388843324123
 GameObject:
@@ -1583,6 +1582,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6164494388492197908}
+  - {fileID: 6164494388958060669}
   - {fileID: 6164494388802862355}
   - {fileID: 6164494388158330838}
   - {fileID: 6164494389059796857}
@@ -1640,8 +1640,7 @@ MonoBehaviour:
   - {fileID: 6164494388217782064}
   - {fileID: 6164494388383184516}
   - {fileID: 6164494389149160249}
-  UIOnScreenSpace: {fileID: 6164494388158330839}
-  UIOnWorldSpace: {fileID: 6164494388802862352}
+  gameManager: {fileID: 0}
   constructionHealthMax: 100
   desiredRoaster: 0000000001000000
 --- !u!114 &7242394277026583144
@@ -1682,10 +1681,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6164494388958060666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.77999973, y: 0, z: 0}
+  m_LocalPosition: {x: 0.77999985, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6164494388802862355}
+  m_Father: {fileID: 6164494388845671643}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6164494389059796838
@@ -1716,7 +1715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6164494388845671643}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6164494389149160228
 GameObject:
@@ -1863,7 +1862,7 @@ Transform:
   m_LocalScale: {x: 0.15, y: 0.1, z: 0.15}
   m_Children: []
   m_Father: {fileID: 6164494388802862355}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &6164494389292607972
 MeshRenderer:

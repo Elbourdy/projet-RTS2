@@ -125,6 +125,8 @@ public class Building : MonoBehaviour
     public void SpawnUnit()
     {
         GameObject instance = Instantiate(productionQueue[0].GetPrefab(), spawnPosition.position, Quaternion.identity);
+        //instance.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
+        //instance.GetComponent<AgentStates>().MoveAgent(rallyPoint.position);
     }
 
     public void SetOneRecapProduction(int IDInList, int numberUnitCurrentlyProduce, Sprite unitCurrentlyProduce, bool active)

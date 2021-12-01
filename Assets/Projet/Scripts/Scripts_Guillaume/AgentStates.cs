@@ -124,7 +124,7 @@ public class AgentStates : MonoBehaviour
     }
     public void SetState (states newState)
     {
-
+ 
         navM.ResetPath();
         navM.isStopped = false;
         myState = newState;
