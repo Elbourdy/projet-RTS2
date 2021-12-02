@@ -8,7 +8,7 @@
 			<value>Unit1_Spawn</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2b794335-a1ab-4a71-932b-5adb54047fef}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{5eab2873-a31f-42eb-a36b-c78970b963d0}">
 		<relationship name="effects">
 			<destination>{affb9411-d024-4e72-a8ae-c1837fe81ed9}</destination>
-			<destination>{e00ce23f-7ccf-4dfb-8638-e1a82c9db3f7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e26425bc-4ac4-4bb8-9e10-4a4602e403b2}" />
@@ -124,10 +123,36 @@
 	<object class="MixerBusEffectChain" id="{dd0c3cd2-98cd-4a8d-9fa9-7d0547a98125}">
 		<relationship name="effects">
 			<destination>{c0f62115-1161-4bcd-b7ff-7d9b2dbaa6c8}</destination>
+			<destination>{6a3eb631-9b76-49a1-8632-4b9a6b96c737}</destination>
+			<destination>{1496d68f-ae07-40a8-95bf-98a5c7f20960}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6d74a5a1-d8e3-4fe3-8260-2fcbd02f7172}" />
 	<object class="MixerBusFader" id="{affb9411-d024-4e72-a8ae-c1837fe81ed9}" />
-	<object class="SpatialiserEffect" id="{e00ce23f-7ccf-4dfb-8638-e1a82c9db3f7}" />
 	<object class="MixerBusFader" id="{c0f62115-1161-4bcd-b7ff-7d9b2dbaa6c8}" />
+	<object class="ThreeEQEffect" id="{6a3eb631-9b76-49a1-8632-4b9a6b96c737}">
+		<property name="lowGain">
+			<value>-22</value>
+		</property>
+		<property name="midGain">
+			<value>2</value>
+		</property>
+		<property name="highGain">
+			<value>-25.5</value>
+		</property>
+		<property name="lowCrossover">
+			<value>380</value>
+		</property>
+		<property name="highCrossover">
+			<value>750</value>
+		</property>
+	</object>
+	<object class="MultibandEqEffect" id="{1496d68f-ae07-40a8-95bf-98a5c7f20960}">
+		<property name="frequencyA">
+			<value>255.746063</value>
+		</property>
+		<property name="qualityA">
+			<value>10</value>
+		</property>
+	</object>
 </objects>

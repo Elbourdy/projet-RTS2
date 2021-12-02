@@ -92,11 +92,20 @@
 	</object>
 	<object class="MixerBusPanner" id="{a01e40bf-3e68-4fdf-a3e0-a64d3db1a826}" />
 	<object class="SingleSound" id="{232003b8-1db0-4403-9591-6feeadf8bbb8}">
+		<property name="isAsync">
+			<value>true</value>
+		</property>
+		<property name="isCutoff">
+			<value>true</value>
+		</property>
 		<property name="length">
-			<value>0.57469387755102042</value>
+			<value>0.10000000000000001</value>
 		</property>
 		<property name="volume">
 			<value>3</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{9c4e51ba-7667-4fa4-8df0-d2c8b429064c}</destination>
@@ -130,10 +139,40 @@
 	<object class="MixerBusEffectChain" id="{b7b06605-bf18-4869-b61a-6e57a4892d0b}">
 		<relationship name="effects">
 			<destination>{0864d282-75a0-4ef9-a8c1-5979822fd95e}</destination>
+			<destination>{6e9b4103-64be-4087-a95d-a437c5c3e915}</destination>
+			<destination>{703ef285-553b-40df-b279-ef1b22f159ea}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{adb80876-a2a6-4db1-9052-8358ec1bc0f0}" />
 	<object class="MixerBusFader" id="{fa935898-7e98-4fa3-949e-027c137f1170}" />
 	<object class="SpatialiserEffect" id="{f2aef819-3df6-4790-aaa0-bd925dd63bcf}" />
 	<object class="MixerBusFader" id="{0864d282-75a0-4ef9-a8c1-5979822fd95e}" />
+	<object class="MultibandEqEffect" id="{6e9b4103-64be-4087-a95d-a437c5c3e915}">
+		<property name="filterTypeB">
+			<value>3</value>
+		</property>
+		<property name="frequencyA">
+			<value>199.44838</value>
+		</property>
+		<property name="frequencyB">
+			<value>387.055267</value>
+		</property>
+		<property name="qualityA">
+			<value>5.86206913</value>
+		</property>
+		<property name="qualityB">
+			<value>1.3757931</value>
+		</property>
+	</object>
+	<object class="PitchShifterEffect" id="{703ef285-553b-40df-b279-ef1b22f159ea}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+		<property name="pitch">
+			<value>0.979999959</value>
+		</property>
+		<property name="fftSize">
+			<value>1140</value>
+		</property>
+	</object>
 </objects>
