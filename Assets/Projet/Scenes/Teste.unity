@@ -2181,6 +2181,7 @@ MonoBehaviour:
   SP1: {fileID: 21300000, guid: 871f2cbc5c18afd4c8835583845a8ab5, type: 3}
   SP2: {fileID: 21300000, guid: 1e79ff8363091464bb89d1fd8ed6b65d, type: 3}
   SP3: {fileID: 0}
+  SP10: {fileID: 21300000, guid: a615181aeb589eb41849669bd288f4e5, type: 3}
   vie: {fileID: 1755780428}
   valeurvie: 2000
 --- !u!1001 &612676818
@@ -6665,6 +6666,14 @@ PrefabInstance:
     - target: {fileID: 6164494388845671623, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164494388845671642, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
+      propertyPath: BatType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164494388845671642, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
+      propertyPath: nbrcase
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6164494388845671642, guid: 5b2914ca69e191744856214b5b8e1c4c, type: 3}
       propertyPath: gameManager

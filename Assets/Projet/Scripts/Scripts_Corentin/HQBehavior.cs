@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HQBehavior : Building
 {
+    public float BatType;
+    public float nbrcase;
     public List<int> desiredRoaster;
     // Start is called before the first frame update
     private void Awake()
