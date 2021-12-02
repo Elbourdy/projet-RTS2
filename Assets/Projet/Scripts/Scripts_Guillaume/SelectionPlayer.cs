@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SelectionPlayer : MonoBehaviour
 {
@@ -77,11 +79,8 @@ public class SelectionPlayer : MonoBehaviour
         //Release the mouse button
         if (Input.GetMouseButtonUp(0))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+            if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
             {
-                if (hit.collider.tag != "HUD")
-                {
                     if (Time.time - clickTime <= delay)
                     {
                         isClicking = true;
@@ -117,7 +116,6 @@ public class SelectionPlayer : MonoBehaviour
                             }
                         }
                     }
-                }
             }
         }
         //Holding down the mouse button
