@@ -77,42 +77,48 @@ public class SelectionPlayer : MonoBehaviour
         //Release the mouse button
         if (Input.GetMouseButtonUp(0))
         {
-            if (Time.time - clickTime <= delay)
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                isClicking = true;
-            }
-
-            //Select all units within the square if we have created a square
-            if (hasCreatedSquare)
-            {
-                hasCreatedSquare = false;
-
-                //Deactivate the square selection image
-                selectionSquareTrans.gameObject.SetActive(false);
-
-                //Clear the list with selected unit
-                selectedUnits.Clear();
-
-                //Select the units
-                for (int i = 0; i < allFriendlyUnits.Count; i++)
+                if (hit.collider.tag != "HUD")
                 {
-                    GameObject currentUnit = allFriendlyUnits[i];
-
-                    //Is this unit within the square
-                    if (IsWithinPolygon(currentUnit.transform.position))
+                    if (Time.time - clickTime <= delay)
                     {
-                        currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
-
-                        selectedUnits.Add(currentUnit);
+                        isClicking = true;
                     }
-                    //Otherwise deselect the unit if it's not in the square
-                    else
+
+                    //Select all units within the square if we have created a square
+                    if (hasCreatedSquare)
                     {
-                        currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                        hasCreatedSquare = false;
+
+                        //Deactivate the square selection image
+                        selectionSquareTrans.gameObject.SetActive(false);
+
+                        //Clear the list with selected unit
+                        selectedUnits.Clear();
+
+                        //Select the units
+                        for (int i = 0; i < allFriendlyUnits.Count; i++)
+                        {
+                            GameObject currentUnit = allFriendlyUnits[i];
+
+                            //Is this unit within the square
+                            if (IsWithinPolygon(currentUnit.transform.position))
+                            {
+                                currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+
+                                selectedUnits.Add(currentUnit);
+                            }
+                            //Otherwise deselect the unit if it's not in the square
+                            else
+                            {
+                                currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                            }
+                        }
                     }
                 }
             }
-
         }
         //Holding down the mouse button
         if (Input.GetMouseButton(0))
