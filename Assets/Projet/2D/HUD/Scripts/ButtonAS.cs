@@ -16,7 +16,7 @@ public class ButtonAS : MonoBehaviour
         
     }
 
-    void buttonpress()
+   public  void buttonpress()
     {
 
         if (Perso == 0)
@@ -31,13 +31,21 @@ public class ButtonAS : MonoBehaviour
         else if (Perso == 2)
         {
 
+
         }
 
         else if (Perso == 10)
         {
             if (ID == 1)
             {
-
+                try
+                {
+                    GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0].GetComponent<Building>().AddToQueue(0);
+                }
+                catch
+                {
+                    print("error");
+                }
             }
             else if (ID == 2)
             {
@@ -47,7 +55,7 @@ public class ButtonAS : MonoBehaviour
             else if (ID == 3)
             {
 
-
+                
             }
             else if (ID == 4)
             {
@@ -74,29 +82,8 @@ public class ButtonAS : MonoBehaviour
         
             Perso = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Perso;
 
-      if (Perso == 0)
-        {
-
-        }
-      else if(Perso == 1)
-        {
-
-
-        }
-       else if(Perso == 2)
-        {
-
-        }
-          
-      else if (Perso == 10)
-        {
-            
-
-        }
-      else
-        {
-
-        }
+     
+        
 
 
     }
