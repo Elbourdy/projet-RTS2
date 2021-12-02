@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Image_Perso : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Sprite SP0, SP1, SP2, SP3;
+    public Sprite SP0, SP1, SP2, SP3, SP10;
     private float identity;
     public Text vie;
     public string valeurvie;
@@ -32,6 +32,10 @@ public class Image_Perso : MonoBehaviour
         else if (identity == 2)
         {
             gameObject.GetComponent<Image>().sprite = SP2;
+        }
+        else if (identity == 10)
+        {
+            gameObject.GetComponent<Image>().sprite = SP10;
         }
         else
         {

@@ -30,6 +30,7 @@ public class InputPlayer : MonoBehaviour
         //if (Input.GetKey(KeyCode.Space) && Input.GetMouseButtonDown(1))
         //{
         //    ConstructOrder();
+        //  Building.SetConstructionHealth(GetConstructionHealth() += construction * Time.deltaTime);
         //}
     }
 
@@ -105,7 +106,6 @@ public class InputPlayer : MonoBehaviour
 
     private void Recolte (RaycastHit hit)
     {
-
         foreach (var agent in sp.selectedUnits)
         {
             agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);

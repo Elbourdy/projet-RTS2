@@ -9,9 +9,9 @@ public class AgentClass : UnitClass
     public AgentJob Job;
 
     
-    
 
     public float attackDamage;
+    public float rangeAttaque;
     public float rateOfFire;
     public float movementSpeed;
 
@@ -20,5 +20,6 @@ public class AgentClass : UnitClass
     [DrawIf("Job", AgentJob.Worker)] public float constructionSpeed = 1;
     [DrawIf("Job", AgentJob.Worker)] public float rangeConstruction = 1;
     [DrawIf("Job", AgentJob.Worker)] public float healthToConstruction = 1;
+
 
 }

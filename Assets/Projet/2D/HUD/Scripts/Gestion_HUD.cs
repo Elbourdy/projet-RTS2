@@ -41,6 +41,11 @@ public class Gestion_HUD : MonoBehaviour
                    vie = Test.GetComponent<HealthSystem>().GetHealth();
                    GameObject.Find("Vie").GetComponent<Text>().text = "" + vie;
             }
+            else if(Test.GetComponent<HQBehavior>())
+            {
+                Perso = Test.GetComponent<HQBehavior>().BatType;
+                Cases = Test.GetComponent<HQBehavior > ().nbrcase;
+            }
             
         }
         else

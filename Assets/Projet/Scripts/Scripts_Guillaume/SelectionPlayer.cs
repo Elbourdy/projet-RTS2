@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SelectionPlayer : MonoBehaviour
 {
@@ -77,42 +79,44 @@ public class SelectionPlayer : MonoBehaviour
         //Release the mouse button
         if (Input.GetMouseButtonUp(0))
         {
-            if (Time.time - clickTime <= delay)
+            if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
             {
-                isClicking = true;
-            }
-
-            //Select all units within the square if we have created a square
-            if (hasCreatedSquare)
-            {
-                hasCreatedSquare = false;
-
-                //Deactivate the square selection image
-                selectionSquareTrans.gameObject.SetActive(false);
-
-                //Clear the list with selected unit
-                selectedUnits.Clear();
-
-                //Select the units
-                for (int i = 0; i < allFriendlyUnits.Count; i++)
-                {
-                    GameObject currentUnit = allFriendlyUnits[i];
-
-                    //Is this unit within the square
-                    if (IsWithinPolygon(currentUnit.transform.position))
+                    if (Time.time - clickTime <= delay)
                     {
-                        currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
-
-                        selectedUnits.Add(currentUnit);
+                        isClicking = true;
                     }
-                    //Otherwise deselect the unit if it's not in the square
-                    else
+
+                    //Select all units within the square if we have created a square
+                    if (hasCreatedSquare)
                     {
-                        currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
-                    }
-                }
-            }
+                        hasCreatedSquare = false;
 
+                        //Deactivate the square selection image
+                        selectionSquareTrans.gameObject.SetActive(false);
+
+                        //Clear the list with selected unit
+                        selectedUnits.Clear();
+
+                        //Select the units
+                        for (int i = 0; i < allFriendlyUnits.Count; i++)
+                        {
+                            GameObject currentUnit = allFriendlyUnits[i];
+
+                            //Is this unit within the square
+                            if (IsWithinPolygon(currentUnit.transform.position))
+                            {
+                                currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+
+                                selectedUnits.Add(currentUnit);
+                            }
+                            //Otherwise deselect the unit if it's not in the square
+                            else
+                            {
+                                currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                            }
+                        }
+                    }
+            }
         }
         //Holding down the mouse button
         if (Input.GetMouseButton(0))
@@ -129,7 +133,14 @@ public class SelectionPlayer : MonoBehaviour
             //Deselect all units
             for (int i = 0; i < selectedUnits.Count; i++)
             {
-                selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
+                if (selectedUnits[i].GetComponent<MeshRenderer>())
+                {
+                    selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
+                }
+                else
+                {
+                    selectedUnits[i].GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                }
             }
 
             //Clear the list with selected units
@@ -145,7 +156,10 @@ public class SelectionPlayer : MonoBehaviour
                 {
                     GameObject activeUnit = hit.collider.gameObject;
                     //Set this unit to selected
-                    activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    if (activeUnit.GetComponent<MeshRenderer>() != null)
+                        activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+
+                    else activeUnit.GetComponentInChildren<MeshRenderer>().material = selectedMaterial;
                     //Add it to the list of selected units, which is now just 1 unit
                     selectedUnits.Add(activeUnit);
                 }
@@ -208,7 +222,12 @@ public class SelectionPlayer : MonoBehaviour
 
             if (!isSelected)
             {
+                if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
                 highlightThisUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                else
+                {
+                    highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                }
             }
 
             highlightThisUnit = null;
@@ -240,8 +259,12 @@ public class SelectionPlayer : MonoBehaviour
                 if (!isSelected)
                 {
                     highlightThisUnit = currentObj;
-
+                    if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
                     highlightThisUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
+                    else
+                    {
+                        highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
+                    }
                 }
             }
         }

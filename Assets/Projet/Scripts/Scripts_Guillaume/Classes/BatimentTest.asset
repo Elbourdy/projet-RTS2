@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30fbe76fb306c24994944f8baf5e87a, type: 3}
-  m_Name: TestUnit
+  m_Script: {fileID: 11500000, guid: 1c2a9b74e0289f546b746fab79bdd53a, type: 3}
+  m_Name: BatimentTest
   m_EditorClassIdentifier: 
-  name: Test
+  name: BatimentPlaceHolder
   health: 1
+  speedToBeConstruct: 1

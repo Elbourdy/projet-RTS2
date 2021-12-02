@@ -15,9 +15,9 @@ MonoBehaviour:
   name: WorkerPlaceHolder
   health: 1
   Job: 0
-  attackDamage: 0
-  rateOfFire: 0
-  movementSpeed: 0
-  constructionSpeed: 0
+  attackDamage: 1
+  rateOfFire: 1
+  movementSpeed: 1
+  constructionSpeed: 1
   rangeConstruction: 1
   healthToConstruction: 1

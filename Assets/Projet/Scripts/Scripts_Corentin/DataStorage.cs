@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataStorage
+[CreateAssetMenu(fileName = "UnitData", menuName = "ScriptableObjects/Unit")]
+public class DataStorage : ScriptableObject
 {
-    private float timerCreation;
-    private GameObject unitPrefab;
-    private Sprite unitSprite;
-    private int ID;
+    public float timerCreation;
+    public GameObject unitPrefab;
+    public Sprite unitSprite;
+    public   int ID;
     // private float ressources cost (A, B, C, X)
+
+    //declaration de classe plus trop necessaire pour le moment
 
     public DataStorage(float timerCreation, GameObject unitPrefab, Sprite unitSprite, int ID)
     {
@@ -16,7 +19,7 @@ public class DataStorage
         this.unitPrefab = unitPrefab;
         this.unitSprite = unitSprite;
         this.ID = ID;
-    }
+    }   
 
     public int GetID()
     {

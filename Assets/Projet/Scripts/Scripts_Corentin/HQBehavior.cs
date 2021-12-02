@@ -5,47 +5,56 @@ using UnityEngine.UI;
 
 public class HQBehavior : Building
 {
-    public Transform spawnPoint, rallyPoint;
-    public GameObject selectedFeedback;
-    public HealthBar productionBar;
-    public List<Image> recapProduction;
-
+    public float BatType;
+    public float nbrcase;
+    public List<int> desiredRoaster;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        SetSpawnPosition(spawnPoint.position);
-        SetRallyPoint(rallyPoint.position);
-        SetSelectedFeedback(selectedFeedback);
-        SetProductionBar(productionBar);
-        SetProductionRecap(recapProduction);
-        AddToRoaster(0);
-        AddToRoaster(1);
+        foreach (int e in desiredRoaster)
+        {
+            AddToRoaster(e);
+        }
+    }
+
+    void Start()
+    {   
+        DisplayRoaster();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        CheckIfSelected();
+
+        if (!GetIsConstructed())
         {
-            AddToQueue(0);
+            CheckIfBuildingConstructed();
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                SetConstructionHealth(GetConstructionHealth() + 10f);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        else
         {
-            AddToQueue(1);
+            if (GetIsSelected())
+            {
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    AddToQueue(0);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    AddToQueue(1);
+                }   
+            }
+
+            ProcessQueue();
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SetIsSelected(!GetIsSelected());
-        }
-
-        SetSelectedFeedbackActive(GetIsSelected());
-
-        ProcessQueue();
-
-        SetRecapProductionTotal();
-
-
+        SetFeedbackUI();
     }
 }
