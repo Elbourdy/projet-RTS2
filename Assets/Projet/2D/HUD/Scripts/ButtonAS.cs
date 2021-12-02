@@ -19,6 +19,9 @@ public class ButtonAS : MonoBehaviour
    public  void buttonpress()
     {
 
+        Debug.Log("button");
+
+
         if (Perso == 0)
         {
 
@@ -40,7 +43,8 @@ public class ButtonAS : MonoBehaviour
             {
                 try
                 {
-                    GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0].GetComponent<Building>().AddToQueue(0);
+                    GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0].GetComponent<Building>().AddToQueue(1);
+                    Debug.Log("Pour La horde");
                 }
                 catch
                 {
@@ -49,8 +53,16 @@ public class ButtonAS : MonoBehaviour
             }
             else if (ID == 2)
             {
+                try
+                {
+                    GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0].GetComponent<Building>().AddToQueue(0);
+                    Debug.Log("Pour La horde");
+                }
+                catch
+                {
+                    print("error");
+                }
 
-            
             }
             else if (ID == 3)
             {

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3226413653418798878}
   - component: {fileID: 3226413653418798879}
   - component: {fileID: 3226413653418798873}
+  - component: {fileID: -1305049101055370152}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -126,8 +127,8 @@ MonoBehaviour:
   AgressifColor: {r: 1, g: 0, b: 0, a: 0}
   ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
   FollowColor: {r: 1, g: 0.91764706, b: 0, a: 0}
-  TypeUnit: 0
-  NbrCase: 0
+  TypeUnit: 1
+  NbrCase: 6
 --- !u!195 &3226413653418798878
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -177,3 +178,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myClass: {fileID: 11400000, guid: db6feffdebf16f243b8f1257d58a99f4, type: 2}
+--- !u!114 &-1305049101055370152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226413653418798849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
