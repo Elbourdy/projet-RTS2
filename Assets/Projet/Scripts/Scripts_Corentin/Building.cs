@@ -13,36 +13,36 @@ public class Building : MonoBehaviour
     public GameObject gameManager;
     public float constructionHealthMax;
 
-    private List<DataStorage> roasterUnits = new List<DataStorage>();
-    private List<DataStorage> productionQueue = new List<DataStorage>(); 
+    private List<AgentClass> roasterUnits = new List<AgentClass>();
+    private List<AgentClass> productionQueue = new List<AgentClass>(); 
     private float actualTimer, timerCount;
     private bool isSelected, isConstructed;
     private float constructionHealthActual;
 
     public void AddToRoaster(int IDNumberRoaster)
     {
-        List<DataStorage> fullRoaster = GameObject.Find("GameManager").GetComponent<GameDataStorage>().mainDataStorage;
+        List<AgentClass> fullRoaster = GameObject.Find("GameManager").GetComponent<GameDataStorage>().mainAgentClassStorage;
         roasterUnits.Add(fullRoaster[IDNumberRoaster]);
     }
 
     public void RemoveFromRoaster(int IDNumberRoaster)  
     {
-        foreach (DataStorage e in roasterUnits)
+        foreach (AgentClass e in roasterUnits)
         {
-            if (e.GetID() == IDNumberRoaster)
+            if (e.ID == IDNumberRoaster)
             {
                 roasterUnits.Remove(e);
             }
         }
     }
 
-    public void DisplayRoaster()
+    /*public void DisplayRoaster()
     {
         int i = 0;
-        foreach (DataStorage e in roasterUnits)
+        foreach (AgentClass e in roasterUnits)
         {
-            UIClickable[i].sprite = e.GetSprite();
-            UIClickable[i].GetComponent<UiSquareStorage>().SetIDNumber(e.GetID());
+            UIClickable[i].sprite = e.unitSprite;
+            UIClickable[i].GetComponent<UiSquareStorage>().SetIDNumber(e.ID);
             i++;
         }
 
@@ -50,7 +50,7 @@ public class Building : MonoBehaviour
         {
             UIClickable[j].gameObject.SetActive(false);
         }
-    }
+    }*/
 
     public void AddToQueue(int IDNumberRoaster)
     {
@@ -66,7 +66,7 @@ public class Building : MonoBehaviour
         {
             if (timerCount == 0)
             {
-                actualTimer = productionQueue[0].GetTimerCreation();
+                actualTimer = productionQueue[0].timerCreation;
             }
 
             timerCount += Time.deltaTime;
@@ -124,7 +124,7 @@ public class Building : MonoBehaviour
 
     public void SpawnUnit()
     {
-        GameObject instance = Instantiate(productionQueue[0].GetPrefab(), spawnPosition.position, Quaternion.identity);
+        GameObject instance = Instantiate(productionQueue[0].unitPrefab, spawnPosition.position, Quaternion.identity);
         //instance.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
         //instance.GetComponent<AgentStates>().MoveAgent(rallyPoint.position);
     }
@@ -141,10 +141,10 @@ public class Building : MonoBehaviour
         int i = 0;
         if (productionQueue.Count > 0)
         {
-            DataStorage precedentElementChecked = productionQueue[0];
+            AgentClass precedentElementChecked = productionQueue[0];
             int countUnit = 0, unitChecked = 0;
 
-            foreach (DataStorage e in productionQueue)
+            foreach (AgentClass e in productionQueue)
             {
                 unitChecked++;
                 if (i < 5) // number of possible recap for now, you can add more but it's for test purposes
@@ -155,7 +155,7 @@ public class Building : MonoBehaviour
                     }
                     else
                     {
-                        SetOneRecapProduction(i, countUnit, precedentElementChecked.GetSprite(), true);
+                        SetOneRecapProduction(i, countUnit, precedentElementChecked.unitSprite, true);
                         precedentElementChecked = e;
                         countUnit = 1;
                         i++;
@@ -164,7 +164,7 @@ public class Building : MonoBehaviour
 
                 if (unitChecked == productionQueue.Count && i < 5)
                 {
-                    SetOneRecapProduction(i, countUnit, precedentElementChecked.GetSprite(), true);
+                    SetOneRecapProduction(i, countUnit, precedentElementChecked.unitSprite, true);
                     i++;
                 }
             }

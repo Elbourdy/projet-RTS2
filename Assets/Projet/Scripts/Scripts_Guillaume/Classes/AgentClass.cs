@@ -8,7 +8,9 @@ public class AgentClass : UnitClass
     public enum AgentJob { Worker, Soldier};
     public AgentJob Job;
 
-    
+    public float timerCreation;
+    public GameObject unitPrefab;
+    public Sprite unitSprite;
 
     public float attackDamage;
     public float rangeAttaque;

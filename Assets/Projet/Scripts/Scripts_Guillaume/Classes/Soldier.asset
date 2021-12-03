@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
+  ID: 1
   name: SoldierPlaceHolder
   health: 1
   Job: 1
+  timerCreation: 5
+  unitPrefab: {fileID: 3226413653418798849, guid: c1e95ce731d8ac74a8447322135458e0, type: 3}
+  unitSprite: {fileID: 21300000, guid: 871f2cbc5c18afd4c8835583845a8ab5, type: 3}
   attackDamage: 1
   rangeAttaque: 1
   rateOfFire: 1

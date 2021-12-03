@@ -19,7 +19,7 @@ public class HQBehavior : Building
 
     void Start()
     {   
-        DisplayRoaster();
+        //DisplayRoaster();
     }
 
     // Update is called once per frame
