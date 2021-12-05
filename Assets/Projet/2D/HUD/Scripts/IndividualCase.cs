@@ -10,7 +10,7 @@ public class IndividualCase : MonoBehaviour
     public int ID;
     public Sprite SP0, SP1, SP2, SP3;
     private float Nvie;
-    public float RID;
+    public int RID;
     public GameObject Stocage;
     public GameObject txt;
 
@@ -33,7 +33,7 @@ public class IndividualCase : MonoBehaviour
 
             try
             {
-                RID = Stocage.GetComponent<SelectionPlayer>().selectedUnits[ID].GetComponent<AgentStates>().TypeUnit;
+                RID = Stocage.GetComponent<SelectionPlayer>().selectedUnits[ID].GetComponent<ClassAgentContainer>().myClass.ID; //// modif coco
             }
             catch 
             {
@@ -58,29 +58,31 @@ public class IndividualCase : MonoBehaviour
 
             if (RID >= 0)
                 {
-                    if (RID == 0)
-                    {
-                        gameObject.GetComponent<Image>().sprite = SP0;
-                    }
-                    else if (RID == 1)
-                    {
-                        gameObject.GetComponent<Image>().sprite = SP1;
+                /*if (RID == 0)
+                {
+                    gameObject.GetComponent<Image>().sprite = SP0;
+                }
+                else if (RID == 1)
+                {
+                    gameObject.GetComponent<Image>().sprite = SP1;
 
-                    }
-                    else if (RID == 2)
-                    {
-                        gameObject.GetComponent<Image>().sprite = SP2;
-                    }
+                }
+                else if (RID == 2)
+                {
+                    gameObject.GetComponent<Image>().sprite = SP2;
+                }
 
-                    else if (RID == 3)
-                    {
-                        gameObject.GetComponent<Image>().sprite = SP3;
+                else if (RID == 3)
+                {
+                    gameObject.GetComponent<Image>().sprite = SP3;
 
-                    }
-                    else
-                    {
-                        gameObject.GetComponent<Image>().sprite = SP0;
-                    }
+                }
+                else
+                {
+                    gameObject.GetComponent<Image>().sprite = SP0;
+                }*/
+
+                GetComponent<Image>().sprite = GameObject.Find("GameManager").GetComponent<GameDataStorage>().mainAgentClassStorage[RID].unitSprite; ////modif coco
 
                 }
                 else
@@ -98,7 +100,7 @@ public class IndividualCase : MonoBehaviour
         else
         {
 
-            gameObject.GetComponent<Image>().sprite = SP0;
+            gameObject.GetComponent<Image>().sprite = null;
         }
 
 
