@@ -1077,8 +1077,8 @@ MonoBehaviour:
   - {fileID: 0}
   gameManager: {fileID: 0}
   constructionHealthMax: 100
-  BatType: 0
-  nbrcase: 0
+  BatType: 10
+  nbrcase: 4
   desiredRoaster: 0000000001000000
 --- !u!114 &7242394277026583144
 MonoBehaviour:

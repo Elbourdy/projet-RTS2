@@ -12,12 +12,14 @@ public class Building : MonoBehaviour
     public List<Image> recapProduction, UIClickable;
     public GameObject gameManager;
     public float constructionHealthMax;
+    public GameObject[] shopCases = new GameObject[12];
 
     private List<AgentClass> roasterUnits = new List<AgentClass>();
     private List<AgentClass> productionQueue = new List<AgentClass>(); 
     private float actualTimer, timerCount;
     private bool isSelected, isConstructed;
     private float constructionHealthActual;
+
 
     public void AddToRoaster(int IDNumberRoaster)
     {
@@ -36,21 +38,14 @@ public class Building : MonoBehaviour
         }
     }
 
-    /*public void DisplayRoaster()
+    public void DisplayRoaster()
     {
-        int i = 0;
-        foreach (AgentClass e in roasterUnits)
+        for(int i = 0; i < roasterUnits.Count; i++)
         {
-            UIClickable[i].sprite = e.unitSprite;
-            UIClickable[i].GetComponent<UiSquareStorage>().SetIDNumber(e.ID);
-            i++;
-        }
-
-        for (int j = i; j < UIClickable.Count; j++)
-        {
-            UIClickable[j].gameObject.SetActive(false);
-        }
-    }*/
+            shopCases[i].GetComponent<Image>().sprite = roasterUnits[i].unitSprite;
+            shopCases[i].transform.GetChild(0).GetComponent<Text>().name = roasterUnits[i].name;
+        }  
+    }
 
     public void AddToQueue(int IDNumberRoaster)
     {
@@ -251,6 +246,10 @@ public class Building : MonoBehaviour
         constructionHealthActual = constructionHealth;
     }
 
+    public int GetNumberRoasterUnits()
+    {
+        return roasterUnits.Count;
+    }
     public void CheckIfSelected()
     {
         int i = 0;
