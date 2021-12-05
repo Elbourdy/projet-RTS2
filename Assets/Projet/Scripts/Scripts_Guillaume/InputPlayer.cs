@@ -106,7 +106,7 @@ public class InputPlayer : MonoBehaviour
         {
             if (agent.GetComponent<AgentStates>() != null)
             {
-                agent.GetComponent<AgentStates>().SetObjectDestination(hit.collider.gameObject);
+                agent.GetComponent<AgentStates>().SetTarget(hit.collider.gameObject);
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
                 agent.GetComponent<AgentStates>().MoveAgent(hit.point);
             }
