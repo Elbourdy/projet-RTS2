@@ -92,7 +92,7 @@ public class ButtonAS : MonoBehaviour
     void Update()
     {
         
-            Perso = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Perso;
+            //Perso = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Perso;
 
      
         

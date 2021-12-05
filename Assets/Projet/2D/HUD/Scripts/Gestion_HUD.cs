@@ -41,6 +41,7 @@ public class Gestion_HUD : MonoBehaviour
         {
             ResetOneUnitDisplay();
         }
+
         /*//Incrémentation des ObjetsText
         RC1.GetComponent<Text>().text = RCS1;
         RC2.GetComponent<Text>().text = RCS2;
@@ -78,6 +79,12 @@ public class Gestion_HUD : MonoBehaviour
         GameObject selectedUnit = selectionPlayer.selectedUnits[0];
 
         if (selectedUnit.GetComponent<ClassAgentContainer>() != null)
+        {
+            oneUnitDisplay.GetComponent<Image>().sprite = selectedUnit.GetComponent<ClassAgentContainer>().myClass.unitSprite;
+            oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().name = selectedUnit.GetComponent<HealthSystem>().GetHealth().ToString();
+        }
+
+        if (selectedUnit.GetComponent<ClassBatimentContainer>() != null)
         {
             oneUnitDisplay.GetComponent<Image>().sprite = selectedUnit.GetComponent<ClassAgentContainer>().myClass.unitSprite;
             oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().name = selectedUnit.GetComponent<HealthSystem>().GetHealth().ToString();
