@@ -11,23 +11,16 @@ public class Shop_Cases : MonoBehaviour
     private float nbrCases;
 
 
-    void Ini()
-    {
-        foreach (GameObject e in shopCases)
-        {
-            e.SetActive(false);
-        }
-    }
+    
     void Start()
     {
-        shopCases = GameObject.FindGameObjectsWithTag("ShopCases");
-        Ini();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        nbrCases = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Cases;
+        /*nbrCases = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Cases;
         
         for (int i = 0; i < shopCases.Length; i++)
         {
@@ -39,6 +32,6 @@ public class Shop_Cases : MonoBehaviour
             {
                 shopCases[i].SetActive(false);
             }
-        }
+        }*/
     }
 }

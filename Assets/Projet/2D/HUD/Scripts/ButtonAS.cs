@@ -6,97 +6,25 @@ using UnityEngine.UI;
 
 public class ButtonAS : MonoBehaviour
 {
-
-    public float ID, Perso;
-    public Sprite SP, SP2, SP3, SP4, SP10;
-        
+    public int ID;
+    private SelectionPlayer selectionPlayer;
 
     void Start()
     {
-        
+        selectionPlayer = GameObject.Find("GameManager").GetComponent<SelectionPlayer>();
     }
 
-   public  void buttonpress()
+    public void ButtonPress()
     {
-
-        Debug.Log("button");
-
-
-        if (Perso == 0)
+        if (selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>())
         {
-
-        }
-        else if (Perso == 1)
-        {
-
-
-        }
-        else if (Perso == 2)
-        {
-
-
+            selectionPlayer.selectedUnits[0].GetComponent<Building>().SetActionShopCases(ID); 
+            //lance une fonction dans le batiment avec l'ID du bouton pressé entrainânt l'action correspondante
         }
 
-        else if (Perso == 10)
+        if (selectionPlayer.selectedUnits[0].GetComponent<ClassAgentContainer>())
         {
-            if (ID == 1)
-            {
-                try
-                {
-                    GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0].GetComponent<Building>().AddToQueue(1);
-                    Debug.Log("Pour La horde");
-                }
-                catch
-                {
-                    print("error");
-                }
-            }
-            else if (ID == 2)
-            {
-                try
-                {
-                    GameObject.Find("GameManager").GetComponent<SelectionPlayer>().selectedUnits[0].GetComponent<Building>().AddToQueue(0);
-                    Debug.Log("Pour La horde");
-                }
-                catch
-                {
-                    print("error");
-                }
-
-            }
-            else if (ID == 3)
-            {
-
-                
-            }
-            else if (ID == 4)
-            {
-
-
-            }
-            else
-            {
-
-            }
-
+            //Here call the function which need to be wrote by guillaume which will made the selected units acts
         }
-        else
-        {
-
-        }
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-            //Perso = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Perso;
-
-     
-        
-
-
     }
 }

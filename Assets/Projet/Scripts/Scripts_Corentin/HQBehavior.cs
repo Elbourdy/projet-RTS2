@@ -55,6 +55,5 @@ public class HQBehavior : Building
         }
 
         SetFeedbackUI();
-        DisplayRoaster();
     }
 }

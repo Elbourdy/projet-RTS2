@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GestionSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
+   /* // Start is called before the first frame update
     public float NBRS;
     public GameObject A1;
     public GameObject A2;
@@ -325,5 +325,5 @@ public class GestionSelect : MonoBehaviour
 
 
 
-    }
+    }*/
 }

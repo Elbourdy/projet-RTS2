@@ -12,7 +12,6 @@ public class Building : MonoBehaviour
     public List<Image> recapProduction, UIClickable;
     public GameObject gameManager;
     public float constructionHealthMax;
-    public GameObject[] shopCases = new GameObject[12];
 
     private List<AgentClass> roasterUnits = new List<AgentClass>();
     private List<AgentClass> productionQueue = new List<AgentClass>(); 
@@ -36,15 +35,6 @@ public class Building : MonoBehaviour
                 roasterUnits.Remove(e);
             }
         }
-    }
-
-    public void DisplayRoaster()
-    {
-        for(int i = 0; i < roasterUnits.Count; i++)
-        {
-            shopCases[i].GetComponent<Image>().sprite = roasterUnits[i].unitSprite;
-            shopCases[i].transform.GetChild(0).GetComponent<Text>().name = roasterUnits[i].name;
-        }  
     }
 
     public void AddToQueue(int IDNumberRoaster)
@@ -72,6 +62,15 @@ public class Building : MonoBehaviour
                 productionQueue.RemoveAt(0);
                 timerCount = 0;
             }
+        }
+    }
+
+    public void SetActionShopCases (int ButtonID)
+    {
+        Debug.Log(ButtonID);
+        if (ButtonID < roasterUnits.Count)
+        {
+            AddToQueue(ButtonID);
         }
     }
 
@@ -246,10 +245,11 @@ public class Building : MonoBehaviour
         constructionHealthActual = constructionHealth;
     }
 
-    public int GetNumberRoasterUnits()
+    public List<AgentClass> GetRoasterUnits()
     {
-        return roasterUnits.Count;
+        return roasterUnits;
     }
+
     public void CheckIfSelected()
     {
         int i = 0;
