@@ -45,6 +45,7 @@ public class AgentStates : MonoBehaviour
 
     private NavMeshAgent navM;
     private GameObject objectDestination;
+    private GameObject targetToAttack;
 
 
     private void Start()
@@ -57,28 +58,30 @@ public class AgentStates : MonoBehaviour
     private void Update()
     {
         rateOfFireCD -= Time.deltaTime;
+
         switch (myState)
         {
             case states.Idle:
                 break;
             case states.Agressif:
-                if (objectDestination != null)
+
+                UpdatePosition();
+                if (targetToAttack != null)
                 {
                     //FollowTarget(objectDestination);
                     if (navM.remainingDistance > rangeAttaque)
                     {
                         navM.isStopped = false;
-                        Debug.Log("nav not stopped : "+ navM.remainingDistance + ">" + rangeAttaque);
                     }
                     else if (navM.hasPath && navM.remainingDistance < rangeAttaque)
                     {
-                        if (Vector3.Distance(gameObject.transform.position, objectDestination.transform.position) > rangeAttaque)
+                        if (Vector3.Distance(gameObject.transform.position, targetToAttack.transform.position) > rangeAttaque)
                         {
-                            FollowTarget(objectDestination);
+                            MoveAgent(targetToAttack.transform.position);
                         }
                         navM.isStopped = true;
                         Debug.Log("nav stopped");
-                        AttaqueEnnemi(objectDestination);
+                        AttaqueEnnemi(targetToAttack);
                     }
                 }
                 else
@@ -117,6 +120,20 @@ public class AgentStates : MonoBehaviour
         }
     }
 
+
+    private void UpdatePosition()
+    {
+        if (targetToAttack != null)
+        {
+            if (!navM.pathPending)
+            {
+                if (targetToAttack.transform.position != navM.pathEndPosition)
+                {
+                    navM.SetDestination(targetToAttack.transform.position);
+                }
+            }
+        }
+    }
 
     public void MoveAgent (Vector3 destination)
     {
@@ -160,6 +177,11 @@ public class AgentStates : MonoBehaviour
     {
         objectDestination = newObject;
     }
+
+    public void SetTarget (GameObject newGO)
+    {
+        targetToAttack = newGO;
+    }
     private void AttaqueEnnemi(GameObject target)
     {
         Debug.Log("Attaque");
@@ -185,10 +207,6 @@ public class AgentStates : MonoBehaviour
         SetState(states.Idle);
         Vector3 constructionPos = transform.position + transform.forward * rangeConstruction;
         Instantiate(constructionObjet, constructionPos, transform.rotation);
-    }
-    private void FollowTarget(GameObject target)
-    {
-        navM.SetDestination(target.transform.position);
     }
     
 }

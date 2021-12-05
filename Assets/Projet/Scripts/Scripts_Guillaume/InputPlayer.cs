@@ -79,8 +79,11 @@ public class InputPlayer : MonoBehaviour
     {
         foreach (var agent in sp.selectedUnits)
         {
-            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
-            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            if (agent.GetComponent<AgentStates>() != null)
+            {
+                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
+                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            }
         }
     }
 
@@ -88,8 +91,11 @@ public class InputPlayer : MonoBehaviour
     {
         foreach (var agent in sp.selectedUnits)
         {
-            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Idle);
-            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            if (agent.GetComponent<AgentStates>() != null)
+            {
+                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Idle);
+                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            }
         }
     }
 
@@ -98,9 +104,12 @@ public class InputPlayer : MonoBehaviour
 
         foreach (var agent in sp.selectedUnits)
         {
-            agent.GetComponent<AgentStates>().SetObjectDestination(hit.collider.gameObject);
-            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
-            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            if (agent.GetComponent<AgentStates>() != null)
+            {
+                agent.GetComponent<AgentStates>().SetTarget(hit.collider.gameObject);
+                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
+                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            }
         }
     }
 
@@ -108,8 +117,11 @@ public class InputPlayer : MonoBehaviour
     {
         foreach (var agent in sp.selectedUnits)
         {
-            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);
-            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            if (agent.GetComponent<AgentStates>() != null)
+            {
+                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);
+                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+            }
         }
     }
 

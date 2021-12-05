@@ -92,11 +92,8 @@ public class SelectionPlayer : MonoBehaviour
 
                         //Deactivate the square selection image
                         selectionSquareTrans.gameObject.SetActive(false);
-                        if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
-                        {
                             //Clear the list with selected unit
                             selectedUnits.Clear();
-                        }
                         //Select the units
                         for (int i = 0; i < allFriendlyUnits.Count; i++)
                         {

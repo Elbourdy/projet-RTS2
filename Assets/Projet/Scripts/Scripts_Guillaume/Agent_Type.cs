@@ -22,5 +22,6 @@ public class Agent_Type : MonoBehaviour
     private void OnDisable()
     {
         if (Type == TypeAgent.Ally && !isConstruction) sp.allFriendlyUnits.Remove(gameObject);
+        sp.selectedUnits.Remove(gameObject);
     }
 }
