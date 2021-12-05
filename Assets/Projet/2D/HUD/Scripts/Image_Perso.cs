@@ -15,7 +15,6 @@ public class Image_Perso : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Image>().sprite = SP0;
-
     }
 
     // Update is called once per frame
