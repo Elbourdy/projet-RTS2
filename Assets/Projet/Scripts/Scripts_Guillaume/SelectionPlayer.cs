@@ -79,8 +79,7 @@ public class SelectionPlayer : MonoBehaviour
         //Release the mouse button
         if (Input.GetMouseButtonUp(0))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
-            {
+            
                     if (Time.time - clickTime <= delay)
                     {
                         isClicking = true;
@@ -93,10 +92,11 @@ public class SelectionPlayer : MonoBehaviour
 
                         //Deactivate the square selection image
                         selectionSquareTrans.gameObject.SetActive(false);
-
-                        //Clear the list with selected unit
-                        selectedUnits.Clear();
-
+                        if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
+                        {
+                            //Clear the list with selected unit
+                            selectedUnits.Clear();
+                        }
                         //Select the units
                         for (int i = 0; i < allFriendlyUnits.Count; i++)
                         {
@@ -116,7 +116,6 @@ public class SelectionPlayer : MonoBehaviour
                             }
                         }
                     }
-            }
         }
         //Holding down the mouse button
         if (Input.GetMouseButton(0))
@@ -130,38 +129,43 @@ public class SelectionPlayer : MonoBehaviour
         //Select one unit with left mouse and deselect all units with left mouse by clicking on what's not a unit
         if (isClicking)
         {
-            //Deselect all units
-            for (int i = 0; i < selectedUnits.Count; i++)
+            if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
             {
-                if (selectedUnits[i].GetComponent<MeshRenderer>())
+                //Deselect all units
+                for (int i = 0; i < selectedUnits.Count; i++)
                 {
-                    selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
+
+                    if (selectedUnits[i].GetComponent<MeshRenderer>())
+                    {
+                        selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
+                    }
+                    else
+                    {
+                        selectedUnits[i].GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                    }
                 }
-                else
+                if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
                 {
-                    selectedUnits[i].GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                    //Clear the list with selected units
+                    selectedUnits.Clear();
                 }
-            }
-
-            //Clear the list with selected units
-            selectedUnits.Clear();
-
-            //Try to select a new unit
-            RaycastHit hit;
-            //Fire ray from camera
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-            {
-                if (hit.collider.gameObject.GetComponent<Agent_Type>() != null)
+                //Try to select a new unit
+                RaycastHit hit;
+                //Fire ray from camera
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+                {
+                    if (hit.collider.gameObject.GetComponent<Agent_Type>() != null)
                     //if (hit.collider.CompareTag("Friendly"))
-                {
-                    GameObject activeUnit = hit.collider.gameObject;
-                    //Set this unit to selected
-                    if (activeUnit.GetComponent<MeshRenderer>() != null)
-                        activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    {
+                        GameObject activeUnit = hit.collider.gameObject;
+                        //Set this unit to selected
+                        if (activeUnit.GetComponent<MeshRenderer>() != null)
+                            activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
 
-                    else activeUnit.GetComponentInChildren<MeshRenderer>().material = selectedMaterial;
-                    //Add it to the list of selected units, which is now just 1 unit
-                    selectedUnits.Add(activeUnit);
+                        else activeUnit.GetComponentInChildren<MeshRenderer>().material = selectedMaterial;
+                        //Add it to the list of selected units, which is now just 1 unit
+                        selectedUnits.Add(activeUnit);
+                    }
                 }
             }
         }
@@ -219,18 +223,20 @@ public class SelectionPlayer : MonoBehaviour
                     break;
                 }
             }
-
-            if (!isSelected)
+            if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
             {
-                if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
-                highlightThisUnit.GetComponent<MeshRenderer>().material = normalMaterial;
-                else
+                if (!isSelected)
                 {
-                    highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                    if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
+                        highlightThisUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                    else
+                    {
+                        highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = normalMaterial;
+                    }
                 }
-            }
 
-            highlightThisUnit = null;
+                highlightThisUnit = null;
+            }
         }
 
         //Fire a ray from the mouse position to get the unit we want to highlight
