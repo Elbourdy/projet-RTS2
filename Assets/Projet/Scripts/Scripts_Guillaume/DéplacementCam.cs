@@ -24,7 +24,7 @@ public class DéplacementCam : MonoBehaviour
 
     private void MoveCam()
     {
-        var cameraDir = Vector3.forward * dir.x + Vector3.right * dir.y;
+        var cameraDir = Vector3.forward * dir.y + Vector3.right * dir.x;
         transform.position += cameraDir * speed * Time.deltaTime;
     }
 
@@ -34,11 +34,11 @@ public class DéplacementCam : MonoBehaviour
         dir = Vector2.zero;
         if (isLeft())
         {
-            dir += new Vector2(1, 0);
+            dir += new Vector2(-1, 0);
         }
         if (isRight())
         {
-            dir += new Vector2(-1, 0);
+            dir += new Vector2(1, 0);
         }
         if (isTop())
         {
