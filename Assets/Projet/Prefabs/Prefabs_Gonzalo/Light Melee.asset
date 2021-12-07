@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
+  m_Name: Light Melee
+  m_EditorClassIdentifier: 
+  ID: 0
+  name: Light melee
+  health: 50
+  Job: 1
+  timerCreation: 10
+  unitPrefab: {fileID: 5663183589989964353, guid: 19623ee9f4846ae44b26033cf89a9f79, type: 3}
+  unitSprite: {fileID: 0}
+  attackDamage: 15
+  rangeAttaque: 1
+  rateOfFire: 8
+  movementSpeed: 1.2
+  constructionSpeed: 1
+  rangeConstruction: 1
+  healthToConstruction: 1
