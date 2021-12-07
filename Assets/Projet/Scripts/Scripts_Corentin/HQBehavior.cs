@@ -17,8 +17,8 @@ public class HQBehavior : Building
     }
 
     void Start()
-    {   
-        //DisplayRoaster();
+    {
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class HQBehavior : Building
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                SetConstructionHealth(GetConstructionHealth() + 10f);
+                SetConstructionHealth(GetConstructionHealth() + 100f);
             }
         }
 
@@ -40,6 +40,16 @@ public class HQBehavior : Building
         {
             if (GetIsSelected())
             {
+                if (GetIsMovingRallyPoint())
+                    if (Input.GetMouseButton(1))
+                    {
+                        RaycastHit hit;
+                        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+                        SetRallyPoint(hit.point);
+                        gameManager.GetComponent<SelectionPlayer>().canSelect = true;
+                        SetIsMovingRallyPoint(false);
+                    }
+
                 if (Input.GetKeyDown(KeyCode.A))
                 {
                     AddToQueue(0);

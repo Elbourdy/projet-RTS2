@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
-    public Transform spawnPosition, rallyPoint;
+    public Transform spawnPosition;
+    public GameObject rallyPoint;
     public GameObject selectedFeedback;
     public HealthBar productionBar, constructionBar, healthBar;
     public List<Image> recapProduction, UIClickable;
@@ -16,7 +17,7 @@ public class Building : MonoBehaviour
     private List<AgentClass> roasterUnits = new List<AgentClass>();
     private List<AgentClass> productionQueue = new List<AgentClass>(); 
     private float actualTimer, timerCount;
-    private bool isSelected, isConstructed;
+    private bool isSelected, isConstructed, isMovingRallyPoint = false;
     private float constructionHealthActual;
 
 
@@ -67,10 +68,15 @@ public class Building : MonoBehaviour
 
     public void SetActionShopCases (int ButtonID)
     {
-        Debug.Log(ButtonID);
         if (ButtonID < roasterUnits.Count)
         {
             AddToQueue(ButtonID);
+        }
+
+        if (ButtonID == 11)
+        {
+            gameManager.GetComponent<SelectionPlayer>().canSelect = false;
+            isMovingRallyPoint = true; 
         }
     }
 
@@ -84,17 +90,20 @@ public class Building : MonoBehaviour
             {
                 healthBar.gameObject.SetActive(true);
                 recapProduction[0].transform.parent.gameObject.SetActive(true);
+                rallyPoint.SetActive(true);
             }
             else
             {
                 healthBar.gameObject.SetActive(false);
                 productionBar.gameObject.SetActive(false);
+                rallyPoint.SetActive(false);
             }
         }
         else
         {
             selectedFeedback.SetActive(false);
             healthBar.gameObject.SetActive(false);
+            rallyPoint.SetActive(false);
 
             recapProduction[0].transform.parent.gameObject.SetActive(false);
         }
@@ -120,7 +129,7 @@ public class Building : MonoBehaviour
     {
         GameObject instance = Instantiate(productionQueue[0].unitPrefab, spawnPosition.position, Quaternion.identity);
         instance.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
-        instance.GetComponent<AgentStates>().MoveAgent(rallyPoint.position);
+        instance.GetComponent<AgentStates>().MoveAgent(rallyPoint.transform.position);
     }
 
     public void SetOneRecapProduction(int IDInList, int numberUnitCurrentlyProduce, Sprite unitCurrentlyProduce, bool active)
@@ -220,12 +229,12 @@ public class Building : MonoBehaviour
         this.recapProduction = productionRecap;
     }
 
-    public void SetRallyPoint (Transform rallyPoint)
+    public void SetRallyPoint (Vector3 rallyPoint)
     {
-        this.rallyPoint = rallyPoint;
+        this.rallyPoint.transform.position = rallyPoint;
     }
 
-    public Transform GetRallyPoint()
+    public GameObject GetRallyPoint()
     {
         return rallyPoint;
     }
@@ -248,6 +257,16 @@ public class Building : MonoBehaviour
     public List<AgentClass> GetRoasterUnits()
     {
         return roasterUnits;
+    }
+
+    public void SetIsMovingRallyPoint(bool choice)
+    {
+        isMovingRallyPoint = choice;
+    }
+
+    public bool GetIsMovingRallyPoint()
+    {
+        return isMovingRallyPoint;
     }
 
     public void CheckIfSelected()

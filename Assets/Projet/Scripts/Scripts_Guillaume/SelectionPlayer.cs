@@ -39,6 +39,8 @@ public class SelectionPlayer : MonoBehaviour
     //The selection squares 4 corner positions
     Vector3 TL, TR, BL, BR;
 
+    public bool canSelect = true;
+
     void Start()
     {
         //Deactivate the square selection image
@@ -47,11 +49,14 @@ public class SelectionPlayer : MonoBehaviour
 
     void Update()
     {
-        //Select one or several units by clicking or draging the mouse
-        SelectUnits();
+        if (canSelect)
+        {
+            //Select one or several units by clicking or draging the mouse
+            SelectUnits();
 
-        //Highlight by hovering with mouse above a unit which is not selected
-        HighlightUnit();
+            //Highlight by hovering with mouse above a unit which is not selected
+            HighlightUnit();
+        }       
     }
 
     //Select units with click or by draging the mouse
