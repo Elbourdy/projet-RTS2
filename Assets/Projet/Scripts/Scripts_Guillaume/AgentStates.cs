@@ -47,12 +47,17 @@ public class AgentStates : MonoBehaviour
     private GameObject objectDestination;
     private GameObject targetToAttack;
 
-
-    private void Start()
+    private void OnEnable()
     {
         navM = GetComponent<NavMeshAgent>();
         navM.speed = speed;
         navM.acceleration = 60f;
+    }
+
+    private void Start()
+    {
+        
+        
     }
 
     private void Update()
