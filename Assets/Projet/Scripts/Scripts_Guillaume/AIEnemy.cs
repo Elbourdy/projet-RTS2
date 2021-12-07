@@ -11,6 +11,7 @@ public class AIEnemy : MonoBehaviour
 
     public float radiusVision = 1;
 
+    public Agent_Type.TypeAgent typeToTarget;
 
     private void OnEnable()
     {
@@ -44,7 +45,7 @@ public class AIEnemy : MonoBehaviour
         {
             for (int i = 0; i < hits.Length; i++)
             {
-                if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally) 
+                if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == typeToTarget) 
                 {
                     targetPlayer = hits[i].gameObject;
                     AttackOrder();
