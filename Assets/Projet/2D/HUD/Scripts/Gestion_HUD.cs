@@ -104,6 +104,12 @@ public class Gestion_HUD : MonoBehaviour
                 shopCases[i].GetComponent<Image>().sprite = roasterUnits[i].unitSprite;
                 shopCases[i].transform.GetChild(0).GetComponent<Text>().text = roasterUnits[i].name;
             }
+            else if (i == 11)
+            {
+                shopCases[i].SetActive(true);
+                shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
+                shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
+            }
             else
             {
                 shopCases[i].SetActive(false);

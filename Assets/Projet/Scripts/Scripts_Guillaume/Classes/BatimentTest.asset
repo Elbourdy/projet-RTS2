@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2a9b74e0289f546b746fab79bdd53a, type: 3}
   m_Name: BatimentTest
   m_EditorClassIdentifier: 
+  ID: 0
   name: BatimentPlaceHolder
   health: 1
   speedToBeConstruct: 1
+  unitSprite: {fileID: 0}
+  rallyPointSprite: {fileID: 0}
