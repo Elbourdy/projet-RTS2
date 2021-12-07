@@ -26,9 +26,12 @@ public class AIEnemy : MonoBehaviour
 
     private void AttackOrder()
     {
-        aS.SetTarget(targetPlayer);
-        aS.SetState(AgentStates.states.Agressif);
-        aS.MoveAgent(targetPlayer.transform.position);
+        if (aS.myState != AgentStates.states.Agressif)
+        {
+            aS.SetTarget(targetPlayer);
+            aS.SetState(AgentStates.states.Agressif);
+            aS.MoveAgent(targetPlayer.transform.position);
+        }
     }
 
 
