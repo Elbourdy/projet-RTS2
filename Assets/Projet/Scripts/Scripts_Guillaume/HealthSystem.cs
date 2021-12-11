@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    private float health;
+    
+    
+    [SerializeField] private float health;
 
     private void OnEnable()
     {

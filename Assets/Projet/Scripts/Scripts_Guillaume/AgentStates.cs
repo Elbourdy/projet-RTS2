@@ -11,7 +11,7 @@ public class AgentStates : MonoBehaviour
     public states myState = states.Idle;
 
 
-    [Header("Stats Agent")]
+    [Header("Stats Agent Read-Only")]
     [SerializeField] private float speed = 1;
     [SerializeField] private float rangeAttaque = 1;
     [SerializeField] private float damage = 1;
@@ -19,7 +19,7 @@ public class AgentStates : MonoBehaviour
     private float rateOfFireCD = 0;
 
 
-    [Header("Constructions Stats")]
+    [Header("Constructions Stats Read-Only")]
     public GameObject constructionObjet;
     public float rangeConstruction = 1;
     
@@ -47,8 +47,13 @@ public class AgentStates : MonoBehaviour
     private GameObject objectDestination;
     private GameObject targetToAttack;
 
+
+
+    private ClassAgentContainer container;
+
     private void OnEnable()
     {
+        InitStats();
         navM = GetComponent<NavMeshAgent>();
         navM.speed = speed;
         navM.acceleration = 60f;
@@ -58,6 +63,16 @@ public class AgentStates : MonoBehaviour
     {
         
         
+    }
+
+
+    private void InitStats ()
+    {
+        container = GetComponent<ClassAgentContainer>();
+        speed = container.myClass.movementSpeed;
+        rangeAttaque = container.myClass.rangeAttaque;
+        damage = container.myClass.attackDamage;
+        rateOfFire = container.myClass.rateOfFire;
     }
 
     private void Update()
