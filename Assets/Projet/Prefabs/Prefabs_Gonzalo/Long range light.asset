@@ -17,12 +17,12 @@ MonoBehaviour:
   health: 50
   Job: 1
   timerCreation: 10
-  unitPrefab: {fileID: 0}
+  unitPrefab: {fileID: 3452014404975611967, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
   unitSprite: {fileID: 0}
   attackDamage: 20
-  rangeAttaque: 8
+  rangeAttaque: 20
   rateOfFire: 9
-  movementSpeed: 1.2
+  movementSpeed: 12
   constructionSpeed: 1
   rangeConstruction: 1
   healthToConstruction: 1

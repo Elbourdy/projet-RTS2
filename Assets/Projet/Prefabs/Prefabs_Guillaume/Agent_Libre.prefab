@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5189708736748838379}
   - component: {fileID: 5189708736748838378}
   - component: {fileID: 5189708736748838381}
-  - component: {fileID: 5189708736748838380}
   - component: {fileID: 5189708736748838383}
+  - component: {fileID: 5189708736748838380}
   - component: {fileID: 5189708736748838382}
   - component: {fileID: 5189708736748838376}
   - component: {fileID: 657668790791597737}
@@ -101,6 +101,28 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &5189708736748838383
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189708736748838384}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 60
+  avoidancePriority: 50
+  m_AngularSpeed: 360
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &5189708736748838380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,28 +151,6 @@ MonoBehaviour:
   FollowColor: {r: 1, g: 0.91764706, b: 0, a: 0}
   TypeUnit: 1
   NbrCase: 6
---- !u!195 &5189708736748838383
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5189708736748838384}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 60
-  avoidancePriority: 50
-  m_AngularSpeed: 360
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &5189708736748838382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +190,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
