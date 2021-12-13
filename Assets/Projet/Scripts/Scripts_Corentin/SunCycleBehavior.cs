@@ -28,7 +28,7 @@ public class SunCycleBehavior : MonoBehaviour
     [Header("OnReadOnly")]
     [SerializeField] private float hourDaytimeCurrentlyIn = 0f;
     [SerializeField] private float hourInCurrentDayPeriod = 0f;
-    [SerializeField] private int numberOfDaysPassed = 0;
+    [SerializeField] public int numberOfDaysPassed = 0;
     [SerializeField] private statesDay periodOfDay = statesDay.Day;
     [SerializeField] private statesSeason currentSeason = statesSeason.Spring;
 
