@@ -17,7 +17,7 @@ public class SunCycleBehavior : MonoBehaviour
     public float timeOfDay, timeOfNight;
     public int numberOfDayInASeason = 10;
 
-    private float totalTimeOfADay, timerDayCount;
+    float totalTimeOfADay, timerDayCount;
     private int dayCount;
 
     public List<Material> matTopToBottom = new List<Material>();
@@ -26,11 +26,11 @@ public class SunCycleBehavior : MonoBehaviour
     public GameObject progressionBarGlobal, progressionBarActualPeriod, actualPeriodOfDayDisplay, numberOfDaysPassedDisplay, currentSeasonDisplay, daysBeforeNextSeason;
 
     [Header("OnReadOnly")]
-    [SerializeField] private float hourDaytimeCurrentlyIn = 0f;
-    [SerializeField] private float hourInCurrentDayPeriod = 0f;
+    [SerializeField] public float hourDaytimeCurrentlyIn = 0f;
+    [SerializeField] public float hourInCurrentDayPeriod = 0f;
     [SerializeField] public int numberOfDaysPassed = 0;
-    [SerializeField] private statesDay periodOfDay = statesDay.Day;
-    [SerializeField] private statesSeason currentSeason = statesSeason.Spring;
+    [SerializeField] public statesDay periodOfDay = statesDay.Day;
+    [SerializeField] public statesSeason currentSeason = statesSeason.Spring;
 
 
 

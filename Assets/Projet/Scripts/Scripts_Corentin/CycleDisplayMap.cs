@@ -6,6 +6,7 @@ public class CycleDisplayMap : MonoBehaviour
 {
     public GameObject sun, moon;
     public float startingRotationSun, startingRotationMoon;
+    private float sunSpeed, moonSpeed;
     private SunCycleBehavior sCB;
 
     // Start is called before the first frame update
@@ -20,6 +21,10 @@ public class CycleDisplayMap : MonoBehaviour
         float nDaysSeasons = sCB.numberOfDayInASeason;
         float nDaysPasses = sCB.numberOfDaysPassed;
 
-        sun.transform.RotateAround(transform.forward, 1 * Time.deltaTime);
+        sunSpeed = (90f / sCB.numberOfDayInASeason) / (sCB.timeOfDay + sCB.timeOfNight);
+        moonSpeed = sunSpeed * 4f;
+
+        sun.transform.Rotate(-Vector3.forward, sunSpeed * Time.deltaTime);
+        moon.transform.Rotate(-Vector3.forward, moonSpeed * Time.deltaTime);
     }
 }

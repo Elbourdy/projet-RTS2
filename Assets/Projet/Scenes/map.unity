@@ -1318,8 +1318,8 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  timeOfDay: 1
-  timeOfNight: 1
+  timeOfDay: 480
+  timeOfNight: 480
   numberOfDayInASeason: 5
   matTopToBottom:
   - {fileID: 2100000, guid: 34d4bba58933fd643bc6c75a5f0c0eb9, type: 2}
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   hourInCurrentDayPeriod: 0
   numberOfDaysPassed: 0
   periodOfDay: 0
-  currentSeason: 3
+  currentSeason: 1
 --- !u!114 &710818614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1420,14 +1420,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811180064}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7038884, w: -0.71031064}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 1500864436}
   m_Father: {fileID: 559908742}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270.52}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2337,7 +2337,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500864435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 17}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 811180065}
@@ -2345,7 +2345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282.2, y: -279.5}
+  m_AnchoredPosition: {x: 0, y: 391}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500864437
@@ -2499,7 +2499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: 391}
+  m_AnchoredPosition: {x: -5, y: 391}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674382870
