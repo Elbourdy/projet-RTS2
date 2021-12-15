@@ -16,7 +16,7 @@ public class CycleDisplayMap : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float nDaysSeasons = sCB.numberOfDayInASeason;
         float nDaysPasses = sCB.numberOfDaysPassed;

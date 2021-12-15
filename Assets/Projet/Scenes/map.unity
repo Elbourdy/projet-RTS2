@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.00027799697, g: 0.00030541426, b: 0.00035119144, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1318,8 +1318,8 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  timeOfDay: 480
-  timeOfNight: 480
+  timeOfDay: 2
+  timeOfNight: 2
   numberOfDayInASeason: 5
   matTopToBottom:
   - {fileID: 2100000, guid: 34d4bba58933fd643bc6c75a5f0c0eb9, type: 2}
