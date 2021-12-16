@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Building_List : MonoBehaviour
 {
-    private List<GameObject> buildingList = new List<GameObject>();
+    //le but de ce script est de permettre l'inventorisation ainsi que les permissions de contructions du joueur
+    [SerializeField] private List<GameObject> buildingList = new List<GameObject>();
 
     public List<GameObject> AccessList() { return buildingList; }
     public void AddToList(GameObject building) { buildingList.Add(building); }

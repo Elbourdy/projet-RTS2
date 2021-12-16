@@ -29,7 +29,7 @@ public class SelectionPlayer : MonoBehaviour
     GameObject highlightThisUnit;
 
     //To determine if we are clicking with left mouse or holding down left mouse
-    float delay = 0.3f;
+    float delay = 0.1f;
     float clickTime = 0f;
     //The start and end coordinates of the square we are making
     Vector3 squareStartPos;
