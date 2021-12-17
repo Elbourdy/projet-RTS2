@@ -24,9 +24,6 @@ public class AgentStates : MonoBehaviour
     public float rangeConstruction = 1;
     
 
-    [Header("Ressources Agent Setup")]
-    public float maxRessources = 30;
-    [SerializeField] private float currentRessources = 0;
     private float timerRessource = 0;
 
 
@@ -106,11 +103,10 @@ public class AgentStates : MonoBehaviour
                 }
                 break;
             case states.Recolte:
-                if (navM.remainingDistance < 1.5f || ressourceTarget == null)
+                if (navM.remainingDistance < 1.5f)
                 {
-                    if (currentRessources >= maxRessources)
+                    if (ressourceTarget == null)
                     {
-                        currentRessources = maxRessources;
                         SetState(states.Idle);
                         break;
                     }
@@ -220,7 +216,7 @@ public class AgentStates : MonoBehaviour
     {
         if (CheckTimerRessource())
         {
-            currentRessources += ressourceTarget.GetComponent<RessourcesObject>().GetRessource(3);
+            Global_Ressources.instance.ModifyRessource(ressourceTarget.GetComponent<RessourcesObject>().GetId(), ressourceTarget.GetComponent<RessourcesObject>().GetRessource());
         }
     }
 
