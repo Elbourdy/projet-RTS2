@@ -12,7 +12,7 @@ public class AgentStates : MonoBehaviour
 
 
     [Header("Stats Agent Read-Only")]
-    [SerializeField] private float speed = 1;
+    [SerializeField] private float speed = 10;
     [SerializeField] private float rangeAttaque = 1;
     [SerializeField] private float damage = 1;
     [SerializeField] private float rateOfFire = 0.5f;
@@ -25,9 +25,9 @@ public class AgentStates : MonoBehaviour
     
 
     [Header("Ressources Agent Setup")]
-    public float maxRessources = 10;
-    [SerializeField]
-    private float currentRessources = 0;
+    public float maxRessources = 30;
+    [SerializeField] private float currentRessources = 0;
+    private float timerRessource = 0;
 
 
     [Header("Color Agent State")]
@@ -46,6 +46,7 @@ public class AgentStates : MonoBehaviour
     private NavMeshAgent navM;
     private GameObject objectDestination;
     private GameObject targetToAttack;
+    private GameObject ressourceTarget;
 
 
 
@@ -59,11 +60,6 @@ public class AgentStates : MonoBehaviour
         navM.acceleration = 60f;
     }
 
-    private void Start()
-    {
-        
-        
-    }
 
 
     private void InitStats ()
@@ -110,7 +106,7 @@ public class AgentStates : MonoBehaviour
                 }
                 break;
             case states.Recolte:
-                if (navM.remainingDistance < 1.5f)
+                if (navM.remainingDistance < 1.5f || ressourceTarget == null)
                 {
                     if (currentRessources >= maxRessources)
                     {
@@ -158,6 +154,11 @@ public class AgentStates : MonoBehaviour
     public void MoveAgent (Vector3 destination)
     {
         navM.SetDestination(destination);
+    }
+
+    public void SetRessourceTarget(GameObject target)
+    {
+        ressourceTarget = target;
     }
     public void SetState (states newState)
     {
@@ -217,9 +218,24 @@ public class AgentStates : MonoBehaviour
     
     private void RecolteRessources()
     {
-        currentRessources += 0.01f;
-        Debug.Log("Recolte !!");
+        if (CheckTimerRessource())
+        {
+            currentRessources += ressourceTarget.GetComponent<RessourcesObject>().GetRessource(3);
+        }
     }
+
+    private bool CheckTimerRessource()
+    {
+
+        if (timerRessource >= ressourceTarget.GetComponent<RessourcesObject>().GetTimer())
+        {
+            timerRessource = 0;
+            return true;
+        }
+        timerRessource += Time.deltaTime;
+        return false;
+    }
+
     private void Construire()
     {
         navM.isStopped = true;

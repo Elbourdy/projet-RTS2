@@ -59,7 +59,7 @@ public class InputPlayer : MonoBehaviour
                 GoToTarget(hit);
             }
 
-            if (hit.collider.name == "Ressource")
+            if (hit.collider.CompareTag("Ressource"))
             {
                 Recolte(hit);
             }
@@ -120,6 +120,7 @@ public class InputPlayer : MonoBehaviour
             if (agent.GetComponent<AgentStates>() != null)
             {
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);
+                agent.GetComponent<AgentStates>().SetRessourceTarget(hit.collider.gameObject);
                 agent.GetComponent<AgentStates>().MoveAgent(hit.point);
             }
         }
