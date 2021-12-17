@@ -19,7 +19,6 @@ public class AIEnemy : MonoBehaviour
     }
     private void Update()
     {
-        //if (Input.GetKeyUp(KeyCode.N)) AttackOrder();
         SearchForTarget();
     }
 

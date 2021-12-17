@@ -10,15 +10,19 @@ public class DéplacementCam : MonoBehaviour
     public float speed;
     public float offset;
 
+    public bool activateMovement = true;
 
 
     private void Update()
     {
-        CheckMousePosition();
-
-        if (dir != Vector2.zero)
+        if (activateMovement)
         {
-            MoveCam();
+            CheckMousePosition();
+
+            if (dir != Vector2.zero)
+            {
+                MoveCam();
+            }
         }
     }
 

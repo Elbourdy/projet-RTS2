@@ -8,10 +8,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(ClassAgentContainer))]
 public class AgentStates : MonoBehaviour
 {
+
+    // Etats possible de nos agents, ennemis et/ou alliés
+    // Changement d'état d'un agent par la fonction SetStates uniquement !
     public enum states { Idle, Agressif, Recolte, Construction, Follow};
     public states myState = states.Idle;
 
-
+    // Stats de nos agents. On récupère ces données depuis les classes crées
     [Header("Stats Agent Read-Only")]
     [SerializeField] private float speed = 10;
     [SerializeField] private float rangeAttaque = 1;
@@ -27,7 +30,7 @@ public class AgentStates : MonoBehaviour
 
     private float timerRessource = 0;
 
-
+    // Feedback de couleur de nos agents. A RETIRER QUAND NOOUS AURONS DE VERITABLES FEEDBACKS
     [Header("Color Agent State")]
     public Color RecolteColor;
     public Color IdleColor;
@@ -40,14 +43,14 @@ public class AgentStates : MonoBehaviour
     public float TypeUnit;
     public float NbrCase;
     
-
+    // Navmesh et vaiable de destination/objectif de nos agents
     private NavMeshAgent navM;
     private GameObject objectDestination;
     private GameObject targetToAttack;
     private GameObject ressourceTarget;
 
 
-
+    // Permet de récupérer les stats de nos agents
     private ClassAgentContainer container;
 
     private void OnEnable()
@@ -59,7 +62,7 @@ public class AgentStates : MonoBehaviour
     }
 
 
-
+    // Récupération des statistiques depuis la classe
     private void InitStats ()
     {
         container = GetComponent<ClassAgentContainer>();
@@ -72,33 +75,35 @@ public class AgentStates : MonoBehaviour
     private void Update()
     {
         rateOfFireCD -= Time.deltaTime;
-
+        // Ce que fait notre agent lorsqu'il est dans tel ou tel état en runtime
         switch (myState)
         {
             case states.Idle:
                 break;
             case states.Agressif:
-
-                UpdatePosition();
+                // Update position si la target a bougé de sa position initiale
+                UpdatePositionTarget();
                 if (targetToAttack != null)
                 {
-                    //FollowTarget(objectDestination);
                     if (navM.remainingDistance > rangeAttaque)
                     {
                         navM.isStopped = false;
                     }
                     else if (navM.hasPath && navM.remainingDistance < rangeAttaque)
                     {
+                        // Update position quand la target bouge pendant une attaque
                         if (Vector3.Distance(gameObject.transform.position, targetToAttack.transform.position) > rangeAttaque)
                         {
                             MoveAgent(targetToAttack.transform.position);
                         }
+                        // On arrête l'agent quand il est à porter d'attaque
                         navM.isStopped = true;
                         AttaqueEnnemi(targetToAttack);
                     }
                 }
                 else
                 {
+                    // Remet en idle si plus aucune cible à attaquer
                     SetState(states.Idle);
                 }
                 break;
@@ -132,7 +137,7 @@ public class AgentStates : MonoBehaviour
     }
 
 
-    private void UpdatePosition()
+    private void UpdatePositionTarget()
     {
         if (targetToAttack != null)
         {
@@ -155,6 +160,9 @@ public class AgentStates : MonoBehaviour
     {
         ressourceTarget = target;
     }
+
+    // Fonction permettant de modifier l'état d'un agent. C'est cette fonction que l'on appelle dans une IA ou par les inputs du player
+    // pour donner un changement d'état de nos agents
     public void SetState (states newState)
     {
  

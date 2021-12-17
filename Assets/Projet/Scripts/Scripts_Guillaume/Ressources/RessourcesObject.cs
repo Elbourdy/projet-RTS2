@@ -7,7 +7,7 @@ public class RessourcesObject : MonoBehaviour
     public enum Ressources_Type { Ressource_1, Ressource_2, Ressource_3};
     public Ressources_Type ressourceType;
 
-    private int ressourceNmbr;
+    private int ressourceId;
 
     [SerializeField] private int ressourceTimer = 1;
     [SerializeField] private int ressourceQuantityPerTic = 20;
@@ -23,13 +23,13 @@ public class RessourcesObject : MonoBehaviour
         switch (ressourceType)
         {
             case Ressources_Type.Ressource_1:
-                ressourceNmbr = 0;
+                ressourceId = 0;
                 break;
             case Ressources_Type.Ressource_2:
-                ressourceNmbr = 1;
+                ressourceId = 1;
                 break;
             case Ressources_Type.Ressource_3:
-                ressourceNmbr = 2;
+                ressourceId = 2;
                 break;
             default:
                 break;
@@ -47,10 +47,10 @@ public class RessourcesObject : MonoBehaviour
     {
         if (stockRessources - ressourceQuantityPerTic <= 0)
         {
-            Global_Ressources.instance.ModifyRessource(ressourceNmbr, stockRessources);
+            Global_Ressources.instance.ModifyRessource(ressourceId, stockRessources);
         }
 
-        else Global_Ressources.instance.ModifyRessource(ressourceNmbr, ressourceQuantityPerTic);
+        else Global_Ressources.instance.ModifyRessource(ressourceId, ressourceQuantityPerTic);
         stockRessources -= ressourceQuantityPerTic;
         if (stockRessources <= 0)
         {
