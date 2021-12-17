@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class UILookAtCam : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Transform camToLook;
+
+
+    private void OnEnable()
     {
-        
+        camToLook = GameObject.FindWithTag("MainCamera").transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
+        transform.LookAt(camToLook);
     }
 }

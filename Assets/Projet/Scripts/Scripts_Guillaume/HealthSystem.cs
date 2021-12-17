@@ -14,8 +14,17 @@ public class HealthSystem : MonoBehaviour
     private float maxHealth;
     private HealthBar myBar;
 
+
+
+    // Batterie system
+    [SerializeField] private float batteryHealth = 100;
+    private float maxBatteryHealth;
+
+
+
     private void OnEnable()
     {
+        maxBatteryHealth = batteryHealth;
         onHealthEvent += ChangeHealthBar;
         //check la classe de l'objet en question et récupère la valeur dans la classe
         if (GetComponent<ClassBatimentContainer>() != null) health = GetComponent<ClassBatimentContainer>().myClass.health;
@@ -61,7 +70,7 @@ public class HealthSystem : MonoBehaviour
 
     private void CheckIfKill()
     {
-        if (health <= 0)
+        if (health <= 0 || batteryHealth <= 0)
         {
             KillGo();
         }
@@ -76,5 +85,16 @@ public class HealthSystem : MonoBehaviour
     public float GetHealth()
     {
         return health;
+    }
+    public float GetBatteryHealth()
+    {
+        return batteryHealth;
+    }
+
+    public void ChangeBatteryHealth(float value)
+    {
+        batteryHealth += value;
+        if (batteryHealth > maxBatteryHealth) batteryHealth = maxBatteryHealth;
+        CheckIfKill();
     }
 }

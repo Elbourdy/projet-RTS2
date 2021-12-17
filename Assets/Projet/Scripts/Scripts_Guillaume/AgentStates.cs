@@ -20,6 +20,10 @@ public class AgentStates : MonoBehaviour
     [SerializeField] private float rangeAttaque = 1;
     [SerializeField] private float damage = 1;
     [SerializeField] private float rateOfFire = 0.5f;
+    public float radiusVision 
+    {
+        get; private set;
+    }
     private float rateOfFireCD = 0;
 
 
@@ -56,6 +60,7 @@ public class AgentStates : MonoBehaviour
         navM = GetComponent<NavMeshAgent>();
         navM.speed = speed;
         navM.acceleration = 60f;
+        navM.avoidancePriority = Random.Range(1, 100);
     }
 
 
@@ -67,6 +72,7 @@ public class AgentStates : MonoBehaviour
         rangeAttaque = container.myClass.rangeAttaque;
         damage = container.myClass.attackDamage;
         rateOfFire = container.myClass.rateOfFire;
+        
     }
 
     private void Update()

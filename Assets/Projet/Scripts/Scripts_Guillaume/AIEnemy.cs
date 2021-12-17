@@ -34,8 +34,17 @@ public class AIEnemy : MonoBehaviour
         }
     }
 
+    private void DrawRadiusVision()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radiusVision);
+    }
 
 
+    private void OnDrawGizmos()
+    {
+        DrawRadiusVision();
+    }
 
     private void SearchForTarget()
     {
