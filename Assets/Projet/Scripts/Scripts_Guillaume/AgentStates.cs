@@ -215,7 +215,7 @@ public class AgentStates : MonoBehaviour
     {
         if (CheckTimerRessource())
         {
-            Global_Ressources.instance.ModifyRessource(ressourceTarget.GetComponent<RessourcesObject>().GetId(), ressourceTarget.GetComponent<RessourcesObject>().GetRessource());
+            ressourceTarget.GetComponent<RessourcesObject>().AddRessourceToPlayer();
         }
     }
 

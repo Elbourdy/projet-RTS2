@@ -42,22 +42,20 @@ public class RessourcesObject : MonoBehaviour
     }
 
 
-    public int GetId()
-    {
-        return ressourceNmbr;
-    }
 
-    public int GetRessource ()
+    public void AddRessourceToPlayer()
     {
-        if (stockRessources <= 0)
+        if (stockRessources - ressourceQuantityPerTic <= 0)
         {
-            return stockRessources;
+            Global_Ressources.instance.ModifyRessource(ressourceNmbr, stockRessources);
         }
+
+        else Global_Ressources.instance.ModifyRessource(ressourceNmbr, ressourceQuantityPerTic);
         stockRessources -= ressourceQuantityPerTic;
         if (stockRessources <= 0)
         {
             Destroy(gameObject);
         }
-        return ressourceQuantityPerTic;
+        
     }
 }
