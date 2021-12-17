@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Global_Ressources : MonoBehaviour
 {
+    public static Global_Ressources instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
+
     //ne pas rentrer de valeurs dedans, il me sert just a déug le serializedfield
     [SerializeField] int[] ressources = new int[4];
         
@@ -18,5 +25,13 @@ public class Global_Ressources : MonoBehaviour
     {
         ressources[ressourceID] += ressourceAmmount;
         //actualiser l'UI ici!
+    }
+
+    public bool CheckIfEnoughRessources(int ressourceID, int ressourceAmount)
+    {
+        if (ressources[ressourceID] >= ressourceAmount)
+            return true;
+        else
+            return false;
     }
 }

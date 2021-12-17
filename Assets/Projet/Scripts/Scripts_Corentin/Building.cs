@@ -18,9 +18,9 @@ public class Building : MonoBehaviour
     private List<AgentClass> productionQueue = new List<AgentClass>(); 
     private float actualTimer, timerCount;
     private bool isSelected, isConstructed, isMovingRallyPoint = false;
-    private float constructionHealthActual;
+    public float constructionHealthActual;
 
-
+    
     public void AddToRoaster(int IDNumberRoaster)
     {
         List<AgentClass> fullRoaster = GameObject.Find("GameManager").GetComponent<GameDataStorage>().mainAgentClassStorage;
