@@ -6,17 +6,37 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    
+    public delegate void HealthEvent();
+    public HealthEvent onHealthEvent;
     
     [SerializeField] private float health;
 
+    private float maxHealth;
+    private HealthBar myBar;
+
     private void OnEnable()
     {
+        onHealthEvent += ChangeHealthBar;
         //check la classe de l'objet en question et récupère la valeur dans la classe
         if (GetComponent<ClassBatimentContainer>() != null) health = GetComponent<ClassBatimentContainer>().myClass.health;
         if (GetComponent<ClassAgentContainer>() != null) health = GetComponent<ClassAgentContainer>().myClass.health;
+
+        maxHealth = health;
+
+        myBar = GetComponentInChildren<HealthBar>();
     }
 
+    private void OnDisable()
+    {
+        onHealthEvent -= ChangeHealthBar;
+    }
+
+
+    private void ChangeHealthBar()
+    {
+        var percentageHealth = health / maxHealth;
+        myBar.SetHealth(percentageHealth);
+    }
 
     private void FeedBackDamage ()
     {
@@ -35,6 +55,7 @@ public class HealthSystem : MonoBehaviour
     {
         FeedBackDamage();
         health += damageNumber;
+        onHealthEvent?.Invoke();
         CheckIfKill();
     }
 

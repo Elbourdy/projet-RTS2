@@ -39,9 +39,6 @@ public class AgentStates : MonoBehaviour
     public Color FollowColor;
 
 
-    [Header("Info pour HUD")]
-    public float TypeUnit;
-    public float NbrCase;
     
     // Navmesh et vaiable de destination/objectif de nos agents
     private NavMeshAgent navM;

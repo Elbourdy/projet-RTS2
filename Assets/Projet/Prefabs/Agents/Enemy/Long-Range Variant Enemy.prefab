@@ -7,21 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3452014404975611937, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
+      propertyPath: Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611966, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611966, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5837946
+      value: -6.4297423
       objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611966, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.9999981
       objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611966, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.2084384
+      value: -18.113674
       objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611966, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611967, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_Name
-      value: Long-Range Variant Variant
+      value: Long-Range Variant Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
@@ -75,5 +79,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 0}
-  radiusVision: 7
+  radiusVision: 4
   typeToTarget: 0
