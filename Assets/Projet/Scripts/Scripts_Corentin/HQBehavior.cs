@@ -9,6 +9,9 @@ public class HQBehavior : Building
     public List<int> desiredRoaster;
     public int speed = 10;
 
+    public int timerConsumption = 1, ressourcesConsumed = 1;
+    private float timerConsumptionCount;
+
     private Vector3 targetPosition;
     // Start is called before the first frame update
     private void Awake()
@@ -39,7 +42,6 @@ public class HQBehavior : Building
                 SetConstructionHealth(GetConstructionHealth() + 100f);
             }
         }
-
         else
         {
             if (GetIsSelected())
@@ -64,12 +66,37 @@ public class HQBehavior : Building
                 }      
             }
 
+            ProcessQueue();
+
+            //déplacement nexus
             if (targetPosition != transform.position)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }
 
-            ProcessQueue();
+            //consommation énergie Nexus
+
+            if (timerConsumption < timerConsumptionCount)
+            {
+                if (Global_Ressources.instance.CheckIfEnoughRessources(0, ressourcesConsumed))
+                {
+                    Global_Ressources.instance.ModifyRessource(0, -ressourcesConsumed);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    Debug.Log("Gameover");
+                }
+                timerConsumptionCount = 0f;
+            }
+
+            timerConsumptionCount += Time.deltaTime;
+
+
+
+
+
+
         }
 
         SetFeedbackUI();
