@@ -9,7 +9,7 @@ public class AIEnemy : MonoBehaviour
     private AgentStates aS;
     public GameObject targetPlayer;
 
-    public float radiusVision = 1;
+    public float radiusVision = 5;
 
     public Agent_Type.TypeAgent typeToTarget;
 

@@ -78,7 +78,6 @@ public class SelectionPlayer : MonoBehaviour
             {
                 //The corner position of the square
                 squareStartPos = hit.point;
-                Debug.Log(squareStartPos);
             }
         }
         //Release the mouse button

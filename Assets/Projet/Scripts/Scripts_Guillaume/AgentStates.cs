@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(ClassAgentContainer))]
 public class AgentStates : MonoBehaviour
 {
     public enum states { Idle, Agressif, Recolte, Construction, Follow};
@@ -93,7 +94,6 @@ public class AgentStates : MonoBehaviour
                             MoveAgent(targetToAttack.transform.position);
                         }
                         navM.isStopped = true;
-                        Debug.Log("nav stopped");
                         AttaqueEnnemi(targetToAttack);
                     }
                 }
@@ -123,7 +123,6 @@ public class AgentStates : MonoBehaviour
             case states.Follow:
                 if (navM.hasPath && navM.remainingDistance < 0.5f)
                 {
-                    Debug.Log("dist = " + navM.remainingDistance);
                     SetState(states.Idle);
                 }
                     break;
@@ -201,11 +200,11 @@ public class AgentStates : MonoBehaviour
     }
     private void AttaqueEnnemi(GameObject target)
     {
-        Debug.Log("Attaque");
         if (target.GetComponent<HealthSystem>() != null)
         {
             if (rateOfFireCD <= 0)
             {
+                Debug.Log("Attaque");
                 rateOfFireCD = rateOfFire;
                 target.GetComponent<HealthSystem>().HealthChange(-damage);
             }

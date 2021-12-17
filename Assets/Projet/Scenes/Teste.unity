@@ -5514,6 +5514,9 @@ GameObject:
   - component: {fileID: 1588569688}
   - component: {fileID: 1588569687}
   - component: {fileID: 1588569686}
+  - component: {fileID: 1588569693}
+  - component: {fileID: 1588569692}
+  - component: {fileID: 1588569694}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5647,6 +5650,60 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588569684}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1588569692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588569684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f7a4a625efc89449b7f9f3a6e0aaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPlayer: {fileID: 0}
+  radiusVision: 5
+  typeToTarget: 0
+--- !u!114 &1588569693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588569684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f34b5028156bb43bc4a00faac30734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myState: 0
+  speed: 10
+  rangeAttaque: 1
+  damage: 1
+  rateOfFire: 0.5
+  constructionObjet: {fileID: 0}
+  rangeConstruction: 1
+  RecolteColor: {r: 0, g: 0, b: 0, a: 0}
+  IdleColor: {r: 0, g: 0, b: 0, a: 0}
+  AgressifColor: {r: 0, g: 0, b: 0, a: 0}
+  ConstructionColor: {r: 0, g: 0, b: 0, a: 0}
+  FollowColor: {r: 0, g: 0, b: 0, a: 0}
+  TypeUnit: 0
+  NbrCase: 0
+--- !u!114 &1588569694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588569684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myClass: {fileID: 11400000, guid: 32916ec4fb764034782f776ff537cb87, type: 2}
 --- !u!1 &1651634458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7433369354125651846, guid: 0f5f7977ae840184c8f1839a941ef8d6, type: 3}

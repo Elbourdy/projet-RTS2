@@ -18,8 +18,22 @@ public class HealthSystem : MonoBehaviour
     }
 
 
+    private void FeedBackDamage ()
+    {
+        Debug.Log("Feedback");
+        StartCoroutine(FeedbackColorChangeTimer());
+    }
+
+    IEnumerator FeedbackColorChangeTimer()
+    {
+        GetComponent<MeshRenderer>().material.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<MeshRenderer>().material.color = Color.white;
+    }
+
     public void HealthChange(float damageNumber)
     {
+        FeedBackDamage();
         health += damageNumber;
         CheckIfKill();
     }
