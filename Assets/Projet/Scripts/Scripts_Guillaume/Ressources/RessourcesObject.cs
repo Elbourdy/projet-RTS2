@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RessourcesObject : MonoBehaviour
 {
+    public bool canBeHarvestedByNexus = false;
     public enum Ressources_Type { Ressource_1, Ressource_2, Ressource_3};
     public Ressources_Type ressourceType;
 
@@ -25,20 +26,23 @@ public class RessourcesObject : MonoBehaviour
     // temp just to test with the nexus directly draining ressources instead of workers
     public void Update()
     {
-        RaycastHit[] hit = Physics.SphereCastAll(transform.position, 3f, transform.forward);
-
-        foreach (RaycastHit e in hit)
+        if (canBeHarvestedByNexus)
         {
-            if (e.transform.GetComponent<ClassBatimentContainer>())
-            {
-                if (e.transform.GetComponent<ClassBatimentContainer>().name == "Nexus");
-                {
-                    timerCount += Time.deltaTime;
+            RaycastHit[] hit = Physics.SphereCastAll(transform.position, 3f, transform.forward);
 
-                    if (timerCount >= ressourceTimer)
+            foreach (RaycastHit e in hit)
+            {
+                if (e.transform.GetComponent<ClassBatimentContainer>())
+                {
+                    if (e.transform.GetComponent<ClassBatimentContainer>().name == "Nexus") ;
                     {
-                        AddRessourceToPlayer();
-                        timerCount = 0;
+                        timerCount += Time.deltaTime;
+
+                        if (timerCount >= ressourceTimer)
+                        {
+                            AddRessourceToPlayer();
+                            timerCount = 0;
+                        }
                     }
                 }
             }

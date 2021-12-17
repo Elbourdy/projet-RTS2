@@ -4575,8 +4575,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainAgentClassStorage:
-  - {fileID: 11400000, guid: f4ab09914208e0e47afd8ec83c5cde5b, type: 2}
-  - {fileID: 11400000, guid: db6feffdebf16f243b8f1257d58a99f4, type: 2}
+  - {fileID: 11400000, guid: 05036ba030527f041b19e5eb027baeb6, type: 2}
+  - {fileID: 11400000, guid: 32916ec4fb764034782f776ff537cb87, type: 2}
+  - {fileID: 11400000, guid: 292c9f3d157c8704892eb8e6a6338f89, type: 2}
+  - {fileID: 11400000, guid: a74498e9c75f053469b9bc2a80d18e3d, type: 2}
 --- !u!114 &1121040659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6769,6 +6771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7f5c338cc59d641859584838e5074e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeHarvestedByNexus: 0
   ressourceType: 0
   ressourceTimer: 1
   ressourceQuantityPerTic: 20
@@ -8275,7 +8278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4400187458497137604, guid: 6beb1f3c37da1a44b90acde79e680f86, type: 3}
       propertyPath: desiredRoaster.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4400187458497137604, guid: 6beb1f3c37da1a44b90acde79e680f86, type: 3}
       propertyPath: ressourcesMax.Array.data[0]
@@ -8320,6 +8323,14 @@ PrefabInstance:
     - target: {fileID: 4400187458497137604, guid: 6beb1f3c37da1a44b90acde79e680f86, type: 3}
       propertyPath: desiredRoaster.Array.data[1]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400187458497137604, guid: 6beb1f3c37da1a44b90acde79e680f86, type: 3}
+      propertyPath: desiredRoaster.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400187458497137604, guid: 6beb1f3c37da1a44b90acde79e680f86, type: 3}
+      propertyPath: desiredRoaster.Array.data[3]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4400187458497137604, guid: 6beb1f3c37da1a44b90acde79e680f86, type: 3}
       propertyPath: ressourcesToEvolve.Array.size
