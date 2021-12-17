@@ -13,10 +13,39 @@ public class RessourcesObject : MonoBehaviour
     [SerializeField] private int ressourceQuantityPerTic = 20;
     [SerializeField] private int stockRessources = 400;
 
+    //temp for testing with nexus
+    private float timerCount;
+    
+
     private void Awake()
     {
         SetIdRessource();
     }
+
+    // temp just to test with the nexus directly draining ressources instead of workers
+    public void Update()
+    {
+        RaycastHit[] hit = Physics.SphereCastAll(transform.position, 3f, transform.forward);
+
+        foreach (RaycastHit e in hit)
+        {
+            if (e.transform.GetComponent<ClassBatimentContainer>())
+            {
+                if (e.transform.GetComponent<ClassBatimentContainer>().name == "Nexus");
+                {
+                    timerCount += Time.deltaTime;
+
+                    if (timerCount >= ressourceTimer)
+                    {
+                        AddRessourceToPlayer();
+                        timerCount = 0;
+                    }
+                }
+            }
+        }
+    }
+
+
 
     private void SetIdRessource()
     {

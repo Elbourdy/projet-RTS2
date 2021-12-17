@@ -17,7 +17,7 @@ public class Image_Map : MonoBehaviour
     // Update is called once per frame-
     void Update()
     {
-        NumMap = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Map;
+        /*NumMap = GameObject.Find("Canvas").GetComponent<Gestion_HUD>().Map;
 
         if (NumMap == 1)
         {
@@ -30,7 +30,7 @@ public class Image_Map : MonoBehaviour
         else if (NumMap == 3)
         {
             gameObject.GetComponent<Image>().sprite = Mp3;
-        }
+        }*/
 
     }
 }

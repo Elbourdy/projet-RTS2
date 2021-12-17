@@ -9,7 +9,7 @@ public class HQBehavior : Building
     public List<int> desiredRoaster;
     public int speed = 10;
 
-    public int timerConsumption = 1, ressourcesConsumed = 1;
+    public int timerConsumption = 1, ressourcesConsumed = 1, energyRestored = 1, rangeRefill = 10;
     private float timerConsumptionCount;
 
     private Vector3 targetPosition;
@@ -26,6 +26,8 @@ public class HQBehavior : Building
     {
         gameManager = GameObject.Find("GameManager");
         targetPosition = transform.position;
+
+        SetConstructionHealth(100f); //FOR NEXUS
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class HQBehavior : Building
                 if (Global_Ressources.instance.CheckIfEnoughRessources(0, ressourcesConsumed))
                 {
                     Global_Ressources.instance.ModifyRessource(0, -ressourcesConsumed);
+                    RestockUnitEnergy();
                 }
                 else
                 {
@@ -91,14 +94,29 @@ public class HQBehavior : Building
             }
 
             timerConsumptionCount += Time.deltaTime;
-
-
-
-
-
-
         }
 
         SetFeedbackUI();
+    }
+
+    public void RestockUnitEnergy() //refill ally battery
+    {
+        RaycastHit[] hit = Physics.SphereCastAll(transform.position, rangeRefill, transform.forward);
+
+        foreach(RaycastHit e in hit)
+        {
+            if (e.transform.GetComponent<ClassAgentContainer>() != null)
+            {
+                if (e.transform.GetComponent<AIEnemy>() == null)
+                {
+                    e.transform.GetComponent<HealthSystem>().ChangeBatteryHealth(energyRestored);
+                }
+            }
+        }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, rangeRefill);
     }
 }

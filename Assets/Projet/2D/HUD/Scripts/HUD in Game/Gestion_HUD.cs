@@ -97,6 +97,12 @@ public class Gestion_HUD : MonoBehaviour
                 shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
                 shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
             }
+            else if (i == 10)
+            {
+                shopCases[i].SetActive(true);
+                shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.upgradeSprite;
+                shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Upgrade";
+            }
             else
             {
                 shopCases[i].SetActive(false);
@@ -151,6 +157,7 @@ public class Gestion_HUD : MonoBehaviour
         foreach(GameObject e in ressourcesCases)
         {
             e.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(i).ToString();
+            e.transform.GetChild(0).GetComponent<Text>().text = Global_Ressources.instance.CheckRessourcesMax(i).ToString();
             i++;
         }
     }
