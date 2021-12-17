@@ -6,15 +6,13 @@ using UnityEngine.UI;
 
 public class Gestion_HUD : MonoBehaviour
 {
-    // Variables de Teste
-    public string RCS1, RCS2, RCS3;
     public float Map;
-    private GameObject RC1, RC2, RC3;
 
     public GameObject oneUnitDisplay;   //grosse image zoom sur une unité
     private SelectionPlayer selectionPlayer;      ///script de selection de perso c'est plus rapide vu que je l'appelle pelin de fois
     public List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
     public List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
+    public List<GameObject> ressourcesCases = new List<GameObject>();
 
     void Start()
     {
@@ -24,16 +22,12 @@ public class Gestion_HUD : MonoBehaviour
         {
             shopCases[i].GetComponent<ButtonAS>().ID = i;
         }
-
-        // Aquisition des object texte
-        /*RC1 = GameObject.Find("Ressource1");
-        RC2 = GameObject.Find("Ressource2");
-        RC3 = GameObject.Find("Ressource3");*/
     }
 
     
     void Update()
-    {   
+    {
+        RessourcesDisplay();
         if (selectionPlayer.selectedUnits.Count > 0)
         {
             OneUnitDisplayUpdate();
@@ -59,13 +53,6 @@ public class Gestion_HUD : MonoBehaviour
             ResetShopCases();
             ResetUnitSelectionCases();
         }
-
-        /*//Incrémentation des ObjetsText
-        RC1.GetComponent<Text>().text = RCS1;
-        RC2.GetComponent<Text>().text = RCS2;
-        RC3.GetComponent<Text>().text = RCS3;
-        */
-
     }
 
     public void OneUnitDisplayUpdate()   //fonction qui affiche la grosse image pour une unité
@@ -155,6 +142,16 @@ public class Gestion_HUD : MonoBehaviour
             e.SetActive(false);
             e.GetComponent<Image>().sprite = null;
             e.transform.GetChild(0).GetComponent<Text>().text = "";
+        }
+    }
+
+    void RessourcesDisplay()
+    {
+        int i = 0;
+        foreach(GameObject e in ressourcesCases)
+        {
+            e.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(i).ToString();
+            i++;
         }
     }
 }

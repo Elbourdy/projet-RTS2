@@ -40,7 +40,29 @@ public class Building : MonoBehaviour
 
     public void AddToQueue(int IDNumberRoaster)
     {
-        productionQueue.Add(roasterUnits[IDNumberRoaster]);
+        int i = 0;
+        bool check = true;
+
+        foreach (int e in roasterUnits[IDNumberRoaster].ressourcesCost)
+        {
+            if (!Global_Ressources.instance.CheckIfEnoughRessources(i, roasterUnits[IDNumberRoaster].ressourcesCost[i]))
+                check = false;
+            i++;
+        }
+
+        if (check)
+        {
+            i = 0;
+            foreach (int e in roasterUnits[IDNumberRoaster].ressourcesCost)
+            {
+                Global_Ressources.instance.ModifyRessource(i, -roasterUnits[IDNumberRoaster].ressourcesCost[i]);
+                i++;
+            }
+            productionQueue.Add(roasterUnits[IDNumberRoaster]);
+        }
+
+
+
     }
 
     public void ProcessQueue()

@@ -17,6 +17,7 @@ public class AgentClass : UnitClass
     public float rateOfFire;
     public float movementSpeed;
 
+    public int[] ressourcesCost  = new int[]{50, 0, 0};
 
     [Header("Stats Worker")]
     [DrawIf("Job", AgentJob.Worker)] public float constructionSpeed = 1;

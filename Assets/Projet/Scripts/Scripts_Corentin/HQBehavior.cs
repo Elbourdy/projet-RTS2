@@ -7,6 +7,9 @@ public class HQBehavior : Building
 {
     public float BatType;
     public List<int> desiredRoaster;
+    public int speed = 10;
+
+    private Vector3 targetPosition;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class HQBehavior : Building
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        targetPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -40,8 +44,9 @@ public class HQBehavior : Building
         {
             if (GetIsSelected())
             {
-                if (GetIsMovingRallyPoint())
-                    if (Input.GetMouseButton(1))
+                if (Input.GetMouseButtonUp(1))
+                {
+                    if (GetIsMovingRallyPoint())
                     {
                         RaycastHit hit;
                         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
@@ -49,16 +54,19 @@ public class HQBehavior : Building
                         gameManager.GetComponent<SelectionPlayer>().canSelect = true;
                         SetIsMovingRallyPoint(false);
                     }
+                    else
+                    {
+                        RaycastHit hit;
+                        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+                        targetPosition = hit.point;
+                        targetPosition.y = transform.position.y;
+                    }
+                }      
+            }
 
-                if (Input.GetKeyDown(KeyCode.A))
-                {
-                    AddToQueue(0);
-                }
-
-                if (Input.GetKeyDown(KeyCode.Z))
-                {
-                    AddToQueue(1);
-                }   
+            if (targetPosition != transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }
 
             ProcessQueue();
