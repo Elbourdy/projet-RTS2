@@ -83,7 +83,7 @@ public class HQBehavior : Building
                 if (Global_Ressources.instance.CheckIfEnoughRessources(0, ressourcesConsumed))
                 {
                     Global_Ressources.instance.ModifyRessource(0, -ressourcesConsumed);
-                    RestockUnitEnergy();
+                   // RestockUnitEnergy(); //battery mamanger fait le taf
                 }
                 else
                 {
