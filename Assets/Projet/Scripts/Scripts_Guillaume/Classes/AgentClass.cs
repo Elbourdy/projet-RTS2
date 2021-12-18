@@ -16,6 +16,7 @@ public class AgentClass : UnitClass
     public float rangeAttaque;
     public float rateOfFire;
     public float movementSpeed;
+    public float radiusVision = 5;
 
     public int[] ressourcesCost  = new int[]{50, 0, 0};
 

@@ -20,10 +20,7 @@ public class AgentStates : MonoBehaviour
     [SerializeField] private float rangeAttaque = 1;
     [SerializeField] private float damage = 1;
     [SerializeField] private float rateOfFire = 0.5f;
-    public float radiusVision 
-    {
-        get; private set;
-    }
+    [SerializeField] private float radiusVision = 5;
     private float rateOfFireCD = 0;
 
 
@@ -54,7 +51,7 @@ public class AgentStates : MonoBehaviour
     // Permet de récupérer les stats de nos agents
     private ClassAgentContainer container;
 
-    private void OnEnable()
+    private void Awake()
     {
         InitStats();
         navM = GetComponent<NavMeshAgent>();
@@ -72,7 +69,7 @@ public class AgentStates : MonoBehaviour
         rangeAttaque = container.myClass.rangeAttaque;
         damage = container.myClass.attackDamage;
         rateOfFire = container.myClass.rateOfFire;
-        
+        radiusVision = container.myClass.radiusVision;
     }
 
     private void Update()
@@ -250,5 +247,22 @@ public class AgentStates : MonoBehaviour
         Vector3 constructionPos = transform.position + transform.forward * rangeConstruction;
         Instantiate(constructionObjet, constructionPos, transform.rotation);
     }
-    
+
+
+    private void OnDrawGizmos()
+    {
+        DrawRangeAttack();
+    }
+
+    private void DrawRangeAttack ()
+    {
+        if(container == null || rangeAttaque != container.myClass.rangeAttaque)
+        {
+            container = GetComponent<ClassAgentContainer>();
+            rangeAttaque = container.myClass.rangeAttaque;
+        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, rangeAttaque);
+    }
+
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class AIEnemy : MonoBehaviour
 {
     private AgentStates aS;
+    private ClassAgentContainer cac;
     public GameObject targetPlayer;
 
     public float radiusVision = 5;
@@ -16,6 +17,8 @@ public class AIEnemy : MonoBehaviour
     private void OnEnable()
     {
         aS = GetComponent<AgentStates>();
+        cac = GetComponent<ClassAgentContainer>();
+        radiusVision = cac.myClass.radiusVision;
     }
     private void Update()
     {
@@ -36,6 +39,11 @@ public class AIEnemy : MonoBehaviour
 
     private void DrawRadiusVision()
     {
+        if (cac == null) 
+        { 
+            cac = GetComponent<ClassAgentContainer>();
+            radiusVision = cac.myClass.radiusVision;
+        }
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, radiusVision);
     }
