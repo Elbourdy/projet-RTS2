@@ -6,10 +6,22 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
-    public Image Fill;
+    public Image fill;
+    private Gradient gradient;
 
     public void SetHealth(float health)
     {
         slider.value = health;
+    }
+
+    public void SethealthAndGradient(float health)
+    {
+        slider.value = health;
+        fill.color = gradient.Evaluate(health);
+    }
+
+    public void SetGradient(Gradient gradient)
+    {
+        this.gradient = gradient;
     }
 }
