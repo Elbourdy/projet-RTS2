@@ -16,6 +16,7 @@ public class HealthSystem : MonoBehaviour
     private float maxHealth;
     private HealthBar myHealthBar;
 
+    private GameObject nexus;
 
 
     // Batterie system
@@ -27,6 +28,8 @@ public class HealthSystem : MonoBehaviour
 
     private void Awake()
     {
+        nexus = GameObject.Find("Nexus");
+
         maxBatteryHealth = batteryHealth;
         //check la classe de l'objet en question et récupère la valeur dans la classe
         if (GetComponent<ClassBatimentContainer>() != null) health = GetComponent<ClassBatimentContainer>().myClass.health;
@@ -37,6 +40,22 @@ public class HealthSystem : MonoBehaviour
         
     }
 
+
+    private void Update()
+    {
+        damageBattery = CheckDistanceNexus();
+    }
+
+
+    private bool CheckDistanceNexus()
+    {
+        if (Vector3.Distance(transform.position, nexus.transform.position) > BatteryManager.instance.radiusBattery)
+        {
+            Debug.Log(Vector3.Distance(transform.position, nexus.transform.position));
+            return true;
+        }
+        return false;
+    }
 
     // NE PAS CHANGER HIERARCHIE DE PAR CE SCRIPT
     private void FindBarInChild()

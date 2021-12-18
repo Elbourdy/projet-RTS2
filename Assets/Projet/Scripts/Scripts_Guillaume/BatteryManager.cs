@@ -5,19 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(SelectionPlayer))]
 public class BatteryManager : MonoBehaviour
 {
-    public float damagePerTic = -1;
-
-    public bool activateSystem = true;
-    public float timeForTic = 4;
+    [SerializeField]public float damagePerTic = -1;
+    [SerializeField]public bool activateSystem = true;
+    [SerializeField]public float timeForTic = 4;
 
 
     private SelectionPlayer mySelec;
     [SerializeField] private float timer = 0;
 
+    public float radiusBattery = 10f;
+
+    public static BatteryManager instance;
 
 
     private void Awake()
     {
+        instance = this;
         mySelec = GetComponent<SelectionPlayer>();
     }
 
@@ -52,8 +55,16 @@ public class BatteryManager : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        DrawRadiusBattery();
+    }
 
-
+    private void DrawRadiusBattery()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(GameObject.Find("Nexus").transform.position, radiusBattery);
+    }
 
 
 }
