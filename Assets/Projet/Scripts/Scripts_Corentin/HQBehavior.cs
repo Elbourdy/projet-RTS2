@@ -115,6 +115,8 @@ public class HQBehavior : Building
         }
     }
 
+
+
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, rangeRefill);

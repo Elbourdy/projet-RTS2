@@ -132,6 +132,16 @@ public class HealthSystem : MonoBehaviour
         return batteryHealth;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public float GetMaxBatteryHealth()
+    {
+        return maxBatteryHealth;
+    }
+
     // CheckKill() pour la battery est utilisé dans BatteryManager
     public void ChangeBatteryHealth(float value)
     {
