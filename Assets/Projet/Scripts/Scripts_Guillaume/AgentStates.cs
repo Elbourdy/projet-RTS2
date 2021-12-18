@@ -8,6 +8,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(ClassAgentContainer))]
 public class AgentStates : MonoBehaviour
 {
+    // Event d'actions
+    public delegate void EventAction();
+    public EventAction onAttack;
+
 
     // Etats possible de nos agents, ennemis et/ou alliés
     // Changement d'état d'un agent par la fonction SetStates uniquement !
@@ -215,6 +219,8 @@ public class AgentStates : MonoBehaviour
             {
                 Debug.Log("Attaque");
                 rateOfFireCD = rateOfFire;
+                onAttack?.Invoke();
+                transform.LookAt(target.transform);
                 target.GetComponent<HealthSystem>().HealthChange(-damage);
             }
         }

@@ -8,43 +8,69 @@ public class HealthSystem : MonoBehaviour
 {
     public delegate void HealthEvent();
     public HealthEvent onHealthEvent;
+    public HealthEvent onBatteryEvent;
     
+    [Header("Syestème de vie")]
     [SerializeField] private float health;
 
     private float maxHealth;
-    private HealthBar myBar;
+    private HealthBar myHealthBar;
 
 
 
     // Batterie system
     [SerializeField] private float batteryHealth = 100;
     private float maxBatteryHealth;
+    private HealthBar myBatteryBar;
+    public bool damageBattery = true;
 
 
-
-    private void OnEnable()
+    private void Awake()
     {
         maxBatteryHealth = batteryHealth;
-        onHealthEvent += ChangeHealthBar;
         //check la classe de l'objet en question et récupère la valeur dans la classe
         if (GetComponent<ClassBatimentContainer>() != null) health = GetComponent<ClassBatimentContainer>().myClass.health;
         if (GetComponent<ClassAgentContainer>() != null) health = GetComponent<ClassAgentContainer>().myClass.health;
 
         maxHealth = health;
+        FindBarInChild();
+        
+    }
 
-        myBar = GetComponentInChildren<HealthBar>();
+
+    // NE PAS CHANGER HIERARCHIE DE PAR CE SCRIPT
+    private void FindBarInChild()
+    {
+        var canvas = transform.Find("UIOnWorldSpace").Find("Canvas");
+        myHealthBar = canvas.Find("HealthBar").GetComponent<HealthBar>();
+        myBatteryBar = canvas.Find("BatteryBar").GetComponent<HealthBar>();
+    }
+
+    private void OnEnable()
+    {
+        onHealthEvent += ChangeHealthBar;
+        onBatteryEvent += ChangeBatteryBar;
+
     }
 
     private void OnDisable()
     {
         onHealthEvent -= ChangeHealthBar;
+        onBatteryEvent -= ChangeBatteryBar;
     }
+
 
 
     private void ChangeHealthBar()
     {
         var percentageHealth = health / maxHealth;
-        myBar.SetHealth(percentageHealth);
+        myHealthBar.SetHealth(percentageHealth);
+    }
+
+    private void ChangeBatteryBar()
+    {
+        var percentageBattery = batteryHealth / maxBatteryHealth;
+        myBatteryBar.SetHealth(percentageBattery);
     }
 
     private void FeedBackDamage ()
@@ -68,7 +94,7 @@ public class HealthSystem : MonoBehaviour
         CheckIfKill();
     }
 
-    private void CheckIfKill()
+    public void CheckIfKill()
     {
         if (health <= 0 || batteryHealth <= 0)
         {
@@ -91,10 +117,11 @@ public class HealthSystem : MonoBehaviour
         return batteryHealth;
     }
 
+    // CheckKill() pour la battery est utilisé dans BatteryManager
     public void ChangeBatteryHealth(float value)
     {
         batteryHealth += value;
         if (batteryHealth > maxBatteryHealth) batteryHealth = maxBatteryHealth;
-        CheckIfKill();
+        onBatteryEvent?.Invoke();
     }
 }
