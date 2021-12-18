@@ -4384,6 +4384,7 @@ GameObject:
   - component: {fileID: 1121040657}
   - component: {fileID: 1121040656}
   - component: {fileID: 1121040658}
+  - component: {fileID: 1121040659}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4436,7 +4437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953f104600460f346b0d56224a4e03ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
 --- !u!114 &1121040658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4452,6 +4452,20 @@ MonoBehaviour:
   mainAgentClassStorage:
   - {fileID: 11400000, guid: f4ab09914208e0e47afd8ec83c5cde5b, type: 2}
   - {fileID: 11400000, guid: db6feffdebf16f243b8f1257d58a99f4, type: 2}
+--- !u!114 &1121040659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121040654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a7178a42273774e925dfe1a8ca1f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ressources: 00000000000000000000000000000000
+  maxRessources: 00000000000000000000000000000000
 --- !u!1 &1142040953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 770774050738250431, guid: 86132b6663ab09040804a7bff99ddded, type: 3}

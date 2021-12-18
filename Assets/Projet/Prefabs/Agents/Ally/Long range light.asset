@@ -23,6 +23,7 @@ MonoBehaviour:
   rangeAttaque: 10
   rateOfFire: 9
   movementSpeed: 12
+  radiusVision: 5
   ressourcesCost: 320000000000000000000000
   constructionSpeed: 1
   rangeConstruction: 1

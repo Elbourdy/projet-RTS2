@@ -1,17 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
-    public GameObject agent;
+    //public GameObject agent;
 
 
     private SelectionPlayer sp;
 
 
-    private void Start()
+
+    private void Awake()
     {
         sp = GetComponent<SelectionPlayer>();
     }
@@ -34,19 +34,19 @@ public class InputPlayer : MonoBehaviour
         //}
     }
 
-    private void ConstructOrder()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.name == "Sol")
-            {
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Construction);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
-            }
-        }
-    }
+  //private void ConstructOrder()
+  //{
+  //    RaycastHit hit;
+  //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+  //    if (Physics.Raycast(ray, out hit))
+  //    {
+  //        if (hit.collider.name == "Sol")
+  //        {
+  //            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Construction);
+  //            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+  //        }
+  //    }
+  //}
 
     private void CheckHitType ()
     {
@@ -77,27 +77,34 @@ public class InputPlayer : MonoBehaviour
 
     private void GoToTarget (RaycastHit hit)
     {
+        Vector3 target = hit.point;
         foreach (var agent in sp.selectedUnits)
         {
+            if (sp.selectedUnits.Count > 1)
+            {
+                target = RandomizeTargetLocation(target, 2);
+            }
             if (agent.GetComponent<AgentStates>() != null)
             {
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                agent.GetComponent<AgentStates>().MoveAgent(target);
             }
         }
     }
 
-    private void MoveAgents (RaycastHit hit)
+
+    private Vector3 RandomizeTargetLocation(Vector3 location, float range)
     {
-        foreach (var agent in sp.selectedUnits)
-        {
-            if (agent.GetComponent<AgentStates>() != null)
-            {
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Idle);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
-            }
-        }
+        
+        float randomX = Random.Range(-range, range);
+        float randomZ = Random.Range(-range, range);
+
+        var newLocation = new Vector3(location.x + randomX, location.y, location.z + randomZ);
+
+
+        return newLocation;
     }
+    
 
     private void AttaqueWithAgent (RaycastHit hit)
     {

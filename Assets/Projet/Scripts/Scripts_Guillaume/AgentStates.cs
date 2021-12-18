@@ -58,6 +58,7 @@ public class AgentStates : MonoBehaviour
         navM.speed = speed;
         navM.acceleration = 60f;
         navM.avoidancePriority = Random.Range(1, 100);
+        
     }
 
 
