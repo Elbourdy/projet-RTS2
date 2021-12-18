@@ -41,17 +41,13 @@ public class HealthSystem : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        damageBattery = CheckDistanceNexus();
-    }
+    
 
 
-    private bool CheckDistanceNexus()
+    public bool CheckDistanceNexus()
     {
         if (Vector3.Distance(transform.position, nexus.transform.position) > BatteryManager.instance.radiusBattery)
         {
-            Debug.Log(Vector3.Distance(transform.position, nexus.transform.position));
             return true;
         }
         return false;
