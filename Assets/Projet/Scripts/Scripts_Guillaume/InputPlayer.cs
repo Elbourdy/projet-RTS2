@@ -84,7 +84,7 @@ public class InputPlayer : MonoBehaviour
             {
                 target = RandomizeTargetLocation(target, 2);
             }
-            if (agent.GetComponent<AgentStates>() != null)
+            if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
                 agent.GetComponent<AgentStates>().MoveAgent(target);

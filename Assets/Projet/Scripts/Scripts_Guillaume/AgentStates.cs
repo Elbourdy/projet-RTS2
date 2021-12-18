@@ -217,9 +217,9 @@ public class AgentStates : MonoBehaviour
         {
             if (rateOfFireCD <= 0)
             {
+                onAttack?.Invoke();
                 Debug.Log("Attaque");
                 rateOfFireCD = rateOfFire;
-                onAttack?.Invoke();
                 transform.LookAt(target.transform);
                 target.GetComponent<HealthSystem>().HealthChange(-damage);
             }

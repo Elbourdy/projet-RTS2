@@ -33,9 +33,12 @@ public class BatteryManager : MonoBehaviour
         if (timer >= timeForTic)
         {
             timer = 0;
+            // Stockage des unités devant être tuées par le systeme de batterie
+            // On fait ça pour ne pas fucked up la lecture de la list des agents actifs
             GameObject[] killedUnits = new GameObject[mySelec.allFriendlyUnits.Count];
             for (int i = 0; i < mySelec.allFriendlyUnits.Count; i++)
             {
+                // Dégâts infligés si booléen est vrai. A mettre sur false ou true si l'agent est ou n'est pas dans la zone du nexus
                 if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().damageBattery) mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(damagePerTic);
                 if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0)
                 {
