@@ -9,7 +9,7 @@ public class DéplacementCam : MonoBehaviour
 
     public float speed;
     public float offset;
-
+    
     public bool activateMovement = true;
 
 
@@ -38,19 +38,19 @@ public class DéplacementCam : MonoBehaviour
         dir = Vector2.zero;
         if (isLeft())
         {
-            dir += new Vector2(-1, 0);
+            dir += new Vector2(0, 1);
         }
         if (isRight())
         {
-            dir += new Vector2(1, 0);
+            dir += new Vector2(0, -1);
         }
         if (isTop())
         {
-            dir += new Vector2(0, 1);
+            dir += new Vector2(1, 0);
         }
         if (isBottom())
         {
-            dir += new Vector2(0, -1);
+            dir += new Vector2(-1, -0);
         }
 
         Debug.Log(dir);

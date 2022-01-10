@@ -5,10 +5,15 @@ using UnityEngine;
 public class RessourcesObject : MonoBehaviour
 {
     public bool canBeHarvestedByNexus = false;
-    public enum Ressources_Type { Ressource_1, Ressource_2, Ressource_3};
+    public enum Ressources_Type { Ressource_1, Ressource_2, Ressource_3 };
     public Ressources_Type ressourceType;
 
     private int ressourceId;
+    public float ResMaxValue; 
+    public float  ValeurRestante;
+    
+
+    public Material Plein, vide;
 
     [SerializeField] private int ressourceTimer = 1;
     [SerializeField] private int ressourceQuantityPerTic = 20;
@@ -16,16 +21,24 @@ public class RessourcesObject : MonoBehaviour
 
     //temp for testing with nexus
     private float timerCount;
-    
+
 
     private void Awake()
     {
         SetIdRessource();
     }
 
+
+    public void Start()
+    {
+        ResMaxValue = stockRessources;
+
+
+    }
     // temp just to test with the nexus directly draining ressources instead of workers
     public void Update()
     {
+          ValeurRestante = (100 * (stockRessources / ResMaxValue))/100;
         if (canBeHarvestedByNexus)
         {
             RaycastHit[] hit = Physics.SphereCastAll(transform.position, 3f, transform.forward);
@@ -89,6 +102,13 @@ public class RessourcesObject : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
     }
+
+
+   
+
+      
+
+    
 }
