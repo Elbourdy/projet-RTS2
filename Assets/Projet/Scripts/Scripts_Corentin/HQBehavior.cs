@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class HQBehavior : Building
 {
+    public static HQBehavior instance;
+
     public float BatType;
     public List<int> desiredRoaster;
     public int speed = 10;
 
-    public int timerConsumption = 1, ressourcesConsumed = 1, energyRestored = 1, rangeRefill = 10;
+    public int timerConsumption = 1, ressourcesConsumed = 1, energyRestored = 1;
     private float timerConsumptionCount;
+
+    public Color colorRadiusBattery = Color.blue;
 
     private Vector3 targetPosition;
     // Start is called before the first frame update
     private void Awake()
     {
+        instance = this;
         foreach (int e in desiredRoaster)
         {
             AddToRoaster(e);
@@ -28,6 +33,7 @@ public class HQBehavior : Building
         targetPosition = transform.position;
 
         SetConstructionHealth(100f); //FOR NEXUS
+        DisplayRange(BatteryManager.instance.radiusBattery, colorRadiusBattery);
     }
 
     // Update is called once per frame
@@ -75,50 +81,32 @@ public class HQBehavior : Building
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }
-
-            //consommation énergie Nexus
-
-            if (timerConsumption < timerConsumptionCount)
-            {
-                if (Global_Ressources.instance.CheckIfEnoughRessources(0, ressourcesConsumed))
-                {
-                    Global_Ressources.instance.ModifyRessource(0, -ressourcesConsumed);
-                   // RestockUnitEnergy(); //battery mamanger fait le taf
-                }
-                else
-                {
-                    Destroy(gameObject);
-                    Debug.Log("Gameover");
-                }
-                timerConsumptionCount = 0f;
-            }
-
-            timerConsumptionCount += Time.deltaTime;
         }
 
         SetFeedbackUI();
     }
 
-    public void RestockUnitEnergy() //refill ally battery
+    public void DisplayRange(float range, Color color) 
     {
-        RaycastHit[] hit = Physics.SphereCastAll(transform.position, rangeRefill, transform.forward);
+        LineRenderer lRBattery = GetComponent<LineRenderer>();
+        lRBattery.positionCount = 50;
+        lRBattery.useWorldSpace = false;
+        lRBattery.SetColors(color, color);
 
-        foreach(RaycastHit e in hit)
+        float x;
+        float y = 0f;
+        float z;
+
+        float angle = 20f;
+
+        for (int i = 0; i < 50; i++)
         {
-            if (e.transform.GetComponent<ClassAgentContainer>() != null)
-            {
-                if (e.transform.GetComponent<AIEnemy>() == null)
-                {
-                    e.transform.GetComponent<HealthSystem>().ChangeBatteryHealth(energyRestored);
-                }
-            }
+            x = Mathf.Sin(Mathf.Deg2Rad * angle) * range;
+            z = Mathf.Cos(Mathf.Deg2Rad * angle) * range;
+
+            lRBattery.SetPosition(i, new Vector3(x, y, z));
+
+            angle += (360f / 49f);
         }
-    }
-
-
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, rangeRefill);
     }
 }
