@@ -53,7 +53,7 @@ public class DéplacementCam : MonoBehaviour
             dir += new Vector2(-1, -0);
         }
 
-        Debug.Log(dir);
+        //Debug.Log(dir);
     }
 
     private bool isLeft()

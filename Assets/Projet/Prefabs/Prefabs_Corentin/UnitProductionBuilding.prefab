@@ -313,10 +313,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   constructionHealthMax: 100
   constructionHealthActual: 0
-  ressourcesMax: 
-  ressourcesToEvolve: 
+  ressourcesMax: f401000026020000580200008a020000bc020000ee020000200300005203000084030000b6030000
+  ressourcesToEvolve: 2c0100005e01000090010000c2010000f401000026020000580200008a020000bc020000ee020000
   BatType: 10
-  desiredRoaster: 0000000001000000
+  desiredRoaster: 00000000010000000200000003000000
   speed: 10
   timerConsumption: 1
   ressourcesConsumed: 1

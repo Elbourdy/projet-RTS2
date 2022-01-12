@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RessourcesObject : MonoBehaviour
 {
+    private GameObject nexus;
+    private LineRenderer lR;
     public bool canBeHarvestedByNexus = false;
     public enum Ressources_Type { Ressource_1, Ressource_2, Ressource_3 };
     public Ressources_Type ressourceType;
@@ -15,9 +17,11 @@ public class RessourcesObject : MonoBehaviour
 
     public Material Plein, vide;
 
-    [SerializeField] private int ressourceTimer = 1;
+    [SerializeField] private float ressourceTimer = 1;
     [SerializeField] private int ressourceQuantityPerTic = 20;
     [SerializeField] private int stockRessources = 400;
+    [SerializeField] private int rangeCollection = 20;
+    [SerializeField] private float onReadDistance = 0f;
 
     //temp for testing with nexus
     private float timerCount;
@@ -32,34 +36,32 @@ public class RessourcesObject : MonoBehaviour
     public void Start()
     {
         ResMaxValue = stockRessources;
-
-
+        nexus = GameObject.Find("Nexus");
+        lR = GetComponent<LineRenderer>();
     }
     // temp just to test with the nexus directly draining ressources instead of workers
     public void Update()
     {
-          ValeurRestante = (100 * (stockRessources / ResMaxValue))/100;
+          ValeurRestante = stockRessources / ResMaxValue;
         if (canBeHarvestedByNexus)
         {
-            RaycastHit[] hit = Physics.SphereCastAll(transform.position, 3f, transform.forward);
-
-            foreach (RaycastHit e in hit)
+            onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
+            if (Vector3.Distance(transform.position, nexus.transform.position) < rangeCollection)
             {
-                if (e.transform.GetComponent<ClassBatimentContainer>())
-                {
-                    if (e.transform.GetComponent<ClassBatimentContainer>().name == "Nexus") ;
-                    {
-                        timerCount += Time.deltaTime;
+                SetFeedbackNexusCollecting();
+                timerCount += Time.deltaTime;
 
-                        if (timerCount >= ressourceTimer)
-                        {
-                            AddRessourceToPlayer();
-                            timerCount = 0;
-                        }
-                    }
+                if (timerCount >= ressourceTimer)
+                {
+                    AddRessourceToPlayer();
+                    timerCount = 0;
                 }
             }
-        }
+            else
+            {
+                DisableFeedbackCollectionNexus();
+            }
+        }      
     }
 
 
@@ -102,13 +104,23 @@ public class RessourcesObject : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    public void SetFeedbackNexusCollecting()
+    {
+        lR.enabled = true;
+        lR.SetPosition(0, transform.position);
+        lR.SetPosition(1, nexus.transform.position);
+    }
+
+    public void DisableFeedbackCollectionNexus()
+    {
+        lR.enabled = false;
     }
 
 
-   
 
-      
 
-    
+
+
 }

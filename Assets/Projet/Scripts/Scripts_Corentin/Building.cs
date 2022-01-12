@@ -314,12 +314,10 @@ public class Building : MonoBehaviour
         if (i > 0)
         {
             isSelected = true;
-            Debug.Log("IsSelected");
         }
         else
         {
             isSelected = false;
-            Debug.Log("IsNotSelected");
         }
     }
 

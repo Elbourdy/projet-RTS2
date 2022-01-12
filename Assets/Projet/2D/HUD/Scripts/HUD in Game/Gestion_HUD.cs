@@ -12,7 +12,8 @@ public class Gestion_HUD : MonoBehaviour
     private SelectionPlayer selectionPlayer;      ///script de selection de perso c'est plus rapide vu que je l'appelle pelin de fois
     public List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
     public List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
-    public List<GameObject> ressourcesCases = new List<GameObject>();
+    //public List<GameObject> ressourcesCases = new List<GameObject>();
+    public HealthBar ressourceBar;
 
     void Start()
     {
@@ -177,12 +178,13 @@ public class Gestion_HUD : MonoBehaviour
 
     void RessourcesDisplay()
     {
-        int i = 0;
+        /*int i = 0;
         foreach(GameObject e in ressourcesCases)
         {
             e.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(i).ToString();
             e.transform.GetChild(0).GetComponent<Text>().text = Global_Ressources.instance.CheckRessourcesMax(i).ToString();
             i++;
-        }
+        }*/
+        ressourceBar.SetHealth(Global_Ressources.instance.CheckRessources(0) * 1f / Global_Ressources.instance.CheckRessourcesMax(0));
     }
 }
