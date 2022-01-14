@@ -119,7 +119,7 @@ MonoBehaviour:
   ressourceTimer: 0.1
   ressourceQuantityPerTic: 1
   stockRessources: 200
-  rangeCollection: 7
+  rangeCollection: 15
   onReadDistance: 0
 --- !u!120 &8339475318873493725
 LineRenderer:

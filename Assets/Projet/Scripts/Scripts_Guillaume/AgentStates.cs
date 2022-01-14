@@ -25,7 +25,7 @@ public class AgentStates : MonoBehaviour
     [SerializeField] private float damage = 1;
     [SerializeField] private float rateOfFire = 0.5f;
     [SerializeField] private float radiusVision = 5;
-    private float rateOfFireCD = 0;
+    public float rateOfFireCD = 0;
 
 
     [Header("Constructions Stats Read-Only")]
@@ -73,7 +73,7 @@ public class AgentStates : MonoBehaviour
         speed = container.myClass.movementSpeed;
         rangeAttaque = container.myClass.rangeAttaque;
         damage = container.myClass.attackDamage;
-        rateOfFire = container.myClass.rateOfFire;
+        //rateOfFire = container.myClass.rateOfFire;
         radiusVision = container.myClass.radiusVision;
     }
 

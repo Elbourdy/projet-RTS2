@@ -111,6 +111,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 292c9f3d157c8704892eb8e6a6338f89, type: 2}
     - target: {fileID: 5189708736748838380, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: rateOfFire
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189708736748838380, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: rangeAttaque
       value: 1
       objectReference: {fileID: 0}
