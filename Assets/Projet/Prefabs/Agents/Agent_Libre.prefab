@@ -354,7 +354,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5189708736748838384}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 60
   avoidancePriority: 50
@@ -381,10 +381,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myState: 0
   speed: 10
-  rangeAttaque: 4
+  rangeAttaque: 1
   damage: 1
   rateOfFire: 0.5
   radiusVision: 5
+  rateOfFireCD: 0
   constructionObjet: {fileID: 7144872679487563968, guid: 8adab05e36064ba48a7eb59a14e7227a, type: 3}
   rangeConstruction: 4
   RecolteColor: {r: 0.0068565607, g: 1, b: 0, a: 0}
@@ -433,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   batteryHealth: 100
+  damageBattery: 1
 --- !u!95 &2387248326736616615
 Animator:
   serializedVersion: 3
