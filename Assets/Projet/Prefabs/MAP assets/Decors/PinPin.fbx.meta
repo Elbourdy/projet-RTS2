@@ -3,7 +3,12 @@ guid: cfcdfab692f53e1438a7ea3015113823
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SapinFeuille
+    second: {fileID: 2100000, guid: ef0f6fab35710c24789a87d3189b9468, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
