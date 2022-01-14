@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 37f3b2b08d843a64299f2605eade90e1, type: 2}
     - target: {fileID: 5189708736748838384, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_Name
-      value: Scout
+      value: Scout Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_RootOrder
