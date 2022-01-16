@@ -42,12 +42,12 @@ public class RessourcesObject : MonoBehaviour
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
 
-        soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Fire/Fire_Spawn/Fire_Spawn");
+        soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Nexus/Build_Nex_Collect/Build_Nex_Collect");
         soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
 
-        soundRessourceSuckOneShotStart = "event:/Fire/Fire_Spawn/Fire_Spawn";
+        //soundRessourceSuckOneShotStart = "event:/Fire/Fire_Spawn/Fire_Spawn";
 
-        soundRessourceSuckOneShotStop = "event:/Fire/Fire_Spawn/Fire_Spawn";
+        //soundRessourceSuckOneShotStop = "event:/Fire/Fire_Spawn/Fire_Spawn";
     }
     // temp just to test with the nexus directly draining ressources instead of workers
     public void Update()
@@ -60,8 +60,9 @@ public class RessourcesObject : MonoBehaviour
             {
                 if (playSound)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStart, transform.position);
+                    //FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStart, transform.position);
                     soundRessourceSuckLoop.start();
+                    Debug.Log("StartPlaying");
                 }
                 playSound = false;
                 soundRessourceSuckLoop.setParameterByName("Crystal_Fill_Energy", (1 - ValeurRestante));
@@ -120,6 +121,8 @@ public class RessourcesObject : MonoBehaviour
         stockRessources -= ressourceQuantityPerTic;
         if (stockRessources <= 0)
         {
+            soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            Debug.Log("StopPlaying");
             Destroy(gameObject);
         }
     }
@@ -128,19 +131,20 @@ public class RessourcesObject : MonoBehaviour
     {
         lR.enabled = true;
         lR.SetPosition(0, transform.position);
-        lR.SetPosition(1, nexus.transform.position);
-
-        if (!playSound)
-        {
-            FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStop, transform.position);
-            soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
-        playSound = true;
+        lR.SetPosition(1, nexus.transform.position); 
     }
 
     public void DisableFeedbackCollectionNexus()
     {
         lR.enabled = false;
+
+        if (!playSound)
+        {
+            //FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStop, transform.position);
+            soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            Debug.Log("StopPlaying");
+        }
+        playSound = true;
     }
 
 

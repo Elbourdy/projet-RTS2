@@ -7652,6 +7652,7 @@ GameObject:
   - component: {fileID: 1022046704}
   - component: {fileID: 1022046705}
   - component: {fileID: 1022046706}
+  - component: {fileID: 1022046707}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7718,7 +7719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022046700}
   m_LocalRotation: {x: 0.2705972, y: 0.6532807, z: -0.270598, w: 0.6532827}
-  m_LocalPosition: {x: -33.69, y: 25.52, z: 102.4}
+  m_LocalPosition: {x: -33.69, y: 25.52, z: 63.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7731,7 +7732,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022046700}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a12d9c7b08caaae4b93f7e10614d6fe1, type: 3}
   m_Name: 
@@ -7831,6 +7832,20 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1022046707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022046700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 1943509592}
+  ListenerNumber: -1
 --- !u!1001 &1040875025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14718,6 +14733,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2978707175783109608, guid: 84c9898cd7e060143b6430fb80275953, type: 3}
   m_PrefabInstance: {fileID: 1895477330}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1943509592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3692042209584680391, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
+  m_PrefabInstance: {fileID: 7399530908849237811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1951230461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16981,7 +17001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3692042209584680411, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 112.2
+      value: 65.66
       objectReference: {fileID: 0}
     - target: {fileID: 3692042209584680411, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
       propertyPath: m_LocalRotation.w
