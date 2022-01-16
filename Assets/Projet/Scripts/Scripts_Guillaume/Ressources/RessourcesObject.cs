@@ -13,6 +13,7 @@ public class RessourcesObject : MonoBehaviour
     private int ressourceId;
     public float ResMaxValue; 
     public float  ValeurRestante;
+    public bool playSound = true;
     
 
     public Material Plein, vide;
@@ -26,6 +27,8 @@ public class RessourcesObject : MonoBehaviour
     //temp for testing with nexus
     private float timerCount;
 
+    FMOD.Studio.EventInstance soundRessourceSuckLoop;
+    private string soundRessourceSuckOneShotStart, soundRessourceSuckOneShotStop;
 
     private void Awake()
     {
@@ -38,6 +41,13 @@ public class RessourcesObject : MonoBehaviour
         ResMaxValue = stockRessources;
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
+
+        soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Fire/Fire_Spawn/Fire_Spawn");
+        soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+
+        soundRessourceSuckOneShotStart = "event:/Fire/Fire_Spawn/Fire_Spawn";
+
+        soundRessourceSuckOneShotStop = "event:/Fire/Fire_Spawn/Fire_Spawn";
     }
     // temp just to test with the nexus directly draining ressources instead of workers
     public void Update()
@@ -48,6 +58,14 @@ public class RessourcesObject : MonoBehaviour
             onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
             if (Vector3.Distance(transform.position, nexus.transform.position) < rangeCollection)
             {
+                if (playSound)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStart, transform.position);
+                    soundRessourceSuckLoop.start();
+                }
+                playSound = false;
+                soundRessourceSuckLoop.setParameterByName("Crystal_Fill_Energy", (1 - ValeurRestante));
+
                 SetFeedbackNexusCollecting();
                 timerCount += Time.deltaTime;
 
@@ -111,6 +129,13 @@ public class RessourcesObject : MonoBehaviour
         lR.enabled = true;
         lR.SetPosition(0, transform.position);
         lR.SetPosition(1, nexus.transform.position);
+
+        if (!playSound)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStop, transform.position);
+            soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+        playSound = true;
     }
 
     public void DisableFeedbackCollectionNexus()
