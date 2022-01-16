@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{4dc5690c-e814-4252-bc9c-f024167e1f09}">
+		<property name="name">
+			<value>Crystal_Fill_Energy</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3e3b86c5-b48f-4699-b806-61e538bfb910}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7d221181-2704-4f86-acb8-8e87debd26d4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7d221181-2704-4f86-acb8-8e87debd26d4}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
