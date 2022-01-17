@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{79ac98a4-eb5a-4ddc-a770-343acc4d8cb6}">
+		<property name="name">
+			<value>Suck_Stop</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3e3b86c5-b48f-4699-b806-61e538bfb910}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{fceb263f-eb34-4427-b404-0e16305510b6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{fceb263f-eb34-4427-b404-0e16305510b6}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
