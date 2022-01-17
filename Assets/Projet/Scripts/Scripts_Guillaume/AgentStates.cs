@@ -71,7 +71,7 @@ public class AgentStates : MonoBehaviour
     {
         container = GetComponent<ClassAgentContainer>();
         speed = container.myClass.movementSpeed;
-        rangeAttaque = container.myClass.rangeAttaque;
+        rangeAttaque = container.myClass.rangeAttaque + 0.7f;
         damage = container.myClass.attackDamage;
         //rateOfFire = container.myClass.rateOfFire;
         radiusVision = container.myClass.radiusVision;
@@ -131,7 +131,7 @@ public class AgentStates : MonoBehaviour
                 break;
 
             case states.Follow:
-                if (navM.hasPath && navM.remainingDistance < 0.5f)
+                if (navM.hasPath && navM.remainingDistance < 1f)
                 {
                     SetState(states.Idle);
                 }

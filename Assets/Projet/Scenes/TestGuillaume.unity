@@ -200,8 +200,16 @@ PrefabInstance:
       value: Light-melee Variant Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7206635238208853748, guid: 4a3fd6b393ddb9c49a44539c6536e89b, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206635238208853748, guid: 4a3fd6b393ddb9c49a44539c6536e89b, type: 3}
       propertyPath: avoidancePriority
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206635238208853748, guid: 4a3fd6b393ddb9c49a44539c6536e89b, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a3fd6b393ddb9c49a44539c6536e89b, type: 3}
@@ -560,6 +568,14 @@ PrefabInstance:
     - target: {fileID: 2805288418168808679, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_Name
       value: Light-melee Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4999293070845896696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1376,6 +1392,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5091489066079663076, guid: 240b997790d0f564e9fb5df89fdbc397, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091489066079663076, guid: 240b997790d0f564e9fb5df89fdbc397, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5091489066079663098, guid: 240b997790d0f564e9fb5df89fdbc397, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1913,6 +1937,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3452014404975611936, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3452014404975611936, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3452014404975611966, guid: aaa3be0d23b81bc46944de85140e58b3, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2589,6 +2621,14 @@ PrefabInstance:
     - target: {fileID: 2805288418168808679, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_Name
       value: Light-melee Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4999293070845896696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4008,6 +4048,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light-melee Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4999293070845896696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4331,6 +4379,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light-melee Variant (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4999293070845896696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4568,8 +4624,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerTic: -20
   activateSystem: 1
-  timeForTic: 4
-  timer: 0
+  energyConsumedByNexus: 10
+  energyConsumedByUnit: 5
   radiusBattery: 10
 --- !u!1 &1142040953 stripped
 GameObject:
@@ -5576,6 +5632,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light-melee Variant (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4999293070845896696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5789,6 +5853,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light-melee Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805288418168808696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4999293070845896696, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5946,7 +6018,8 @@ MonoBehaviour:
   oneUnitDisplay: {fileID: 0}
   shopCases: []
   unitSelectionCases: []
-  ressourcesCases: []
+  ressourceBar: {fileID: 0}
+  ressourceText: {fileID: 0}
 --- !u!1001 &1661287048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6561,9 +6634,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeHarvestedByNexus: 0
   ressourceType: 0
+  ResMaxValue: 0
+  ValeurRestante: 0
+  playSound: 1
+  Plein: {fileID: 0}
+  vide: {fileID: 0}
   ressourceTimer: 1
   ressourceQuantityPerTic: 20
   stockRessources: 400
+  rangeCollection: 20
+  onReadDistance: 0
 --- !u!1001 &1780741259
 PrefabInstance:
   m_ObjectHideFlags: 0
