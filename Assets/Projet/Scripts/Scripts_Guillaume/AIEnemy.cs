@@ -56,17 +56,19 @@ public class AIEnemy : MonoBehaviour
 
     private void SearchForTarget()
     {
-
-        Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
-        if (hits.Length > 0)
+        if (aS.myState == AgentStates.states.Idle)
         {
-            for (int i = 0; i < hits.Length; i++)
+            Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
+            if (hits.Length > 0)
             {
-                if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == typeToTarget) 
+                for (int i = 0; i < hits.Length; i++)
                 {
-                    targetPlayer = hits[i].gameObject;
-                    AttackOrder();
-                    break;
+                    if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == typeToTarget)
+                    {
+                        targetPlayer = hits[i].gameObject;
+                        AttackOrder();
+                        break;
+                    }
                 }
             }
         }

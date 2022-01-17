@@ -63,25 +63,9 @@ PrefabInstance:
       propertyPath: rateOfFire
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3862458090321237469, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
+      propertyPath: typeToTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
---- !u!1 &7206635238208853739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2805288418168808679, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
-  m_PrefabInstance: {fileID: 4822649748747481612}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5620298444079696523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7206635238208853739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f7a4a625efc89449b7f9f3a6e0aaee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
-  radiusVision: 7
-  typeToTarget: 0

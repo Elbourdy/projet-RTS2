@@ -59,25 +59,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heavy-Melee Variant Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6187045985544356545, guid: 240b997790d0f564e9fb5df89fdbc397, type: 3}
+      propertyPath: typeToTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240b997790d0f564e9fb5df89fdbc397, type: 3}
---- !u!1 &6060284137957202233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5091489066079663099, guid: 240b997790d0f564e9fb5df89fdbc397, type: 3}
-  m_PrefabInstance: {fileID: 1347400943673092802}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1246303262881525369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6060284137957202233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f7a4a625efc89449b7f9f3a6e0aaee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
-  radiusVision: 7
-  typeToTarget: 0
