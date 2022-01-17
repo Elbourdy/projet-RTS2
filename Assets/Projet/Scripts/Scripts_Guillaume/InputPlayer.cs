@@ -86,8 +86,8 @@ public class InputPlayer : MonoBehaviour
             }
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
                 agent.GetComponent<AgentStates>().MoveAgent(target);
+                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
             }
         }
     }
