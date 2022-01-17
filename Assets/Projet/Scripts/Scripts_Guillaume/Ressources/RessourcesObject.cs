@@ -11,10 +11,15 @@ public class RessourcesObject : MonoBehaviour
     public Ressources_Type ressourceType;
 
     private int ressourceId;
-    public float ResMaxValue; 
+    public int ResMaxValue;
+    public float ResMaxValuePASTOUCHE;
     public float  ValeurRestante;
     public bool playSound = true;
-    
+    public bool IsReload = false;
+    public float crono = 0;
+    public float TempsReload;
+    public int ajout;
+
 
     public Material Plein, vide;
 
@@ -39,6 +44,7 @@ public class RessourcesObject : MonoBehaviour
     public void Start()
     {
         ResMaxValue = stockRessources;
+        ResMaxValuePASTOUCHE = stockRessources;
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
 
@@ -52,7 +58,7 @@ public class RessourcesObject : MonoBehaviour
     // temp just to test with the nexus directly draining ressources instead of workers
     public void Update()
     {
-          ValeurRestante = stockRessources / ResMaxValue;
+          ValeurRestante = stockRessources / ResMaxValuePASTOUCHE; ;
         if (canBeHarvestedByNexus)
         {
             onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
@@ -80,7 +86,26 @@ public class RessourcesObject : MonoBehaviour
             {
                 DisableFeedbackCollectionNexus();
             }
-        }      
+        }   
+        
+
+
+        if (IsReload == true)
+        {
+            crono += Time.deltaTime;
+            if (crono >= TempsReload)
+            {
+                stockRessources = stockRessources + ajout;
+                crono = 0;
+            }
+            if (stockRessources >= ResMaxValue)
+            {
+                stockRessources = ResMaxValue;
+                IsReload = false;
+                crono = 0;
+            }
+
+        }
     }
 
 
@@ -112,6 +137,11 @@ public class RessourcesObject : MonoBehaviour
 
     public void AddRessourceToPlayer()
     {
+
+        if (IsReload == false)
+        {
+
+       
         if (stockRessources - ressourceQuantityPerTic <= 0)
         {
             Global_Ressources.instance.ModifyRessource(ressourceId, stockRessources);
@@ -123,10 +153,24 @@ public class RessourcesObject : MonoBehaviour
         {
             soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             Debug.Log("StopPlaying");
-            Destroy(gameObject);
+            IsReload = true;
+                crono = 0;
+            
+           
+
+            
         }
+
+        }
+
+        
+
+        
     }
 
+
+    
+       
     public void SetFeedbackNexusCollecting()
     {
         lR.enabled = true;
