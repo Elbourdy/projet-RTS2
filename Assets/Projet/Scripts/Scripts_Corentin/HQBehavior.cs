@@ -77,7 +77,7 @@ public class HQBehavior : Building
             ProcessQueue();
 
             //déplacement nexus
-            if (targetPosition != transform.position)
+            if (targetPosition != transform.position  && TickManager.instance.nexusState == TickManager.statesDay.Move)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }
