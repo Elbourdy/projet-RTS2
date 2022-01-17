@@ -406,6 +406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  Bare: {fileID: 3697128941176167329}
+  Vert: {fileID: 2100000, guid: 1c9c0cf1f74d2bf47b159fe0a16c60f5, type: 2}
+  Rouge: {fileID: 2100000, guid: f006fa2959161574599159610ca5aaa6, type: 2}
   isConstruction: 0
 --- !u!114 &5189708736748838376
 MonoBehaviour:
@@ -468,6 +471,22 @@ PrefabInstance:
     - target: {fileID: 1897074971766019816, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897074971766019817, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897074971766019817, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897074971766019817, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897074971766019817, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1897074972441917558, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
       propertyPath: m_Name
@@ -562,6 +581,11 @@ PrefabInstance:
 --- !u!224 &3697128942379332925 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1897074972441917559, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
+  m_PrefabInstance: {fileID: 2962546728789265738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3697128941176167329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1897074971766019819, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
   m_PrefabInstance: {fileID: 2962546728789265738}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3591940936787904519
