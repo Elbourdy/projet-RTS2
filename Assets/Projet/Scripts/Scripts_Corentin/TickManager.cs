@@ -99,6 +99,7 @@ public class TickManager : MonoBehaviour
         {
             tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOff;
             totalTickCount = 0;
+            timerCount = 0;
         }
     }
 
