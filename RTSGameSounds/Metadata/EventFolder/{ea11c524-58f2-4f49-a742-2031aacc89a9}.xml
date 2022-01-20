@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="EventFolder" id="{61de6cd1-580a-446d-9689-767415712b06}">
+	<object class="EventFolder" id="{ea11c524-58f2-4f49-a742-2031aacc89a9}">
 		<property name="color">
 			<value>Blue Light 1</value>
 		</property>
 		<property name="name">
-			<value>Build_Nexus</value>
+			<value>Build_Nex_OnStop</value>
 		</property>
 		<relationship name="folder">
-			<destination>{ae830b4b-3bcc-46f3-9e7a-8914a306f255}</destination>
+			<destination>{61de6cd1-580a-446d-9689-767415712b06}</destination>
 		</relationship>
 	</object>
 </objects>
