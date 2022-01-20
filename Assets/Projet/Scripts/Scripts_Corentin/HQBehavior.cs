@@ -7,6 +7,9 @@ public class HQBehavior : Building
 {
     public static HQBehavior instance;
 
+    public enum statesNexus {Move, Immobilize, ForcedImmobilize}
+    public statesNexus currentNexusState = statesNexus.Move;
+
     public float BatType;
     public List<int> desiredRoaster;
     public int speed = 10;
@@ -29,7 +32,6 @@ public class HQBehavior : Building
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager");
         targetPosition = transform.position;
 
         SetConstructionHealth(100f); //FOR NEXUS
@@ -61,10 +63,10 @@ public class HQBehavior : Building
                         RaycastHit hit;
                         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
                         SetRallyPoint(hit.point);
-                        gameManager.GetComponent<SelectionPlayer>().canSelect = true;
+                        SelectionPlayer.instance.canSelect = true;
                         SetIsMovingRallyPoint(false);
                     }
-                    else
+                    else // means moving nexus
                     {
                         RaycastHit hit;
                         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
@@ -77,7 +79,7 @@ public class HQBehavior : Building
             ProcessQueue();
 
             //déplacement nexus
-            if (targetPosition != transform.position  && TickManager.instance.nexusState == TickManager.statesDay.Move)
+            if (targetPosition != transform.position  && currentNexusState == statesNexus.Move)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }

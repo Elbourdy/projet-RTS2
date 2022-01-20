@@ -11,7 +11,6 @@ public class Building : MonoBehaviour
     public GameObject selectedFeedback;
     public HealthBar productionBar, constructionBar, healthBar;
     public List<Image> recapProduction, UIClickable;
-    public GameObject gameManager;
     public float constructionHealthMax;
 
     private List<AgentClass> roasterUnits = new List<AgentClass>();
@@ -97,14 +96,21 @@ public class Building : MonoBehaviour
             AddToQueue(ButtonID);
         }
 
-        if (ButtonID == 10)
+        if (ButtonID == 9)
         {
-            EvolveNexus();
+            if (HQBehavior.instance.currentNexusState == HQBehavior.statesNexus.Move)
+            {
+                HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Immobilize;
+            }
+            else if (HQBehavior.instance.currentNexusState == HQBehavior.statesNexus.Immobilize)
+            {
+                HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Move;
+            }
         }
 
         if (ButtonID == 11)
         {
-            gameManager.GetComponent<SelectionPlayer>().canSelect = false;
+            SelectionPlayer.instance.canSelect = false;
             isMovingRallyPoint = true; 
         }
     }
@@ -301,7 +307,7 @@ public class Building : MonoBehaviour
     public void CheckIfSelected()
     {
         int i = 0;
-        List<GameObject> tmp = gameManager.GetComponent<SelectionPlayer>().selectedUnits;
+        List<GameObject> tmp = SelectionPlayer.instance.selectedUnits;
 
         foreach (GameObject e in tmp)
         {
@@ -331,7 +337,7 @@ public class Building : MonoBehaviour
         return nexusLevel;
     }
 
-    public void EvolveNexus()
+    /*public void EvolveNexus()
     {
         if (nexusLevel < ressourcesMax.Length)
         {
@@ -344,5 +350,5 @@ public class Building : MonoBehaviour
                 Global_Ressources.instance.ModifyRessourceMax(0, ressourcesMax[nexusLevel]); 
             }
         }
-    }
+    }*/
 }

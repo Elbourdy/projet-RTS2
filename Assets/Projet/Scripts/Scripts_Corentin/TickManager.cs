@@ -7,8 +7,8 @@ public class TickManager : MonoBehaviour
 {
     public static TickManager instance;
 
-    public enum statesDay {Move, Anchor, Attacked};
-    public statesDay nexusState = statesDay.Move;
+    public enum statesDay {Day, Night};
+    public statesDay dayState = statesDay.Day;
 
     public void Awake()
     {
@@ -18,11 +18,10 @@ public class TickManager : MonoBehaviour
     [SerializeField] private int timerForATick = 30;
     [SerializeField] private int tickToSwitchPhase = 5;
     [SerializeField] private Sprite spriteTickOn, spriteTickOff;
-    [SerializeField] private int timerBeforenextAttack = 5;
+    [SerializeField] private int timeBeforeAttack = 2;
 
     private int totalTickCount;
     private float timerCount;
-    private List<GameObject> ennemiesAlive = new List<GameObject>();
 
     public GameObject hBTick;
     public List<GameObject> tickFeedbacks = new List<GameObject>(); 
@@ -36,9 +35,9 @@ public class TickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(nexusState)
+        switch(dayState)
         {
-            case statesDay.Move:
+            case statesDay.Day:
                 SetFeedbackTimer();
                 timerCount += Time.deltaTime;
 
@@ -49,26 +48,14 @@ public class TickManager : MonoBehaviour
 
                 break;
 
-            case statesDay.Anchor:
-
+            case statesDay.Night:
                 timerCount += Time.deltaTime;
-                
-                if (timerCount > timerBeforenextAttack)
+
+                if (timerCount >= timeBeforeAttack)
                 {
-                    SpawnEnnemiesAttackingNexus();
-                    nexusState = statesDay.Attacked;
+                    NightAttack.instance.SpawnEnnemies();
                 }
-
-                break;
-
-            case statesDay.Attacked:
-
-                if (ennemiesAlive.Count == 0)
-                {
-                    ResetTickFeedback();
-                    nexusState = statesDay.Move;
-                }
-
+                    
                 break;
         } 
     }
@@ -80,7 +67,7 @@ public class TickManager : MonoBehaviour
         hBTick.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = (Mathf.Round(timerForATick - timerCount)).ToString();
     }
 
-    public void TickEffect()
+    public void TickEffect() //s'applique quand un tick supplementaire apparaît
     {
         timerCount = 0;
         BatteryManager.instance.ChargeUnit();
@@ -89,7 +76,8 @@ public class TickManager : MonoBehaviour
 
         if (totalTickCount == tickToSwitchPhase)
         {
-            nexusState = statesDay.Anchor;
+            dayState = statesDay.Night;
+            HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
         }
     }
 
@@ -117,10 +105,4 @@ public class TickManager : MonoBehaviour
             }
         }
     }
-
-    public void SpawnEnnemiesAttackingNexus()
-    {
-
-    }
-
 }

@@ -129,9 +129,10 @@ MonoBehaviour:
   constructionHealthActual: 0
   ressourcesMax: f401000026020000580200008a020000bc020000ee020000200300005203000084030000b6030000
   ressourcesToEvolve: 2c0100005e01000090010000c2010000f401000026020000580200008a020000bc020000ee020000
+  currentNexusState: 0
   BatType: 10
-  desiredRoaster: 010000000200000003000000
-  speed: 7
+  desiredRoaster: 03000000020000000100000000000000
+  speed: 5
   timerConsumption: 1
   ressourcesConsumed: 1
   energyRestored: 1
@@ -149,6 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  Bare: {fileID: 0}
+  Vert: {fileID: 0}
+  Rouge: {fileID: 0}
   isConstruction: 1
 --- !u!114 &7399530908361921933
 MonoBehaviour:

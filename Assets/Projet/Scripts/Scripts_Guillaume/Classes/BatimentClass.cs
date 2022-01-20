@@ -6,6 +6,5 @@ using UnityEngine;
 public class BatimentClass : UnitClass
 {
     public float speedToBeConstruct = 1;
-    public Sprite unitSprite, rallyPointSprite, demolishSprite, upgradeSprite;
-
+    public Sprite unitSprite, rallyPointSprite, demolishSprite, upgradeSprite, upFreeSprite, upLockedSprite, downSprite;
 }

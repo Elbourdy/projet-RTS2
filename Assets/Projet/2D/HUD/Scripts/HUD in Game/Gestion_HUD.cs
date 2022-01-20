@@ -108,18 +108,38 @@ public class Gestion_HUD : MonoBehaviour
                 shopCases[i].GetComponent<Image>().sprite = roasterUnits[i].unitSprite;
                 shopCases[i].transform.GetChild(0).GetComponent<Text>().text = roasterUnits[i].name;
             }
-            else if (i == 11)
+            else if (i == 9) //up and down case
             {
                 shopCases[i].SetActive(true);
-                shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
-                shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
+                if (HQBehavior.instance.currentNexusState == HQBehavior.statesNexus.Immobilize)
+                {
+                    shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.upFreeSprite;
+                    shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Ascend Nexus";
+                }
+                else if (HQBehavior.instance.currentNexusState == HQBehavior.statesNexus.Move)
+                {
+                    shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.downSprite;
+                    shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Descend Nexus";
+                }
+                else if (HQBehavior.instance.currentNexusState == HQBehavior.statesNexus.ForcedImmobilize)
+                {
+                    shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.upLockedSprite;
+                    shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Locked";
+                }
             }
-            else if (i == 10)
+            else if (i == 10) // evolve nexus case 
             {
                 shopCases[i].SetActive(true);
                 shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.upgradeSprite;
                 shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Upgrade";
             }
+            else if (i == 11)  // set rally point case
+            {
+                shopCases[i].SetActive(true);
+                shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
+                shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
+            }
+            
             else
             {
                 shopCases[i].SetActive(false);

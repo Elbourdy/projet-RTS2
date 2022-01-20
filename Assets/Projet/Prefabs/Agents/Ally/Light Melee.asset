@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Light melee
   health: 50
   Job: 1
-  timerCreation: 10
+  timerCreation: 2
   unitPrefab: {fileID: 2805288418168808679, guid: 8fce5e6cc24e03843a7d8612533d960e, type: 3}
   unitSprite: {fileID: 21300000, guid: 472a1de54168a0241a9ad96b43149f49, type: 3}
   attackDamage: 15

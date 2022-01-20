@@ -6,6 +6,14 @@ using UnityEngine.EventSystems;
 
 public class SelectionPlayer : MonoBehaviour
 {
+    public static SelectionPlayer instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
     //Add all units in the scene to this array
     //public GameObject[] allUnits;
     public List<GameObject> allFriendlyUnits = new List<GameObject>();
