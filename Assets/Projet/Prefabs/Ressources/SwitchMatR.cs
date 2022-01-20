@@ -9,6 +9,7 @@ public class SwitchMatR : MonoBehaviour
     Renderer rend;
 
     public GameObject Ressource;
+    
 
     public float indic;
     void Start()

@@ -90,7 +90,6 @@ public class HealthSystem : MonoBehaviour
 
     private void FeedBackDamage ()
     {
-        Debug.Log("Feedback");
         StartCoroutine(FeedbackColorChangeTimer());
     }
 
