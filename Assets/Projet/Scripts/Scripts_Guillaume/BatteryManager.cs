@@ -10,7 +10,7 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] public int energyConsumedByNexus = 10;
     [SerializeField] public int energyConsumedByUnit = 5;
 
-
+    public int energyConsumeByTick;
     private SelectionPlayer mySelec;
 
     public float radiusBattery = 10f;
@@ -24,6 +24,10 @@ public class BatteryManager : MonoBehaviour
         mySelec = GetComponent<SelectionPlayer>();
     }
 
+    private void Update()
+    {
+        energyConsumeByTick = CalculateEnergyConsumedNextTick();
+    }
     public void ChargeUnit()
     {
         // Stockage des unités devant être tuées par le systeme de batterie
@@ -43,9 +47,7 @@ public class BatteryManager : MonoBehaviour
         {
             if (units != null) units.GetComponent<HealthSystem>().CheckIfKill();
         }
-
-        int energyConsumed = energyConsumedByNexus + mySelec.allFriendlyUnits.Count * energyConsumedByUnit;
-        Global_Ressources.instance.ModifyRessource(0, - energyConsumed);
+        Global_Ressources.instance.ModifyRessource(0, -energyConsumeByTick);
     }
 
     private void OnDrawGizmosSelected()
@@ -57,5 +59,10 @@ public class BatteryManager : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(GameObject.Find("Nexus").transform.position, radiusBattery);
+    }
+
+    public int CalculateEnergyConsumedNextTick()
+    {
+        return energyConsumedByNexus + mySelec.allFriendlyUnits.Count * energyConsumedByUnit;
     }
 }
