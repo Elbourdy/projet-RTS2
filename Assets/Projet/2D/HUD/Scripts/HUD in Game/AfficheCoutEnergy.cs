@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class AfficheCoutEnergy : MonoBehaviour
 {
-    public int Valeur;
-    public GameObject Manager;
+    public int valeur;
+    
 
     // Update is called once per frame
     void Update()
     {
-        Valeur = Manager.GetComponent<BatteryManager>().energyConsumeByTick;
-        gameObject.GetComponent<Text>().text = "Prochain Côut :" + Valeur;
+        valeur = BatteryManager.instance.energyConsumeByTick;
+        gameObject.GetComponent<Text>().text = "Prochain Côut :" + valeur;
     }
 }
