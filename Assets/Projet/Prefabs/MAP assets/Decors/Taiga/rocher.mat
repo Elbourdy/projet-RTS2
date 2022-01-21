@@ -97,8 +97,8 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
-    - _CelShadeMidPoint: 0.65
-    - _CelShadeSoftness: 0.38
+    - _CelShadeMidPoint: 0.4
+    - _CelShadeSoftness: 0.805
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -114,13 +114,13 @@ Material:
     - _GlossyReflections: 0
     - _IndirectLightMultiplier: 0.34
     - _IsFace: 0
-    - _MainLightIgnoreCelShade: 1
+    - _MainLightIgnoreCelShade: 0.836
     - _Metallic: 0
     - _OcclusionRemapEnd: 0.69
     - _OcclusionRemapStart: 0.17
     - _OcclusionStrength: 0
     - _OutlineWidth: 4
-    - _OutlineZOffset: 0.0001
+    - _OutlineZOffset: 0
     - _OutlineZOffsetMaskRemapEnd: 0
     - _OutlineZOffsetMaskRemapStart: 1
     - _Parallax: 0.005
