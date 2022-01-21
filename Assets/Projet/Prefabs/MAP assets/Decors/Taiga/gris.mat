@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: gris
   m_Shader: {fileID: 4800000, guid: b53183fce0578cd4293c6fb979838fb4, type: 3}
-  m_ShaderKeywords: _USEEMISSION_ON _USEOCCLUSION_ON _UseAlphaClipping
+  m_ShaderKeywords: _USEOCCLUSION_ON _UseAlphaClipping
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -134,7 +134,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _UseAlphaClipping: 1
-    - _UseEmission: 1
+    - _UseEmission: 0
     - _UseOcclusion: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
