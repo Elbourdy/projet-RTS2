@@ -16008,6 +16008,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32916ec4fb764034782f776ff537cb87, type: 2}
   - {fileID: 11400000, guid: 292c9f3d157c8704892eb8e6a6338f89, type: 2}
   - {fileID: 11400000, guid: a74498e9c75f053469b9bc2a80d18e3d, type: 2}
+  tempEnnemiesAgentClassStorage: []
 --- !u!114 &1121040659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16038,6 +16039,7 @@ MonoBehaviour:
   activateSystem: 1
   energyConsumedByNexus: 10
   energyConsumedByUnit: 5
+  energyConsumeByTick: 0
   radiusBattery: 15
 --- !u!114 &1121040661
 MonoBehaviour:
@@ -16063,12 +16065,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c82c5ca064d0a4db61b135643be9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nexusState: 0
+  dayState: 0
   timerForATick: 30
   tickToSwitchPhase: 5
   spriteTickOn: {fileID: 21300000, guid: e59e8f3847f246e44bdb9ab8a0e01a5d, type: 3}
   spriteTickOff: {fileID: 21300000, guid: 3205f3765a768f046b1dcc6dd2811210, type: 3}
-  timerBeforenextAttack: 5
+  timeBeforeAttack: 2
   hBTick: {fileID: 909900947}
   tickFeedbacks:
   - {fileID: 177164816}
@@ -30120,7 +30122,7 @@ GameObject:
   - component: {fileID: 2102351231}
   - component: {fileID: 2102351230}
   - component: {fileID: 2102351229}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Sol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1021,8 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169ec8809369ec1428288d2fc11c2af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Valeur: 0
-  Manager: {fileID: 1121040654}
+  valeur: 0
 --- !u!114 &38889763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22247,7 +22246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayState: 0
-  timerForATick: 30
+  timerForATick: 1
   tickToSwitchPhase: 5
   spriteTickOn: {fileID: 21300000, guid: e59e8f3847f246e44bdb9ab8a0e01a5d, type: 3}
   spriteTickOff: {fileID: 21300000, guid: 3205f3765a768f046b1dcc6dd2811210, type: 3}

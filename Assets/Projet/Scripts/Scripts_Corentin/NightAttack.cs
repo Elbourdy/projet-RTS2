@@ -39,6 +39,7 @@ public class NightAttack : MonoBehaviour
                     GameObject instance = Instantiate(GameDataStorage.instance.tempEnnemiesAgentClassStorage[0], e.transform.position, Quaternion.identity);
                     instance.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
                     instance.GetComponent<AgentStates>().MoveAgent(HQBehavior.instance.transform.position);
+                    instance.GetComponent<AgentStates>().isSuperAggressif = true;
                     ennemiesRemaining.Add(instance);
                 }
             }

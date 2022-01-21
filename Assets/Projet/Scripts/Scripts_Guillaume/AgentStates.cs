@@ -19,6 +19,7 @@ public class AgentStates : MonoBehaviour
     // Changement d'état d'un agent par la fonction SetStates uniquement !
     public enum states { Idle, Agressif, Recolte, Construction, Follow};
     public states myState = states.Idle;
+    public bool isSuperAggressif = false;
 
     // Stats de nos agents. On récupère ces données depuis les classes crées
     [Header("Stats Agent Read-Only")]
@@ -52,6 +53,7 @@ public class AgentStates : MonoBehaviour
     private GameObject objectDestination;
     private GameObject targetToAttack;
     private GameObject ressourceTarget;
+
 
 
     // Permet de récupérer les stats de nos agents
@@ -107,6 +109,12 @@ public class AgentStates : MonoBehaviour
                         AttaqueEnnemi(targetToAttack);
                     }
                 }
+
+                else if (isSuperAggressif)
+                {
+                    SetState(states.Follow);
+                    MoveAgent(HQBehavior.instance.transform.position);
+                }
                 else
                 {
                     // Remet en idle si plus aucune cible à attaquer
@@ -137,6 +145,7 @@ public class AgentStates : MonoBehaviour
                     SetState(states.Idle);
                 }
                     break;
+
             default:
                 break;
         }

@@ -56,7 +56,7 @@ public class AIEnemy : MonoBehaviour
 
     private void SearchForTarget()
     {
-        if (aS.myState == AgentStates.states.Idle)
+        if (aS.myState != AgentStates.states.Agressif)
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
             if (hits.Length > 0)

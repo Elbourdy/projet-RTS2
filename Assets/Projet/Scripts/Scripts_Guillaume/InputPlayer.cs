@@ -10,7 +10,6 @@ public class InputPlayer : MonoBehaviour
     private SelectionPlayer sp;
 
 
-
     private void Awake()
     {
         sp = GetComponent<SelectionPlayer>();
@@ -54,6 +53,7 @@ public class InputPlayer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log("Hit");
             if (hit.collider.name == "Sol")
             {
                 GoToTarget(hit);
@@ -72,6 +72,17 @@ public class InputPlayer : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    public static LayerMask NamesToMask(params string[] layerNames)
+    {
+        LayerMask ret = (LayerMask)0;
+        foreach (var name in layerNames)
+        {
+            ret |= (1 << LayerMask.NameToLayer(name));
+        }
+        return ret;
     }
 
 
