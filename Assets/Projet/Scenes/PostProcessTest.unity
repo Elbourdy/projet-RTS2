@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 1e68fdaf6d52894448161b1039c66519, type: 2}
 --- !u!4 &1790641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7377303683863635563, guid: 81830da744305d34c8acab1e187c46fa, type: 3}
@@ -31556,6 +31556,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7399530908094482826, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 4874126678125670354, guid: 765bb8c806b04344b8f18fdb8596750b, type: 3}
     - target: {fileID: 7399530908826674871, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -31564,6 +31568,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7399530908891130379, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 4874126678125670354, guid: 765bb8c806b04344b8f18fdb8596750b, type: 3}
     - target: {fileID: 7399530909435192849, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
