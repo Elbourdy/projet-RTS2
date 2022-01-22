@@ -11,6 +11,6 @@ public class AfficheCoutEnergy : MonoBehaviour
     void Update()
     {
         valeur = BatteryManager.instance.energyConsumeByTick;
-        gameObject.GetComponent<Text>().text = "Prochain Côut :" + valeur;
+        gameObject.GetComponent<Text>().text =  ""+valeur;
     }
 }
