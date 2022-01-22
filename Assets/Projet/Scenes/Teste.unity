@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 1aa1fc508c1284e408e4237294a3f7e5, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!4 &1790641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7377303683863635563, guid: 81830da744305d34c8acab1e187c46fa, type: 3}
@@ -536,7 +536,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_LocalScale.x
@@ -3523,7 +3523,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_LocalScale.x
@@ -5419,7 +5419,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_LocalScale.x
@@ -49973,7 +49973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_LocalScale.x
@@ -52386,7 +52386,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cfcdfab692f53e1438a7ea3015113823, type: 3}
       propertyPath: m_LocalScale.x
@@ -71012,7 +71012,7 @@ PrefabInstance:
     - target: {fileID: 5579155423488059725, guid: 0451b5239882caa48be5cfbc720af12e, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 2ae27683250c3024ba2edd16c57d6889, type: 2}
+      objectReference: {fileID: 23800000, guid: 6cc3572d54b627f4aac4518af1b14227, type: 2}
     - target: {fileID: 5579155423488059725, guid: 0451b5239882caa48be5cfbc720af12e, type: 3}
       propertyPath: m_UseGeometry
       value: 1
