@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4629,6 +4629,7 @@ MonoBehaviour:
   mainAgentClassStorage:
   - {fileID: 11400000, guid: f4ab09914208e0e47afd8ec83c5cde5b, type: 2}
   - {fileID: 11400000, guid: db6feffdebf16f243b8f1257d58a99f4, type: 2}
+  tempEnnemiesAgentClassStorage: []
 --- !u!114 &1121040659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,6 +4660,7 @@ MonoBehaviour:
   activateSystem: 1
   energyConsumedByNexus: 10
   energyConsumedByUnit: 5
+  energyConsumeByTick: 0
   radiusBattery: 10
 --- !u!1 &1142040953 stripped
 GameObject:
@@ -6668,15 +6670,23 @@ MonoBehaviour:
   canBeHarvestedByNexus: 0
   ressourceType: 0
   ResMaxValue: 0
-  ValeurRestante: 0
+  ResMaxValuePASTOUCHE: 0
+  remainingEnergyFloat: 0
   playSound: 1
+  isReload: 0
+  crono: 0
+  TempsReload: 0
+  ajout: 0
   Plein: {fileID: 0}
   vide: {fileID: 0}
-  ressourceTimer: 1
+  tickRessourceTimer: 1
   ressourceQuantityPerTic: 20
   stockRessources: 400
   rangeCollection: 20
   onReadDistance: 0
+  crystalRessourcesRenderer: []
+  chargeCrystal: {fileID: 0}
+  discargeCrystal: {fileID: 0}
 --- !u!1001 &1780741259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7059,23 +7069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 4
---- !u!1 &1899197260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1816381248506597189, guid: 9823700b60c152e4b91c81125139e998, type: 3}
-  m_PrefabInstance: {fileID: 2758365546478945239}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1899197262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899197260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e0612a85813cb42a6bc95108ac70d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1904963214
 PrefabInstance:
   m_ObjectHideFlags: 0
