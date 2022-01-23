@@ -184,11 +184,9 @@ public class RessourcesObject : MonoBehaviour
 
     public void SetFeedbackRessourcesCrystal()
     {
-        Material newMat = null;
-        newMat.Lerp(discargeCrystal, chargeCrystal, remainingEnergyFloat);
         foreach (Renderer e in crystalRessourcesRenderer)
         {
-            e.material = newMat;
+            e.material.Lerp(discargeCrystal, chargeCrystal, remainingEnergyFloat);
         }
     }
 
