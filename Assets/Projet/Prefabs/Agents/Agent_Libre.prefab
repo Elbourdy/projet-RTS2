@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myState: 0
+  isSuperAggressif: 0
   speed: 10
   rangeAttaque: 1
   damage: 1
@@ -408,9 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  Bare: {fileID: 3697128941176167329}
-  Vert: {fileID: 2100000, guid: 1c9c0cf1f74d2bf47b159fe0a16c60f5, type: 2}
-  Rouge: {fileID: 2100000, guid: f006fa2959161574599159610ca5aaa6, type: 2}
+  healthBar: {fileID: 3697128941176167329}
   isConstruction: 0
 --- !u!114 &5189708736748838376
 MonoBehaviour:

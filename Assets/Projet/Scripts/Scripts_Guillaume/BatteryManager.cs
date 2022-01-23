@@ -35,13 +35,16 @@ public class BatteryManager : MonoBehaviour
         GameObject[] killedUnits = new GameObject[mySelec.allFriendlyUnits.Count];
         for (int i = 0; i < mySelec.allFriendlyUnits.Count; i++)
         {
-            // Dégâts infligés si booléen est vrai. A mettre sur false ou true si l'agent est ou n'est pas dans la zone du nexus
-            if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().CheckDistanceNexus()) mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(damagePerTic);
-            else mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(-damagePerTic);
-            if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0)
+            if (!mySelec.allFriendlyUnits[i].GetComponent<Agent_Type>().isConstruction)
             {
-                killedUnits[i] = mySelec.allFriendlyUnits[i];
-            }
+                // Dégâts infligés si booléen est vrai. A mettre sur false ou true si l'agent est ou n'est pas dans la zone du nexus
+                if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().CheckDistanceNexus()) mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(damagePerTic);
+                else mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(-damagePerTic);
+                if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0)
+                {
+                    killedUnits[i] = mySelec.allFriendlyUnits[i];
+                }
+            } 
         }
         foreach (var units in killedUnits)
         {

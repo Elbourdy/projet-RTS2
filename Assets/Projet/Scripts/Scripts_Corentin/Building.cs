@@ -13,18 +13,15 @@ public class Building : MonoBehaviour
     public List<Image> recapProduction, UIClickable;
     public float constructionHealthMax;
 
-    private List<AgentClass> roasterUnits = new List<AgentClass>();
+    [SerializeField] private List<AgentClass> roasterUnits = new List<AgentClass>();
     private List<AgentClass> productionQueue = new List<AgentClass>(); 
     private float actualTimer, timerCount;
     private bool isSelected, isConstructed, isMovingRallyPoint = false;
     public float constructionHealthActual;
 
-    public int[] ressourcesMax, ressourcesToEvolve;
-    private int nexusLevel = 0;
-
     public void AddToRoaster(int IDNumberRoaster)
     {
-        List<AgentClass> fullRoaster = GameObject.Find("GameManager").GetComponent<GameDataStorage>().mainAgentClassStorage;
+        List<AgentClass> fullRoaster = GameDataStorage.instance.mainAgentClassStorage;
         roasterUnits.Add(fullRoaster[IDNumberRoaster]);
     }
 
@@ -327,7 +324,7 @@ public class Building : MonoBehaviour
         }
     }
 
-    public void SetNexusLevel(int level)
+    /*public void SetNexusLevel(int level)
     {
         nexusLevel = level;
     }
@@ -337,7 +334,7 @@ public class Building : MonoBehaviour
         return nexusLevel;
     }
 
-    /*public void EvolveNexus()
+    public void EvolveNexus()
     {
         if (nexusLevel < ressourcesMax.Length)
         {

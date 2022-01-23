@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 158273673537399656}
   - component: {fileID: 7399530908361921933}
   - component: {fileID: 7399530908361922039}
-  - component: {fileID: 7399530908600557936}
+  - component: {fileID: 2675309895078041132}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Building
@@ -124,14 +124,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  gameManager: {fileID: 0}
   constructionHealthMax: 100
   constructionHealthActual: 0
-  ressourcesMax: f401000026020000580200008a020000bc020000ee020000200300005203000084030000b6030000
-  ressourcesToEvolve: 2c0100005e01000090010000c2010000f401000026020000580200008a020000bc020000ee020000
   currentNexusState: 0
   BatType: 10
-  desiredRoaster: 03000000020000000100000000000000
+  desiredRoaster: 00000000
   speed: 5
   timerConsumption: 1
   ressourcesConsumed: 1
@@ -150,9 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  Bare: {fileID: 0}
-  Vert: {fileID: 0}
-  Rouge: {fileID: 0}
+  healthBar: {fileID: 7399530909435192850}
   isConstruction: 1
 --- !u!114 &7399530908361921933
 MonoBehaviour:
@@ -182,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myClass: {fileID: 11400000, guid: 31af2f2162811bd49838f2bc1f2ddc3b, type: 2}
---- !u!120 &7399530908600557936
+--- !u!120 &2675309895078041132
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +228,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.22115326
+        value: 0.34337425
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -23,15 +23,16 @@ public class HQBehavior : Building
     // Start is called before the first frame update
     private void Awake()
     {
-        instance = this;
-        foreach (int e in desiredRoaster)
-        {
-            AddToRoaster(e);
-        }
+        instance = this; 
     }
 
     void Start()
     {
+        foreach (int e in desiredRoaster)
+        {
+            AddToRoaster(e);
+        }
+
         targetPosition = transform.position;
 
         SetConstructionHealth(100f); //FOR NEXUS
@@ -43,46 +44,35 @@ public class HQBehavior : Building
     {
         CheckIfSelected();
 
-        if (!GetIsConstructed())
+        if (GetIsSelected())
         {
-            CheckIfBuildingConstructed();
-
-            if (Input.GetKeyDown(KeyCode.C))
+            Debug.Log("IsSelected");
+            if (Input.GetMouseButtonUp(1))
             {
-                SetConstructionHealth(GetConstructionHealth() + 100f);
-            }
-        }
-        else
-        {
-            if (GetIsSelected())
-            {
-                if (Input.GetMouseButtonUp(1))
+                if (GetIsMovingRallyPoint())
                 {
-                    if (GetIsMovingRallyPoint())
-                    {
-                        RaycastHit hit;
-                        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
-                        SetRallyPoint(hit.point);
-                        SelectionPlayer.instance.canSelect = true;
-                        SetIsMovingRallyPoint(false);
-                    }
-                    else // means moving nexus
-                    {
-                        RaycastHit hit;
-                        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
-                        targetPosition = hit.point;
-                        targetPosition.y = transform.position.y;
-                    }
-                }      
-            }
+                    RaycastHit hit;
+                    Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+                    SetRallyPoint(hit.point);
+                    SelectionPlayer.instance.canSelect = true;
+                    SetIsMovingRallyPoint(false);
+                }
+                else // means moving nexus
+                {
+                    RaycastHit hit;
+                    Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+                    targetPosition = hit.point;
+                    targetPosition.y = transform.position.y;
+                }
+            }      
+        }
 
-            ProcessQueue();
+        ProcessQueue();
 
-            //déplacement nexus
-            if (targetPosition != transform.position  && currentNexusState == statesNexus.Move)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime * NexusLevelManager.instance.GetVitesseNexus());
-            }
+        //déplacement nexus
+        if (targetPosition != transform.position  && currentNexusState == statesNexus.Move)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime * NexusLevelManager.instance.GetVitesseNexus());
         }
 
         SetFeedbackUI();

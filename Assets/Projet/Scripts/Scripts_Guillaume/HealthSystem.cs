@@ -58,7 +58,8 @@ public class HealthSystem : MonoBehaviour
     {
         var canvas = transform.Find("UIOnWorldSpace").Find("Canvas");
         myHealthBar = canvas.Find("HealthBar").GetComponent<HealthBar>();
-        myBatteryBar = canvas.Find("BatteryBar").GetComponent<HealthBar>();
+        if (!canvas.parent.parent.gameObject.GetComponent<Agent_Type>().isConstruction)
+            myBatteryBar = canvas.Find("BatteryBar").GetComponent<HealthBar>();
     }
 
     private void OnEnable()
@@ -95,9 +96,12 @@ public class HealthSystem : MonoBehaviour
 
     IEnumerator FeedbackColorChangeTimer()
     {
-        GetComponent<MeshRenderer>().material.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        GetComponent<MeshRenderer>().material.color = Color.white;
+        if (GetComponent<ClassAgentContainer>() != null)
+        {
+            GetComponent<MeshRenderer>().material.color = Color.red;
+            yield return new WaitForSeconds(0.2f);
+            GetComponent<MeshRenderer>().material.color = Color.white;
+        }
     }
 
     public void HealthChange(float damageNumber)

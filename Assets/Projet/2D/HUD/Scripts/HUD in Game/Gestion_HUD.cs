@@ -37,10 +37,7 @@ public class Gestion_HUD : MonoBehaviour
 
             if (selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>())
             {
-                if (selectionPlayer.selectedUnits[0].GetComponent<Building>().GetIsConstructed()) ///temporary fix for when the building is not constructed, it does not display roaster units nor prevent updates of display
-                    DisplayShopCasesForBuilding();
-                else
-                    ResetShopCases();
+                DisplayShopCasesForBuilding();
             }
 
             if (selectionPlayer.selectedUnits[0].GetComponent<ClassAgentContainer>())
