@@ -18,5 +18,15 @@ public class SceneShorcuts : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Global_Ressources.instance.ModifyRessource(0, 100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Global_Ressources.instance.ModifyRessource(0, -100);
+        }
     }
 }

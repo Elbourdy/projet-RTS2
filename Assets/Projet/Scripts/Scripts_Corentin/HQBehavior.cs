@@ -81,7 +81,7 @@ public class HQBehavior : Building
             //déplacement nexus
             if (targetPosition != transform.position  && currentNexusState == statesNexus.Move)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime * NexusLevelManager.instance.GetVitesseNexus());
             }
         }
 

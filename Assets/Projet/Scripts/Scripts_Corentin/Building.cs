@@ -78,7 +78,7 @@ public class Building : MonoBehaviour
                 actualTimer = productionQueue[0].timerCreation;
             }
 
-            timerCount += Time.deltaTime;
+            timerCount += Time.deltaTime * NexusLevelManager.instance.GetMultiplicatorSpeedProd();
 
             if (timerCount > actualTimer)
             {

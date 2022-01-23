@@ -47,7 +47,7 @@ public class BatteryManager : MonoBehaviour
         {
             if (units != null) units.GetComponent<HealthSystem>().CheckIfKill();
         }
-        Global_Ressources.instance.ModifyRessource(0, -energyConsumeByTick);
+        Global_Ressources.instance.ModifyRessource(0, - energyConsumeByTick);
     }
 
     private void OnDrawGizmosSelected()

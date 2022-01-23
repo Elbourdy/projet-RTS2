@@ -15,7 +15,7 @@ public class RessourcesObject : MonoBehaviour
     public float ResMaxValuePASTOUCHE;
     public float  ValeurRestante;
     public bool playSound = true;
-    public bool IsReload = false;
+    public bool isReload = false;
     public float crono = 0;
     public float TempsReload;
     public int ajout;
@@ -23,7 +23,7 @@ public class RessourcesObject : MonoBehaviour
 
     public Material Plein, vide;
 
-    [SerializeField] private float ressourceTimer = 1;
+    [SerializeField] private float tickRessourceTimer = 1;
     [SerializeField] private int ressourceQuantityPerTic = 20;
     [SerializeField] private int stockRessources = 400;
     [SerializeField] private int rangeCollection = 20;
@@ -55,7 +55,7 @@ public class RessourcesObject : MonoBehaviour
 
         //soundRessourceSuckOneShotStop = "event:/Fire/Fire_Spawn/Fire_Spawn";
     }
-    // temp just to test with the nexus directly draining ressources instead of workers
+
     public void Update()
     {
           ValeurRestante = stockRessources / ResMaxValuePASTOUCHE; ;
@@ -76,11 +76,11 @@ public class RessourcesObject : MonoBehaviour
                 SetFeedbackNexusCollecting();
                 timerCount += Time.deltaTime;
 
-                if (timerCount >= ressourceTimer)
+                /*if (timerCount >= tickRessourceTimer / NexusLevelManager.instance.GetVitesseCollecte());
                 {
                     AddRessourceToPlayer();
                     timerCount = 0;
-                }
+                }*/
             }
             else
             {
@@ -90,7 +90,7 @@ public class RessourcesObject : MonoBehaviour
         
 
 
-        if (IsReload == true)
+        if (isReload == true)
         {
             crono += Time.deltaTime;
             if (crono >= TempsReload)
@@ -101,7 +101,7 @@ public class RessourcesObject : MonoBehaviour
             if (stockRessources >= ResMaxValue)
             {
                 stockRessources = ResMaxValue;
-                IsReload = false;
+                isReload = false;
                 crono = 0;
             }
 
@@ -130,45 +130,31 @@ public class RessourcesObject : MonoBehaviour
 
     public float GetTimer()
     {
-        return ressourceTimer;
+        return tickRessourceTimer;
     }
 
 
 
     public void AddRessourceToPlayer()
     {
-
-        if (IsReload == false)
+        if (isReload == false)
         {
+            if (stockRessources - ressourceQuantityPerTic <= 0)
+            {
+                Global_Ressources.instance.ModifyRessource(ressourceId, stockRessources);
+            }
+            else Global_Ressources.instance.ModifyRessource(ressourceId, ressourceQuantityPerTic);
 
-       
-        if (stockRessources - ressourceQuantityPerTic <= 0)
-        {
-            Global_Ressources.instance.ModifyRessource(ressourceId, stockRessources);
+            stockRessources -= ressourceQuantityPerTic;
+
+            if (stockRessources <= 0)
+            {
+                soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                isReload = true;
+                crono = 0;   
+            }
         }
-
-        else Global_Ressources.instance.ModifyRessource(ressourceId, ressourceQuantityPerTic);
-        stockRessources -= ressourceQuantityPerTic;
-        if (stockRessources <= 0)
-        {
-            soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            Debug.Log("StopPlaying");
-            IsReload = true;
-                crono = 0;
-            
-           
-
-            
-        }
-
-        }
-
-        
-
-        
     }
-
-
     
        
     public void SetFeedbackNexusCollecting()
