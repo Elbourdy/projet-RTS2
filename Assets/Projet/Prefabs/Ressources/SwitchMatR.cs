@@ -19,10 +19,15 @@ public class SwitchMatR : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         indic = Ressource.GetComponent<RessourcesObject>().ValeurRestante;
 
-        rend.material.Lerp(B, A, indic);
+        
+    }*/
+
+    public void FeedbackRessourcesCrystal(float n)
+    {
+        rend.material.Lerp(B, A, n);
     }
 }

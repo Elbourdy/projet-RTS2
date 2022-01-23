@@ -13,7 +13,7 @@ public class RessourcesObject : MonoBehaviour
     private int ressourceId;
     public int ResMaxValue;
     public float ResMaxValuePASTOUCHE;
-    public float  ValeurRestante;
+    public float  remainingEnergyFloat;
     public bool playSound = true;
     public bool isReload = false;
     public float crono = 0;
@@ -28,6 +28,10 @@ public class RessourcesObject : MonoBehaviour
     [SerializeField] private int stockRessources = 400;
     [SerializeField] private int rangeCollection = 20;
     [SerializeField] private float onReadDistance = 0f;
+
+    public List<Renderer> crystalRessourcesRenderer = new List<Renderer>();
+    public Material chargeCrystal, discargeCrystal;
+
 
     //temp for testing with nexus
     private float timerCount;
@@ -48,8 +52,8 @@ public class RessourcesObject : MonoBehaviour
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
 
-        soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Nexus/Build_Nex_Collect/Build_Nex_Collect");
-        soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        //soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Nexus/Build_Nex_Collect/Build_Nex_Collect");
+        //soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
 
         //soundRessourceSuckOneShotStart = "event:/Fire/Fire_Spawn/Fire_Spawn";
 
@@ -58,7 +62,8 @@ public class RessourcesObject : MonoBehaviour
 
     public void Update()
     {
-          ValeurRestante = stockRessources / ResMaxValuePASTOUCHE; ;
+        remainingEnergyFloat = stockRessources / ResMaxValuePASTOUCHE;
+
         if (canBeHarvestedByNexus)
         {
             onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
@@ -68,27 +73,27 @@ public class RessourcesObject : MonoBehaviour
                 {
                     //FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStart, transform.position);
                     soundRessourceSuckLoop.start();
-                    Debug.Log("StartPlaying");
+                    //Debug.Log("StartPlaying");
                 }
                 playSound = false;
-                soundRessourceSuckLoop.setParameterByName("Crystal_Fill_Energy", (1 - ValeurRestante));
+                //soundRessourceSuckLoop.setParameterByName("Crystal_Fill_Energy", (1 - ValeurRestante));
 
                 SetFeedbackNexusCollecting();
-                timerCount += Time.deltaTime;
+                timerCount += Time.deltaTime * NexusLevelManager.instance.GetVitesseCollecte();
 
-                /*if (timerCount >= tickRessourceTimer / NexusLevelManager.instance.GetVitesseCollecte());
+                if (timerCount >= tickRessourceTimer)
                 {
                     AddRessourceToPlayer();
                     timerCount = 0;
-                }*/
+                }
             }
             else
             {
                 DisableFeedbackCollectionNexus();
             }
-        }   
-        
+        }
 
+        SetFeedbackRessourcesCrystal();
 
         if (isReload == true)
         {
@@ -149,7 +154,7 @@ public class RessourcesObject : MonoBehaviour
 
             if (stockRessources <= 0)
             {
-                soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                //soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 isReload = true;
                 crono = 0;   
             }
@@ -171,10 +176,20 @@ public class RessourcesObject : MonoBehaviour
         if (!playSound)
         {
             //FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStop, transform.position);
-            soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            Debug.Log("StopPlaying");
+            //soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //Debug.Log("StopPlaying");
         }
         playSound = true;
+    }
+
+    public void SetFeedbackRessourcesCrystal()
+    {
+        Material newMat = null;
+        newMat.Lerp(discargeCrystal, chargeCrystal, remainingEnergyFloat);
+        foreach (Renderer e in crystalRessourcesRenderer)
+        {
+            e.material = newMat;
+        }
     }
 
 

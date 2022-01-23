@@ -26,7 +26,7 @@ public class BatteryManager : MonoBehaviour
 
     private void Update()
     {
-        energyConsumeByTick = CalculateEnergyConsumedNextTick();
+        energyConsumeByTick = Mathf.RoundToInt(CalculateEnergyConsumedNextTick() * NexusLevelManager.instance.GetMultiplicatorConsomption());
     }
     public void ChargeUnit()
     {
