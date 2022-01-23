@@ -50,6 +50,7 @@ public class TickManager : MonoBehaviour
 
             case statesDay.Night:
                 timerCount += Time.deltaTime;
+                NightAttack.instance.PreparationStartAttack();
 
                 if (timerCount >= timeBeforeAttack)
                 {
