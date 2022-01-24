@@ -76,7 +76,7 @@ public class AgentStates : MonoBehaviour
         speed = container.myClass.movementSpeed;
         rangeAttaque = container.myClass.rangeAttaque + 0.7f;
         damage = container.myClass.attackDamage;
-        //rateOfFire = container.myClass.rateOfFire;
+        rateOfFire = container.myClass.rateOfFire;
         radiusVision = container.myClass.radiusVision;
     }
 
