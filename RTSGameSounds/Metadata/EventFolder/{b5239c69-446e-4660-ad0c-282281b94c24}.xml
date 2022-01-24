@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="EventFolder" id="{6f280c87-2762-427d-99ac-c5df2ef8c23b}">
+	<object class="EventFolder" id="{b5239c69-446e-4660-ad0c-282281b94c24}">
 		<property name="name">
-			<value>UI_OnClick</value>
+			<value>UI_Act_Validate</value>
 		</property>
 		<relationship name="folder">
-			<destination>{4fc0d3e1-a626-4203-a032-01516b9e842f}</destination>
+			<destination>{6b57a334-45d2-4dfd-86c1-ac272112ef3a}</destination>
 		</relationship>
 	</object>
 </objects>

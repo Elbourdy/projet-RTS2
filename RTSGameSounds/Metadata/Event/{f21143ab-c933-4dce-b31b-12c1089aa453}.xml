@@ -115,16 +115,13 @@
 			<value>true</value>
 		</property>
 		<property name="length">
-			<value>10.5</value>
+			<value>7</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{453e3a2f-d1a0-4063-88d1-0843e2e01f5a}</destination>
-		</relationship>
-		<relationship name="fadeOutCurve">
-			<destination>{cfddd22c-5e58-4faa-99aa-8581dd35999f}</destination>
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{16cbc645-8cb5-4f7b-b8ce-32086b383731}</destination>
@@ -178,14 +175,6 @@
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{c42129dc-9f4e-4882-b4aa-246959dc77d0}</destination>
-		</relationship>
-	</object>
-	<object class="FadeCurve" id="{cfddd22c-5e58-4faa-99aa-8581dd35999f}">
-		<relationship name="startPoint">
-			<destination>{95410ae3-5a12-4147-8903-85ee98edc522}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{e9676b1e-93d9-458f-b31c-a94f87be054c}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{4856d38c-870e-4686-9e5b-5ee365c7bb47}">
@@ -242,25 +231,6 @@
 		</property>
 		<property name="value">
 			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{95410ae3-5a12-4147-8903-85ee98edc522}">
-		<property name="position">
-			<value>7.5</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.0503297374</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{e9676b1e-93d9-458f-b31c-a94f87be054c}">
-		<property name="position">
-			<value>10.5</value>
-		</property>
-		<property name="value">
-			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{3cfafdbe-0bcd-46b9-b069-690f9fed8272}">
