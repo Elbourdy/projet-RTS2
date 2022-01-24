@@ -20,7 +20,7 @@ public class TowerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DisplayRange(range, Color.cyan);
     }
 
     // Update is called once per frame
@@ -84,5 +84,29 @@ public class TowerBehavior : MonoBehaviour
     private void ResetTower()
     {
         reloadSpeedCount = 0f;
+    }
+
+    public void DisplayRange(float range, Color color)
+    {
+        LineRenderer lRBattery = GetComponent<LineRenderer>();
+        lRBattery.positionCount = 50;
+        lRBattery.useWorldSpace = false;
+        lRBattery.SetColors(color, color);
+
+        float x;
+        float y = 0f;
+        float z;
+
+        float angle = 20f;
+
+        for (int i = 0; i < 50; i++)
+        {
+            x = Mathf.Sin(Mathf.Deg2Rad * angle) * range;
+            z = Mathf.Cos(Mathf.Deg2Rad * angle) * range;
+
+            lRBattery.SetPosition(i, new Vector3(x, y, z));
+
+            angle += (360f / 49f);
+        }
     }
 }
