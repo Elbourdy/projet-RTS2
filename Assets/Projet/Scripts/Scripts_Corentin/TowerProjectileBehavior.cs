@@ -35,7 +35,7 @@ public class TowerProjectileBehavior : MonoBehaviour
         if (collider.gameObject == target)
         {
             target.GetComponent<HealthSystem>().HealthChange(-damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

@@ -31,7 +31,7 @@ public class SceneShorcuts : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Time.timeScale = 0.2f;
+            Time.timeScale -= 0.2f;
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -41,7 +41,7 @@ public class SceneShorcuts : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Time.timeScale = 3f; ;
+            Time.timeScale += 0.5f; ;
         }
     }
 }
