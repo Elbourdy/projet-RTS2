@@ -20,9 +20,10 @@ public class HealthSystem : MonoBehaviour
 
 
     // Batterie system
+    [Header("Syestème de batterie")]
     [SerializeField] private float batteryHealth = 100;
     private float maxBatteryHealth;
-    private HealthBar myBatteryBar;
+    [SerializeField] private HealthBar myBatteryBar;
     public bool damageBattery = true;
 
 

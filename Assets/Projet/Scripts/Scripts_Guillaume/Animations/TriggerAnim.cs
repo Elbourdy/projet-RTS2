@@ -22,10 +22,7 @@ public class TriggerAnim : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        Debug.Log(myMator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-    }
+    
 
     private void OnEnable()
     {

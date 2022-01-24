@@ -11,17 +11,15 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] public int energyConsumedByUnit = 5;
 
     public int energyConsumeByTick;
-    private SelectionPlayer mySelec;
 
     public float radiusBattery = 10f;
 
     public static BatteryManager instance;
-
+    public List<GameObject> batteries = new List<GameObject>();
 
     private void Awake()
     {
         instance = this;
-        mySelec = GetComponent<SelectionPlayer>();
     }
 
     private void Update()
@@ -32,21 +30,23 @@ public class BatteryManager : MonoBehaviour
     {
         // Stockage des unités devant être tuées par le systeme de batterie
         // On fait ça pour ne pas fucked up la lecture de la list des agents actifs
-        GameObject[] killedUnits = new GameObject[mySelec.allFriendlyUnits.Count];
-        for (int i = 0; i < mySelec.allFriendlyUnits.Count; i++)
+        GameObject[] killedUnits = new GameObject[batteries.Count];
+        for (int i = 0; i < batteries.Count; i++)
         {
             // Dégâts infligés si booléen est vrai. A mettre sur false ou true si l'agent est ou n'est pas dans la zone du nexus
-            if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().CheckDistanceNexus()) mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(damagePerTic);
-            else mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().ChangeBatteryHealth(-damagePerTic);
-            if (mySelec.allFriendlyUnits[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0)
+            if (batteries[i].GetComponent<HealthSystem>().CheckDistanceNexus()) batteries[i].GetComponent<HealthSystem>().ChangeBatteryHealth(damagePerTic);
+            else batteries[i].GetComponent<HealthSystem>().ChangeBatteryHealth(-damagePerTic);
+            if (batteries[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0)
             {
-                killedUnits[i] = mySelec.allFriendlyUnits[i];
+                killedUnits[i] = batteries[i];
             }
         }
         foreach (var units in killedUnits)
         {
             if (units != null) units.GetComponent<HealthSystem>().CheckIfKill();
         }
+
+        
         Global_Ressources.instance.ModifyRessource(0, - energyConsumeByTick);
     }
 
@@ -63,6 +63,6 @@ public class BatteryManager : MonoBehaviour
 
     public int CalculateEnergyConsumedNextTick()
     {
-        return energyConsumedByNexus + mySelec.allFriendlyUnits.Count * energyConsumedByUnit;
+        return energyConsumedByNexus + batteries.Count * energyConsumedByUnit;
     }
 }
