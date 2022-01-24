@@ -28,5 +28,20 @@ public class SceneShorcuts : MonoBehaviour
         {
             Global_Ressources.instance.ModifyRessource(0, -100);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Time.timeScale = 0.2f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Time.timeScale = 1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Time.timeScale = 3f; ;
+        }
     }
 }

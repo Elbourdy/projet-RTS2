@@ -58,7 +58,7 @@ public class HealthSystem : MonoBehaviour
     {
         var canvas = transform.Find("UIOnWorldSpace").Find("Canvas");
         myHealthBar = canvas.Find("HealthBar").GetComponent<HealthBar>();
-        if (!canvas.parent.parent.gameObject.GetComponent<Agent_Type>().isConstruction)
+        if (canvas.parent.parent.gameObject.name != "Nexus")
             myBatteryBar = canvas.Find("BatteryBar").GetComponent<HealthBar>();
     }
 
