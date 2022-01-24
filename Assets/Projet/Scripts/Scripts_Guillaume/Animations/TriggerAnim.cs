@@ -43,7 +43,11 @@ public class TriggerAnim : MonoBehaviour
     private void TriggerRun()
     {
         if (myMator != null)
+        {
+            myMator.ResetTrigger("IdleTrigger");
             myMator.SetTrigger("RunTrigger");
+            
+        }
     }
 
     private void TriggerIdle()
