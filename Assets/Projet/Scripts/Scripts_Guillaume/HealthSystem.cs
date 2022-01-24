@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private float batteryHealth = 100;
     private float maxBatteryHealth;
     [SerializeField] private HealthBar myBatteryBar;
-    public bool damageBattery = true;
+    public bool damageBattery = true, startAtZeroBattery = false;
 
 
     private void Awake()
@@ -32,18 +32,17 @@ public class HealthSystem : MonoBehaviour
         nexus = GameObject.Find("Nexus");
 
         maxBatteryHealth = batteryHealth;
+        if (startAtZeroBattery)
+            batteryHealth = 0;
         //check la classe de l'objet en question et récupère la valeur dans la classe
         if (GetComponent<ClassBatimentContainer>() != null) health = GetComponent<ClassBatimentContainer>().myClass.health;
         if (GetComponent<ClassAgentContainer>() != null) health = GetComponent<ClassAgentContainer>().myClass.health;
 
         maxHealth = health;
         FindBarInChild();
-        
+        if (gameObject.name != "Nexus")
+            ChangeBatteryBar();
     }
-
-
-    
-
 
     public bool CheckDistanceNexus()
     {

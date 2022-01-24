@@ -36,7 +36,7 @@ public class BatteryManager : MonoBehaviour
             // Dégâts infligés si booléen est vrai. A mettre sur false ou true si l'agent est ou n'est pas dans la zone du nexus
             if (batteries[i].GetComponent<HealthSystem>().CheckDistanceNexus()) batteries[i].GetComponent<HealthSystem>().ChangeBatteryHealth(damagePerTic);
             else batteries[i].GetComponent<HealthSystem>().ChangeBatteryHealth(-damagePerTic);
-            if (batteries[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0)
+            if (batteries[i].GetComponent<HealthSystem>().GetBatteryHealth() <= 0 && !batteries[i].GetComponent<Agent_Type>().isConstruction)
             {
                 killedUnits[i] = batteries[i];
             }

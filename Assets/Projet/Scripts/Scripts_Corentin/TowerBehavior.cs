@@ -15,18 +15,33 @@ public class TowerBehavior : MonoBehaviour
     [SerializeField] float range;
     [SerializeField] Agent_Type.TypeAgent typeToTarget = Agent_Type.TypeAgent.Enemy;
 
+    [SerializeField] private Animator animator;
+
     private float reloadSpeedCount;
+
+    private HealthSystem hS;
+    private LineRenderer lRBattery;
 
     // Start is called before the first frame update
     void Start()
     {
+        lRBattery = GetComponent<LineRenderer>();
+
         DisplayRange(range, Color.cyan);
+        lRBattery.enabled = false;
+
+        hS = GetComponent<HealthSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(towerState == statesBuilding.Active)
+        if (hS.GetBatteryHealth() > 0)
+            towerState = statesBuilding.Active;
+        else
+            towerState = statesBuilding.Deactivated;
+
+        if (towerState == statesBuilding.Active)
         {
             reloadSpeedCount += Time.deltaTime;
 
@@ -34,6 +49,14 @@ public class TowerBehavior : MonoBehaviour
             {
                 Fire();
             }
+            animator.SetBool("ActivateTower", true);
+            lRBattery.enabled = true;
+        }
+
+        if (towerState == statesBuilding.Deactivated)
+        {
+            animator.SetBool("ActivateTower", false);
+            lRBattery.enabled = false;
         }
     }
 
@@ -47,6 +70,7 @@ public class TowerBehavior : MonoBehaviour
             //instance.GetComponent<Rigidbody>().velocity = new Vector3(0, 1, 0) * projectileSpeed;
 
             TowerProjectileBehavior tPB = instance.GetComponent<TowerProjectileBehavior>();
+            tPB.GetComponent<Rigidbody>().AddForce(Vector3.up * projectileSpeed * 2);
             tPB.speed = projectileSpeed;
             tPB.damage = projectileDamage;
             tPB.target = target;
@@ -88,7 +112,6 @@ public class TowerBehavior : MonoBehaviour
 
     public void DisplayRange(float range, Color color)
     {
-        LineRenderer lRBattery = GetComponent<LineRenderer>();
         lRBattery.positionCount = 50;
         lRBattery.useWorldSpace = false;
         lRBattery.SetColors(color, color);
