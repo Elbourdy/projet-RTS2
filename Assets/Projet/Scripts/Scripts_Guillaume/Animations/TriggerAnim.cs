@@ -22,10 +22,7 @@ public class TriggerAnim : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        Debug.Log(myMator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-    }
+    
 
     private void OnEnable()
     {
@@ -43,7 +40,11 @@ public class TriggerAnim : MonoBehaviour
     private void TriggerRun()
     {
         if (myMator != null)
+        {
+            myMator.ResetTrigger("IdleTrigger");
             myMator.SetTrigger("RunTrigger");
+            
+        }
     }
 
     private void TriggerIdle()
