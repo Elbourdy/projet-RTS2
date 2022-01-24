@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 657668790791597737}
   - component: {fileID: 2387248326736616615}
   - component: {fileID: -2634083210024080182}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Agent_Libre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   batteryHealth: 100
+  myBatteryBar: {fileID: 0}
   damageBattery: 1
+  startAtZeroBattery: 0
 --- !u!95 &2387248326736616615
 Animator:
   serializedVersion: 3
