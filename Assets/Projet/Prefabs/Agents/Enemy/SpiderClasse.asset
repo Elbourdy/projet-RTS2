@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   name: "Araign\xE9e"
-  health: 100
+  health: 110
   Job: 1
   timerCreation: 2
   unitPrefab: {fileID: 8146548163194609839, guid: 9a0664c8eb5f7ee4687fac06009f5db3, type: 3}
@@ -22,8 +22,8 @@ MonoBehaviour:
   attackDamage: 34
   rangeAttaque: 2
   rateOfFire: 1.5
-  movementSpeed: 12
-  radiusVision: 7
+  movementSpeed: 8
+  radiusVision: 8
   ressourcesCost: 320000000000000000000000
   constructionSpeed: 1
   rangeConstruction: 1
