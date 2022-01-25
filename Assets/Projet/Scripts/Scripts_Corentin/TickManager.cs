@@ -16,15 +16,15 @@ public class TickManager : MonoBehaviour
     }
 
     [SerializeField] private int timerForATick = 30;
-    [SerializeField] private int tickToSwitchPhase = 5;
-    [SerializeField] private Sprite spriteTickOn, spriteTickOff;
+    //[SerializeField] private int tickToSwitchPhase = 5;
+    //[SerializeField] private Sprite spriteTickOn, spriteTickOff;
     [SerializeField] private int timeBeforeAttack = 2;
 
-    private int totalTickCount;
+    //private int totalTickCount;
     private float timerCount;
 
     public GameObject hBTick;
-    public List<GameObject> tickFeedbacks = new List<GameObject>(); 
+    //public List<GameObject> tickFeedbacks = new List<GameObject>(); 
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +70,10 @@ public class TickManager : MonoBehaviour
 
     public void TickEffect() //s'applique quand un tick supplementaire apparaît
     {
-        timerCount = 0;
+        dayState = statesDay.Night;
+        HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
+
+        /*timerCount = 0;
         //BatteryManager.instance.ChargeUnit();
         totalTickCount++;
         SetTickFeedback();
@@ -79,20 +82,20 @@ public class TickManager : MonoBehaviour
         {
             dayState = statesDay.Night;
             HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
-        }
+        }*/
     }
 
-    public void ResetTickFeedback()
+    public void ResetTickCounter()
     {
-        for (int i = 0; i < tickToSwitchPhase; i++)
-        {
-            tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOff;
-            totalTickCount = 0;
+        //for (int i = 0; i < tickToSwitchPhase; i++)
+        //{
+            //tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOff;
+            //totalTickCount = 0;
             timerCount = 0;
-        }
+        //}
     }
 
-    public void SetTickFeedback()
+    /*public void SetTickFeedback()
     {
         for(int i = 0; i < tickToSwitchPhase; i++)
         {
@@ -105,5 +108,5 @@ public class TickManager : MonoBehaviour
                 tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOff;
             }
         }
-    }
+    }*/
 }
