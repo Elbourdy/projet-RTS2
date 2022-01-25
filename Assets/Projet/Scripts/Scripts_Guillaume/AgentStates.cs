@@ -55,9 +55,10 @@ public class AgentStates : MonoBehaviour
     private GameObject ressourceTarget;
 
 
-
     // Permet de récupérer les stats de nos agents
     private ClassAgentContainer container;
+
+    private AIEnemy myAI;
 
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class AgentStates : MonoBehaviour
         navM.speed = speed;
         navM.acceleration = 60f;
         navM.avoidancePriority = Random.Range(1, 100);
+        if (GetComponent<AIEnemy>()) myAI = GetComponent<AIEnemy>();
     }
 
 
@@ -141,7 +143,12 @@ public class AgentStates : MonoBehaviour
             case states.Follow:
                 if (navM.hasPath && navM.remainingDistance < 0.5f)
                 {
-                    SetState(states.Idle);
+                    if (myAI.hasTargetInSight)
+                    {
+                        SetState(states.Agressif);
+                    }
+
+                    else SetState(states.Idle);
                 }
 
 
@@ -176,8 +183,6 @@ public class AgentStates : MonoBehaviour
         if (myState != states.Follow)
             onFollowEnter?.Invoke();
         navM.SetDestination(destination);
-
-        
     }
 
     public void SetRessourceTarget(GameObject target)
@@ -189,7 +194,7 @@ public class AgentStates : MonoBehaviour
     // pour donner un changement d'état de nos agents
     public void SetState (states newState)
     {
-        if (newState != states.Follow)
+        if (newState != states.Follow && newState != states.Agressif)
         navM.ResetPath();
         navM.isStopped = false;
         myState = newState;
@@ -229,13 +234,13 @@ public class AgentStates : MonoBehaviour
     }
     private void AttaqueEnnemi(GameObject target)
     {
+        transform.LookAt(target.transform);
         if (target.GetComponent<HealthSystem>() != null)
         {
             if (rateOfFireCD <= 0)
             {
                 onAttack?.Invoke();
                 rateOfFireCD = rateOfFire;
-                transform.LookAt(target.transform);
                 target.GetComponent<HealthSystem>().HealthChange(-damage);
             }
         }

@@ -97,6 +97,7 @@ public class InputPlayer : MonoBehaviour
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
                 agent.GetComponent<AgentStates>().MoveAgent(target);
+                if(agent.GetComponent<AgentStates>().myState != AgentStates.states.Follow)
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
             }
         }
