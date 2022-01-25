@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DéplacementCam : MonoBehaviour
+public class CameraMouvement : MonoBehaviour
 {
     private Vector2 dir;
     private Vector3 mousePositionOff;
