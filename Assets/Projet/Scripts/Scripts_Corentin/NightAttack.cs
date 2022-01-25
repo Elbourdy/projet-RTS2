@@ -84,10 +84,10 @@ public class NightAttack : MonoBehaviour
         }
         else
         {
-            TickManager.instance.ResetTickFeedback();
+            TickManager.instance.ResetTickCounter();
             TickManager.instance.dayState = TickManager.statesDay.Day;
 
-            HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Immobilize;
+            HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Move;
 
             FeedbackSpawnerReset();
             isActive = false;
