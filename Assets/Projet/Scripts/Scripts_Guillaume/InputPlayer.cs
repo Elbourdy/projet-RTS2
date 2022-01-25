@@ -53,7 +53,6 @@ public class InputPlayer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Hit");
             if (hit.collider.name == "Sol")
             {
                 GoToTarget(hit);

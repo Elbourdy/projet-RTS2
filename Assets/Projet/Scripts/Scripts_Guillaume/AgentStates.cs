@@ -144,7 +144,9 @@ public class AgentStates : MonoBehaviour
                 {
                     SetState(states.Idle);
                 }
-                    break;
+
+
+                break;
 
             default:
                 break;
@@ -158,8 +160,12 @@ public class AgentStates : MonoBehaviour
         {
             if (!navM.pathPending)
             {
-                if (targetToAttack.transform.position != navM.pathEndPosition)
+                var distance = Vector3.Distance(targetToAttack.transform.position, navM.pathEndPosition);
+
+                if (distance > 1f)
                 {
+                    //onFollowEnter?.Invoke();
+                    Debug.Log("Coucou");
                     navM.SetDestination(targetToAttack.transform.position);
                 }
             }
@@ -193,11 +199,9 @@ public class AgentStates : MonoBehaviour
         {
             case states.Idle:
                 onIdleEnter?.Invoke();
-                GetComponent<MeshRenderer>().material.color = IdleColor;
                 navM.isStopped = true;
                 break;
             case states.Agressif:
-                GetComponent<MeshRenderer>().material.color = AgressifColor;
                 break;
             case states.Recolte:
                 if (GetComponent<ClassAgentContainer>().myClass.Job != AgentClass.AgentJob.Worker)
@@ -205,13 +209,10 @@ public class AgentStates : MonoBehaviour
                     SetState(states.Idle);
                     break;
                 }
-                else GetComponent<MeshRenderer>().material.color = RecolteColor;
                 break;
             case states.Construction:
-                GetComponent<MeshRenderer>().material.color = ConstructionColor;
                 break;
             case states.Follow:
-                GetComponent<MeshRenderer>().material.color = FollowColor;
                 break;
             default:
                 break;

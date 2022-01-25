@@ -91,7 +91,7 @@ public class HealthSystem : MonoBehaviour
 
     private void FeedBackDamage ()
     {
-        StartCoroutine(FeedbackColorChangeTimer());
+        //StartCoroutine(FeedbackColorChangeTimer());
     }
 
     IEnumerator FeedbackColorChangeTimer()

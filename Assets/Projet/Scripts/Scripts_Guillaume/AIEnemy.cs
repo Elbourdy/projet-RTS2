@@ -14,7 +14,7 @@ public class AIEnemy : MonoBehaviour
 
     public Agent_Type.TypeAgent typeToTarget;
 
-    private void OnEnable()
+    private void Awake()
     {
         aS = GetComponent<AgentStates>();
         cac = GetComponent<ClassAgentContainer>();
@@ -22,6 +22,7 @@ public class AIEnemy : MonoBehaviour
     }
     private void Update()
     {
+        if (aS.myState != AgentStates.states.Follow)
         SearchForTarget();
     }
 
@@ -33,7 +34,6 @@ public class AIEnemy : MonoBehaviour
         {
             aS.SetTarget(targetPlayer);
             aS.SetState(AgentStates.states.Agressif);
-            aS.MoveAgent(targetPlayer.transform.position);
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AgentStates))]
 public class TriggerAnim : MonoBehaviour
 {
-    private Animator myMator;
+    public Animator myMator;
     private AgentStates myAs;
 
     private void Awake()
@@ -34,22 +34,38 @@ public class TriggerAnim : MonoBehaviour
     private void TriggerAttack()
     {
         if (myMator != null)
-        myMator.SetTrigger("AttackTrigger");
+        {
+            ResetTrigger();
+            //myMator.ResetTrigger("IdleTrigger");
+            myMator.SetTrigger("AttackTrigger");
+        }
     }
 
     private void TriggerRun()
     {
         if (myMator != null)
         {
-            myMator.ResetTrigger("IdleTrigger");
+            ResetTrigger();
+            //myMator.ResetTrigger("IdleTrigger");
             myMator.SetTrigger("RunTrigger");
-            
         }
     }
 
     private void TriggerIdle()
     {
-        if (myMator != null)
+        if (myMator != null && !myMator.IsInTransition(0))
+        {
+            ResetTrigger();
             myMator.SetTrigger("IdleTrigger");
+        }
+    }
+
+
+
+    private void ResetTrigger()
+    {
+        myMator.ResetTrigger("IdleTrigger");
+        myMator.ResetTrigger("RunTrigger");
+        myMator.ResetTrigger("AttackTrigger");
     }
 }
