@@ -13,8 +13,6 @@ public class Gestion_HUD : MonoBehaviour
     public List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
     public List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
     //public List<GameObject> ressourcesCases = new List<GameObject>();
-    public HealthBar ressourceBar;
-    public GameObject ressourceText;
 
     void Start()
     {
@@ -29,7 +27,6 @@ public class Gestion_HUD : MonoBehaviour
     
     void Update()
     {
-        RessourcesDisplay();
         if (selectionPlayer.selectedUnits.Count > 0)
         {
             OneUnitDisplayUpdate();
@@ -192,11 +189,5 @@ public class Gestion_HUD : MonoBehaviour
             e.GetComponent<Image>().sprite = null;
             e.transform.GetChild(0).GetComponent<Text>().text = "";
         }
-    }
-
-    void RessourcesDisplay()
-    {
-        ressourceBar.SetHealth(Global_Ressources.instance.CheckRessources(0) * 1f / Global_Ressources.instance.CheckRessourcesMax(0));
-        ressourceText.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(0).ToString();
     }
 }
