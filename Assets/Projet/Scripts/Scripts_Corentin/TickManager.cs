@@ -71,7 +71,7 @@ public class TickManager : MonoBehaviour
     public void TickEffect() //s'applique quand un tick supplementaire apparaît
     {
         timerCount = 0;
-        BatteryManager.instance.ChargeUnit();
+        //BatteryManager.instance.ChargeUnit();
         totalTickCount++;
         SetTickFeedback();
 

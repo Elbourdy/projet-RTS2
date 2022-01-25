@@ -91,7 +91,7 @@ public class HQBehavior : Building
         lRBattery.SetColors(color, color);
 
         float x;
-        float y = 0f;
+        float y = 0f + transform.position.y;
         float z;
 
         float angle = 20f;

@@ -150,6 +150,7 @@ public class HealthSystem : MonoBehaviour
     {
         batteryHealth += value;
         if (batteryHealth > maxBatteryHealth) batteryHealth = maxBatteryHealth;
+        if (batteryHealth <= 0 && startAtZeroBattery) batteryHealth = 0;
         onBatteryEvent?.Invoke();
     }
 }
