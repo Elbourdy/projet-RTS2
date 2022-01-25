@@ -194,7 +194,7 @@ public class AgentStates : MonoBehaviour
     // pour donner un changement d'état de nos agents
     public void SetState (states newState)
     {
-        if (newState != states.Follow && newState != states.Agressif)
+        if (newState != states.Follow)
         navM.ResetPath();
         navM.isStopped = false;
         myState = newState;
@@ -206,6 +206,8 @@ public class AgentStates : MonoBehaviour
                 navM.isStopped = true;
                 break;
             case states.Agressif:
+                if (HasTarget())
+                navM.SetDestination(targetToAttack.transform.position);
                 break;
             case states.Recolte:
                 if (GetComponent<ClassAgentContainer>().myClass.Job != AgentClass.AgentJob.Worker)
