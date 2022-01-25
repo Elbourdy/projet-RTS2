@@ -78,6 +78,11 @@ public class HQBehavior : Building
         SetFeedbackUI();
     }
 
+
+
+
+
+
     public void DisplayRange(float range, Color color) 
     {
         LineRenderer lRBattery = GetComponent<LineRenderer>();
