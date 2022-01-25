@@ -30,11 +30,9 @@ public class AIEnemy : MonoBehaviour
 
     private void AttackOrder()
     {
-        if (aS.myState != AgentStates.states.Agressif)
-        {
+
             aS.SetTarget(targetPlayer);
-            aS.SetState(AgentStates.states.Agressif);
-        }
+        if (aS.myState != AgentStates.states.Agressif) aS.SetState(AgentStates.states.Agressif);
     }
 
     private void DrawRadiusVision()
@@ -56,7 +54,7 @@ public class AIEnemy : MonoBehaviour
 
     private void SearchForTarget()
     {
-        if (aS.myState != AgentStates.states.Agressif)
+        if (!aS.HasTarget() || aS.ReturnTarget().name == "Nexus")
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
             if (hits.Length > 0)

@@ -51,7 +51,7 @@ public class AgentStates : MonoBehaviour
     // Navmesh et vaiable de destination/objectif de nos agents
     private NavMeshAgent navM;
     private GameObject objectDestination;
-    private GameObject targetToAttack;
+    [SerializeField] private GameObject targetToAttack;
     private GameObject ressourceTarget;
 
 
@@ -112,8 +112,7 @@ public class AgentStates : MonoBehaviour
 
                 else if (isSuperAggressif)
                 {
-                    SetState(states.Follow);
-                    MoveAgent(HQBehavior.instance.transform.position);
+                    SetTarget(HQBehavior.instance.gameObject);
                 }
                 else
                 {
@@ -286,6 +285,18 @@ public class AgentStates : MonoBehaviour
         }
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, rangeAttaque);
+    }
+
+
+    public bool HasTarget()
+    {
+        if (targetToAttack != null) return true;
+        return false;
+    }
+
+    public GameObject ReturnTarget()
+    {
+        return targetToAttack;
     }
 
 }
