@@ -162,7 +162,7 @@ public class AgentStates : MonoBehaviour
             {
                 var distance = Vector3.Distance(targetToAttack.transform.position, navM.pathEndPosition);
 
-                if (distance > 1f)
+                if (distance > rangeAttaque)
                 {
                     //onFollowEnter?.Invoke();
                     Debug.Log("Coucou");
@@ -213,6 +213,7 @@ public class AgentStates : MonoBehaviour
             case states.Construction:
                 break;
             case states.Follow:
+                onFollowEnter?.Invoke();
                 break;
             default:
                 break;
