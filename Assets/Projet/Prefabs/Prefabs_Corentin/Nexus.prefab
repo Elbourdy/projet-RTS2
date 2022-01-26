@@ -113,18 +113,17 @@ MonoBehaviour:
   constructionBar: {fileID: 7399530909063535966}
   healthBar: {fileID: 7399530909198688614}
   recapProduction:
-  - {fileID: 3692042211120559432}
-  - {fileID: 3692042211009420986}
-  - {fileID: 3692042211095755343}
-  - {fileID: 3692042211118847052}
-  - {fileID: 3692042210147132879}
-  UIClickable:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   constructionHealthMax: 100
+  refundPercentageUnit: 0.5
   roasterUnits: []
   constructionHealthActual: 0
   currentNexusState: 0

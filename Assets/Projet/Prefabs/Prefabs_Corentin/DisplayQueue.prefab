@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2666121026471578588}
   - component: {fileID: 2879458810007403237}
   - component: {fileID: 6008662090017030547}
-  - component: {fileID: 5022519974774223986}
+  - component: {fileID: 2234207434050720894}
   m_Layer: 5
   m_Name: DisplayQueue
   m_TagString: Untagged
@@ -121,8 +121,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2879458810007403237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5022519974774223986
+      m_Calls:
+      - m_Target: {fileID: 2234207434050720894}
+        m_TargetAssemblyTypeName: ButtonRecapProduction, Assembly-CSharp
+        m_MethodName: ButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2234207434050720894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,9 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1017602227352111702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b5c5274397a8f247a9e053bdd839b0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 800cce3ab4c95c441b4faa613f7d4f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
 --- !u!1 &8189568024351149604
 GameObject:
   m_ObjectHideFlags: 0

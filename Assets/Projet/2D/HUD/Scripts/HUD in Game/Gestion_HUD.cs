@@ -104,7 +104,7 @@ public class Gestion_HUD : MonoBehaviour
                 shopCases[i].GetComponent<Image>().sprite = roasterUnits[i].unitSprite;
                 shopCases[i].transform.GetChild(0).GetComponent<Text>().text = roasterUnits[i].name;
             }
-            else if (i == 9) //up and down case
+            /*else if (i == 9) //up and down nexus
             {
                 shopCases[i].SetActive(true);
                 if (HQBehavior.instance.currentNexusState == HQBehavior.statesNexus.Immobilize)
@@ -122,7 +122,7 @@ public class Gestion_HUD : MonoBehaviour
                     shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.upLockedSprite;
                     shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Locked";
                 }
-            }
+            }*/
             else if (i == 10) // evolve nexus case 
             {
                 shopCases[i].SetActive(true);

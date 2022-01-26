@@ -10,11 +10,13 @@ public class Building : MonoBehaviour
     public GameObject rallyPoint;
     public GameObject selectedFeedback;
     public HealthBar productionBar, constructionBar, healthBar;
-    public List<Image> recapProduction, UIClickable;
+    public List<Image> recapProduction;
     public float constructionHealthMax;
+    [SerializeField] private float refundPercentageUnit = 0.5f;
 
     [SerializeField] private List<AgentClass> roasterUnits = new List<AgentClass>();
-    private List<AgentClass> productionQueue = new List<AgentClass>(); 
+    private List<AgentClass> productionQueue = new List<AgentClass>();
+    private List<int> prodQueueStacked = new List<int>(); 
     private float actualTimer, timerCount;
     private bool isSelected, isConstructed, isMovingRallyPoint = false;
     public float constructionHealthActual;
@@ -25,15 +27,10 @@ public class Building : MonoBehaviour
         roasterUnits.Add(fullRoaster[IDNumberRoaster]);
     }
 
-    public void RemoveFromRoaster(int IDNumberRoaster)  
+    public void RemoveFromQueue(int buttonPressed)  
     {
-        foreach (AgentClass e in roasterUnits)
-        {
-            if (e.ID == IDNumberRoaster)
-            {
-                roasterUnits.Remove(e);
-            }
-        }
+        Global_Ressources.instance.ModifyRessource(0, productionQueue[buttonPressed].ressourcesCost[0]);
+        productionQueue.RemoveAt(prodQueueStacked[buttonPressed] - 1);
     }
 
     public void AddToQueue(int IDNumberRoaster)
@@ -58,9 +55,6 @@ public class Building : MonoBehaviour
             }
             productionQueue.Add(roasterUnits[IDNumberRoaster]);
         }
-
-
-
     }
 
     public void ProcessQueue()
@@ -83,6 +77,10 @@ public class Building : MonoBehaviour
                 productionQueue.RemoveAt(0);
                 timerCount = 0;
             }
+        }
+        else
+        {
+            timerCount = 0;
         }
     }
 
@@ -118,23 +116,14 @@ public class Building : MonoBehaviour
         {
             selectedFeedback.SetActive(true);
 
-            if (isConstructed)
-            {
-                healthBar.gameObject.SetActive(true);
-                recapProduction[0].transform.parent.gameObject.SetActive(true);
-                rallyPoint.SetActive(true);
-            }
-            else
-            {
-                healthBar.gameObject.SetActive(false);
-                productionBar.gameObject.SetActive(false);
-                rallyPoint.SetActive(false);
-            }
+            //healthBar.gameObject.SetActive(true);
+            recapProduction[0].transform.parent.gameObject.SetActive(true);
+            rallyPoint.SetActive(true);
         }
         else
         {
             selectedFeedback.SetActive(false);
-            healthBar.gameObject.SetActive(false);
+            //healthBar.gameObject.SetActive(false);
             rallyPoint.SetActive(false);
 
             recapProduction[0].transform.parent.gameObject.SetActive(false);
@@ -173,6 +162,9 @@ public class Building : MonoBehaviour
 
     public void SetRecapProductionTotal()
     {
+        prodQueueStacked.Clear();
+
+        Debug.Log(recapProduction.Count);
         int i = 0;
         if (productionQueue.Count > 0)
         {
@@ -182,7 +174,7 @@ public class Building : MonoBehaviour
             foreach (AgentClass e in productionQueue)
             {
                 unitChecked++;
-                if (i < 5) // number of possible recap for now, you can add more but it's for test purposes
+                if (i < recapProduction.Count) // number of possible recap for now, you can add more but it's for test purposes
                 {
                     if (precedentElementChecked == e)
                     {
@@ -190,6 +182,11 @@ public class Building : MonoBehaviour
                     }
                     else
                     {
+                        if (prodQueueStacked.Count > 0)
+                            prodQueueStacked.Add(countUnit + prodQueueStacked[prodQueueStacked.Count - 1]);
+                        else
+                            prodQueueStacked.Add(countUnit);
+
                         SetOneRecapProduction(i, countUnit, precedentElementChecked.unitSprite, true);
                         precedentElementChecked = e;
                         countUnit = 1;
@@ -197,15 +194,20 @@ public class Building : MonoBehaviour
                     }
                 }
 
-                if (unitChecked == productionQueue.Count && i < 5)
+                if (unitChecked == productionQueue.Count && i < recapProduction.Count)
                 {
+                    if (prodQueueStacked.Count > 0)
+                        prodQueueStacked.Add(countUnit + prodQueueStacked[prodQueueStacked.Count - 1]);
+                    else
+                        prodQueueStacked.Add(countUnit);
+
                     SetOneRecapProduction(i, countUnit, precedentElementChecked.unitSprite, true);
                     i++;
                 }
             }
         }
 
-        for (int j = i; j < 5; j++)
+        for (int j = i; j < recapProduction.Count; j++)
         {
             SetOneRecapProduction(j, 0, null, false);
         }
@@ -269,11 +271,6 @@ public class Building : MonoBehaviour
     public GameObject GetRallyPoint()
     {
         return rallyPoint;
-    }
-
-    public void SetUiClickable(List<Image> UIClickable)
-    {
-        this.UIClickable = UIClickable;
     }
 
     public float GetConstructionHealth()
