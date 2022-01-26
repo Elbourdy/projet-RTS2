@@ -59,7 +59,7 @@ public class AIEnemy : MonoBehaviour
 
     private void SearchForTarget()
     {
-        if (aS.myState != AgentStates.states.Agressif)
+        if (aS.myState != AgentStates.states.Agressif || IsCapableOfSuperAgression())
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
             if (hits.Length > 0)
@@ -77,6 +77,15 @@ public class AIEnemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool IsCapableOfSuperAgression()
+    {
+        if (aS.myState == AgentStates.states.Agressif && aS.isSuperAggressif && aS.ReturnTarget().name == "Nexus")
+        {
+            return true;
+        }
+        return false;
     }
 
 }
