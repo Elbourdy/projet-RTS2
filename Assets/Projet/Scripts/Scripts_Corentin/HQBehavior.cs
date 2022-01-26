@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class HQBehavior : Building
@@ -9,6 +10,9 @@ public class HQBehavior : Building
 
     public enum statesNexus {Move, Immobilize, ForcedImmobilize}
     public statesNexus currentNexusState = statesNexus.Move;
+
+    
+
 
     public float BatType;
     public List<int> desiredRoaster;
@@ -21,10 +25,18 @@ public class HQBehavior : Building
 
     [SerializeField] private Animator animator;
 
+
+    // NavmeshSystem
+    private NavMeshAgent navM;
+    [Header("Movement System")]
+    [SerializeField] private bool ActivateNewMovementSystem = true;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
-        instance = this; 
+        instance = this;
+        if (GetComponent<NavMeshAgent>()) navM = GetComponent<NavMeshAgent>();
     }
 
     void Start()
@@ -68,6 +80,7 @@ public class HQBehavior : Building
                     Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
                     targetPosition = hit.point;
                     targetPosition.y = transform.position.y;
+                    if (ActivateNewMovementSystem) NewMovement();
                 }
             }      
         }
@@ -75,13 +88,43 @@ public class HQBehavior : Building
         ProcessQueue();
 
         //déplacement nexus
-        if (targetPosition != transform.position  && currentNexusState == statesNexus.Move)
+        if (!ActivateNewMovementSystem)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime * NexusLevelManager.instance.GetVitesseNexus());
+            if (targetPosition != transform.position && currentNexusState == statesNexus.Move)
+            {
+                OldMovement();
+            }
+        }
+
+        else
+        {
+            if (navM.hasPath && navM.remainingDistance < 1.5f)
+            {
+                navM.isStopped = true;
+                navM.ResetPath();
+                navM.isStopped = false;
+            }
         }
 
         SetFeedbackUI();
     }
+
+
+    #region Movement
+
+    private void OldMovement()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime * NexusLevelManager.instance.GetVitesseNexus());
+    }
+
+
+    private void NewMovement()
+    {
+        navM.SetDestination(targetPosition);
+    }
+
+    #endregion
+
 
     public void DisplayRange(float range, Color color) 
     {
