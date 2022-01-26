@@ -131,10 +131,8 @@ MonoBehaviour:
   BatType: 10
   desiredRoaster: 00000000
   speed: 5
-  timerConsumption: 1
-  ressourcesConsumed: 1
-  energyRestored: 1
   colorRadiusBattery: {r: 0, g: 0.37760234, b: 1, a: 1}
+  animator: {fileID: 3383543886236954069}
 --- !u!114 &158273673537399656
 MonoBehaviour:
   m_ObjectHideFlags: 0

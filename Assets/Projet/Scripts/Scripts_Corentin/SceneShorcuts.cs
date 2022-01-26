@@ -43,10 +43,10 @@ public class SceneShorcuts : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D)) // speed up time
         {
-            Time.timeScale += 1f; ;
+            Time.timeScale += 1f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //lock/delock camera
         {
             if (lockCamera)
             {
@@ -59,6 +59,16 @@ public class SceneShorcuts : MonoBehaviour
                 lockCamera = true;
             }
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.W)) // launch night attack
+        {
+            TickManager.instance.LaunchNightAttack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X)) // cancel night attack
+        {
+            NightAttack.instance.CancelNightAttack();
         }
     }
 }

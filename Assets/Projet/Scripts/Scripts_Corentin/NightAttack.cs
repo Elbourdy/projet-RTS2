@@ -105,7 +105,6 @@ public class NightAttack : MonoBehaviour
             tmp.distanceFromNexus = 0;
             spawnerList.Add(tmp);
         }
-        Debug.Log(spawnerList.Count);
     }
 
     private void SetDistanceSpawnerNexus()
@@ -159,5 +158,15 @@ public class NightAttack : MonoBehaviour
         {
             spawnerList[i].spawnerGameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = matSpawnerInactive;
         }
+    }
+
+    public void CancelNightAttack()
+    {
+        for (int i = 0; i < ennemiesRemaining.Count; i++)
+        {
+            Destroy(ennemiesRemaining[i]);
+        }
+
+        ennemiesRemaining.Clear();
     }
 }

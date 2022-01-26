@@ -32,7 +32,6 @@ public class RessourcesObject : MonoBehaviour
     public List<Renderer> crystalRessourcesRenderer = new List<Renderer>();
     public Material chargeCrystal, discargeCrystal;
 
-
     //temp for testing with nexus
     private float timerCount;
 

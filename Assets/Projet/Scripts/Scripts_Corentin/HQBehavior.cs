@@ -14,13 +14,13 @@ public class HQBehavior : Building
     public List<int> desiredRoaster;
     public int speed = 10;
 
-    public int timerConsumption = 1, ressourcesConsumed = 1, energyRestored = 1;
-    private float timerConsumptionCount;
-
     public Color colorRadiusBattery = Color.blue;
 
     private Vector3 targetPosition;
     private LineRenderer lRBattery;
+
+    [SerializeField] private Animator animator;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -46,6 +46,7 @@ public class HQBehavior : Building
     void Update()
     {
         DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
+        SetAnimator();
 
         CheckIfSelected();
 
@@ -103,6 +104,24 @@ public class HQBehavior : Building
             lRBattery.SetPosition(i, new Vector3(x, y, z));
 
             angle += (360f / 49f);
+        }
+    }
+
+    public void SetAnimator()
+    {
+        switch(currentNexusState)
+        {
+            case statesNexus.Move:
+                animator.SetBool("Stop", false);
+                break;
+
+            case statesNexus.Immobilize:
+                animator.SetBool("Stop", true);
+                break;
+
+            case statesNexus.ForcedImmobilize:
+                animator.SetBool("Stop", true);
+                break;
         }
     }
 }

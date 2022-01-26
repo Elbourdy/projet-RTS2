@@ -72,7 +72,7 @@ public class TickManager : MonoBehaviour
     {
         dayState = statesDay.Night;
         HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
-
+        timerCount = 0;
         /*timerCount = 0;
         //BatteryManager.instance.ChargeUnit();
         totalTickCount++;
@@ -109,4 +109,9 @@ public class TickManager : MonoBehaviour
             }
         }
     }*/
+
+    public void LaunchNightAttack()
+    {
+        timerCount = timerForATick;
+    }
 }

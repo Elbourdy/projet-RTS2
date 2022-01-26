@@ -123,7 +123,6 @@ public class NexusLevelManager : MonoBehaviour
         if (newNexusLevel < 5)
         {
             ressourcesToLerp = Global_Ressources.instance.CheckRessources(0) -  levelThresholdRessources[newNexusLevel];
-            Debug.Log(ressourcesToLerp);
             highBar = levelThresholdRessources[newNexusLevel + 1] - ((newNexusLevel == 0)? 0 : levelThresholdRessources[newNexusLevel]);
 
             ressourceBar.SetHealth(ressourcesToLerp / (highBar * 1f));
