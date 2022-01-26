@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838384, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_Name
-      value: Spider Variant (1)
+      value: Spider Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_RootOrder
@@ -213,6 +213,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider
       objectReference: {fileID: 0}
+    - target: {fileID: 7205140776170859923, guid: f8b60fe54d99be14eaf2128ac62f3805, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dca0dd63862a5f44c819d4a5b5dd5296, type: 2}
+    - target: {fileID: 7205140776170859923, guid: f8b60fe54d99be14eaf2128ac62f3805, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: de33aa3a1f4c74645b263cb284cb1fea, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8b60fe54d99be14eaf2128ac62f3805, type: 3}
 --- !u!1 &7172434134110984531 stripped
