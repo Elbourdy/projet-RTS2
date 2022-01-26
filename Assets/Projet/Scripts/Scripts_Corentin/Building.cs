@@ -12,7 +12,7 @@ public class Building : MonoBehaviour
     public HealthBar productionBar, constructionBar, healthBar;
     public List<Image> recapProduction;
     public float constructionHealthMax;
-    [SerializeField] private float refundPercentageUnit = 0.5f;
+    [SerializeField] public float refundPercentageUnit = 0.5f;
 
     [SerializeField] private List<AgentClass> roasterUnits = new List<AgentClass>();
     private List<AgentClass> productionQueue = new List<AgentClass>();
