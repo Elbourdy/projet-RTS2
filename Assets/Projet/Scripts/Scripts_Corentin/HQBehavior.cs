@@ -31,12 +31,26 @@ public class HQBehavior : Building
     [Header("Movement System")]
     [SerializeField] private bool ActivateNewMovementSystem = true;
 
+    [Header("Selection System")]
+    [SerializeField] private bool AllowMultipleSelection = false;
+
 
     // Start is called before the first frame update
     private void Awake()
     {
         instance = this;
         if (GetComponent<NavMeshAgent>()) navM = GetComponent<NavMeshAgent>();
+    }
+
+
+    private void OnEnable()
+    {
+        if (AllowMultipleSelection) GameObject.Find("GameManager").GetComponent<SelectionPlayer>().allFriendlyUnits.Add(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        if (AllowMultipleSelection) GameObject.Find("GameManager").GetComponent<SelectionPlayer>().allFriendlyUnits.Remove(gameObject);
     }
 
     void Start()

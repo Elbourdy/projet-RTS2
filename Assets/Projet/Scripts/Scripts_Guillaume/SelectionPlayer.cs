@@ -109,12 +109,14 @@ public class SelectionPlayer : MonoBehaviour
                         //Select the units
                         for (int i = 0; i < allFriendlyUnits.Count; i++)
                         {
+                            
+
                             GameObject currentUnit = allFriendlyUnits[i];
 
                             //Is this unit within the square
                             if (IsWithinPolygon(currentUnit.transform.position))
                             {
-                                currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
+                                if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
 
                                 selectedUnits.Add(currentUnit);
                                 if (currentUnit.transform.Find("TorusFeedback") != null)
@@ -123,7 +125,7 @@ public class SelectionPlayer : MonoBehaviour
                             //Otherwise deselect the unit if it's not in the square
                             else
                             {
-                                currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                                if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
                                 if (currentUnit.transform.Find("TorusFeedback") != null)
                                     currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                             }
@@ -221,14 +223,14 @@ public class SelectionPlayer : MonoBehaviour
                     //Is this unit within the square
                     if (IsWithinPolygon(currentUnit.transform.position))
                     {
-                        currentUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
+                        if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
                         if (currentUnit.transform.Find("TorusFeedback") != null)
                             currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }
                     //Otherwise deactivate
                     else
                     {
-                        currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
+                        if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
                         if (currentUnit.transform.Find("TorusFeedback") != null)
                             currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
