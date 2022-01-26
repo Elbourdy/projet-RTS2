@@ -20,6 +20,7 @@ public class HQBehavior : Building
     public Color colorRadiusBattery = Color.blue;
 
     private Vector3 targetPosition;
+    private LineRenderer lRBattery;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class HQBehavior : Building
 
     void Start()
     {
+        lRBattery = GetComponent<LineRenderer>();
+
         foreach (int e in desiredRoaster)
         {
             AddToRoaster(e);
@@ -36,12 +39,14 @@ public class HQBehavior : Building
         targetPosition = transform.position;
 
         SetConstructionHealth(100f); //FOR NEXUS
-        DisplayRange(BatteryManager.instance.radiusBattery, colorRadiusBattery);
+        DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
     }
 
     // Update is called once per frame
     void Update()
     {
+        DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
+
         CheckIfSelected();
 
         if (GetIsSelected())
@@ -78,14 +83,8 @@ public class HQBehavior : Building
         SetFeedbackUI();
     }
 
-
-
-
-
-
     public void DisplayRange(float range, Color color) 
     {
-        LineRenderer lRBattery = GetComponent<LineRenderer>();
         lRBattery.positionCount = 50;
         lRBattery.useWorldSpace = false;
         lRBattery.SetColors(color, color);

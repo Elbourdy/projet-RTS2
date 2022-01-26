@@ -46,7 +46,7 @@ public class HealthSystem : MonoBehaviour
 
     public bool CheckDistanceNexus()
     {
-        if (Vector3.Distance(transform.position, nexus.transform.position) > BatteryManager.instance.radiusBattery)
+        if (Vector3.Distance(transform.position, nexus.transform.position) > BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus())
         {
             return true;
         }

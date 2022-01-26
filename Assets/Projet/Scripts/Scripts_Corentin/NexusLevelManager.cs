@@ -14,11 +14,12 @@ public class NexusLevelManager : MonoBehaviour
 
     [SerializeField] private float pityTimerLevel = 2f;
 
-    public List<int> levelThresholdRessources = new List<int>();
-    public List<float> vitesseNexus = new List<float>();
-    public List<float> vitesseCollecte = new List<float>();
-    public List<float> multiplicatorConsumption = new List<float>();
-    public List<float> multiplicatorSpeedProd = new List<float>();
+    [SerializeField] private List<int> levelThresholdRessources = new List<int>();
+    [SerializeField] private List<float> vitesseNexus = new List<float>();
+    [SerializeField] private List<float> vitesseCollecte = new List<float>();
+    [SerializeField] private List<float> multiplicatorConsumption = new List<float>();
+    [SerializeField] private List<float> multiplicatorSpeedProd = new List<float>();
+    [SerializeField] private List<float> rangeNexusMultiplier = new List<float>();
 
     [SerializeField] private List<Image> feedbackLevel = new List<Image>();
     [SerializeField] private Sprite levelOn, levelOff, levelTemp;
@@ -94,6 +95,11 @@ public class NexusLevelManager : MonoBehaviour
     public float GetMultiplicatorSpeedProd()
     {
         return multiplicatorSpeedProd[currentNexusLevel];
+    }
+
+    public float GetMultiplicatorRangeNexus()
+    {
+        return rangeNexusMultiplier[currentNexusLevel];
     }
 
     private void SetFeedbackLevelNexus()
