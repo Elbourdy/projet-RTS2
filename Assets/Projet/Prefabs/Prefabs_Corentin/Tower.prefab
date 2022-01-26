@@ -154,9 +154,9 @@ MonoBehaviour:
   towerState: 0
   projectilePrefab: {fileID: 2179948090913801850, guid: 9fbaeb8fd9e90ac4392b2fa962f64c90, type: 3}
   firePoint: {fileID: 5569355349749560886}
-  reloadSpeed: 1
-  projectileSpeed: 10
-  projectileDamage: 25
+  reloadSpeed: 0.2
+  projectileSpeed: 25
+  projectileDamage: 10
   range: 10
   typeToTarget: 1
   animator: {fileID: 5980235528762554654}

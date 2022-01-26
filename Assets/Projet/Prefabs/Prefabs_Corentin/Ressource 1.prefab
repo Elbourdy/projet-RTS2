@@ -118,14 +118,14 @@ MonoBehaviour:
   playSound: 1
   isReload: 0
   crono: 0
-  TempsReload: 10
+  TempsReload: 40
   ajout: 100
   Plein: {fileID: 2100000, guid: 640adde0eda925d47a5fda2a77f1182e, type: 2}
   vide: {fileID: 2100000, guid: fcc8ea69585c73d4ab55675c3e87fe13, type: 2}
   tickRessourceTimer: 0.1
   ressourceQuantityPerTic: 1
-  stockRessources: 550
-  rangeCollection: 15
+  stockRessources: 450
+  rangeCollection: 18
   onReadDistance: 0
   crystalRessourcesRenderer:
   - {fileID: 4549989231149101774}
