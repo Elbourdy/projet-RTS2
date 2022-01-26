@@ -6,7 +6,7 @@ using UnityEngine;
 public class TriggerAnim : MonoBehaviour
 {
     public Animator myMator;
-    private AgentStates myAs;
+    public AgentStates myAs;
 
     private void Awake()
     {
@@ -19,6 +19,9 @@ public class TriggerAnim : MonoBehaviour
             myMator = GetComponentInChildren<Animator>();
         }
         myAs = GetComponent<AgentStates>();
+        myAs.onAttack += TriggerAttack;
+        myAs.onFollowEnter += TriggerRun;
+        myAs.onIdleEnter += TriggerIdle;
     }
 
 
@@ -26,9 +29,7 @@ public class TriggerAnim : MonoBehaviour
 
     private void OnEnable()
     {
-        myAs.onAttack += TriggerAttack;
-        myAs.onFollowEnter += TriggerRun;
-        myAs.onIdleEnter += TriggerIdle;
+        
     }
 
     private void TriggerAttack()
@@ -44,9 +45,12 @@ public class TriggerAnim : MonoBehaviour
     {
         if (myMator != null)
         {
+            
             myMator.ResetTrigger("IdleTrigger");
             myMator.SetTrigger("RunTrigger");
         }
+
+        Debug.Log("Trigger run with " + myMator);
     }
 
     private void TriggerIdle()

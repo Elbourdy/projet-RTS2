@@ -101,12 +101,14 @@ public class AgentStates : MonoBehaviour
                     }
                     else if (navM.hasPath && navM.remainingDistance < rangeAttaque)
                     {
+                        
                         // Update position quand la target bouge pendant une attaque
                         if (Vector3.Distance(gameObject.transform.position, targetToAttack.transform.position) > rangeAttaque)
                         {
                             MoveAgent(targetToAttack.transform.position);
                         }
                         // On arrête l'agent quand il est à porter d'attaque
+                        onIdleEnter?.Invoke();
                         navM.isStopped = true;
                         AttaqueEnnemi(targetToAttack);
                     }
@@ -168,9 +170,9 @@ public class AgentStates : MonoBehaviour
             {
                 var distance = Vector3.Distance(targetToAttack.transform.position, navM.pathEndPosition);
 
-                if (distance > rangeAttaque)
+                if (distance > 1.5f)
                 {
-                    //onFollowEnter?.Invoke();
+                    onFollowEnter?.Invoke();
                     Debug.Log("Coucou");
                     navM.SetDestination(targetToAttack.transform.position);
                 }
@@ -207,7 +209,10 @@ public class AgentStates : MonoBehaviour
                 break;
             case states.Agressif:
                 if (HasTarget())
-                navM.SetDestination(targetToAttack.transform.position);
+                {
+                    //MoveAgent(targetToAttack.transform.position);
+                    navM.SetDestination(targetToAttack.transform.position);
+                }
                 break;
             case states.Recolte:
                 if (GetComponent<ClassAgentContainer>().myClass.Job != AgentClass.AgentJob.Worker)
