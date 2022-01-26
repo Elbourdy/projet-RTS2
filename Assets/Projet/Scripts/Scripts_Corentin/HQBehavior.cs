@@ -52,7 +52,6 @@ public class HQBehavior : Building
 
         if (GetIsSelected())
         {
-            Debug.Log("IsSelected");
             if (Input.GetMouseButtonUp(1))
             {
                 if (GetIsMovingRallyPoint())

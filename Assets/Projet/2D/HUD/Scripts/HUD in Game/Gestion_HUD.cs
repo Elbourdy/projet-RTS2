@@ -53,6 +53,7 @@ public class Gestion_HUD : MonoBehaviour
 
     public void OneUnitDisplayUpdate()   //fonction qui affiche la grosse image pour une unité
     {
+        oneUnitDisplay.SetActive(true);
         oneUnitDisplay.transform.GetChild(4).gameObject.SetActive(true);
         oneUnitDisplay.transform.GetChild(5).gameObject.SetActive(true);
 
@@ -80,6 +81,7 @@ public class Gestion_HUD : MonoBehaviour
 
     public void ResetOneUnitDisplay()    // fonction qui reset le grosse image pour une unité 
     {
+        oneUnitDisplay.SetActive(false);
         oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = "";
         oneUnitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = null;
         oneUnitDisplay.transform.GetChild(2).GetComponent<Text>().text = "";
