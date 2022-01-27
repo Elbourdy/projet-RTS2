@@ -173,7 +173,6 @@ public class AgentStates : MonoBehaviour
                 if (distance > 1.5f)
                 {
                     onFollowEnter?.Invoke();
-                    Debug.Log("Coucou");
                     navM.SetDestination(targetToAttack.transform.position);
                 }
             }

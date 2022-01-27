@@ -50,7 +50,6 @@ public class TriggerAnim : MonoBehaviour
             myMator.SetTrigger("RunTrigger");
         }
 
-        Debug.Log("Trigger run with " + myMator);
     }
 
     private void TriggerIdle()

@@ -260,6 +260,8 @@ GameObject:
   - component: {fileID: 657668790791597737}
   - component: {fileID: 2387248326736616615}
   - component: {fileID: -2634083210024080182}
+  - component: {fileID: -3106538262334270096}
+  - component: {fileID: 4803672079397123581}
   m_Layer: 7
   m_Name: Agent_Libre
   m_TagString: Untagged
@@ -396,6 +398,7 @@ MonoBehaviour:
   AgressifColor: {r: 1, g: 0, b: 0.6779156, a: 0}
   ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
   FollowColor: {r: 1, g: 0.91764706, b: 0, a: 0}
+  targetToAttack: {fileID: 0}
 --- !u!114 &5189708736748838382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +478,43 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   radiusVision: 5
   typeToTarget: 1
+  hasTargetInSight: 0
+--- !u!114 &-3106538262334270096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189708736748838384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Unit/Unit_Ally/UnitA_Global/UnitA_Glob_Death
+  PlayEvent: 2
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1.3
+  OverrideMaxDistance: 50
+--- !u!114 &4803672079397123581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189708736748838384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568e065f75bb9e6409973a7686ce4abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCreateSound: event:/Unit/Unit_Ally/UnitA_Global/UnitA_Glob_Spawn
 --- !u!1001 &509525611168352279
 PrefabInstance:
   m_ObjectHideFlags: 0

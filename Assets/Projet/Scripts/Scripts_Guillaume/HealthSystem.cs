@@ -9,6 +9,8 @@ public class HealthSystem : MonoBehaviour
     public delegate void HealthEvent();
     public HealthEvent onHealthEvent;
     public HealthEvent onBatteryEvent;
+
+    public HealthEvent onDeathEvent;
     
     [Header("Syestème de vie")]
     [SerializeField] private float health;
@@ -122,6 +124,7 @@ public class HealthSystem : MonoBehaviour
 
     private void KillGo()
     {
+        onDeathEvent?.Invoke();
         Destroy(gameObject);
     }
 
