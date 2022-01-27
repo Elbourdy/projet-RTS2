@@ -11,9 +11,6 @@ public class HQBehavior : Building
     public enum statesNexus {Move, Immobilize, ForcedImmobilize}
     public statesNexus currentNexusState = statesNexus.Move;
 
-    
-
-
     public float BatType;
     public List<int> desiredRoaster;
     public int speed = 10;

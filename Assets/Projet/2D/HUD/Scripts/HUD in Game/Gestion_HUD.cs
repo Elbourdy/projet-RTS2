@@ -158,20 +158,20 @@ public class Gestion_HUD : MonoBehaviour
         int i = 0;
         foreach(GameObject e in selectionPlayer.selectedUnits)
         {
-            if (i <= unitSelectionCases.Count) //on remplit les cases tant qu'il y a des unités sauf pour la première (elle sera dans le zoom)
+            if (i <= unitSelectionCases.Count && i > 0) //on remplit les cases tant qu'il y a des unités sauf pour la première (elle sera dans le zoom)
             {
                 if (e.GetComponent<ClassAgentContainer>())
                 {
-                    unitSelectionCases[i].GetComponent<Image>().sprite = e.GetComponent<ClassAgentContainer>().myClass.unitSprite;
+                    unitSelectionCases[i-1].GetComponent<Image>().sprite = e.GetComponent<ClassAgentContainer>().myClass.unitSprite;
                 }
 
                 if (e.GetComponent<ClassBatimentContainer>())
                 {
-                    unitSelectionCases[i].GetComponent<Image>().sprite = e.GetComponent<ClassBatimentContainer>().myClass.unitSprite;
+                    unitSelectionCases[i-1].GetComponent<Image>().sprite = e.GetComponent<ClassBatimentContainer>().myClass.unitSprite;
                 }
 
-                unitSelectionCases[i].SetActive(true);
-                unitSelectionCases[i].transform.GetChild(0).GetComponent<Text>().text = e.GetComponent<HealthSystem>().GetHealth().ToString();
+                unitSelectionCases[i-1].SetActive(true);
+                unitSelectionCases[i-1].transform.GetChild(0).GetComponent<Text>().text = e.GetComponent<HealthSystem>().GetHealth().ToString();
             }
             i++;
         }
