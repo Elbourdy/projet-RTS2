@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{28c8db6c-d302-48f6-b4c0-c3591d393974}">
+		<property name="assetPath">
+			<value>Lp_Oiseaux_Grillon_Insecte_Loop2.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>94.136893424036288</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b8406c4-98ac-4502-b843-950f85d17554}</destination>
+		</relationship>
+	</object>
+</objects>

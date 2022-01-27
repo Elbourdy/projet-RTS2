@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{1f0d1996-62af-4553-9315-3dc992e132cf}">
+		<property name="assetPath">
+			<value>Lp_Criquet_Grenouille_insectes_Loop3.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>69.434807256235828</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b8406c4-98ac-4502-b843-950f85d17554}</destination>
+		</relationship>
+	</object>
+</objects>
