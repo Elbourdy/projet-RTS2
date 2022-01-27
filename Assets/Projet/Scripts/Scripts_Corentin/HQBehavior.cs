@@ -107,7 +107,7 @@ public class HQBehavior : Building
             }
         }
 
-        else
+        else 
         {
             if (navM.hasPath && navM.remainingDistance < 1.5f)
             {
@@ -116,7 +116,14 @@ public class HQBehavior : Building
                 navM.isStopped = false;
             }
         }
+        if (currentNexusState == statesNexus.Move) navM.isStopped = false;
+        else
+        {
+            navM.isStopped = true;
+            navM.ResetPath();
+        }
 
+        navM.speed = speed * NexusLevelManager.instance.GetVitesseNexus();
         SetFeedbackUI();
     }
 
