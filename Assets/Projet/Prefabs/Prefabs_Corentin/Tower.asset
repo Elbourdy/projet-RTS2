@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1
   name: Tower
   health: 100
-  speedToBeConstruct: 1
+  speedToBeConstruct: 2
   unitSprite: {fileID: 0}
   rallyPointSprite: {fileID: 0}
   demolishSprite: {fileID: 0}
