@@ -10,6 +10,6 @@ public class AfficheCoutEnergy : MonoBehaviour
     void Update()
     {
         valeur = BatteryManager.instance.energyConsumeByTick;
-        gameObject.GetComponent<Text>().text = valeur.ToString();
+        gameObject.GetComponent<Text>().text = "-"+valeur.ToString();
     }
 }

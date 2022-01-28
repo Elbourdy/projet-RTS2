@@ -132,6 +132,6 @@ public class NexusLevelManager : MonoBehaviour
             ressourceBar.SetHealth(1);
         }
 
-        ressourceText.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(0).ToString();
+        ressourceText.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(0).ToString()+"/500";
     }
 }
