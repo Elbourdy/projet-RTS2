@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{2bc9961e-ff79-4138-b89f-4653b8639426}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>UI_Act_Validate</value>
 		</property>

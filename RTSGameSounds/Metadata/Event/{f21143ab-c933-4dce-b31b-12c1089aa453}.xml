@@ -4,6 +4,9 @@
 		<property name="note">
 			<value>Loop qui possède un paramètre qui fait évoluer l'intensité du son. le paramètre va de 0 à 5 en nombre entier. Il correspond au niveau du nexus. </value>
 		</property>
+		<property name="color">
+			<value>Blue Light 1</value>
+		</property>
 		<property name="name">
 			<value>Build_Nex_Select</value>
 		</property>

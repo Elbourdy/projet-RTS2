@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{ba618f77-9042-44a5-b36e-35ec433c4b47}">
+		<property name="color">
+			<value>Yellow Light 2</value>
+		</property>
 		<property name="name">
 			<value>Env_Phs_Manager</value>
 		</property>
