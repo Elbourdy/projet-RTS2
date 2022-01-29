@@ -20,9 +20,6 @@ public class RessourcesObject : MonoBehaviour
     public float TempsReload;
     public int ajout;
 
-
-    public Material Plein, vide;
-
     [SerializeField] private float tickRessourceTimer = 1;
     [SerializeField] private int ressourceQuantityPerTic = 20;
     [SerializeField] private int stockRessources = 400;
