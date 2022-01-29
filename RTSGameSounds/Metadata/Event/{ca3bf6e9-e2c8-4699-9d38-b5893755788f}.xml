@@ -13,6 +13,9 @@ Niveau 2 : Gain au paramètre 3/ Perte au paramètre 7
 Niveau 3 : Gain au paramètre 2/ Perte au paramètre 6
 Niveau 1 : Gain au paramètre 1/ Perte au paramètre 5</value>
 		</property>
+		<property name="color">
+			<value>Blue Light 1</value>
+		</property>
 		<property name="name">
 			<value>Build_Nex_LvL_Up</value>
 		</property>
