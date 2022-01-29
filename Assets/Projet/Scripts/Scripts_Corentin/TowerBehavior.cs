@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerBehavior : MonoBehaviour
 {
     public enum statesBuilding {Active, Deactivated};
-    public statesBuilding towerState= statesBuilding.Active;
+    public statesBuilding towerState= statesBuilding.Deactivated;
 
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] Transform firePoint;
@@ -22,6 +22,12 @@ public class TowerBehavior : MonoBehaviour
     private HealthSystem hS;
     private LineRenderer lRBattery;
 
+    private statesBuilding bufferForSound = statesBuilding.Deactivated;
+
+    private string soundTowerActivate = "event:/Building/Build_Turret/Build_Turr_Rise/Build_Turr_Rise";
+    private string soundTowerDeactivate = "event:/Building/Build_Turret/Build_Turr_Fall/Build_Turr_Fall";
+    private string soundProjectileFire = "event:/Building/Build_Turret/Build_Turr_Shot/Build_Turr_Shot";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +43,25 @@ public class TowerBehavior : MonoBehaviour
     void Update()
     {
         if (hS.GetBatteryHealth() > 0)
+        {
+            if (bufferForSound == statesBuilding.Deactivated)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(soundTowerActivate, transform.position);
+                bufferForSound = statesBuilding.Active;
+            }
+
             towerState = statesBuilding.Active;
+        }
         else
+        {
+            if (bufferForSound == statesBuilding.Active)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(soundTowerDeactivate, transform.position);
+                bufferForSound = statesBuilding.Deactivated;
+            }
+
             towerState = statesBuilding.Deactivated;
+        }  
 
         if (towerState == statesBuilding.Active)
         {
@@ -67,7 +89,6 @@ public class TowerBehavior : MonoBehaviour
         {
             Debug.Log(target.name);
             GameObject instance = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-            //instance.GetComponent<Rigidbody>().velocity = new Vector3(0, 1, 0) * projectileSpeed;
 
             TowerProjectileBehavior tPB = instance.GetComponent<TowerProjectileBehavior>();
             tPB.GetComponent<Rigidbody>().AddForce(Vector3.up * projectileSpeed * 2);
@@ -76,6 +97,8 @@ public class TowerBehavior : MonoBehaviour
             tPB.target = target;
 
             reloadSpeedCount = 0f;
+
+            FMODUnity.RuntimeManager.PlayOneShot(soundProjectileFire, transform.position);
         }
     }
 
