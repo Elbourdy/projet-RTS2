@@ -22,11 +22,14 @@ public class TickManager : MonoBehaviour
     public GameObject hBTick;
 
     private string soundNexusStop = "event:/Building/Build_Nexus/Build_Nex_OnStop/Build_Nex_OnStop";
+    FMOD.Studio.EventInstance soundEnvironnementManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        soundEnvironnementManager = FMODUnity.RuntimeManager.CreateInstance("event:/Environnement/Env_Phase/Env_Phs_Day/Env_Phs_Day");
+        soundEnvironnementManager.start();
+        soundEnvironnementManager.setParameterByName("Day_Or_Night", 1);
     }
 
     // Update is called once per frame
@@ -72,11 +75,14 @@ public class TickManager : MonoBehaviour
         timerCount = 0;
 
         FMODUnity.RuntimeManager.PlayOneShot(soundNexusStop, HQBehavior.instance.gameObject.transform.position);
+
+        soundEnvironnementManager.setParameterByName("Day_Or_Night", 1);
     }
 
     public void ResetTickCounter()
     {
-         timerCount = 0;
+        timerCount = 0;
+        soundEnvironnementManager.setParameterByName("Day_Or_Night", 0);
     }
 
     public void LaunchNightAttack()

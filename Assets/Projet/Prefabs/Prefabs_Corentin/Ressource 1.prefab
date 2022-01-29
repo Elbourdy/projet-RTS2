@@ -189,8 +189,8 @@ MonoBehaviour:
   canBeHarvestedByNexus: 1
   ressourceType: 0
   playSound: 1
-  TempsReload: 10
-  ajout: 100
+  TempsReload: 1
+  ajout: 10
   tickRessourceTimer: 0.2
   ressourceQuantityPerTic: 1
   stockRessources: 400

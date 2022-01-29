@@ -33,7 +33,7 @@ public class RessourcesObject : MonoBehaviour
     private float timerCount;
 
     FMOD.Studio.EventInstance soundRessourceSuckLoop;
-    private string soundRessourceSuckOneShotStart, soundRessourceSuckOneShotStop;
+    private string soundReloadFinish = "event:/Crystals/Cryst_Recharge";
 
     private void Awake()
     {
@@ -48,12 +48,8 @@ public class RessourcesObject : MonoBehaviour
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
 
-        //soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Nexus/Build_Nex_Collect/Build_Nex_Collect");
-        //soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-
-        //soundRessourceSuckOneShotStart = "event:/Fire/Fire_Spawn/Fire_Spawn";
-
-        //soundRessourceSuckOneShotStop = "event:/Fire/Fire_Spawn/Fire_Spawn";
+        soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Crystals/Cryst_OnCollect");
+        soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
     }
 
     public void Update()
@@ -65,15 +61,6 @@ public class RessourcesObject : MonoBehaviour
             onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
             if (Vector3.Distance(transform.position, nexus.transform.position) < rangeCollection)
             {
-                if (playSound)
-                {
-                    //FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStart, transform.position);
-                    soundRessourceSuckLoop.start();
-                    //Debug.Log("StartPlaying");
-                }
-                playSound = false;
-                //soundRessourceSuckLoop.setParameterByName("Crystal_Fill_Energy", (1 - ValeurRestante));
-
                 SetFeedbackNexusCollecting();
                 timerCount += Time.deltaTime * NexusLevelManager.instance.GetVitesseCollecte();
 
@@ -82,6 +69,10 @@ public class RessourcesObject : MonoBehaviour
                     AddRessourceToPlayer();
                     timerCount = 0;
                 }
+            }
+            else
+            {
+                DisableFeedbackCollectionNexus();
             }
         }
         else
@@ -96,12 +87,12 @@ public class RessourcesObject : MonoBehaviour
             }
             if (stockRessources >= ResMaxValue)
             {
+                FMODUnity.RuntimeManager.PlayOneShot(soundReloadFinish, transform.position);
                 stockRessources = ResMaxValue;
                 isReload = false;
                 crono = 0;
             }
         }
-
         SetFeedbackRessourcesCrystal();
     }
 
@@ -144,7 +135,6 @@ public class RessourcesObject : MonoBehaviour
 
         if (stockRessources <= 0)
         {
-            //soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isReload = true;
             crono = 0;   
         }
@@ -155,7 +145,16 @@ public class RessourcesObject : MonoBehaviour
     {
         lR.enabled = true;
         lR.SetPosition(0, transform.position);
-        lR.SetPosition(1, nexus.transform.position); 
+        lR.SetPosition(1, nexus.transform.position);
+
+        if (playSound)
+        {
+            playSound = false;
+            soundRessourceSuckLoop.setParameterByName("Suck_Stop", 0);
+            soundRessourceSuckLoop.start();
+        }
+
+        soundRessourceSuckLoop.setParameterByName("Crystal_Fill_Energy", (1 - remainingEnergyFloat));
     }
 
     public void DisableFeedbackCollectionNexus()
@@ -164,9 +163,7 @@ public class RessourcesObject : MonoBehaviour
 
         if (!playSound)
         {
-            //FMODUnity.RuntimeManager.PlayOneShot(soundRessourceSuckOneShotStop, transform.position);
-            //soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            //Debug.Log("StopPlaying");
+            soundRessourceSuckLoop.setParameterByName("Suck_Stop", 1);
         }
         playSound = true;
     }
