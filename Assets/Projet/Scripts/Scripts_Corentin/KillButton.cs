@@ -29,6 +29,8 @@ public class KillButton : MonoBehaviour
 
     private void OnButtonPressed()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Action/UI_Act_Click/UI_Act_Click");
+
         List<GameObject> list = SelectionPlayer.instance.selectedUnits;
         float refundTotal = 0f;
 

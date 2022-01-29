@@ -16,6 +16,8 @@ public class ButtonAS : MonoBehaviour
 
     public void ButtonPress()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Action/UI_Act_Click/UI_Act_Click");
+
         if (selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>())
         {
             selectionPlayer.selectedUnits[0].GetComponent<Building>().SetActionShopCases(ID); 

@@ -14,6 +14,8 @@ public class ButtonRecapProduction : MonoBehaviour
 
     public void ButtonPress()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Action/UI_Act_Click/UI_Act_Click");
+
         HQBehavior.instance.RemoveFromQueue(ID);
     }
 }

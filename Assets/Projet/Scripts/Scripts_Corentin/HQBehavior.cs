@@ -79,6 +79,8 @@ public class HQBehavior : Building
             {
                 if (GetIsMovingRallyPoint())
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Interface/UI_Interf_Flag/UI_Interf_Flag");
+
                     RaycastHit hit;
                     Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
                     SetRallyPoint(hit.point);
