@@ -37,7 +37,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 		<relationship name="groupTracks">
 			<destination>{c5725882-a6fa-4d87-9c79-0dee05015662}</destination>
-			<destination>{46849dd7-e268-4335-8a47-d65ababc78d3}</destination>
 		</relationship>
 		<relationship name="timeline">
 			<destination>{99f31045-36a9-4e35-9208-d0db69db42ec}</destination>
@@ -91,17 +90,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{7385cf5f-7504-40a6-8027-328f6d50b006}</destination>
-		</relationship>
-	</object>
-	<object class="GroupTrack" id="{46849dd7-e268-4335-8a47-d65ababc78d3}">
-		<relationship name="modules">
-			<destination>{07692ac8-d402-47c1-8234-eac9e89b54d0}</destination>
-			<destination>{15ed4932-a9eb-456c-be61-d30dd22fb53f}</destination>
-			<destination>{c37f90cd-18e8-4f28-9655-9a12fa3ebd41}</destination>
-			<destination>{c0806f52-30c1-4224-8b4a-c41ee41c79b3}</destination>
-		</relationship>
-		<relationship name="mixerGroup">
-			<destination>{aff1e5d6-45e1-4b0e-8ee6-0d287083dd46}</destination>
 		</relationship>
 	</object>
 	<object class="Timeline" id="{99f31045-36a9-4e35-9208-d0db69db42ec}">
@@ -225,6 +213,9 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{7385cf5f-7504-40a6-8027-328f6d50b006}">
+		<property name="volume">
+			<value>-22</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -233,46 +224,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 		<relationship name="panner">
 			<destination>{4bec4909-5bac-4f71-8a8a-d8f44ca44f2f}</destination>
-		</relationship>
-		<relationship name="output">
-			<destination>{a1ff9bb2-631d-4124-b286-78d05c954dda}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{07692ac8-d402-47c1-8234-eac9e89b54d0}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{15ed4932-a9eb-456c-be61-d30dd22fb53f}">
-		<property name="start">
-			<value>5</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{c37f90cd-18e8-4f28-9655-9a12fa3ebd41}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{c0806f52-30c1-4224-8b4a-c41ee41c79b3}">
-		<property name="start">
-			<value>5</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="EventMixerGroup" id="{aff1e5d6-45e1-4b0e-8ee6-0d287083dd46}">
-		<property name="name">
-			<value>Audio 2</value>
-		</property>
-		<relationship name="effectChain">
-			<destination>{fe07e2c3-1417-40aa-a6f2-1fbde225e860}</destination>
-		</relationship>
-		<relationship name="panner">
-			<destination>{c31e508f-4dc1-45d9-94ab-96fb3c81dacb}</destination>
 		</relationship>
 		<relationship name="output">
 			<destination>{a1ff9bb2-631d-4124-b286-78d05c954dda}</destination>
@@ -409,12 +360,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4bec4909-5bac-4f71-8a8a-d8f44ca44f2f}" />
-	<object class="MixerBusEffectChain" id="{fe07e2c3-1417-40aa-a6f2-1fbde225e860}">
-		<relationship name="effects">
-			<destination>{38bcb72d-73d3-4827-a796-ff0e68e1901f}</destination>
-		</relationship>
-	</object>
-	<object class="MixerBusPanner" id="{c31e508f-4dc1-45d9-94ab-96fb3c81dacb}" />
 	<object class="ParameterCondition" id="{f7fbcdf0-a02b-43c4-976a-889877eba6ce}">
 		<property name="minimum">
 			<value>0</value>
@@ -446,8 +391,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<destination>{b9aebe15-cef9-40cf-aeb8-d00dd7b04704}</destination>
 			<destination>{ac8f42e5-88ff-4b23-9a85-e2d3a3d617d0}</destination>
 			<destination>{948c118b-4435-4077-8bdc-6971f5c4ca21}</destination>
-			<destination>{07692ac8-d402-47c1-8234-eac9e89b54d0}</destination>
-			<destination>{15ed4932-a9eb-456c-be61-d30dd22fb53f}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterCondition" id="{48ecdbf5-a078-454d-8354-41b6b50d716b}">
@@ -470,8 +413,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<destination>{55cbc854-7242-48ba-8351-9dcec53c3f8c}</destination>
 			<destination>{eb94456b-b359-495e-be31-05f02eb05ab0}</destination>
 			<destination>{8c6071d0-cac4-4155-b461-8fd1ddfebfc1}</destination>
-			<destination>{c37f90cd-18e8-4f28-9655-9a12fa3ebd41}</destination>
-			<destination>{c0806f52-30c1-4224-8b4a-c41ee41c79b3}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterCondition" id="{961e9281-b93a-432c-a92a-2481e5e994b1}">
@@ -566,5 +507,4 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{873c2be0-385e-4de4-a8aa-07b3b62e9da1}" />
-	<object class="MixerBusFader" id="{38bcb72d-73d3-4827-a796-ff0e68e1901f}" />
 </objects>

@@ -188,6 +188,9 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{76ea362a-b05b-4516-a2c6-362a3e3b31fa}">
+		<property name="volume">
+			<value>-9.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{b0a50c47-73bc-484c-b43b-3a7041dcd23e}</destination>
 		</relationship>
@@ -785,7 +788,11 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{03963332-a8be-4657-ae1d-3d60573fe3cf}" />
-	<object class="SpatialiserEffect" id="{8dbaae14-b086-423c-adf9-5b73b55186bf}" />
+	<object class="SpatialiserEffect" id="{8dbaae14-b086-423c-adf9-5b73b55186bf}">
+		<property name="maximumDistance">
+			<value>45</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{992ab0e1-a849-456d-8660-a63db65f0db6}" />
 	<object class="AutomationPoint" id="{ac946180-8f59-4637-9bce-4df48f5155ce}">
 		<property name="position">
