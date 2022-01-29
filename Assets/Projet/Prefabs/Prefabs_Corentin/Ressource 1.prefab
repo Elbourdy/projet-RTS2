@@ -189,8 +189,8 @@ MonoBehaviour:
   canBeHarvestedByNexus: 1
   ressourceType: 0
   playSound: 1
-  TempsReload: 4
-  ajout: 10
+  TempsReload: 1
+  ajout: 3
   tickRessourceTimer: 0.13
   ressourceQuantityPerTic: 1
   stockRessources: 400
@@ -211,6 +211,7 @@ MonoBehaviour:
   - {fileID: 6107965776973958609}
   chargeCrystal: {fileID: 2100000, guid: b56ac0d0c9a6c8c46b0d6136a256a83b, type: 2}
   discargeCrystal: {fileID: 2100000, guid: fcc8ea69585c73d4ab55675c3e87fe13, type: 2}
+  onRead: 0
 --- !u!120 &8339475318873493725
 LineRenderer:
   m_ObjectHideFlags: 0
