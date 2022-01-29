@@ -28,6 +28,7 @@ public class RessourcesObject : MonoBehaviour
 
     public List<Renderer> crystalRessourcesRenderer = new List<Renderer>();
     public Material chargeCrystal, discargeCrystal;
+    private bool playSoundReload = true;
 
     //temp for testing with nexus
     private float timerCount;
@@ -40,6 +41,7 @@ public class RessourcesObject : MonoBehaviour
         SetIdRessource();
     }
 
+    [SerializeField] private float onRead;
 
     public void Start()
     {
@@ -84,13 +86,19 @@ public class RessourcesObject : MonoBehaviour
             {
                 stockRessources = stockRessources + ajout;
                 crono = 0;
+
+                if (playSoundReload && CalculateRemainingTimeRefill() <= 3)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(soundReloadFinish, transform.position);
+                    playSoundReload = false;
+                }
             }
             if (stockRessources >= ResMaxValue)
-            {
-                FMODUnity.RuntimeManager.PlayOneShot(soundReloadFinish, transform.position);
+            { 
                 stockRessources = ResMaxValue;
                 isReload = false;
                 crono = 0;
+                playSoundReload = true;
             }
         }
         SetFeedbackRessourcesCrystal();
@@ -174,6 +182,15 @@ public class RessourcesObject : MonoBehaviour
         {
             e.material.Lerp(discargeCrystal, chargeCrystal, remainingEnergyFloat);
         }
+    }
+
+    public float CalculateRemainingTimeRefill()
+    {
+        float remainingFilling = ResMaxValue - stockRessources;
+
+        float timeToRefill = (remainingFilling * TempsReload) / ajout;
+
+        return timeToRefill;
     }
 
 
