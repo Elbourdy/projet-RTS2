@@ -63,8 +63,8 @@ public class TickManager : MonoBehaviour
     public void SetFeedbackTimer()
     {
         float fillValue = timerCount / timerForATick;
-        hBTick.transform.GetChild(0).GetComponent<Image>().fillAmount = fillValue;
-        hBTick.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = (Mathf.Round(timerForATick - timerCount)).ToString();
+        hBTick.transform.GetChild(1).GetComponent<Image>().fillAmount = fillValue;
+        hBTick.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = (Mathf.Round(timerForATick - timerCount)).ToString();
     }
 
     public void TickEffect() //s'applique quand un tick supplementaire apparaît

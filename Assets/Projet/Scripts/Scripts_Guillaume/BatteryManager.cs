@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SelectionPlayer))]
 public class BatteryManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] public int energyConsumedByUnitPerTick = 1;
     [SerializeField] public int energyConsumedByBuildingPerTick = 1;
     [SerializeField] public float timeOfATickInSeconds = 1f;
+    [SerializeField] public Image feedbackTimerTick;
 
     public int energyConsumeByTick;
     public float radiusBattery = 10f;
@@ -37,6 +39,8 @@ public class BatteryManager : MonoBehaviour
         }
 
         timerRechargeCount += Time.deltaTime;
+
+        feedbackTimerTick.fillAmount = 1 - timerRechargeCount / timeOfATickInSeconds;
     }
     public void ChargeUnit()
     {

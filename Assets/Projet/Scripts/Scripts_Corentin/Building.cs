@@ -165,7 +165,6 @@ public class Building : MonoBehaviour
     {
         prodQueueStacked.Clear();
 
-        Debug.Log(recapProduction.Count);
         int i = 0;
         if (productionQueue.Count > 0)
         {

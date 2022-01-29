@@ -29,8 +29,12 @@ public class Gestion_HUD : MonoBehaviour
     {
         if (selectionPlayer.selectedUnits.Count > 0)
         {
+            if (selectionPlayer.selectedUnits.Count > 1)
+                DisplayUnitSelectionCases();
+            else
+                ResetUnitSelectionCases();
+
             OneUnitDisplayUpdate();
-            DisplayUnitSelectionCases();
 
             if (selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>())
             {
@@ -171,12 +175,12 @@ public class Gestion_HUD : MonoBehaviour
                 }
 
                 unitSelectionCases[i-1].SetActive(true);
-                unitSelectionCases[i-1].transform.GetChild(0).GetComponent<Text>().text = e.GetComponent<HealthSystem>().GetHealth().ToString();
+                unitSelectionCases[i-1].transform.GetChild(0).GetComponent<HealthBar>().SetHealth(e.GetComponent<HealthSystem>().GetHealth() / e.GetComponent<HealthSystem>().GetMaxHealth());
             }
             i++;
         }
 
-        for (int j = i; j < unitSelectionCases.Count; j++)  //on vide le reste des cases
+        for (int j = i ; j < unitSelectionCases.Count; j++)  //on vide le reste des cases
         {
             if (j>0)
                 unitSelectionCases[j].SetActive(false);
@@ -188,8 +192,6 @@ public class Gestion_HUD : MonoBehaviour
         foreach(GameObject e in unitSelectionCases)
         {
             e.SetActive(false);
-            e.GetComponent<Image>().sprite = null;
-            e.transform.GetChild(0).GetComponent<Text>().text = "";
         }
     }
 }
