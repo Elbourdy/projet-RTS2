@@ -8,11 +8,11 @@ public class Gestion_HUD : MonoBehaviour
 {
     public float Map;
 
-    public GameObject oneUnitDisplay;   //grosse image zoom sur une unité
-    private SelectionPlayer selectionPlayer;      ///script de selection de perso c'est plus rapide vu que je l'appelle pelin de fois
-    public List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
-    public List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
-    //public List<GameObject> ressourcesCases = new List<GameObject>();
+    [SerializeField] private GameObject oneUnitDisplay;   //grosse image zoom sur une unité
+    [SerializeField] private SelectionPlayer selectionPlayer;      ///script de selection de perso c'est plus rapide vu que je l'appelle pelin de fois
+    [SerializeField] private List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
+    [SerializeField] private List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
+    [SerializeField] private Image gridSelectionCases;
 
     void Start()
     {
@@ -185,6 +185,7 @@ public class Gestion_HUD : MonoBehaviour
             if (j>0)
                 unitSelectionCases[j].SetActive(false);
         }
+        gridSelectionCases.enabled = true;
     }
 
     void ResetUnitSelectionCases()   //Fonction qui reset le contenu des petites cases de selection d'unités
@@ -193,5 +194,6 @@ public class Gestion_HUD : MonoBehaviour
         {
             e.SetActive(false);
         }
+        gridSelectionCases.enabled = false;
     }
 }
