@@ -189,13 +189,11 @@ MonoBehaviour:
   canBeHarvestedByNexus: 1
   ressourceType: 0
   playSound: 1
-  TempsReload: 1
-  ajout: 4
-  Plein: {fileID: 2100000, guid: 640adde0eda925d47a5fda2a77f1182e, type: 2}
-  vide: {fileID: 2100000, guid: fcc8ea69585c73d4ab55675c3e87fe13, type: 2}
-  tickRessourceTimer: 0.1
+  TempsReload: 10
+  ajout: 100
+  tickRessourceTimer: 0.2
   ressourceQuantityPerTic: 1
-  stockRessources: 450
+  stockRessources: 400
   rangeCollection: 18
   onReadDistance: 0
   crystalRessourcesRenderer:
@@ -574,7 +572,7 @@ PrefabInstance:
     - target: {fileID: -678588488315902003, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fcc8ea69585c73d4ab55675c3e87fe13, type: 2}
+      objectReference: {fileID: 2100000, guid: e9a8616ab18ff1746be41c820b58078f, type: 2}
     - target: {fileID: -646481518695035523, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
