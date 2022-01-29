@@ -26,6 +26,8 @@ public class NightAttack : MonoBehaviour
     private bool isActive = false;
     private GameObject nexus;
 
+    private string soundNexusOnMouvement = "event:/Building/Build_Nexus/Build_Nex_OnMouvment/Build_Nex_OnMouvment";
+
     private void Start()
     {
         nexus = GameObject.Find("Nexus");
@@ -90,6 +92,8 @@ public class NightAttack : MonoBehaviour
             HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Move;
 
             FeedbackSpawnerReset();
+
+            FMODUnity.RuntimeManager.PlayOneShot(soundNexusOnMouvement, HQBehavior.instance.transform.position);
             isActive = false;
         }
     }

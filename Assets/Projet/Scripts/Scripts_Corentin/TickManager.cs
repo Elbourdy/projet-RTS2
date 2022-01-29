@@ -16,15 +16,12 @@ public class TickManager : MonoBehaviour
     }
 
     [SerializeField] private int timerForATick = 30;
-    //[SerializeField] private int tickToSwitchPhase = 5;
-    //[SerializeField] private Sprite spriteTickOn, spriteTickOff;
     [SerializeField] private int timeBeforeAttack = 2;
 
-    //private int totalTickCount;
     private float timerCount;
-
     public GameObject hBTick;
-    //public List<GameObject> tickFeedbacks = new List<GameObject>(); 
+
+    private string soundNexusStop = "event:/Building/Build_Nexus/Build_Nex_OnStop/Build_Nex_OnStop";
 
     // Start is called before the first frame update
     void Start()
@@ -73,42 +70,14 @@ public class TickManager : MonoBehaviour
         dayState = statesDay.Night;
         HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
         timerCount = 0;
-        /*timerCount = 0;
-        //BatteryManager.instance.ChargeUnit();
-        totalTickCount++;
-        SetTickFeedback();
 
-        if (totalTickCount == tickToSwitchPhase)
-        {
-            dayState = statesDay.Night;
-            HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
-        }*/
+        FMODUnity.RuntimeManager.PlayOneShot(soundNexusStop, HQBehavior.instance.gameObject.transform.position);
     }
 
     public void ResetTickCounter()
     {
-        //for (int i = 0; i < tickToSwitchPhase; i++)
-        //{
-            //tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOff;
-            //totalTickCount = 0;
-            timerCount = 0;
-        //}
+         timerCount = 0;
     }
-
-    /*public void SetTickFeedback()
-    {
-        for(int i = 0; i < tickToSwitchPhase; i++)
-        {
-            if (i < totalTickCount)
-            {
-                tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOn;
-            }
-            else
-            {
-                tickFeedbacks[i].GetComponent<Image>().sprite = spriteTickOff;
-            }
-        }
-    }*/
 
     public void LaunchNightAttack()
     {

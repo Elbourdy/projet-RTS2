@@ -20,6 +20,8 @@ public class BatteryManager : MonoBehaviour
 
     private float timerRechargeCount;
 
+    private string soundNextTick = "event:/Building/Build_Nexus/Build_Nex_Tick/Build_Nex_Tick";
+
     private void Awake()
     {
         instance = this;
@@ -29,6 +31,7 @@ public class BatteryManager : MonoBehaviour
     {
         if (timerRechargeCount > timeOfATickInSeconds)
         {
+            FMODUnity.RuntimeManager.PlayOneShot(soundNextTick, HQBehavior.instance.gameObject.transform.position);
             ChargeUnit();
             timerRechargeCount = 0;
         }
