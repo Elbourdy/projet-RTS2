@@ -11,12 +11,12 @@ public class RessourcesObject : MonoBehaviour
     public Ressources_Type ressourceType;
 
     private int ressourceId;
-    public int ResMaxValue;
-    public float ResMaxValuePASTOUCHE;
-    public float  remainingEnergyFloat;
+    private int ResMaxValue;
+    private float ResMaxValuePASTOUCHE;
+    private float  remainingEnergyFloat;
     public bool playSound = true;
-    public bool isReload = false;
-    public float crono = 0;
+    private bool isReload = false;
+    private float crono = 0;
     public float TempsReload;
     public int ajout;
 
@@ -63,7 +63,7 @@ public class RessourcesObject : MonoBehaviour
     {
         remainingEnergyFloat = stockRessources / ResMaxValuePASTOUCHE;
 
-        if (canBeHarvestedByNexus)
+        if (!isReload)
         {
             onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
             if (Vector3.Distance(transform.position, nexus.transform.position) < rangeCollection)
@@ -86,16 +86,11 @@ public class RessourcesObject : MonoBehaviour
                     timerCount = 0;
                 }
             }
-            else
-            {
-                DisableFeedbackCollectionNexus();
-            }
         }
-
-        SetFeedbackRessourcesCrystal();
-
-        if (isReload == true)
+        else
         {
+            DisableFeedbackCollectionNexus();
+
             crono += Time.deltaTime;
             if (crono >= TempsReload)
             {
@@ -108,8 +103,9 @@ public class RessourcesObject : MonoBehaviour
                 isReload = false;
                 crono = 0;
             }
-
         }
+
+        SetFeedbackRessourcesCrystal();
     }
 
 
@@ -141,22 +137,19 @@ public class RessourcesObject : MonoBehaviour
 
     public void AddRessourceToPlayer()
     {
-        if (isReload == false)
+        if (stockRessources - ressourceQuantityPerTic <= 0)
         {
-            if (stockRessources - ressourceQuantityPerTic <= 0)
-            {
-                Global_Ressources.instance.ModifyRessource(ressourceId, stockRessources);
-            }
-            else Global_Ressources.instance.ModifyRessource(ressourceId, ressourceQuantityPerTic);
+            Global_Ressources.instance.ModifyRessource(ressourceId, stockRessources);
+        }
+        else Global_Ressources.instance.ModifyRessource(ressourceId, ressourceQuantityPerTic);
 
-            stockRessources -= ressourceQuantityPerTic;
+        stockRessources -= ressourceQuantityPerTic;
 
-            if (stockRessources <= 0)
-            {
-                //soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                isReload = true;
-                crono = 0;   
-            }
+        if (stockRessources <= 0)
+        {
+            //soundRessourceSuckLoop.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            isReload = true;
+            crono = 0;   
         }
     }
     
