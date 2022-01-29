@@ -27,9 +27,8 @@ public class TickManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundEnvironnementManager = FMODUnity.RuntimeManager.CreateInstance("event:/Environnement/Env_Phase/Env_Phs_Day/Env_Phs_Day");
+        soundEnvironnementManager = FMODUnity.RuntimeManager.CreateInstance("event:/Environnement/Env_Phase/Env_Phs_Manager/Env_Phs_Manager");
         soundEnvironnementManager.start();
-        soundEnvironnementManager.setParameterByName("Day_Or_Night", 1);
     }
 
     // Update is called once per frame
