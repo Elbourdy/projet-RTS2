@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{ba618f77-9042-44a5-b36e-35ec433c4b47}">
+		<property name="note">
+			<value>Paramètre Day_Or_Night (soit 0 soit 1) :
+Se paramètre permet de passer d'un event loop à un autre par une transition. 
+Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'il fait nuit</value>
+		</property>
 		<property name="color">
 			<value>Yellow Light 2</value>
 		</property>
