@@ -139,7 +139,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="TransitionDestinationSound" id="{948c118b-4435-4077-8bdc-6971f5c4ca21}">
 		<property name="start">
-			<value>10</value>
+			<value>5</value>
 		</property>
 		<property name="length">
 			<value>0</value>
@@ -177,10 +177,10 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="TransitionSourceSound" id="{7267cc0a-6f07-46d2-b592-fd4bd3ff6f96}">
 		<property name="length">
-			<value>10</value>
+			<value>5</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{6834281b-6389-427d-ade9-ebc7380de127}</destination>
+			<destination>{c17ef6d1-7631-4c53-9de5-09d703b899c0}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{b9aebe15-cef9-40cf-aeb8-d00dd7b04704}">
@@ -188,7 +188,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<value>10</value>
 		</property>
 		<relationship name="fadeInCurve">
-			<destination>{970882d4-207f-43ca-96d9-bdb1ce86480a}</destination>
+			<destination>{694f50ca-556e-4d43-86fb-b09c8487c6ee}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{55cbc854-7242-48ba-8351-9dcec53c3f8c}">
@@ -245,7 +245,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="TransitionDestinationSound" id="{15ed4932-a9eb-456c-be61-d30dd22fb53f}">
 		<property name="start">
-			<value>10</value>
+			<value>5</value>
 		</property>
 		<property name="length">
 			<value>0</value>
@@ -365,23 +365,23 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="MixerBusPanner" id="{2bb79793-9168-4859-8c23-535d9bb2b829}" />
 	<object class="MixerBusFader" id="{b3b1d67c-2ae8-4eda-9d44-6fe8c7929b2a}" />
-	<object class="TransitionSourceFadeOutCurve" id="{6834281b-6389-427d-ade9-ebc7380de127}">
+	<object class="TransitionSourceFadeOutCurve" id="{c17ef6d1-7631-4c53-9de5-09d703b899c0}">
 		<relationship name="startPoint">
-			<destination>{36899b1d-09eb-44f5-a650-dc776dadf8bf}</destination>
+			<destination>{54b1a844-16b9-4fca-80f1-ff18970015ad}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{5de4e0a1-d9f4-4c19-ab1a-f05a9f32aabb}</destination>
+			<destination>{032709fe-f2ee-46ca-bfec-1f1474f79fa5}</destination>
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{b9aebe15-cef9-40cf-aeb8-d00dd7b04704}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{970882d4-207f-43ca-96d9-bdb1ce86480a}">
+	<object class="TransitionDestinationFadeInCurve" id="{694f50ca-556e-4d43-86fb-b09c8487c6ee}">
 		<relationship name="startPoint">
-			<destination>{fe8bcf67-21a5-49ad-9d3c-f7d7460e76e9}</destination>
+			<destination>{fbfd44d5-c314-4cd0-be6c-93a4d2abfb8f}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{ac755aa2-3fe6-4034-9e9f-15bb115dddd2}</destination>
+			<destination>{783b0983-b5d8-42bd-bec2-d53be9b7555f}</destination>
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{7267cc0a-6f07-46d2-b592-fd4bd3ff6f96}</destination>
@@ -439,7 +439,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="TransitionTimeline" id="{072b91b1-5919-4c6f-9ad3-3542666030d1}">
 		<property name="length">
-			<value>10</value>
+			<value>5</value>
 		</property>
 		<relationship name="modules">
 			<destination>{7267cc0a-6f07-46d2-b592-fd4bd3ff6f96}</destination>
@@ -486,7 +486,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{a0ed8e5c-b6c7-4443-968f-f5e0a6f2cba7}" />
-	<object class="AutomationPoint" id="{36899b1d-09eb-44f5-a650-dc776dadf8bf}">
+	<object class="AutomationPoint" id="{54b1a844-16b9-4fca-80f1-ff18970015ad}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -494,21 +494,18 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<value>1</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.75555563</value>
-		</property>
-		<property name="isSCurve">
-			<value>true</value>
+			<value>-0.446846843</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{5de4e0a1-d9f4-4c19-ab1a-f05a9f32aabb}">
+	<object class="AutomationPoint" id="{032709fe-f2ee-46ca-bfec-1f1474f79fa5}">
 		<property name="position">
-			<value>10</value>
+			<value>5</value>
 		</property>
 		<property name="value">
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{fe8bcf67-21a5-49ad-9d3c-f7d7460e76e9}">
+	<object class="AutomationPoint" id="{fbfd44d5-c314-4cd0-be6c-93a4d2abfb8f}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -516,15 +513,12 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>-1</value>
-		</property>
-		<property name="isSCurve">
-			<value>true</value>
+			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{ac755aa2-3fe6-4034-9e9f-15bb115dddd2}">
+	<object class="AutomationPoint" id="{783b0983-b5d8-42bd-bec2-d53be9b7555f}">
 		<property name="position">
-			<value>10</value>
+			<value>5</value>
 		</property>
 		<property name="value">
 			<value>1</value>
