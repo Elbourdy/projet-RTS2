@@ -12,6 +12,8 @@ public class CameraMouvement : MonoBehaviour
     
     public bool activateMovement = true;
 
+    public GameObject attenuationObject;
+
 
     private void Update()
     {
@@ -24,6 +26,8 @@ public class CameraMouvement : MonoBehaviour
                 MoveCam();
             }
         }
+
+        SetAttenuationPoint();
     }
 
     private void MoveCam()
@@ -95,6 +99,21 @@ public class CameraMouvement : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void SetAttenuationPoint()
+    {
+        RaycastHit[] hit;
+
+        hit = Physics.RaycastAll(transform.position, transform.forward);
+
+        foreach(RaycastHit e in hit)
+        {
+            if (e.collider.tag == "Floor")
+            {
+                attenuationObject.transform.position = e.point;
+            }
+        }
     }
 
 }
