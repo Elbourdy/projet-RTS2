@@ -110,6 +110,10 @@ public class HealthSystem : MonoBehaviour
     {
         FeedBackDamage();
         health += damageNumber;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         onHealthEvent?.Invoke();
         CheckIfKill();
     }
