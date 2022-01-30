@@ -33,6 +33,8 @@ public class RessourcesObject : MonoBehaviour
     //temp for testing with nexus
     private float timerCount;
 
+    [SerializeField] private HealthBar ressourcesBar;
+
     FMOD.Studio.EventInstance soundRessourceSuckLoop;
     private string soundReloadFinish = "event:/Crystals/Cryst_Recharge";
 
@@ -57,6 +59,7 @@ public class RessourcesObject : MonoBehaviour
     public void Update()
     {
         remainingEnergyFloat = stockRessources / ResMaxValuePASTOUCHE;
+        ressourcesBar.SetHealth(remainingEnergyFloat);
 
         if (!isReload)
         {
