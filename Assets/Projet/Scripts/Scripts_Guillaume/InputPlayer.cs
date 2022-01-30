@@ -8,7 +8,7 @@ public class InputPlayer : MonoBehaviour
 
 
     private SelectionPlayer sp;
-
+    private int myLayer = 1 << 3;
 
     private void Awake()
     {
@@ -51,7 +51,7 @@ public class InputPlayer : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 1000, myLayer))
         {
             if (hit.collider.name == "Sol")
             {
