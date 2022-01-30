@@ -16,11 +16,16 @@ public class ButtonAS : MonoBehaviour
 
     public void ButtonPress()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Action/UI_Act_Click/UI_Act_Click");
-
         if (selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>())
         {
-            selectionPlayer.selectedUnits[0].GetComponent<Building>().SetActionShopCases(ID); 
+            if (selectionPlayer.selectedUnits[0].GetComponent<Building>().SetActionShopCases(ID))
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Action/UI_Act_Click/UI_Act_Click");
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Action/UI_Act_NotPossible/UI_Act_Not");
+            }
             //lance une fonction dans le batiment avec l'ID du bouton pressé entrainânt l'action correspondante
         }
 

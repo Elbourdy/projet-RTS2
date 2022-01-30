@@ -33,7 +33,7 @@ public class Building : MonoBehaviour
         productionQueue.RemoveAt(prodQueueStacked[buttonPressed] - 1);
     }
 
-    public void AddToQueue(int IDNumberRoaster)
+    public bool AddToQueue(int IDNumberRoaster)
     {
         int i = 0;
         bool check = true;
@@ -54,7 +54,11 @@ public class Building : MonoBehaviour
                 i++;
             }
             productionQueue.Add(roasterUnits[IDNumberRoaster]);
+
+            return true;
         }
+        else
+            return false;
     }
 
     public void ProcessQueue()
@@ -84,11 +88,11 @@ public class Building : MonoBehaviour
         }
     }
 
-    public void SetActionShopCases (int ButtonID)
+    public bool SetActionShopCases (int ButtonID)
     {
         if (ButtonID < roasterUnits.Count)
         {
-            AddToQueue(ButtonID);
+            return AddToQueue(ButtonID);
         }
 
         if (ButtonID == 9)
@@ -101,13 +105,17 @@ public class Building : MonoBehaviour
             {
                 HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Move;
             }
+            return true;
         }
 
         if (ButtonID == 11)
         {
             SelectionPlayer.instance.canSelect = false;
-            isMovingRallyPoint = true; 
+            isMovingRallyPoint = true;
+            return true;
         }
+
+        return false;
     }
 
     public void SetFeedbackUI ()
