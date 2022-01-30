@@ -20,6 +20,11 @@ public class BatteryManager : MonoBehaviour
     public static BatteryManager instance;
     public List<GameObject> batteries = new List<GameObject>();
 
+    [Header("Feedback Rayon Alimentation")]
+    [SerializeField] private LineRenderer lRFeedbackAlim;
+    [SerializeField] private float durationFeedback;
+    private float durationFeedbackCount, radiusAlim;
+
     private float timerRechargeCount;
 
     private string soundNextTick = "event:/Building/Build_Nexus/Build_Nex_Tick/Build_Nex_Tick";
@@ -35,12 +40,17 @@ public class BatteryManager : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot(soundNextTick, HQBehavior.instance.gameObject.transform.position);
             ChargeUnit();
+            durationFeedbackCount = 0;
+            lRFeedbackAlim.enabled = true;
+            radiusAlim = radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus();
             timerRechargeCount = 0;
         }
 
         timerRechargeCount += Time.deltaTime;
 
         feedbackTimerTick.fillAmount = 1 - timerRechargeCount / timeOfATickInSeconds;
+
+        SetFeedbackAlimentation();
     }
     public void ChargeUnit()
     {
@@ -78,7 +88,7 @@ public class BatteryManager : MonoBehaviour
         Global_Ressources.instance.ModifyRessource(0, - energyConsumeByTick);
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         DrawRadiusBattery();
     }
@@ -87,7 +97,7 @@ public class BatteryManager : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(GameObject.Find("Nexus").transform.position, radiusBattery);
-    }
+    }*/
 
     public int CalculateEnergyConsumedNextTick()
     {
@@ -105,5 +115,39 @@ public class BatteryManager : MonoBehaviour
         }
 
         return Mathf.RoundToInt(count * NexusLevelManager.instance.GetMultiplicatorConsomption());
+    }
+
+    public void SetFeedbackAlimentation()
+    {
+        if (durationFeedbackCount < durationFeedback)
+        {
+            DisplayRange(Mathf.Lerp(0, radiusAlim, durationFeedbackCount / durationFeedback), Color.white);
+            durationFeedbackCount += Time.deltaTime;
+        }
+        else
+            lRFeedbackAlim.enabled = false;
+    }
+
+    public void DisplayRange(float range, Color color)
+    {
+        lRFeedbackAlim.positionCount = 50;
+        lRFeedbackAlim.useWorldSpace = false;
+        lRFeedbackAlim.SetColors(color, color);
+
+        float x;
+        float y = 0f + HQBehavior.instance.transform.position.y;
+        float z;
+
+        float angle = 20f;
+
+        for (int i = 0; i < 50; i++)
+        {
+            x = Mathf.Sin(Mathf.Deg2Rad * angle) * range;
+            z = Mathf.Cos(Mathf.Deg2Rad * angle) * range;
+
+            lRFeedbackAlim.SetPosition(i, new Vector3(x, y, z));
+
+            angle += (360f / 49f);
+        }
     }
 }

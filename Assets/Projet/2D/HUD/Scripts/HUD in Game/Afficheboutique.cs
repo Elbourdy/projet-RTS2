@@ -22,7 +22,7 @@ public class Afficheboutique : MonoBehaviour
        
 
 
-        if (SelectCaseOne.activeInHierarchy == true)
+        /*if (SelectCaseOne.activeInHierarchy == true)
         {
 
             ConstuctionHUD.SetActive(false);
@@ -32,8 +32,8 @@ public class Afficheboutique : MonoBehaviour
         {
             ConstuctionHUD.SetActive(true);
             
-
-        }
+    
+        }*/
 
     }
 }
