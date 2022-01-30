@@ -33,18 +33,23 @@ public class NexusLevelManager : MonoBehaviour
     private int maxNexusLevel, newNexusLevel;
     [SerializeField] private float pityTimerCount;
 
+    FMOD.Studio.EventInstance soundNexusLevelChange;
+
     // Start is called before the first frame update
     void Start()
     {
         maxNexusLevel = levelThresholdRessources.Count - 1;
 
         currentNexusLevel = CheckNexusLevel();
+
+        SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+
+        soundNexusLevelChange = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Nexus/Build_Nex_Level/Build_Nex_LvL_Up/Build_Nex_LvL_Up");
     }
 
     // Update is called once per frame
     void Update()
     {
-        SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
         newNexusLevel = CheckNexusLevel();
 
         if (newNexusLevel < currentNexusLevel)
@@ -54,10 +59,19 @@ public class NexusLevelManager : MonoBehaviour
             if (pityTimerCount > pityTimerLevel)
             {
                 currentNexusLevel = newNexusLevel;
+                SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+                soundNexusLevelChange.setParameterByName("Next_Level_Up", (newNexusLevel+1) * 2);
+                soundNexusLevelChange.start();
             }
         }
         else
         {
+            if (currentNexusLevel != newNexusLevel)
+            {
+                SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+                soundNexusLevelChange.setParameterByName("Next_Level_Up", newNexusLevel * 2 - 1);
+                soundNexusLevelChange.start();
+            }
             currentNexusLevel = newNexusLevel;
             pityTimerCount = 0;
         }
