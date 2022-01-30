@@ -311,7 +311,7 @@ public class SelectionPlayer : MonoBehaviour
                     }
                     else
                     {
-                        highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
+                        if (highlightThisUnit.GetComponentInChildren<MeshRenderer>())highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
                         if (highlightThisUnit.transform.Find("TorusFeedback") != null)
                             highlightThisUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }

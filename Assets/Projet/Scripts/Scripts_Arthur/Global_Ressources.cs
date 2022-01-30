@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Global_Ressources : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Global_Ressources : MonoBehaviour
     public void ModifyRessource(int ressourceID, int ressourceAmmount)
     {
         ressources[ressourceID] += ressourceAmmount;
+        if (ressources[0] <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //actualiser l'UI ici!
     }
 
