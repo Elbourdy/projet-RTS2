@@ -124,9 +124,9 @@ public class Building : MonoBehaviour
         {
             selectedFeedback.SetActive(false);
             //healthBar.gameObject.SetActive(false);
-            rallyPoint.SetActive(false);
+            //rallyPoint.SetActive(false);
 
-            recapProduction[0].transform.parent.gameObject.SetActive(false);
+            //recapProduction[0].transform.parent.gameObject.SetActive(false);
         }
 
         if (productionQueue.Count > 0)

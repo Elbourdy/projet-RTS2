@@ -134,7 +134,7 @@ MonoBehaviour:
   colorRadiusBattery: {r: 0, g: 0.37760234, b: 1, a: 1}
   animator: {fileID: 3383543886236954069}
   ActivateNewMovementSystem: 1
-  AllowMultipleSelection: 1
+  AllowMultipleSelection: 0
 --- !u!114 &158273673537399656
 MonoBehaviour:
   m_ObjectHideFlags: 0

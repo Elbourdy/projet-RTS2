@@ -24,4 +24,9 @@ public class HealthBar : MonoBehaviour
     {
         this.gradient = gradient;
     }
+
+    public void SetColor(Color color)
+    {
+        fill.color = color;
+    }
 }

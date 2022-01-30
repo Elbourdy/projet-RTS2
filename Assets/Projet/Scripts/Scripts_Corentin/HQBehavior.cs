@@ -62,7 +62,6 @@ public class HQBehavior : Building
         targetPosition = transform.position;
 
         SetConstructionHealth(100f); //FOR NEXUS
-        DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
     }
 
     // Update is called once per frame

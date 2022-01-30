@@ -22,6 +22,8 @@ public class Gestion_HUD : MonoBehaviour
         {
             shopCases[i].GetComponent<ButtonAS>().ID = i;
         }
+
+        unitSelectionCases[0].transform.GetChild(0).GetComponent<Image>().enabled = true;
     }
 
     
@@ -57,29 +59,37 @@ public class Gestion_HUD : MonoBehaviour
 
     public void OneUnitDisplayUpdate()   //fonction qui affiche la grosse image pour une unité
     {
+        ResetOneUnitDisplay();
+
         oneUnitDisplay.SetActive(true);
-        oneUnitDisplay.transform.GetChild(4).gameObject.SetActive(true);
-        oneUnitDisplay.transform.GetChild(5).gameObject.SetActive(true);
+        oneUnitDisplay.transform.GetChild(2).gameObject.SetActive(true);
 
         GameObject selectedUnit = selectionPlayer.selectedUnits[0];
 
-        oneUnitDisplay.transform.GetChild(2).GetComponent<Text>().text = selectedUnit.GetComponent<HealthSystem>().GetHealth().ToString();
-        oneUnitDisplay.transform.GetChild(3).GetComponent<Text>().text = selectedUnit.GetComponent<HealthSystem>().GetMaxHealth().ToString();
-        oneUnitDisplay.transform.GetChild(4).GetComponent<HealthBar>().SetHealth(selectedUnit.GetComponent<HealthSystem>().GetHealth() / selectedUnit.GetComponent<HealthSystem>().GetMaxHealth());
+        oneUnitDisplay.transform.GetChild(3).GetComponent<Text>().text = selectedUnit.GetComponent<HealthSystem>().GetHealth() + "/" + selectedUnit.GetComponent<HealthSystem>().GetMaxHealth();
+        oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetHealth(selectedUnit.GetComponent<HealthSystem>().GetHealth() / selectedUnit.GetComponent<HealthSystem>().GetMaxHealth());
 
         if (selectedUnit.GetComponent<ClassAgentContainer>() != null)
         {
             oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = selectedUnit.GetComponent<ClassAgentContainer>().myClass.name;
             oneUnitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = selectedUnit.GetComponent<ClassAgentContainer>().myClass.unitSprite;
-            oneUnitDisplay.transform.GetChild(6).gameObject.SetActive(true);
-            oneUnitDisplay.transform.GetChild(6).GetComponent<HealthBar>().SetHealth(selectedUnit.GetComponent<HealthSystem>().GetBatteryHealth()/selectedUnit.GetComponent<HealthSystem>().GetMaxBatteryHealth());
+            if (selectedUnit.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
+            {
+                oneUnitDisplay.transform.GetChild(4).gameObject.SetActive(true);
+                oneUnitDisplay.transform.GetChild(4).GetComponent<HealthBar>().SetHealth(selectedUnit.GetComponent<HealthSystem>().GetBatteryHealth() / selectedUnit.GetComponent<HealthSystem>().GetMaxBatteryHealth());
+                oneUnitDisplay.transform.GetChild(5).GetComponent<Text>().text = selectedUnit.GetComponent<HealthSystem>().GetBatteryHealth() + "/" + selectedUnit.GetComponent<HealthSystem>().GetMaxBatteryHealth();
+                oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetColor(Color.green);
+            }
+            else
+                oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetColor(Color.red);
         }
 
         if (selectedUnit.GetComponent<ClassBatimentContainer>() != null)
         {
             oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = selectedUnit.GetComponent<ClassBatimentContainer>().myClass.name;
             oneUnitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = selectedUnit.GetComponent<ClassBatimentContainer>().myClass.unitSprite;
-            oneUnitDisplay.transform.GetChild(6).GetComponent<HealthBar>().SetHealth(1);
+            oneUnitDisplay.transform.GetChild(4).gameObject.SetActive(false);
+            oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetColor(Color.green);
         }
     }
 
@@ -88,11 +98,10 @@ public class Gestion_HUD : MonoBehaviour
         oneUnitDisplay.SetActive(false);
         oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = "";
         oneUnitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = null;
-        oneUnitDisplay.transform.GetChild(2).GetComponent<Text>().text = "";
+        oneUnitDisplay.transform.GetChild(2).gameObject.SetActive(false);
         oneUnitDisplay.transform.GetChild(3).GetComponent<Text>().text = "";
         oneUnitDisplay.transform.GetChild(4).gameObject.SetActive(false);
-        oneUnitDisplay.transform.GetChild(5).gameObject.SetActive(false);
-        oneUnitDisplay.transform.GetChild(6).gameObject.SetActive(false);
+        oneUnitDisplay.transform.GetChild(5).GetComponent<Text>().text = "";
     }
 
     void DisplayShopCasesForBuilding()   //fonction qui remplit le contenu des shop cases pour les batiments (sera changé quand on ajoutera des fonctions speciales
@@ -160,22 +169,23 @@ public class Gestion_HUD : MonoBehaviour
     void DisplayUnitSelectionCases()     //Fonction qui affiche le contenu des petites cases de selection d'unités, à changer si on veut afficher plusieurs batiments à lka fois
     {
         int i = 0;
-        foreach(GameObject e in selectionPlayer.selectedUnits)
+
+        foreach (GameObject e in selectionPlayer.selectedUnits)
         {
-            if (i <= unitSelectionCases.Count && i > 0) //on remplit les cases tant qu'il y a des unités sauf pour la première (elle sera dans le zoom)
+            if (i <= unitSelectionCases.Count) //on remplit les cases tant qu'il y a des unités sauf pour la première (elle sera dans le zoom)
             {
                 if (e.GetComponent<ClassAgentContainer>())
                 {
-                    unitSelectionCases[i-1].GetComponent<Image>().sprite = e.GetComponent<ClassAgentContainer>().myClass.unitSprite;
+                    unitSelectionCases[i].transform.GetChild(1).GetComponent<Image>().sprite = e.GetComponent<ClassAgentContainer>().myClass.unitSprite;
                 }
 
                 if (e.GetComponent<ClassBatimentContainer>())
                 {
-                    unitSelectionCases[i-1].GetComponent<Image>().sprite = e.GetComponent<ClassBatimentContainer>().myClass.unitSprite;
+                    unitSelectionCases[i].transform.GetChild(1).GetComponent<Image>().sprite = e.GetComponent<ClassBatimentContainer>().myClass.unitSprite;
                 }
 
-                unitSelectionCases[i-1].SetActive(true);
-                unitSelectionCases[i-1].transform.GetChild(0).GetComponent<HealthBar>().SetHealth(e.GetComponent<HealthSystem>().GetHealth() / e.GetComponent<HealthSystem>().GetMaxHealth());
+                unitSelectionCases[i].SetActive(true);
+                unitSelectionCases[i].transform.GetChild(2).GetComponent<HealthBar>().SetHealth(e.GetComponent<HealthSystem>().GetHealth() / e.GetComponent<HealthSystem>().GetMaxHealth());
             }
             i++;
         }
