@@ -20,6 +20,8 @@ public class HQBehavior : Building
     private Vector3 targetPosition;
     private LineRenderer lRBattery;
 
+    [SerializeField] private List<MeshRenderer> nexusRenderers = new List<MeshRenderer>();
+
     [SerializeField] private Animator animator;
 
 
@@ -67,6 +69,7 @@ public class HQBehavior : Building
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(animator.GetCurrentAnimatorClipInfoCount(0));
         DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
         SetAnimator();
 
@@ -184,5 +187,29 @@ public class HQBehavior : Building
                 animator.SetBool("Stop", true);
                 break;
         }
+    }
+
+    public void SetNexusBallMaterial(Material newMaterial)
+    {
+        Material[] matList = new Material[2];
+        matList[0] = nexusRenderers[0].materials[0];
+        matList[1] = newMaterial;
+
+        foreach (MeshRenderer e in nexusRenderers)
+        {
+            if (e.materials.Length == 2)
+            {
+                e.materials = matList;
+            }
+            else
+            {
+                e.material = newMaterial;
+            }
+        }
+    }
+
+    public void SetIdleAnimationSpeed(float newSpeed)
+    {
+        animator.speed = 1 * newSpeed;
     }
 }

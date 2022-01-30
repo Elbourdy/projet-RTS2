@@ -20,6 +20,8 @@ public class NexusLevelManager : MonoBehaviour
     [SerializeField] private List<float> multiplicatorConsumption = new List<float>();
     [SerializeField] private List<float> multiplicatorSpeedProd = new List<float>();
     [SerializeField] private List<float> rangeNexusMultiplier = new List<float>();
+    [SerializeField] private List<Material> materialNexusLevel = new List<Material>();
+    [SerializeField] private List<float> animationSpeedNexus = new List<float>();
 
     [SerializeField] private List<Image> feedbackLevel = new List<Image>();
     [SerializeField] private Sprite levelOn, levelOff, levelTemp;
@@ -42,6 +44,7 @@ public class NexusLevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
         newNexusLevel = CheckNexusLevel();
 
         if (newNexusLevel < currentNexusLevel)
@@ -116,7 +119,7 @@ public class NexusLevelManager : MonoBehaviour
     }
 
 
-    void RessourcesDisplay()
+    private void RessourcesDisplay()
     {
         int ressourcesToLerp = 0, highBar = 0;
 
@@ -133,5 +136,12 @@ public class NexusLevelManager : MonoBehaviour
         }
 
         ressourceText.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(0).ToString()+"/" + ((currentNexusLevel < 5)? levelThresholdRessources[currentNexusLevel + 1] : 3000);
+    }
+
+    private void SetFeedbackNexusLevel(Material newMaterial, float speedAnimation)
+    {
+        HQBehavior.instance.SetNexusBallMaterial(newMaterial);
+        HQBehavior.instance.SetIdleAnimationSpeed(speedAnimation);
+        BatteryManager.instance.SetLineRendererMaterial(newMaterial);
     }
 }

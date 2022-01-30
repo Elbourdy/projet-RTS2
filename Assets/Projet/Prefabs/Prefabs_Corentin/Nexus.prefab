@@ -132,6 +132,7 @@ MonoBehaviour:
   desiredRoaster: 00000000
   speed: 5
   colorRadiusBattery: {r: 0, g: 0.37760234, b: 1, a: 1}
+  nexusRenderers: []
   animator: {fileID: 3383543886236954069}
   ActivateNewMovementSystem: 1
   AllowMultipleSelection: 0
@@ -2328,7 +2329,7 @@ PrefabInstance:
     - target: {fileID: -2571118854743697038, guid: 64d69d8553c9cc54fb8cd5834df68819, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: db2b46735e07c1e478790c5697d0aee7, type: 2}
+      objectReference: {fileID: 2100000, guid: 75be56a99f54ccc4a8201da0e8b22c94, type: 2}
     - target: {fileID: 919132149155446097, guid: 64d69d8553c9cc54fb8cd5834df68819, type: 3}
       propertyPath: m_Name
       value: Render

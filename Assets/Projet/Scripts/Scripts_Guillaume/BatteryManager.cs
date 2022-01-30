@@ -150,4 +150,9 @@ public class BatteryManager : MonoBehaviour
             angle += (360f / 49f);
         }
     }
+
+    public void SetLineRendererMaterial(Material newMaterial)
+    {
+        lRFeedbackAlim.material = newMaterial;
+    }
 }
