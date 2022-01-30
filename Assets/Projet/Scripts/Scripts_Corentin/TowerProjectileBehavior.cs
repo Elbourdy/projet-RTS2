@@ -8,11 +8,13 @@ public class TowerProjectileBehavior : MonoBehaviour
     public int damage;
     public GameObject target;
 
+    FMOD.Studio.EventInstance soundProjectile;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        soundProjectile = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Turret/Build_Turr_Impact/Build_Turr_Impact");
+        soundProjectile.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
     }
 
     // Update is called once per frame
@@ -36,5 +38,10 @@ public class TowerProjectileBehavior : MonoBehaviour
             target.GetComponent<HealthSystem>().HealthChange(-damage);
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        soundProjectile.start();
     }
 }

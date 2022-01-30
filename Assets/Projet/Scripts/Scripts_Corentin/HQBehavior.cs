@@ -69,7 +69,6 @@ public class HQBehavior : Building
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(animator.GetCurrentAnimatorClipInfoCount(0));
         DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
         SetAnimator();
 

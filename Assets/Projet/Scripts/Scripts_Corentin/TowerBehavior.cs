@@ -87,7 +87,6 @@ public class TowerBehavior : MonoBehaviour
         GameObject target = CheckEnnemiesInRange();
         if (target != null)
         {
-            Debug.Log(target.name);
             GameObject instance = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
             TowerProjectileBehavior tPB = instance.GetComponent<TowerProjectileBehavior>();

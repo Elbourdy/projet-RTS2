@@ -33,6 +33,8 @@ public class NexusLevelManager : MonoBehaviour
     private int maxNexusLevel, newNexusLevel;
     [SerializeField] private float pityTimerCount;
 
+    private bool stopSound = false;
+    private float timerStopSound = 6, timerStopSoundCount = 0;
     FMOD.Studio.EventInstance soundNexusLevelChange;
 
     // Start is called before the first frame update
@@ -50,6 +52,19 @@ public class NexusLevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*if (stopSound)
+        {
+            timerStopSoundCount += Time.deltaTime;
+
+            if (timerStopSoundCount > timerStopSound)
+            {
+                soundNexusLevelChange.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                stopSound = false;
+                timerStopSoundCount = 0;
+                Debug.Log("StopSound");
+            }
+        }*/
+
         newNexusLevel = CheckNexusLevel();
 
         if (newNexusLevel < currentNexusLevel)
@@ -60,23 +75,26 @@ public class NexusLevelManager : MonoBehaviour
             {
                 currentNexusLevel = newNexusLevel;
                 SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
-                soundNexusLevelChange.setParameterByName("Next_Level_Up", (newNexusLevel+1) * 2);
+
+                soundNexusLevelChange.setParameterByName("Nex_Level_Up", (currentNexusLevel + 1) * 2);
                 soundNexusLevelChange.start();
+                stopSound = true;
+                pityTimerCount = 0;
             }
         }
-        else
+        else if (newNexusLevel > currentNexusLevel)
         {
-            if (currentNexusLevel != newNexusLevel)
-            {
-                SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
-                soundNexusLevelChange.setParameterByName("Next_Level_Up", newNexusLevel * 2 - 1);
-                soundNexusLevelChange.start();
-            }
             currentNexusLevel = newNexusLevel;
+            SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+            
+            soundNexusLevelChange.setParameterByName("Nex_Level_Up", currentNexusLevel * 2 - 1);
+            soundNexusLevelChange.start();
+
+            stopSound = true;
             pityTimerCount = 0;
         }
 
-        SetFeedbackLevelNexus();
+        SetFeedbackLevelNexusPoint();
         RessourcesDisplay();
     }
 
@@ -119,7 +137,7 @@ public class NexusLevelManager : MonoBehaviour
         return rangeNexusMultiplier[currentNexusLevel];
     }
 
-    private void SetFeedbackLevelNexus()
+    private void SetFeedbackLevelNexusPoint()
     {
         for (int i = 0; i < maxNexusLevel; i++)
         {
