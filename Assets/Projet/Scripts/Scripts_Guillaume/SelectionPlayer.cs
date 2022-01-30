@@ -8,6 +8,9 @@ public class SelectionPlayer : MonoBehaviour
 {
     public static SelectionPlayer instance;
 
+
+    private List<string> sounds = new List<string>();
+
     private void Awake()
     {
         instance = this;
@@ -64,7 +67,9 @@ public class SelectionPlayer : MonoBehaviour
 
             //Highlight by hovering with mouse above a unit which is not selected
             HighlightUnit();
-        }       
+
+            sounds.Clear();
+        }
     }
 
     //Select units with click or by draging the mouse
@@ -91,46 +96,44 @@ public class SelectionPlayer : MonoBehaviour
         //Release the mouse button
         if (Input.GetMouseButtonUp(0))
         {
-            
-                    if (Time.time - clickTime <= delay)
+
+            if (Time.time - clickTime <= delay)
+            {
+                isClicking = true;
+            }
+
+            //Select all units within the square if we have created a square
+            if (hasCreatedSquare)
+            {
+                hasCreatedSquare = false;
+
+                //Deactivate the square selection image
+                selectionSquareTrans.gameObject.SetActive(false);
+                //Clear the list with selected unit
+                selectedUnits.Clear();
+                //Select the units
+                for (int i = 0; i < allFriendlyUnits.Count; i++)
+                {
+
+
+                    GameObject currentUnit = allFriendlyUnits[i];
+
+                    //Is this unit within the square
+                    if (IsWithinPolygon(currentUnit.transform.position))
                     {
-                        isClicking = true;
+                        LaunchSoundSelectionForUnit(currentUnit);
+                        selectedUnits.Add(currentUnit);
+                        if (currentUnit.transform.Find("TorusFeedback") != null)
+                            currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }
-
-                    //Select all units within the square if we have created a square
-                    if (hasCreatedSquare)
+                    //Otherwise deselect the unit if it's not in the square
+                    else
                     {
-                        hasCreatedSquare = false;
-
-                        //Deactivate the square selection image
-                        selectionSquareTrans.gameObject.SetActive(false);
-                            //Clear the list with selected unit
-                            selectedUnits.Clear();
-                        //Select the units
-                        for (int i = 0; i < allFriendlyUnits.Count; i++)
-                        {
-                            
-
-                            GameObject currentUnit = allFriendlyUnits[i];
-
-                            //Is this unit within the square
-                            if (IsWithinPolygon(currentUnit.transform.position))
-                            {
-                                if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
-
-                                selectedUnits.Add(currentUnit);
-                                if (currentUnit.transform.Find("TorusFeedback") != null)
-                                    currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
-                            }
-                            //Otherwise deselect the unit if it's not in the square
-                            else
-                            {
-                                if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
-                                if (currentUnit.transform.Find("TorusFeedback") != null)
-                                    currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
-                            }
-                        }
+                        if (currentUnit.transform.Find("TorusFeedback") != null)
+                            currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
+                }
+            }
         }
         //Holding down the mouse button
         if (Input.GetMouseButton(0))
@@ -153,7 +156,7 @@ public class SelectionPlayer : MonoBehaviour
                     if (selectedUnits[i].GetComponent<MeshRenderer>())
                     {
                         selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
-                        if (selectedUnits[i].transform.Find("TorusFeedback") != null) 
+                        if (selectedUnits[i].transform.Find("TorusFeedback") != null)
                             selectedUnits[i].transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
                     else
@@ -180,8 +183,7 @@ public class SelectionPlayer : MonoBehaviour
                         //Set this unit to selected
                         if (activeUnit.GetComponent<MeshRenderer>() != null)
                         {
-                            activeUnit.GetComponent<MeshRenderer>().material = selectedMaterial;
-                            if (activeUnit.transform.Find("TorusFeedback") != null) 
+                            if (activeUnit.transform.Find("TorusFeedback") != null)
                                 activeUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                         }
 
@@ -192,6 +194,8 @@ public class SelectionPlayer : MonoBehaviour
                                 activeUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                         }
                         //Add it to the list of selected units, which is now just 1 unit
+
+                        LaunchSoundSelectionForUnit(activeUnit);
                         selectedUnits.Add(activeUnit);
                     }
                 }
@@ -311,7 +315,7 @@ public class SelectionPlayer : MonoBehaviour
                     }
                     else
                     {
-                        if (highlightThisUnit.GetComponentInChildren<MeshRenderer>())highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
+                        if (highlightThisUnit.GetComponentInChildren<MeshRenderer>()) highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
                         if (highlightThisUnit.transform.Find("TorusFeedback") != null)
                             highlightThisUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }
@@ -432,6 +436,48 @@ public class SelectionPlayer : MonoBehaviour
             //sphere4.position = BR;
 
             hasCreatedSquare = true;
+        }
+    }
+
+
+    private void LaunchSoundSelectionForUnit(GameObject currentUnit)
+    {
+        string currentSound;
+        if (currentUnit.GetComponent<SoundFeedbacks>() || currentUnit.GetComponentInChildren<SoundFeedbacks>())
+        {
+            if (currentUnit.GetComponent<SoundFeedbacks>())
+                currentSound = currentUnit.GetComponent<SoundFeedbacks>().GetSoundNameSelection();
+            else currentSound = currentUnit.GetComponentInChildren<SoundFeedbacks>().GetSoundNameSelection();
+
+
+            Debug.Log(currentSound);
+
+            if (sounds.Count > 0)
+            {
+                foreach (var item in sounds)
+                {
+                    if (currentSound == item)
+                    {
+                        Debug.Log(item + " " + currentSound);
+                        break;
+                    }
+
+                    else
+                    {
+                        Debug.Log("Launch Sound");
+                        sounds.Add(currentSound);
+                        if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
+                        else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+                    }
+                }
+            }
+
+            else
+            {
+                sounds.Add(currentSound);
+                if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
+                else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+            }
         }
     }
 }

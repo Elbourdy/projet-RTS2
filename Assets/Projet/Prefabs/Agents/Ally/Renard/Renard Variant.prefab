@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Ally/UnitA_Fox/UnitA_Fox_Attack
+  onSelectedSound: event:/Unit/Unit_Ally/UnitA_Fox/UnitA_Fox_Select
 --- !u!1001 &5850344719851016885
 PrefabInstance:
   m_ObjectHideFlags: 0
