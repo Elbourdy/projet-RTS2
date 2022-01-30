@@ -99,9 +99,8 @@ public class AgentStates : MonoBehaviour
                     {
                         navM.isStopped = false;
                     }
-                    else if (navM.hasPath && navM.remainingDistance < rangeAttaque)
+                    else if (navM.hasPath && navM.remainingDistance < rangeAttaque && !navM.pathPending)
                     {
-                        
                         // Update position quand la target bouge pendant une attaque
                         if (Vector3.Distance(gameObject.transform.position, targetToAttack.transform.position) > rangeAttaque)
                         {
@@ -249,7 +248,7 @@ public class AgentStates : MonoBehaviour
                 rateOfFireCD = rateOfFire;
                 target.GetComponent<HealthSystem>().HealthChange(-damage);
 
-                Debug.Log(transform.position + " " + gameObject.name);
+                
             }
         }
     }
