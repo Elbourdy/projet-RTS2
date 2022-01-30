@@ -248,6 +248,8 @@ public class AgentStates : MonoBehaviour
                 onAttack?.Invoke();
                 rateOfFireCD = rateOfFire;
                 target.GetComponent<HealthSystem>().HealthChange(-damage);
+
+                Debug.Log(transform.position + " " + gameObject.name);
             }
         }
     }

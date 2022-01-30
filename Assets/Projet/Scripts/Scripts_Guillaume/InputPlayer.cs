@@ -51,7 +51,7 @@ public class InputPlayer : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 1000, myLayer))
+        if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.name == "Sol")
             {
@@ -120,9 +120,9 @@ public class InputPlayer : MonoBehaviour
     private void AttaqueWithAgent (RaycastHit hit)
     {
 
-        foreach (var agent in sp.selectedUnits)
+        foreach (var agent in sp.selectedUnits )
         {
-            if (agent.GetComponent<AgentStates>() != null)
+            if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
                 agent.GetComponent<AgentStates>().SetTarget(hit.collider.gameObject);
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
