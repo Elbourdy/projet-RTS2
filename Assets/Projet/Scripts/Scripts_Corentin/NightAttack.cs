@@ -27,6 +27,7 @@ public class NightAttack : MonoBehaviour
     private GameObject nexus;
 
     private string soundNexusOnMouvement = "event:/Building/Build_Nexus/Build_Nex_OnMouvment/Build_Nex_OnMouvment";
+    private string soundEnnemiesSpawnAtNight = "event:/Unit/Unit_Enemy/UnitE_Global/UnitE_Glob_Spawn";
 
     private void Start()
     {
@@ -64,6 +65,8 @@ public class NightAttack : MonoBehaviour
                     ennemiesRemaining.Add(instance);
                 }
             }
+
+            FMODUnity.RuntimeManager.PlayOneShot(soundEnnemiesSpawnAtNight);
         }
     }
 
