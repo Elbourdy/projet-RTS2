@@ -7,7 +7,7 @@ public class TickManager : MonoBehaviour
 {
     public static TickManager instance;
 
-    public enum statesDay {Day, Night};
+    public enum statesDay {Day, Night, Dusk, Dawn};
     public statesDay dayState = statesDay.Day;
 
     public void Awake()
@@ -16,7 +16,7 @@ public class TickManager : MonoBehaviour
     }
 
     [SerializeField] private int timerForATick = 30;
-    [SerializeField] private int timeBeforeAttack = 2;
+    [SerializeField] public int timeTransitionDuskAndDawn = 5;
 
     private float timerCount;
     public GameObject hBTick;
@@ -47,15 +47,27 @@ public class TickManager : MonoBehaviour
 
                 break;
 
-            case statesDay.Night:
-                timerCount += Time.deltaTime;
+            case statesDay.Dusk:
                 NightAttack.instance.PreparationStartAttack();
-
-                if (timerCount >= timeBeforeAttack)
+                timerCount += Time.deltaTime;
+                if (timerCount >= timeTransitionDuskAndDawn)
                 {
-                    NightAttack.instance.SpawnEnnemies();
+                    dayState = statesDay.Night;
+                    timerCount = 0;
                 }
-                    
+                break; 
+
+            case statesDay.Night:
+                NightAttack.instance.SpawnEnnemies();
+                break;
+
+            case statesDay.Dawn:
+                timerCount += Time.deltaTime;
+                if (timerCount >= timeTransitionDuskAndDawn)
+                {
+                    dayState = statesDay.Day;
+                    timerCount = 0;
+                }
                 break;
         } 
     }
@@ -69,7 +81,7 @@ public class TickManager : MonoBehaviour
 
     public void TickEffect() //s'applique quand un tick supplementaire apparaît
     {
-        dayState = statesDay.Night;
+        dayState = statesDay.Dusk;
         HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.ForcedImmobilize;
         timerCount = 0;
 
@@ -87,5 +99,10 @@ public class TickManager : MonoBehaviour
     public void LaunchNightAttack()
     {
         timerCount = timerForATick;
+    }
+
+    public float GetDayAvancement()
+    {
+        return timerCount / timerForATick;
     }
 }
