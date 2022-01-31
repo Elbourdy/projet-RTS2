@@ -157,7 +157,7 @@ MonoBehaviour:
   firePoint: {fileID: 5569355349749560886}
   reloadSpeed: 1
   projectileSpeed: 25
-  projectileDamage: 10
+  projectileDamage: 40
   range: 10
   animator: {fileID: 5980235528762554654}
   towerRenderers:
@@ -171,7 +171,6 @@ MonoBehaviour:
   - {fileID: 3657753804272341721}
   activeMaterial: {fileID: 2100000, guid: 99b722a6058ff87418dd545b4b7c900d, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 1a19fd9cd244d94419fe519826d34d15, type: 2}
-  currentMaterial: {fileID: 2100000, guid: 7c4078113aa8e0e4c9182fcd953fffa5, type: 2}
 --- !u!114 &5569355349287600010
 MonoBehaviour:
   m_ObjectHideFlags: 0
