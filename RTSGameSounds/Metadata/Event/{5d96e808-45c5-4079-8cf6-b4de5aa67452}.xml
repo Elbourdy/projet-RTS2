@@ -100,6 +100,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a8943487-7437-4718-8be2-95f9a7abded2}">
+		<property name="volume">
+			<value>-9.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -124,6 +127,7 @@
 	<object class="MixerBusEffectChain" id="{68e4380c-7132-43dd-bc7c-621f784a8786}">
 		<relationship name="effects">
 			<destination>{cb061deb-b8cd-4b8f-b230-8d6e336e4c24}</destination>
+			<destination>{a509b165-d1ae-4bd6-9a86-9d574dd5f135}</destination>
 			<destination>{62756705-ad3d-45b7-8848-a2206b125963}</destination>
 		</relationship>
 	</object>
@@ -135,6 +139,11 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{cb061deb-b8cd-4b8f-b230-8d6e336e4c24}" />
+	<object class="SpatialiserEffect" id="{a509b165-d1ae-4bd6-9a86-9d574dd5f135}">
+		<property name="maximumDistance">
+			<value>25</value>
+		</property>
+	</object>
 	<object class="MultibandEqEffect" id="{62756705-ad3d-45b7-8848-a2206b125963}">
 		<property name="filterTypeA">
 			<value>2</value>
