@@ -211,7 +211,7 @@ MonoBehaviour:
   - {fileID: 6107965776973958609}
   chargeCrystal: {fileID: 2100000, guid: b56ac0d0c9a6c8c46b0d6136a256a83b, type: 2}
   discargeCrystal: {fileID: 2100000, guid: fcc8ea69585c73d4ab55675c3e87fe13, type: 2}
-  ressourcesBar: {fileID: 0}
+  ressourcesBar: {fileID: 632894604114910312}
   onRead: 0
 --- !u!120 &8339475318873493725
 LineRenderer:
@@ -586,52 +586,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
---- !u!1 &2716500583526796069 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1897074972441917558, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
-  m_PrefabInstance: {fileID: 4603014452578530131}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2716500583526796068 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1897074972441917559, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
   m_PrefabInstance: {fileID: 4603014452578530131}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2716500583526796071 stripped
+--- !u!114 &632894604114910312 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1897074972441917556, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
-  m_PrefabInstance: {fileID: 4603014452578530131}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716500583526796069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2716500582055241146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1897074971766019817, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3974795057871548219, guid: 2d0766e9302e3224dae09994cbacecee, type: 3}
   m_PrefabInstance: {fileID: 4603014452578530131}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3010721003437771402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716500583526796069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6ed9c75a264c1344b869572bd3d7734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 2716500583526796071}
-  fill: {fileID: 2716500582055241146}
 --- !u!1001 &7669908037149516660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -809,19 +779,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
---- !u!4 &7924723204315710623 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
-  m_PrefabInstance: {fileID: 7669908037149516660}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &2212951277719211934 stripped
+--- !u!23 &6107965776973958609 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8414140065852599530, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
-  m_PrefabInstance: {fileID: 7669908037149516660}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &6163738958118949690 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4613652675884519346, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4517996882990165669, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
   m_PrefabInstance: {fileID: 7669908037149516660}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &2123377692717231625 stripped
@@ -869,8 +829,18 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6148596154634031546, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
   m_PrefabInstance: {fileID: 7669908037149516660}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &6107965776973958609 stripped
+--- !u!4 &7924723204315710623 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
+  m_PrefabInstance: {fileID: 7669908037149516660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2212951277719211934 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4517996882990165669, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8414140065852599530, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
+  m_PrefabInstance: {fileID: 7669908037149516660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6163738958118949690 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4613652675884519346, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
   m_PrefabInstance: {fileID: 7669908037149516660}
   m_PrefabAsset: {fileID: 0}
