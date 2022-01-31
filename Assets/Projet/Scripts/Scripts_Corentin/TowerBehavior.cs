@@ -7,20 +7,25 @@ public class TowerBehavior : MonoBehaviour
     public enum statesBuilding {Active, Deactivated};
     public statesBuilding towerState= statesBuilding.Deactivated;
 
+    [SerializeField] Agent_Type.TypeAgent typeToTarget = Agent_Type.TypeAgent.Enemy;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] Transform firePoint;
     [SerializeField] private float reloadSpeed;
     [SerializeField] float projectileSpeed;
     [SerializeField] int projectileDamage;
     [SerializeField] float range;
-    [SerializeField] Agent_Type.TypeAgent typeToTarget = Agent_Type.TypeAgent.Enemy;
+    
 
     [SerializeField] private Animator animator;
+    [SerializeField] private List<MeshRenderer> towerRenderers = new List<MeshRenderer>();
+    [SerializeField] private Material activeMaterial, inactiveMaterial;
 
     private float reloadSpeedCount;
 
     private HealthSystem hS;
     private LineRenderer lRBattery;
+
+    private float towerMaterialLerpValue = 0f, lerpMaterialTimer = 5f, lerpmaterialCount;
 
     private statesBuilding bufferForSound = statesBuilding.Deactivated;
 
@@ -37,6 +42,8 @@ public class TowerBehavior : MonoBehaviour
         lRBattery.enabled = false;
 
         hS = GetComponent<HealthSystem>();
+
+        lerpmaterialCount = lerpMaterialTimer;
     }
 
     // Update is called once per frame
@@ -48,6 +55,7 @@ public class TowerBehavior : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.PlayOneShot(soundTowerActivate, transform.position);
                 bufferForSound = statesBuilding.Active;
+                lerpmaterialCount = 0;
             }
 
             towerState = statesBuilding.Active;
@@ -58,10 +66,24 @@ public class TowerBehavior : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.PlayOneShot(soundTowerDeactivate, transform.position);
                 bufferForSound = statesBuilding.Deactivated;
+                lerpmaterialCount = 0;
             }
 
             towerState = statesBuilding.Deactivated;
-        }  
+        }
+
+        if (lerpmaterialCount < lerpMaterialTimer)
+        {
+            lerpmaterialCount += Time.deltaTime;
+        }
+
+        if (towerState == statesBuilding.Active)
+            towerMaterialLerpValue = lerpmaterialCount / lerpMaterialTimer;
+        if (towerState == statesBuilding.Deactivated)
+            towerMaterialLerpValue = 1 - (lerpmaterialCount / lerpMaterialTimer);
+
+        SetTowerMaterial(towerMaterialLerpValue);
+
 
         if (towerState == statesBuilding.Active)
         {
@@ -73,12 +95,16 @@ public class TowerBehavior : MonoBehaviour
             }
             animator.SetBool("ActivateTower", true);
             lRBattery.enabled = true;
+
+            
         }
 
         if (towerState == statesBuilding.Deactivated)
         {
             animator.SetBool("ActivateTower", false);
             lRBattery.enabled = false;
+
+            SetTowerMaterial(0);
         }
     }
 
@@ -152,6 +178,26 @@ public class TowerBehavior : MonoBehaviour
             lRBattery.SetPosition(i, new Vector3(x, y, z));
 
             angle += (360f / 49f);
+        }
+    }
+
+    public void SetTowerMaterial(float lerpValue)
+    {
+        Material[] matList = new Material[2];
+        matList[0] = towerRenderers[0].materials[0];
+
+        int i = 0;
+
+        foreach (MeshRenderer e in towerRenderers)
+        {
+            if (e.materials.Length == 2)
+            {
+                if (i != 3 && i != 4 && i != 7)
+                    e.materials[1].Lerp(inactiveMaterial, activeMaterial, lerpValue);
+                else
+                    e.materials[0].Lerp(inactiveMaterial, activeMaterial, lerpValue);
+            }
+            i++;
         }
     }
 }
