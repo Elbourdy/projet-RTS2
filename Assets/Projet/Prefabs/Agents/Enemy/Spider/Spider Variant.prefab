@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2634083210024080182, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: radiusVision
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -2634083210024080182, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: typeToTarget
@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1beeb93b9ee77dd4d91e340101e729db, type: 2}
     - target: {fileID: 5189708736748838380, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: rangeAttaque
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838382, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: Type
@@ -253,3 +253,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4015357640743897685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172434134110984531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e79082c859bda4cac28783702ffe02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
+  onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
