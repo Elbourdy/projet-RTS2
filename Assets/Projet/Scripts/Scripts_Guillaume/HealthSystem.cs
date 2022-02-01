@@ -18,6 +18,9 @@ public class HealthSystem : MonoBehaviour
     private float maxHealth;
     private HealthBar myHealthBar;
 
+    private float currentDamage = 0;
+
+
     private GameObject nexus;
 
 
@@ -108,6 +111,7 @@ public class HealthSystem : MonoBehaviour
 
     public void HealthChange(float damageNumber)
     {
+        currentDamage = damageNumber;
         FeedBackDamage();
         health += damageNumber;
         if (health > maxHealth)
@@ -137,6 +141,12 @@ public class HealthSystem : MonoBehaviour
     {
         return health;
     }
+
+    public float GetCurrentDamage()
+    {
+        return currentDamage;
+    }
+
     public float GetBatteryHealth()
     {
         return batteryHealth;

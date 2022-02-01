@@ -9,16 +9,18 @@ public class NexusHitSound : MonoBehaviour
     [FMODUnity.EventRef]
     public string SoundHit;
 
-
+    private HealthSystem myHeathSystem;
 
 
     private void Awake()
     {
-        if (SoundHit != null) GetComponent<HealthSystem>().onHealthEvent += LaunchHitSound;
+        myHeathSystem = GetComponent<HealthSystem>();
+        if (SoundHit != null) myHeathSystem.onHealthEvent += LaunchHitSound;
     }
 
     private void LaunchHitSound()
     {
+        if (myHeathSystem.GetCurrentDamage() < 0)
         FMODUnity.RuntimeManager.PlayOneShot(SoundHit, transform.position);
     }
 
