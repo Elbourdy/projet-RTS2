@@ -10,9 +10,24 @@ public class InputPlayer : MonoBehaviour
     private SelectionPlayer sp;
     private int myLayer = 1 << 3;
 
+    public delegate void Event();
+    public Event onGlobalOrder;
+    public static InputPlayer instance;
+
+
+
+    [FMODUnity.EventRef]
+    public string SoundOrder;
+    private GameObject attenuationPoint;
+
+
     private void Awake()
     {
+        instance = this;
         sp = GetComponent<SelectionPlayer>();
+        onGlobalOrder += LaunchSoundOrder;
+
+        attenuationPoint = Camera.main.transform.Find("attenuationpoint").gameObject;
     }
 
 
@@ -25,6 +40,8 @@ public class InputPlayer : MonoBehaviour
                 CheckHitType();
             }
         }
+
+        // Permet la construction, à garder si besoin 
 
         //if (Input.GetKey(KeyCode.Space) && Input.GetMouseButtonDown(1))
         //{
@@ -58,10 +75,10 @@ public class InputPlayer : MonoBehaviour
                 GoToTarget(hit);
             }
 
-            if (hit.collider.CompareTag("Ressource"))
-            {
-                Recolte(hit);
-            }
+            //if (hit.collider.CompareTag("Ressource"))
+            //{
+            //    Recolte(hit);
+            //}
 
             if (hit.collider.GetComponent<Agent_Type>() != null)
             {
@@ -101,6 +118,9 @@ public class InputPlayer : MonoBehaviour
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
             }
         }
+
+            onGlobalOrder?.Invoke();
+
     }
 
 
@@ -129,6 +149,7 @@ public class InputPlayer : MonoBehaviour
                 agent.GetComponent<AgentStates>().MoveAgent(hit.point);
             }
         }
+        onGlobalOrder?.Invoke();
     }
 
     private void Recolte (RaycastHit hit)
@@ -142,6 +163,13 @@ public class InputPlayer : MonoBehaviour
                 agent.GetComponent<AgentStates>().MoveAgent(hit.point);
             }
         }
+    }
+
+
+    private void LaunchSoundOrder()
+    {
+        if (SoundOrder != null)
+            FMODUnity.RuntimeManager.PlayOneShot(SoundOrder, attenuationPoint.transform.position);
     }
 
 

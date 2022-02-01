@@ -9,6 +9,10 @@ public class NexusHealthSystemAddon : MonoBehaviour
 {
     private HealthSystem nexusHealthSystem;
 
+    [FMODUnity.EventRef]
+    public string SoundDeath;
+
+
     [Header("Regen System")]
     [SerializeField] private float regenValue = 1;
     [SerializeField] private bool regenIsActivated = false;
@@ -17,8 +21,12 @@ public class NexusHealthSystemAddon : MonoBehaviour
     [SerializeField] private float timeBeforeRegen = 5;
     private float timerCount = 0;
 
+
+
+
     private void Awake()
     {
+
         nexusHealthSystem = GetComponent<HealthSystem>();
         nexusHealthSystem.onHealthEvent += ActivateTimerToAllowRegen;
         nexusHealthSystem.onHealthEvent += CheckIfKilled;
@@ -38,9 +46,12 @@ public class NexusHealthSystemAddon : MonoBehaviour
     {
         if (nexusHealthSystem.GetHealth() <= 0)
         {
+            LaunchSoundDeath();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+
 
 
     IEnumerator TimerRegen()
@@ -52,6 +63,7 @@ public class NexusHealthSystemAddon : MonoBehaviour
 
     private void ActivateTimerToAllowRegen()
     {
+        if (nexusHealthSystem.GetHealth() > 0) 
         StopAllCoroutines();
         StartCoroutine(TimerRegen());
     }
@@ -70,5 +82,13 @@ public class NexusHealthSystemAddon : MonoBehaviour
             regenIsActivated = false;
         }
     }
+
+
+    private void LaunchSoundDeath()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(SoundDeath);
+    }
+
+    
 
 }
