@@ -25,13 +25,14 @@ public class RessourcesObject : MonoBehaviour
     [SerializeField] private int stockRessources = 400;
     [SerializeField] private int rangeCollection = 20;
     [SerializeField] private float onReadDistance = 0f;
+    [SerializeField] private float timeRessourcesToStartReload = 20f;
 
     public List<Renderer> crystalRessourcesRenderer = new List<Renderer>();
     public Material chargeCrystal, discargeCrystal;
     private bool playSoundReload = true;
 
     //temp for testing with nexus
-    private float timerCount;
+    private float timerCount, timeRessourcesToStartReloadCount;
 
     [SerializeField] private HealthBar ressourcesBar;
 
@@ -58,12 +59,14 @@ public class RessourcesObject : MonoBehaviour
 
     public void Update()
     {
+        timeRessourcesToStartReloadCount += Time.deltaTime;
+
         remainingEnergyFloat = stockRessources / ResMaxValuePASTOUCHE;
         ressourcesBar.SetHealth(remainingEnergyFloat);
 
-        if (!isReload)
+        if (stockRessources > 0)
         {
-            onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
+            //onReadDistance = Vector3.Distance(transform.position, nexus.transform.position);
             if (Vector3.Distance(transform.position, nexus.transform.position) < rangeCollection)
             {
                 SetFeedbackNexusCollecting();
@@ -73,6 +76,7 @@ public class RessourcesObject : MonoBehaviour
                 {
                     AddRessourceToPlayer();
                     timerCount = 0;
+                    timeRessourcesToStartReloadCount = 0;
                 }
             }
             else
@@ -83,7 +87,10 @@ public class RessourcesObject : MonoBehaviour
         else
         {
             DisableFeedbackCollectionNexus();
+        }
 
+        if (timeRessourcesToStartReloadCount > timeRessourcesToStartReload)
+        {
             crono += Time.deltaTime;
             if (crono >= TempsReload)
             {
@@ -143,12 +150,6 @@ public class RessourcesObject : MonoBehaviour
         else Global_Ressources.instance.ModifyRessource(ressourceId, ressourceQuantityPerTic);
 
         stockRessources -= ressourceQuantityPerTic;
-
-        if (stockRessources <= 0)
-        {
-            isReload = true;
-            crono = 0;   
-        }
     }
     
        

@@ -186,6 +186,7 @@ public class Gestion_HUD : MonoBehaviour
 
                 unitSelectionCases[i].SetActive(true);
                 unitSelectionCases[i].transform.GetChild(2).GetComponent<HealthBar>().SetHealth(e.GetComponent<HealthSystem>().GetHealth() / e.GetComponent<HealthSystem>().GetMaxHealth());
+                unitSelectionCases[i].transform.GetChild(3).GetComponent<HealthBar>().SetHealth(e.GetComponent<HealthSystem>().GetBatteryHealth() / e.GetComponent<HealthSystem>().GetMaxBatteryHealth());
             }
             i++;
         }
