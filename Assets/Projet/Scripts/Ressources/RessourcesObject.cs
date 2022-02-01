@@ -27,6 +27,8 @@ public class RessourcesObject : MonoBehaviour
     [SerializeField] private float onReadDistance = 0f;
     [SerializeField] private float timeRessourcesToStartReload = 20f;
 
+    private Transform nexusCenter;
+
     public List<Renderer> crystalRessourcesRenderer = new List<Renderer>();
     public Material chargeCrystal, discargeCrystal;
     private bool playSoundReload = true;
@@ -52,6 +54,8 @@ public class RessourcesObject : MonoBehaviour
         ResMaxValuePASTOUCHE = stockRessources;
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
+        nexusCenter = nexus.transform.GetChild(3).GetChild(6);
+
 
         soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Crystals/Cryst_OnCollect");
         soundRessourceSuckLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
@@ -157,7 +161,7 @@ public class RessourcesObject : MonoBehaviour
     {
         lR.enabled = true;
         lR.SetPosition(0, transform.position);
-        lR.SetPosition(1, nexus.transform.position);
+        lR.SetPosition(1, nexusCenter.position);
 
         if (playSound)
         {

@@ -233,7 +233,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db2b46735e07c1e478790c5697d0aee7, type: 2}
+  - {fileID: 2100000, guid: 0d08e3bef297a39438641a2895e5f499, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -256,7 +256,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -265,7 +265,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.65865326
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -277,9 +277,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.49383712, b: 1, a: 1}
-      key1: {r: 0, g: 0.66784525, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0.66784525, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -287,7 +287,7 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -307,7 +307,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 3
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
@@ -325,7 +325,6 @@ GameObject:
   - component: {fileID: 5210343933042210864}
   - component: {fileID: 6570019758081864158}
   - component: {fileID: 4416881367113012121}
-  - component: {fileID: 6373744860877998304}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -441,19 +440,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5942483, y: 3.779388}
   m_EdgeRadius: 0
---- !u!114 &6373744860877998304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7626599461925648518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd39a41ca97c864ebf3164aaadd6c63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Affiche: {fileID: 2936789309065768391}
 --- !u!1001 &4603014452578530131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -780,6 +766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
+--- !u!23 &2212951277719211934 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8414140065852599530, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
+  m_PrefabInstance: {fileID: 7669908037149516660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &6107965776973958609 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4517996882990165669, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
@@ -833,11 +824,6 @@ MeshRenderer:
 --- !u!4 &7924723204315710623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
-  m_PrefabInstance: {fileID: 7669908037149516660}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &2212951277719211934 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8414140065852599530, guid: 98c78a62a4b9bab4290d61e3e692fbd5, type: 3}
   m_PrefabInstance: {fileID: 7669908037149516660}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &6163738958118949690 stripped
