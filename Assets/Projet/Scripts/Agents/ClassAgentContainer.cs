@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class ClassAgentContainer : MonoBehaviour
 {
     public AgentClass myClass;

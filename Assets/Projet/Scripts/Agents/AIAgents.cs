@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
+// IA des alliés et ennemis
+// On fait le max pour que les actions du joueur soit prioritaire par rapport à ce script
+
+
+// LOGIQUE A REVOIR APRES SOUTENANCE, FUTUR PROBLEME INCOMING
+// GROS PROBLEME DE CONDITIONS TROP FRAGILES. FAIS LE TAF MAINTENANT, MAIS NE PERMET AUCUNE VERSATILITE DES COMPORTEMENTS FUTURS 
+
+
 [RequireComponent(typeof(AgentStates))]
-public class AIEnemy : MonoBehaviour
+public class AIAgents : MonoBehaviour
 {
     private AgentStates aS;
-    private NavMeshAgent navM;
     
     private ClassAgentContainer cac;
-    public GameObject targetPlayer;
+    public GameObject newTarget;
 
     public float radiusVision = 5;
 
@@ -23,11 +32,9 @@ public class AIEnemy : MonoBehaviour
         aS = GetComponent<AgentStates>();
         cac = GetComponent<ClassAgentContainer>();
         radiusVision = cac.myClass.radiusVision;
-        navM = GetComponent<NavMeshAgent>();
     }
     private void Update()
     {
-        //if (aS.isSuperAggressif || aS.myState == AgentStates.states.Idle)
         SearchForTarget();
     }
 
@@ -35,9 +42,11 @@ public class AIEnemy : MonoBehaviour
 
     private void AttackOrder()
     {
+        aS.SetTarget(newTarget);
+        // On ne remet un agent déjà aggresif dans cet état
+        // Un agent se dirigeant vers un endroit précis n'attaque pas tant qu'il n'est pas arrivé (permet fuite entre autre
 
-            aS.SetTarget(targetPlayer);
-        if (aS.myState != AgentStates.states.Agressif && aS.myState != AgentStates.states.Follow) aS.SetState(AgentStates.states.Agressif);
+        if (aS.myState != AgentStates.states.Aggressive && aS.myState != AgentStates.states.Follow) aS.SetState(AgentStates.states.Aggressive);
     }
 
     private void DrawRadiusVision()
@@ -59,7 +68,7 @@ public class AIEnemy : MonoBehaviour
 
     private void SearchForTarget()
     {
-        if (aS.myState != AgentStates.states.Agressif || IsCapableOfSuperAgression())
+        if (aS.myState != AgentStates.states.Aggressive || IsCapableOfSuperAgression())
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
             if (hits.Length > 0)
@@ -69,7 +78,7 @@ public class AIEnemy : MonoBehaviour
                     if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == typeToTarget)
                     {
                         hasTargetInSight = true;
-                        targetPlayer = hits[i].gameObject;
+                        newTarget = hits[i].gameObject;
                         AttackOrder();
                         break;
                     }
@@ -81,7 +90,7 @@ public class AIEnemy : MonoBehaviour
 
     private bool IsCapableOfSuperAgression()
     {
-        if (aS.myState == AgentStates.states.Agressif && aS.isSuperAggressif && aS.ReturnTarget().name == "Nexus")
+        if (aS.myState == AgentStates.states.Aggressive && aS.isSuperAggressive && aS.ReturnTarget().name == "Nexus")
         {
             return true;
         }

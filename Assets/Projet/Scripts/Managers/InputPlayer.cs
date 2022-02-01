@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
-    //public GameObject agent;
-
 
     private SelectionPlayer sp;
+
+
     private int myLayer = 1 << 3;
 
     public delegate void Event();
@@ -47,45 +47,23 @@ public class InputPlayer : MonoBehaviour
                 CheckHitType();
             }
         }
-
-        // Permet la construction, à garder si besoin 
-
-        //if (Input.GetKey(KeyCode.Space) && Input.GetMouseButtonDown(1))
-        //{
-        //    ConstructOrder();
-        //  Building.SetConstructionHealth(GetConstructionHealth() += construction * Time.deltaTime);
-        //}
     }
 
-  //private void ConstructOrder()
-  //{
-  //    RaycastHit hit;
-  //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-  //    if (Physics.Raycast(ray, out hit))
-  //    {
-  //        if (hit.collider.name == "Sol")
-  //        {
-  //            agent.GetComponent<AgentStates>().SetState(AgentStates.states.Construction);
-  //            agent.GetComponent<AgentStates>().MoveAgent(hit.point);
-  //        }
-  //    }
-  //}
+
 
     private void CheckHitType ()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        // GROSSE BAGARRE NECESSAIRE AVEC LES LAYERS APRES SOUTENANCE
+        // IMPOSSIBLE DE COMPRENDRE POURQUOI AUCUN LAYER FONCTIONNE
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.name == "Sol")
             {
                 GoToTarget(hit);
             }
-
-            //if (hit.collider.CompareTag("Ressource"))
-            //{
-            //    Recolte(hit);
-            //}
 
             if (hit.collider.GetComponent<Agent_Type>() != null)
             {
@@ -152,26 +130,12 @@ public class InputPlayer : MonoBehaviour
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
                 agent.GetComponent<AgentStates>().SetTarget(hit.collider.gameObject);
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Agressif);
+                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Aggressive);
                 agent.GetComponent<AgentStates>().MoveAgent(hit.point);
             }
         }
         onGlobalOrder?.Invoke();
     }
-
-    private void Recolte (RaycastHit hit)
-    {
-        foreach (var agent in sp.selectedUnits)
-        {
-            if (agent.GetComponent<AgentStates>() != null)
-            {
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Recolte);
-                agent.GetComponent<AgentStates>().SetRessourceTarget(hit.collider.gameObject);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
-            }
-        }
-    }
-
 
 
     #region Feedbacks

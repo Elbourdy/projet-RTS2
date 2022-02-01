@@ -7,11 +7,13 @@ public class CameraMouvement : MonoBehaviour
     private Vector2 dir;
     private Vector3 mousePositionOff;
 
-    public float speed;
-    public float offset;
-    
+
+    [Header("Camera Values")]
+    [SerializeField] private float speed;
+    [SerializeField] private float offset;
     public bool activateMovement = true;
 
+    [Header(" ")]
     public GameObject attenuationObject;
 
 
@@ -20,13 +22,11 @@ public class CameraMouvement : MonoBehaviour
         if (activateMovement)
         {
             CheckMousePosition();
-
             if (dir != Vector2.zero)
             {
                 MoveCam();
             }
         }
-
         SetAttenuationPoint();
     }
 
@@ -56,8 +56,6 @@ public class CameraMouvement : MonoBehaviour
         {
             dir += new Vector2(-1, -0);
         }
-
-        //Debug.Log(dir);
     }
 
     private bool isLeft()

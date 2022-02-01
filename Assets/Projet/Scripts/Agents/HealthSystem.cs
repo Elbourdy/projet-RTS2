@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// Le systeme de vie et de batterie de chaque agent
 public class HealthSystem : MonoBehaviour
 {
+
     public delegate void HealthEvent();
     public HealthEvent onHealthEvent;
     public HealthEvent onBatteryEvent;
@@ -14,13 +15,10 @@ public class HealthSystem : MonoBehaviour
     
     [Header("Syestème de vie")]
     [SerializeField] private float health;
-
     private float maxHealth;
     private HealthBar myHealthBar;
 
     private float currentDamage = 0;
-
-
     private GameObject nexus;
 
 

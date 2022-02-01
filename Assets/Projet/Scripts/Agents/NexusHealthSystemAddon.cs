@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+
+// Addon pour healthSystem et Nexus
+// Permet l'ajout de feedbacks et fonctions uniques pour le Nexus
 [RequireComponent(typeof(HealthSystem))]
 public class NexusHealthSystemAddon : MonoBehaviour
 {
@@ -19,17 +22,21 @@ public class NexusHealthSystemAddon : MonoBehaviour
 
     // Timer System
     [SerializeField] private float timeBeforeRegen = 5;
-    private float timerCount = 0;
 
 
 
 
     private void Awake()
     {
-
         nexusHealthSystem = GetComponent<HealthSystem>();
         nexusHealthSystem.onHealthEvent += ActivateTimerToAllowRegen;
         nexusHealthSystem.onHealthEvent += CheckIfKilled;
+    }
+
+    private void OnDisable()
+    {
+        nexusHealthSystem.onHealthEvent -= ActivateTimerToAllowRegen;
+        nexusHealthSystem.onHealthEvent -= CheckIfKilled;
     }
 
 
@@ -56,6 +63,7 @@ public class NexusHealthSystemAddon : MonoBehaviour
 
     IEnumerator TimerRegen()
     {
+        // Active
         yield return new WaitForSeconds(timeBeforeRegen);
         ActivateNexusRegen();
     }
@@ -63,6 +71,7 @@ public class NexusHealthSystemAddon : MonoBehaviour
 
     private void ActivateTimerToAllowRegen()
     {
+        // On évite que le nexus puisse regen au moment d'un GameOver
         if (nexusHealthSystem.GetHealth() > 0) 
         StopAllCoroutines();
         StartCoroutine(TimerRegen());

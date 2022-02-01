@@ -17,48 +17,34 @@ public class AgentStates : MonoBehaviour
 
     // Etats possible de nos agents, ennemis et/ou alliés
     // Changement d'état d'un agent par la fonction SetStates uniquement !
-    public enum states { Idle, Agressif, Recolte, Construction, Follow};
+    public enum states { Idle, Aggressive, Follow};
     public states myState = states.Idle;
-    public bool isSuperAggressif = false;
+
+
+    // Etat spécial de l'agression. Uniquement pour ennemis pour les attaques nocturnes
+    // Permet un tunnel vision sur le nexus, sauf si l'agent trouve une cible sur son chemin. Si cible détruite => retourne sur Nexus
+    public bool isSuperAggressive = false;
 
     // Stats de nos agents. On récupère ces données depuis les classes crées
     [Header("Stats Agent Read-Only")]
     [SerializeField] private float speed = 10;
-    [SerializeField] private float rangeAttaque = 1;
+    [SerializeField] private float attackRange = 1;
     [SerializeField] private float damage = 1;
     [SerializeField] private float rateOfFire = 0.5f;
     [SerializeField] private float radiusVision = 5;
     public float rateOfFireCD = 0;
-
-
-    [Header("Constructions Stats Read-Only")]
-    public GameObject constructionObjet;
-    public float rangeConstruction = 1;
-    
-
-    private float timerRessource = 0;
-
-    // Feedback de couleur de nos agents. A RETIRER QUAND NOOUS AURONS DE VERITABLES FEEDBACKS
-    [Header("Color Agent State")]
-    public Color RecolteColor;
-    public Color IdleColor;
-    public Color AgressifColor;
-    public Color ConstructionColor;
-    public Color FollowColor;
-
 
     
     // Navmesh et vaiable de destination/objectif de nos agents
     private NavMeshAgent navM;
     private GameObject objectDestination;
     [SerializeField] private GameObject targetToAttack;
-    private GameObject ressourceTarget;
 
 
     // Permet de récupérer les stats de nos agents
     private ClassAgentContainer container;
 
-    private AIEnemy myAI;
+    private AIAgents myAI;
 
     private void Awake()
     {
@@ -67,7 +53,7 @@ public class AgentStates : MonoBehaviour
         navM.speed = speed;
         navM.acceleration = 60f;
         navM.avoidancePriority = Random.Range(1, 100);
-        if (GetComponent<AIEnemy>()) myAI = GetComponent<AIEnemy>();
+        if (GetComponent<AIAgents>()) myAI = GetComponent<AIAgents>();
     }
 
 
@@ -76,7 +62,7 @@ public class AgentStates : MonoBehaviour
     {
         container = GetComponent<ClassAgentContainer>();
         speed = container.myClass.movementSpeed;
-        rangeAttaque = container.myClass.rangeAttaque + 0.7f;
+        attackRange = container.myClass.rangeAttaque + 0.7f;
         damage = container.myClass.attackDamage;
         rateOfFire = container.myClass.rateOfFire;
         radiusVision = container.myClass.radiusVision;
@@ -90,19 +76,19 @@ public class AgentStates : MonoBehaviour
         {
             case states.Idle:
                 break;
-            case states.Agressif:
+            case states.Aggressive:
                 // Update position si la target a bougé de sa position initiale
                 UpdatePositionTarget();
                 if (targetToAttack != null)
                 {
-                    if (navM.remainingDistance > rangeAttaque)
+                    if (navM.remainingDistance > attackRange)
                     {
                         navM.isStopped = false;
                     }
-                    else if (navM.hasPath && navM.remainingDistance < rangeAttaque && !navM.pathPending)
+                    else if (navM.hasPath && navM.remainingDistance < attackRange && !navM.pathPending)
                     {
                         // Update position quand la target bouge pendant une attaque
-                        if (Vector3.Distance(gameObject.transform.position, targetToAttack.transform.position) > rangeAttaque)
+                        if (Vector3.Distance(gameObject.transform.position, targetToAttack.transform.position) > attackRange)
                         {
                             MoveAgent(targetToAttack.transform.position);
                         }
@@ -112,8 +98,8 @@ public class AgentStates : MonoBehaviour
                         AttaqueEnnemi(targetToAttack);
                     }
                 }
-
-                else if (isSuperAggressif)
+                // Super agressive seulement utilisé pour les ennemis
+                else if (isSuperAggressive)
                 {
                     SetTarget(HQBehavior.instance.gameObject);
                 }
@@ -123,36 +109,16 @@ public class AgentStates : MonoBehaviour
                     SetState(states.Idle);
                 }
                 break;
-            case states.Recolte:
-                if (navM.remainingDistance < 1.5f)
-                {
-                    if (ressourceTarget == null)
-                    {
-                        SetState(states.Idle);
-                        break;
-                    }
-                    RecolteRessources();
-                }
-                break;
-            case states.Construction:
-                if (navM.hasPath && navM.remainingDistance < rangeConstruction)
-                {
-                    Construire();
-                }
-                break;
-
             case states.Follow:
                 if (navM.hasPath && navM.remainingDistance < 0.5f)
                 {
                     if (myAI.hasTargetInSight)
                     {
-                        SetState(states.Agressif);
+                        SetState(states.Aggressive);
                     }
 
                     else SetState(states.Idle);
                 }
-
-
                 break;
 
             default:
@@ -185,11 +151,6 @@ public class AgentStates : MonoBehaviour
         navM.SetDestination(destination);
     }
 
-    public void SetRessourceTarget(GameObject target)
-    {
-        ressourceTarget = target;
-    }
-
     // Fonction permettant de modifier l'état d'un agent. C'est cette fonction que l'on appelle dans une IA ou par les inputs du player
     // pour donner un changement d'état de nos agents
     public void SetState (states newState)
@@ -198,28 +159,26 @@ public class AgentStates : MonoBehaviour
         navM.ResetPath();
         navM.isStopped = false;
         myState = newState;
+        OnEnterState();
+    }
 
+    // Que fais l'agent lorsqu'il entre dans un état. Actions jouées une seule fois
+    // Permet l'utilisation de feedback sans utiliser l'Update
+    // NB : ajout d'un OnEnterState si besoin un jour
+    private void OnEnterState()
+    {
         switch (myState)
         {
             case states.Idle:
                 onIdleEnter?.Invoke();
                 navM.isStopped = true;
                 break;
-            case states.Agressif:
+            case states.Aggressive:
                 if (HasTarget())
                 {
                     //MoveAgent(targetToAttack.transform.position);
                     navM.SetDestination(targetToAttack.transform.position);
                 }
-                break;
-            case states.Recolte:
-                if (GetComponent<ClassAgentContainer>().myClass.Job != AgentClass.AgentJob.Worker)
-                {
-                    SetState(states.Idle);
-                    break;
-                }
-                break;
-            case states.Construction:
                 break;
             case states.Follow:
                 onFollowEnter?.Invoke();
@@ -228,6 +187,8 @@ public class AgentStates : MonoBehaviour
                 break;
         }
     }
+
+
     public void SetObjectDestination (GameObject newObject)
     {
         objectDestination = newObject;
@@ -237,6 +198,7 @@ public class AgentStates : MonoBehaviour
     {
         targetToAttack = newGO;
     }
+
     private void AttaqueEnnemi(GameObject target)
     {
         transform.LookAt(target.transform);
@@ -252,36 +214,6 @@ public class AgentStates : MonoBehaviour
             }
         }
     }
-    
-    private void RecolteRessources()
-    {
-        if (CheckTimerRessource())
-        {
-            ressourceTarget.GetComponent<RessourcesObject>().AddRessourceToPlayer();
-        }
-    }
-
-    private bool CheckTimerRessource()
-    {
-
-        if (timerRessource >= ressourceTarget.GetComponent<RessourcesObject>().GetTimer())
-        {
-            timerRessource = 0;
-            return true;
-        }
-        timerRessource += Time.deltaTime;
-        return false;
-    }
-
-    private void Construire()
-    {
-        navM.isStopped = true;
-        navM.ResetPath();
-        SetState(states.Idle);
-        Vector3 constructionPos = transform.position + transform.forward * rangeConstruction;
-        Instantiate(constructionObjet, constructionPos, transform.rotation);
-    }
-
 
     private void OnDrawGizmos()
     {
@@ -290,13 +222,13 @@ public class AgentStates : MonoBehaviour
 
     private void DrawRangeAttack ()
     {
-        if(container == null || rangeAttaque != container.myClass.rangeAttaque)
+        if(container == null || attackRange != container.myClass.rangeAttaque)
         {
             container = GetComponent<ClassAgentContainer>();
-            rangeAttaque = container.myClass.rangeAttaque;
+            attackRange = container.myClass.rangeAttaque;
         }
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, rangeAttaque);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
 
