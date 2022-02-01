@@ -6,6 +6,6 @@ public class OnmoussObject : MonoBehaviour
 {
     private void OnMouseEnter()
     {
-        Debug.Log("lala");
+        
     }
 }
