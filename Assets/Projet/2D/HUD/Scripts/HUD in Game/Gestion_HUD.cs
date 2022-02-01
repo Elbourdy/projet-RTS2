@@ -13,6 +13,8 @@ public class Gestion_HUD : MonoBehaviour
     [SerializeField] private List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
     [SerializeField] private List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
     [SerializeField] private Image gridSelectionCases;
+    [SerializeField] private TutorialScreen tuto;
+    [SerializeField] private bool showTutorial = false;
 
     void Start()
     {
@@ -24,6 +26,9 @@ public class Gestion_HUD : MonoBehaviour
         }
 
         unitSelectionCases[0].transform.GetChild(0).GetComponent<Image>().enabled = true;
+
+        if (showTutorial)
+            tuto.EnableTutorialScreen();
     }
 
     
@@ -115,7 +120,7 @@ public class Gestion_HUD : MonoBehaviour
             {
                 shopCases[i].SetActive(true);
                 shopCases[i].GetComponent<Image>().sprite = roasterUnits[i].unitSprite;
-                shopCases[i].transform.GetChild(0).GetComponent<Text>().text = roasterUnits[i].name;
+                //shopCases[i].transform.GetChild(0).GetComponent<Text>().text = roasterUnits[i].name;
             }
             /*else if (i == 9) //up and down nexus
             {
@@ -136,17 +141,17 @@ public class Gestion_HUD : MonoBehaviour
                     shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Locked";
                 }
             }*/
-            else if (i == 10) // evolve nexus case 
+            /*else if (i == 10) // evolve nexus case 
             {
                 shopCases[i].SetActive(true);
                 shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.upgradeSprite;
                 shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Upgrade";
-            }
+            }*/
             else if (i == 11)  // set rally point case
             {
                 shopCases[i].SetActive(true);
                 shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
-                shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
+                //shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
             }
             
             else
