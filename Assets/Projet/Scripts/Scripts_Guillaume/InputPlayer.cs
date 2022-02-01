@@ -12,12 +12,19 @@ public class InputPlayer : MonoBehaviour
 
     public delegate void Event();
     public Event onGlobalOrder;
+
     public static InputPlayer instance;
 
 
 
+
+    [Header("Feedbacks")]
     [FMODUnity.EventRef]
     public string SoundOrder;
+    public GameObject FeedbackOnMovementOrder;
+
+
+
     private GameObject attenuationPoint;
 
 
@@ -118,8 +125,8 @@ public class InputPlayer : MonoBehaviour
                 agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
             }
         }
-
-            onGlobalOrder?.Invoke();
+        CreateVfxOnMoveOrder(hit.point);
+        onGlobalOrder?.Invoke();
 
     }
 
@@ -166,6 +173,9 @@ public class InputPlayer : MonoBehaviour
     }
 
 
+
+    #region Feedbacks
+
     private void LaunchSoundOrder()
     {
         if (SoundOrder != null)
@@ -173,5 +183,11 @@ public class InputPlayer : MonoBehaviour
     }
 
 
+    private void CreateVfxOnMoveOrder(Vector3 positionHit)
+    {
+        Instantiate(FeedbackOnMovementOrder, positionHit, Quaternion.identity);
+    }
 
+
+    #endregion
 }
