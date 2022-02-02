@@ -65,6 +65,10 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{a7f130fe-dfde-45fd-9ab3-eb8ed0f8296f}">
+		<relationship name="modules">
+			<destination>{30b2ae2c-e5e3-45f4-afc4-88119f87604b}</destination>
+			<destination>{301423a8-7a3e-45ab-ac85-d9a7a437b11c}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{76ea362a-b05b-4516-a2c6-362a3e3b31fa}</destination>
 		</relationship>
@@ -88,6 +92,8 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	<object class="GroupTrack" id="{b67ccd0b-c93e-4b17-9c4c-304d9c30d7fc}">
 		<relationship name="modules">
 			<destination>{dea27465-c00d-4045-b54a-57fee2e0cf77}</destination>
+			<destination>{446a6bbd-5146-4516-a759-661971b6f574}</destination>
+			<destination>{5880784d-6051-4e6d-b96b-6ecb6b98e836}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{2c035b19-e4fc-431c-8aa2-ddbb7106bc1c}</destination>
@@ -99,6 +105,8 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 		<relationship name="modules">
 			<destination>{17280988-b0fb-4a9a-9686-4e06770f002c}</destination>
+			<destination>{b8e30859-3cb8-4e09-babc-ef5775935ffc}</destination>
+			<destination>{68c00d8c-9823-4c0a-9117-3f29a7d35100}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{2ba46c71-57e5-4b9d-9140-7ae86efa1fe7}</destination>
@@ -110,6 +118,8 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 		<relationship name="modules">
 			<destination>{3e0b3890-bdf3-4321-b076-135e331710a0}</destination>
+			<destination>{1f3008e2-bcfc-4129-bfbd-42e6c4a791a9}</destination>
+			<destination>{1ee37ab9-4d53-440a-b3a9-e56a37a90679}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{020b7a1a-e156-4aa9-afa4-d702e14019ab}</destination>
@@ -121,6 +131,8 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 		<relationship name="modules">
 			<destination>{78886347-5667-4ecb-b85f-b49b8eb663cd}</destination>
+			<destination>{d1093151-fba4-49a8-97f9-87adb205bc20}</destination>
+			<destination>{4989563d-e599-41aa-b29c-55108830e284}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{7e13a1b1-7e66-4144-ba48-9cd5c5fa5c20}</destination>
@@ -129,6 +141,8 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	<object class="GroupTrack" id="{5aa444aa-cdde-4dca-a8c1-8206a6acd3b3}">
 		<relationship name="modules">
 			<destination>{3467538b-a414-429d-becd-c624e26acad3}</destination>
+			<destination>{33a38485-ba85-4051-b93d-a81f90577c43}</destination>
+			<destination>{b4efdacd-273d-4e38-86d8-8eaf8e5968fe}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{96cceb8d-ffda-4ba7-a7ea-c5bf5d24e2a8}</destination>
@@ -137,6 +151,8 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	<object class="GroupTrack" id="{4ea7c1ee-9bd5-4d1d-b716-65f755fdb8a9}">
 		<relationship name="modules">
 			<destination>{3ef3b35b-a4f3-4fa3-98eb-7a3537ffc330}</destination>
+			<destination>{55fd32b3-cab4-4d6c-b90f-171e6bbdfcc5}</destination>
+			<destination>{57c4ca69-7aee-424f-a0ad-2a9b739444be}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{e8873548-5f33-4435-b12e-98fec2d2fd04}</destination>
@@ -185,6 +201,19 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<destination>{b28ab80d-a9f4-4101-9e4c-8a94b9be6de5}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{30b2ae2c-e5e3-45f4-afc4-88119f87604b}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{301423a8-7a3e-45ab-ac85-d9a7a437b11c}">
+		<property name="start">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{275994e1-6439-4ae3-8099-03e0e18b9f52}">
 		<relationship name="effects">
 			<destination>{8c503254-b641-4182-922c-7db9b4395d73}</destination>
@@ -198,6 +227,19 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		<relationship name="audioFile">
 			<destination>{3c4df2d0-c95b-4174-8467-6927aa3a20b1}</destination>
 		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{446a6bbd-5146-4516-a759-661971b6f574}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{5880784d-6051-4e6d-b96b-6ecb6b98e836}">
+		<property name="start">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="EventMixerGroup" id="{2c035b19-e4fc-431c-8aa2-ddbb7106bc1c}">
 		<property name="volume">
@@ -244,6 +286,22 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<destination>{68c2078d-9b32-4b08-bd99-75382c708f30}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{b8e30859-3cb8-4e09-babc-ef5775935ffc}">
+		<property name="length">
+			<value>0.17999999999999997</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{62a5698d-589c-4529-8a69-8eff1248775c}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{68c00d8c-9823-4c0a-9117-3f29a7d35100}">
+		<property name="start">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="EventMixerGroup" id="{2ba46c71-57e5-4b9d-9140-7ae86efa1fe7}">
 		<property name="volume">
 			<value>3</value>
@@ -288,6 +346,22 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		<relationship name="audioFile">
 			<destination>{d2937250-6b1c-4f2a-b313-369bcb17c972}</destination>
 		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{1f3008e2-bcfc-4129-bfbd-42e6c4a791a9}">
+		<property name="length">
+			<value>0.17999999999999997</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{3f9b51e5-9459-4bf1-bdf1-71ba618cde2c}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{1ee37ab9-4d53-440a-b3a9-e56a37a90679}">
+		<property name="start">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="EventMixerGroup" id="{020b7a1a-e156-4aa9-afa4-d702e14019ab}">
 		<property name="name">
@@ -334,6 +408,22 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<destination>{f4b8f4f2-7806-49a7-8ffc-e673f26b7181}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{d1093151-fba4-49a8-97f9-87adb205bc20}">
+		<property name="length">
+			<value>0.17999999999999997</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{3366c58a-ef5b-411c-ab46-736f78176d41}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{4989563d-e599-41aa-b29c-55108830e284}">
+		<property name="start">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="EventMixerGroup" id="{7e13a1b1-7e66-4144-ba48-9cd5c5fa5c20}">
 		<property name="name">
 			<value>Audio 6</value>
@@ -352,8 +442,11 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{3467538b-a414-429d-becd-c624e26acad3}">
+		<property name="isAsync">
+			<value>true</value>
+		</property>
 		<property name="start">
-			<value>5.2000000000000028</value>
+			<value>5.1817460317460302</value>
 		</property>
 		<property name="length">
 			<value>3</value>
@@ -361,6 +454,19 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		<relationship name="audioFile">
 			<destination>{9cc2dd12-3404-4deb-939e-ea6cab62aa94}</destination>
 		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{33a38485-ba85-4051-b93d-a81f90577c43}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{b4efdacd-273d-4e38-86d8-8eaf8e5968fe}">
+		<property name="start">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="EventMixerGroup" id="{96cceb8d-ffda-4ba7-a7ea-c5bf5d24e2a8}">
 		<property name="volume">
@@ -393,6 +499,22 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<destination>{9cc2dd12-3404-4deb-939e-ea6cab62aa94}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{55fd32b3-cab4-4d6c-b90f-171e6bbdfcc5}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{57c4ca69-7aee-424f-a0ad-2a9b739444be}">
+		<property name="start">
+			<value>2.7755575615628914e-17</value>
+		</property>
+		<property name="length">
+			<value>0.17999999999999994</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{6fc4134b-1c95-4c20-94d6-ea832c7db9fb}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{e8873548-5f33-4435-b12e-98fec2d2fd04}">
 		<property name="name">
 			<value>Audio 4</value>
@@ -423,7 +545,7 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	</object>
 	<object class="NamedMarker" id="{59fced7a-4e88-46b5-97b2-f1a752c6edc2}">
 		<property name="position">
-			<value>5.2000000000000028</value>
+			<value>5.1817460317460302</value>
 		</property>
 		<property name="name">
 			<value>Marker A</value>
@@ -482,6 +604,9 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		<relationship name="markerTrack">
 			<destination>{9a7bf783-c9a8-4baf-a2bc-5083c3602973}</destination>
 		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{618ca449-64a3-4a88-801b-dfbbfefe3ce4}</destination>
+		</relationship>
 		<relationship name="destination">
 			<destination>{47bfb2cd-7b59-4b56-808c-49739e1a6875}</destination>
 		</relationship>
@@ -491,7 +616,7 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	</object>
 	<object class="SustainPoint" id="{3a3c8ec6-5e3e-47b0-84cc-cecc16e5ac93}">
 		<property name="position">
-			<value>8.2000000000000028</value>
+			<value>8.1817460317460302</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{b4bea465-909c-4475-a7de-2b7a89c21e60}</destination>
@@ -533,6 +658,14 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<destination>{afc4df8f-d1bc-47cc-8041-f815d54fbe2d}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{62a5698d-589c-4529-8a69-8eff1248775c}">
+		<relationship name="startPoint">
+			<destination>{e694fb7f-53dd-4134-9384-c9cbf2982dfa}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{593794f4-c66d-4620-ad16-1671c0a3570a}</destination>
+		</relationship>
+	</object>
 	<object class="Automator" id="{bd833cb9-f5aa-4283-af8b-e6cef345b8f4}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>
@@ -553,6 +686,14 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{3c4eede0-8066-4541-b392-4aac58c58319}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{3f9b51e5-9459-4bf1-bdf1-71ba618cde2c}">
+		<relationship name="startPoint">
+			<destination>{328e1e39-d264-4538-8f74-d443679d321d}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{8dd22d11-24ed-43b4-b498-27f1cc8c6750}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{8318b7e9-994d-4b5d-848e-a740dc02f9a5}">
@@ -577,6 +718,14 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<destination>{b39758d3-08a3-487b-a5b8-d812f1fcebd4}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{3366c58a-ef5b-411c-ab46-736f78176d41}">
+		<relationship name="startPoint">
+			<destination>{5baa8a8e-7321-4bd3-922f-6949f82a64de}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{18b5bad9-3950-49a1-846f-774dd4069989}</destination>
+		</relationship>
+	</object>
 	<object class="Automator" id="{4f449288-c301-484a-82b8-afe022011a17}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>
@@ -597,6 +746,14 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a5328156-3a78-47d7-bc1d-ae33d88d1e73}" />
+	<object class="TransitionDestinationFadeInCurve" id="{6fc4134b-1c95-4c20-94d6-ea832c7db9fb}">
+		<relationship name="startPoint">
+			<destination>{58bec048-ac13-4ace-ad29-a24113d45698}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{90a4dae4-6ee9-4e29-9ca2-b6380f9db43e}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{0a3adf48-5888-41c8-8905-27acdae6525c}">
 		<relationship name="effects">
 			<destination>{0fe54e81-f8b5-40b6-9c04-172394c6a55f}</destination>
@@ -613,6 +770,27 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</property>
 		<relationship name="parameter">
 			<destination>{7d221181-2704-4f86-acb8-8e87debd26d4}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{618ca449-64a3-4a88-801b-dfbbfefe3ce4}">
+		<property name="length">
+			<value>0.17999999999999997</value>
+		</property>
+		<relationship name="modules">
+			<destination>{446a6bbd-5146-4516-a759-661971b6f574}</destination>
+			<destination>{5880784d-6051-4e6d-b96b-6ecb6b98e836}</destination>
+			<destination>{b8e30859-3cb8-4e09-babc-ef5775935ffc}</destination>
+			<destination>{68c00d8c-9823-4c0a-9117-3f29a7d35100}</destination>
+			<destination>{1f3008e2-bcfc-4129-bfbd-42e6c4a791a9}</destination>
+			<destination>{1ee37ab9-4d53-440a-b3a9-e56a37a90679}</destination>
+			<destination>{d1093151-fba4-49a8-97f9-87adb205bc20}</destination>
+			<destination>{4989563d-e599-41aa-b29c-55108830e284}</destination>
+			<destination>{33a38485-ba85-4051-b93d-a81f90577c43}</destination>
+			<destination>{b4efdacd-273d-4e38-86d8-8eaf8e5968fe}</destination>
+			<destination>{55fd32b3-cab4-4d6c-b90f-171e6bbdfcc5}</destination>
+			<destination>{57c4ca69-7aee-424f-a0ad-2a9b739444be}</destination>
+			<destination>{30b2ae2c-e5e3-45f4-afc4-88119f87604b}</destination>
+			<destination>{301423a8-7a3e-45ab-ac85-d9a7a437b11c}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterCondition" id="{62046851-f957-4cc6-8fa9-15c8d17ce6d3}">
@@ -652,6 +830,25 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<value>1</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{e694fb7f-53dd-4134-9384-c9cbf2982dfa}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{593794f4-c66d-4620-ad16-1671c0a3570a}">
+		<property name="position">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationCurve" id="{f05a4148-c6d0-41a8-96f4-49c9c4a1fd1b}">
 		<relationship name="parameter">
 			<destination>{7d221181-2704-4f86-acb8-8e87debd26d4}</destination>
@@ -680,6 +877,25 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</property>
 		<property name="value">
 			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{328e1e39-d264-4538-8f74-d443679d321d}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.147429526</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8dd22d11-24ed-43b4-b498-27f1cc8c6750}">
+		<property name="position">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{f61ebb5c-5486-4ae7-9451-8708b0a121b3}">
@@ -712,6 +928,25 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 			<value>1</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{5baa8a8e-7321-4bd3-922f-6949f82a64de}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.0678842738</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{18b5bad9-3950-49a1-846f-774dd4069989}">
+		<property name="position">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationCurve" id="{672328c4-a1f4-46cf-ab04-02c90ca88c5b}">
 		<relationship name="parameter">
 			<destination>{7d221181-2704-4f86-acb8-8e87debd26d4}</destination>
@@ -724,6 +959,25 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	</object>
 	<object class="MixerBusFader" id="{cdf523e8-b87f-40a4-b08e-3431c10d2aae}" />
 	<object class="MixerBusFader" id="{d76d0a21-5d9f-4afa-bd52-7b9a42a32b7c}" />
+	<object class="AutomationPoint" id="{58bec048-ac13-4ace-ad29-a24113d45698}">
+		<property name="position">
+			<value>2.7755575615628914e-17</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{90a4dae4-6ee9-4e29-9ca2-b6380f9db43e}">
+		<property name="position">
+			<value>0.17999999999999997</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{0fe54e81-f8b5-40b6-9c04-172394c6a55f}" />
 	<object class="PitchShifterEffect" id="{90cace47-584b-41e5-aea0-9e5b541e21b0}">
 		<property name="pitch">
