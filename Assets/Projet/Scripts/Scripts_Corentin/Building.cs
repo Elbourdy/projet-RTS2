@@ -69,13 +69,13 @@ public class Building : MonoBehaviour
             return false;
     }  
 
-    public void RemoveFromQueue(int buttonPressed)  
+    public void RemoveFromQueue(int buttonPressed) // enlève une unité de la file d'attente 
     {
         Global_Ressources.instance.ModifyRessource(0, productionQueue[buttonPressed].ressourcesCost[0]);
         productionQueue.RemoveAt(prodQueueStacked[buttonPressed] - 1);
-    }  // enlève 
+    }  
 
-    public void ProcessQueue()
+    public void ProcessQueue() // gère la file d'attente de création du batiment 
     {
         if (actualTimer != 0)
             productionBar.SetHealth(timerCount / actualTimer);
