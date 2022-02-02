@@ -6,34 +6,42 @@ using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
-    public Transform spawnPosition;
-    public GameObject rallyPoint;
-    public GameObject selectedFeedback;
-    public HealthBar productionBar, constructionBar, healthBar;
-    public List<Image> recapProduction;
-    public float constructionHealthMax;
+    //classe de base des batiments, est devenue avec le temps la classe poubelle des fonctions du nexus
+    //Filtrage de cette classe prévue avec des enums/sous-classes pour acceder à certaines fonctions en fonction du type de batiment
+
+    [Header("Roster and Unit production")]
+    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private GameObject rallyPoint;
+    [SerializeField] private HealthBar productionBar; 
+    [SerializeField] private List<Image> recapProduction;
+    [SerializeField] private List<AgentClass> roasterUnits = new List<AgentClass>();
     [SerializeField] public float refundPercentageUnit = 0.5f;
 
-    [SerializeField] private List<AgentClass> roasterUnits = new List<AgentClass>();
     private List<AgentClass> productionQueue = new List<AgentClass>();
-    private List<int> prodQueueStacked = new List<int>(); 
+    private List<int> prodQueueStacked = new List<int>();
     private float actualTimer, timerCount;
+
+    [Header("Health and Construction")]
+    [SerializeField] private HealthBar constructionBar;
+    [SerializeField] private HealthBar HealthBarhealthBar;
+    [SerializeField] private float constructionHealthMax;
+
+
+    [Header("Feedback Audio and Visual")]
+    [SerializeField] private GameObject selectedFeedback;
+
     private bool isSelected, isConstructed, isMovingRallyPoint = false;
     public float constructionHealthActual;
 
-    public void AddToRoaster(int IDNumberRoaster)
+    
+
+    public void AddToRoaster(int IDNumberRoaster) // ajoute une unité au roster du batiment (unité que le joueur peut créer dans ce batiment)
     {
         List<AgentClass> fullRoaster = GameDataStorage.instance.mainAgentClassStorage;
         roasterUnits.Add(fullRoaster[IDNumberRoaster]);
-    }
+    } 
 
-    public void RemoveFromQueue(int buttonPressed)  
-    {
-        Global_Ressources.instance.ModifyRessource(0, productionQueue[buttonPressed].ressourcesCost[0]);
-        productionQueue.RemoveAt(prodQueueStacked[buttonPressed] - 1);
-    }
-
-    public bool AddToQueue(int IDNumberRoaster)
+    public bool AddToQueue(int IDNumberRoaster) // ajoute une unité à la file d'attente de création
     {
         int i = 0;
         bool check = true;
@@ -59,7 +67,13 @@ public class Building : MonoBehaviour
         }
         else
             return false;
-    }
+    }  
+
+    public void RemoveFromQueue(int buttonPressed)  
+    {
+        Global_Ressources.instance.ModifyRessource(0, productionQueue[buttonPressed].ressourcesCost[0]);
+        productionQueue.RemoveAt(prodQueueStacked[buttonPressed] - 1);
+    }  // enlève 
 
     public void ProcessQueue()
     {

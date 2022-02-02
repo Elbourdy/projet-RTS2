@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c535ab8327b7f4bb18b159c7d44dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundDeath: 
   regenValue: 1
   regenIsActivated: 0
   timeBeforeRegen: 30
