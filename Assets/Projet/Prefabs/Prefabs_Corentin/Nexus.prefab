@@ -49,7 +49,9 @@ GameObject:
   - component: {fileID: 7399530908361922039}
   - component: {fileID: 2675309895078041132}
   - component: {fileID: 1943509593}
-  - component: {fileID: 2831673758318765738}
+  - component: {fileID: 4197431914103571127}
+  - component: {fileID: 2168511245694676077}
+  - component: {fileID: 3739895391017574154}
   m_Layer: 7
   m_Name: Nexus
   m_TagString: Building
@@ -110,10 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 3692042210201552505}
   rallyPoint: {fileID: 3692042210233555322}
-  selectedFeedback: {fileID: 3692042209897435362}
   productionBar: {fileID: 0}
-  constructionBar: {fileID: 7399530909063535966}
-  healthBar: {fileID: 7399530909198688614}
   recapProduction:
   - {fileID: 0}
   - {fileID: 0}
@@ -124,15 +123,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  constructionHealthMax: 100
-  refundPercentageUnit: 0.5
   roasterUnits: []
+  refundPercentageUnit: 0.5
+  constructionBar: {fileID: 7399530909063535966}
+  HealthBarhealthBar: {fileID: 0}
+  constructionHealthMax: 100
+  selectedFeedback: {fileID: 3692042209897435362}
   constructionHealthActual: 0
   currentNexusState: 0
   BatType: 10
   desiredRoaster: 00000000
   speed: 5
-  colorRadiusBattery: {r: 0, g: 0.37760234, b: 1, a: 1}
   nexusRenderers:
   - {fileID: 6040754709918123793}
   - {fileID: 4633782956856057280}
@@ -142,6 +143,7 @@ MonoBehaviour:
   - {fileID: 464583015891022483}
   - {fileID: 8839807346786017564}
   animator: {fileID: 3383543886236954069}
+  colorRadiusBattery: {r: 0, g: 0.37760234, b: 1, a: 1}
   ActivateNewMovementSystem: 1
   AllowMultipleSelection: 0
 --- !u!114 &158273673537399656
@@ -306,10 +308,10 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2.7
-  m_BaseOffset: 0
+  m_BaseOffset: 0.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2831673758318765738
+--- !u!114 &4197431914103571127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,10 +323,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c535ab8327b7f4bb18b159c7d44dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundDeath: 
+  SoundDeath: event:/Building/Build_Nexus/Build_Nex_Death/Build_Nex_Death
   regenValue: 1
   regenIsActivated: 0
-  timeBeforeRegen: 30
+  timeBeforeRegen: 5
+--- !u!114 &2168511245694676077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692042209584680391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e79082c859bda4cac28783702ffe02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAttackSound: 
+  onSelectedSound: event:/Building/Build_Nexus/Build_Nex_Select/Build_Nex_Select
+--- !u!114 &3739895391017574154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692042209584680391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ac4f4c5d767624ea98e119223f54c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundHit: event:/Building/Build_Nexus/Build_Nex_Hit/Build_Nex_Hit
 --- !u!1 &3692042209615862747
 GameObject:
   m_ObjectHideFlags: 0
