@@ -172,7 +172,7 @@ public class NexusLevelManager : MonoBehaviour
 
     private void SetFeedbackNexusLevel(Material newMaterial, float speedAnimation)
     {
-        HQBehavior.instance.SetNexusBallMaterial(newMaterial);
+        HQBehavior.instance.SetNexusMaterial(newMaterial);
         HQBehavior.instance.SetIdleAnimationSpeed(speedAnimation);
         BatteryManager.instance.SetLineRendererMaterial(newMaterial);
     }
