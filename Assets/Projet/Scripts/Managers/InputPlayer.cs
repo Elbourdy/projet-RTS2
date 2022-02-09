@@ -58,7 +58,7 @@ public class InputPlayer : MonoBehaviour
 
         // GROSSE BAGARRE NECESSAIRE AVEC LES LAYERS APRES SOUTENANCE
         // IMPOSSIBLE DE COMPRENDRE POURQUOI AUCUN LAYER FONCTIONNE
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             if (hit.collider.name == "Sol")
             {
