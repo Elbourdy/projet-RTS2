@@ -174,7 +174,7 @@ public class SelectionPlayer : MonoBehaviour
                 //Try to select a new unit
                 RaycastHit hit;
                 //Fire ray from camera
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
                 {
                     if (hit.collider.gameObject.GetComponent<Agent_Type>() != null)
                     //if (hit.collider.CompareTag("Friendly"))
@@ -284,7 +284,7 @@ public class SelectionPlayer : MonoBehaviour
         //Fire a ray from the mouse position to get the unit we want to highlight
         RaycastHit hit;
         //Fire ray from camera
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
         {
             //Did we hit a friendly unit?
             if (hit.collider.gameObject.GetComponent<Agent_Type>() != null)
