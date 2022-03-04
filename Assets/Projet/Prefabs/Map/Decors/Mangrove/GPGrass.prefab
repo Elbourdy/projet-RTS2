@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 119
+  m_StaticEditorFlags: 118
   m_IsActive: 1
 --- !u!4 &5663558317707682757
 Transform:
@@ -44,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 119
+  m_StaticEditorFlags: 118
   m_IsActive: 1
 --- !u!4 &7694233470941863109
 Transform:
@@ -74,7 +74,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 119
+  m_StaticEditorFlags: 118
   m_IsActive: 1
 --- !u!4 &4404415013510319180
 Transform:
@@ -188,16 +188,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2c372b65d493aec4f9965de66a3d221d, type: 2}
+      objectReference: {fileID: 2100000, guid: 69c896ca7dd59c54e98a1d3a499f64d3, type: 2}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Name
       value: Grass (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 119
+      value: 118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
@@ -270,16 +274,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1b565b1e58b69e046b1d99c7f9891fb5, type: 2}
+      objectReference: {fileID: 2100000, guid: 69c896ca7dd59c54e98a1d3a499f64d3, type: 2}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Name
       value: Grass (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 119
+      value: 118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
@@ -352,16 +360,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1b565b1e58b69e046b1d99c7f9891fb5, type: 2}
+      objectReference: {fileID: 2100000, guid: 69c896ca7dd59c54e98a1d3a499f64d3, type: 2}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Name
       value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 119
+      value: 118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
@@ -434,16 +446,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2c372b65d493aec4f9965de66a3d221d, type: 2}
+      objectReference: {fileID: 2100000, guid: 69c896ca7dd59c54e98a1d3a499f64d3, type: 2}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_Name
       value: Grass (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 119
+      value: 118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3363f5f572899c40a55d9919b8a0fb8, type: 3}

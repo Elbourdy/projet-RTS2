@@ -27,6 +27,7 @@ Shader "Custom/FogProjection"
 				#include "Assets/ProjectorForLWRP-master-universalrp/ProjectorForLWRP-master-universalrp/Shaders/P4LWRP.cginc"
 				#include "UnityCG.cginc"
 
+
 				struct appdata
 				{
 					float4 vertex : POSITION;
@@ -42,8 +43,11 @@ Shader "Custom/FogProjection"
 
 				sampler2D _CurrTexture;
 				sampler2D _PrevTexture;
+				CBUFFER_START(UnityPerMaterial) 
 				fixed4 _Colore;
 				float _Blend;
+				CBUFFER_END
+				
 
 				P4LWRP_V2F_PROJECTOR vert(float4 vertex : POSITION)
 				{
