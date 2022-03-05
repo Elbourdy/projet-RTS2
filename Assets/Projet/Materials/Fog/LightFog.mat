@@ -126,7 +126,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+<<<<<<< Updated upstream
     - _Blend: 0.39619398
+=======
+    - _Blend: 0.907287
+>>>>>>> Stashed changes
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0

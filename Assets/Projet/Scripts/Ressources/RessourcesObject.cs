@@ -20,8 +20,8 @@ public class RessourcesObject : MonoBehaviour
     public float TempsReload;
     public int ajout;
 
-    [SerializeField] private float tickRessourceTimer = 1;
-    [SerializeField] private int ressourceQuantityPerTic = 20;
+    [SerializeField] private float tickPerSeconds = 8;
+    [SerializeField] private int ressourceQuantityPerTic = 1;
     [SerializeField] private int stockRessources = 400;
     [SerializeField] private int rangeCollection = 20;
     [SerializeField] private float onReadDistance = 0f;
@@ -76,7 +76,7 @@ public class RessourcesObject : MonoBehaviour
                 SetFeedbackNexusCollecting();
                 timerCount += Time.deltaTime * NexusLevelManager.instance.GetVitesseCollecte();
 
-                if (timerCount >= tickRessourceTimer)
+                if (timerCount >= 1/tickPerSeconds)
                 {
                     AddRessourceToPlayer();
                     timerCount = 0;
@@ -140,7 +140,7 @@ public class RessourcesObject : MonoBehaviour
 
     public float GetTimer()
     {
-        return tickRessourceTimer;
+        return tickPerSeconds;
     }
 
 
