@@ -33,6 +33,10 @@ public class HQBehavior : Building
 
     public static HQBehavior instance;
 
+    [Header("VisionFog")]
+    [SerializeField] private float radiusVision = 30f;
+    [SerializeField] private GameObject cookie;
+
     private void Awake()
     {
         instance = this;
@@ -61,6 +65,8 @@ public class HQBehavior : Building
         targetPosition = transform.position;
 
         SetConstructionHealth(100f); //annule le système de construction
+
+        InitialisationRange();
     }
 
     // Update is called once per frame
@@ -207,5 +213,13 @@ public class HQBehavior : Building
     public void SetIdleAnimationSpeed(float newSpeed) 
     {
         animator.speed = 1 * newSpeed;
+    }
+
+    public void InitialisationRange()
+    {
+        Vector3 newScale = cookie.transform.localScale;
+        newScale.x = radiusVision;
+        newScale.z = radiusVision;
+        cookie.transform.localScale = newScale;
     }
 }
