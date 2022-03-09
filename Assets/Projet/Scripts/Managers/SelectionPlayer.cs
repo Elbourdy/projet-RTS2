@@ -449,9 +449,6 @@ public class SelectionPlayer : MonoBehaviour
                 currentSound = currentUnit.GetComponent<SoundFeedbacks>().GetSoundNameSelection();
             else currentSound = currentUnit.GetComponentInChildren<SoundFeedbacks>().GetSoundNameSelection();
 
-
-            Debug.Log(currentSound);
-
             if (sounds.Count > 0)
             {
                 foreach (var item in sounds)
