@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1322167557
 Transform:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322167556}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -301,7 +301,7 @@ MonoBehaviour:
   playSound: 1
   TempsReload: 1
   ajout: 3
-  tickRessourceTimer: 8
+  tickPerSeconds: 8
   ressourceQuantityPerTic: 1
   stockRessources: 400
   rangeCollection: 18
