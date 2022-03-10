@@ -9,7 +9,7 @@ Shader "Custom/FogProjection"
 	}
 		SubShader
 		{
-			Tags { "Queue" = "Transparent+100" } // to cover other transparent non-z-write things
+			Tags { "Queue" = "Transparent+100" } 
 
 			Pass
 			{
@@ -64,7 +64,7 @@ Shader "Custom/FogProjection"
 
 					fixed a = lerp(aPrev, aCurr, _Blend);
 
-					// weird things happen to minimap if alpha value gets negative
+					
 					_Colore.a = max(0, _Colore.a - a);
 					return _Colore;
 				}
@@ -73,4 +73,3 @@ Shader "Custom/FogProjection"
 		}
 }
 
-//#include "Assets/ProjectorForLWRP-master-universalrp/ProjectorForLWRP-master-universalrp/Shaders/P4LWRP.cginc"
