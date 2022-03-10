@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LightTowerBehavior : MonoBehaviour
 {
+    private Animator animator;
+
     public enum statesBuilding { Active, Deactivated };
     public statesBuilding towerState = statesBuilding.Deactivated;
 
@@ -16,15 +18,29 @@ public class LightTowerBehavior : MonoBehaviour
     void Start()
     {
         hS = GetComponent<HealthSystem>();
+
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (hS.GetBatteryHealth() > 0)
+        {
+            if (towerState != statesBuilding.Active)
+                animator.SetBool("Activated", true);
+
             towerState = statesBuilding.Active;
+        }
+
         else
+        {
+            if (towerState != statesBuilding.Deactivated)
+                animator.SetBool("Activated", false);
+
             towerState = statesBuilding.Deactivated;
+        }
+
 
         if (towerState == statesBuilding.Active && cookieFog.transform.localScale.x < maxSize)
         {

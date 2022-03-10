@@ -5,6 +5,7 @@ using UnityEngine;
 public class SwitchBehavior : MonoBehaviour
 {
     private BaliseBehavior.statesBalise switchBehavior = BaliseBehavior.statesBalise.Classic;
+    private Animator animator;
 
     public BaliseBehavior bB;
 
@@ -28,13 +29,15 @@ public class SwitchBehavior : MonoBehaviour
     {
         if (switchBehavior == BaliseBehavior.statesBalise.CountDown)
         {
-            bar = transform.GetChild(0).GetChild(0).GetComponent<HealthBar>();
+            bar = transform.GetChild(1).GetChild(0).GetComponent<HealthBar>();
             bar.gameObject.SetActive(false);
         }
             
 
         lR = GetComponent<LineRenderer>();
         InitialiseLineRenderer();
+
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,6 +54,7 @@ public class SwitchBehavior : MonoBehaviour
                     activated = false;
                     lR.material = matOff;
                     bar.gameObject.SetActive(false);
+                    animator.SetBool("Activated", false);
                 }
             }
 
@@ -58,6 +62,7 @@ public class SwitchBehavior : MonoBehaviour
             {
                 activated = false;
                 lR.material = matOff;
+                animator.SetBool("Activated", false);
             }
             count += Time.deltaTime;
         }  
@@ -72,6 +77,7 @@ public class SwitchBehavior : MonoBehaviour
                 {
                     activated = state;
                     lR.material = matOn;
+                    animator.SetBool("Activated", true);
                     bB.Switch();
                 }
                 break;
@@ -83,6 +89,7 @@ public class SwitchBehavior : MonoBehaviour
                     count = 0;
                     lR.material = matOn;
                     bar.gameObject.SetActive(true);
+                    animator.SetBool("Activated", true);
                     bB.Switch();
                 }
                 break;
@@ -93,6 +100,7 @@ public class SwitchBehavior : MonoBehaviour
                     activated = state;
                     count = 0;
                     lR.material = matOn;
+                    animator.SetBool("Activated", true);
                     bB.Switch();
                 }
                 break;
