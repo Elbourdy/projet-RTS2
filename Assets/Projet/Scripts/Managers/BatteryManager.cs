@@ -27,7 +27,19 @@ public class BatteryManager : MonoBehaviour
 
     private float timerRechargeCount;
 
+    private List<SwitchBehavior> switchList = new List<SwitchBehavior>();
+
     private string soundNextTick = "event:/Building/Build_Nexus/Build_Nex_Tick/Build_Nex_Tick";
+
+    private void Start()
+    {
+        GameObject[] tmp = GameObject.FindGameObjectsWithTag("Switch");
+
+        foreach(GameObject e in tmp)
+        {
+            switchList.Add(e.GetComponent<SwitchBehavior>());
+        }
+    }
 
     private void Awake()
     {
@@ -44,6 +56,7 @@ public class BatteryManager : MonoBehaviour
             lRFeedbackAlim.enabled = true;
             radiusAlim = radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus();
             timerRechargeCount = 0;
+            CheckSwitch();
         }
 
         timerRechargeCount += Time.deltaTime;
@@ -154,5 +167,17 @@ public class BatteryManager : MonoBehaviour
     public void SetLineRendererMaterial(Material newMaterial)
     {
         lRFeedbackAlim.material = newMaterial;
+    }
+
+    public void CheckSwitch()
+    {
+        foreach (SwitchBehavior e in switchList)
+        {
+            if (e != null)
+                if (Vector3.Distance(e.transform.position, HQBehavior.instance.transform.position) < BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus())
+                {
+                    e.SetState(true);
+                }
+        }
     }
 }

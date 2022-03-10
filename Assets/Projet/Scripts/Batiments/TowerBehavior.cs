@@ -31,6 +31,10 @@ public class TowerBehavior : MonoBehaviour
 
     private float towerMaterialLerpValue = 0f, lerpMaterialTimer = 5f, lerpmaterialCount;
 
+    [Header("RadiusVision")]
+    [SerializeField] private GameObject cookieFog;
+    [SerializeField] private float minSize, maxSize, timeToStart;
+
     private statesBuilding bufferForSound = statesBuilding.Deactivated;
 
     private string soundTowerActivate = "event:/Building/Build_Turret/Build_Turr_Rise/Build_Turr_Rise";
@@ -110,6 +114,8 @@ public class TowerBehavior : MonoBehaviour
 
             SetTowerMaterial(0);
         }
+
+        UpdateVisionRange();
     }
 
     private void Fire()
@@ -202,6 +208,32 @@ public class TowerBehavior : MonoBehaviour
                     e.materials[0].Lerp(inactiveMaterial, activeMaterial, lerpValue);
             }
             i++;
+        }
+    }
+
+    public void UpdateVisionRange()
+    {
+        if (hS.GetBatteryHealth() > 0)
+            towerState = statesBuilding.Active;
+        else
+            towerState = statesBuilding.Deactivated;
+
+        if (towerState == statesBuilding.Active && cookieFog.transform.localScale.x < maxSize)
+        {
+            float speed = ((maxSize - minSize) / timeToStart) * Time.deltaTime;
+            Vector3 newScale = cookieFog.transform.localScale;
+            newScale += Vector3.one * speed;
+            newScale.y = 0.2f;
+            cookieFog.transform.localScale = newScale;
+
+        }
+        else if (towerState == statesBuilding.Deactivated && cookieFog.transform.localScale.x > minSize)
+        {
+            float speed = ((maxSize - minSize) / timeToStart) * Time.deltaTime;
+            Vector3 newScale = cookieFog.transform.localScale;
+            newScale -= Vector3.one * speed;
+            newScale.y = 0.2f;
+            cookieFog.transform.localScale = newScale;
         }
     }
 }
