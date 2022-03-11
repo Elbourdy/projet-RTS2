@@ -19,7 +19,6 @@ public class FogProjector : MonoBehaviour
     private void Awake()
     {
         projector = GetComponent<Projector>();
-        Debug.Log(projector);
         projector.enabled = true;
 
         prevTexture = GenerateTexture();
