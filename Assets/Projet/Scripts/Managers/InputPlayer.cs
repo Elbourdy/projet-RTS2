@@ -56,15 +56,13 @@ public class InputPlayer : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        // GROSSE BAGARRE NECESSAIRE AVEC LES LAYERS APRES SOUTENANCE
-        // IMPOSSIBLE DE COMPRENDRE POURQUOI AUCUN LAYER FONCTIONNE
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if (hit.collider.name == "Sol")
-            {
-                GoToTarget(hit);
-            }
+            GoToTarget(hit);
+        }
 
+        else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
+        {
             if (hit.collider.GetComponent<Agent_Type>() != null)
             {
                 if (hit.collider.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Enemy)
@@ -73,6 +71,7 @@ public class InputPlayer : MonoBehaviour
                 }
             }
         }
+
     }
 
 
