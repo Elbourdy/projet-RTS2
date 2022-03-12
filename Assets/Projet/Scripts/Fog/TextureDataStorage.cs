@@ -53,7 +53,7 @@ public class TextureDataStorage : MonoBehaviour
 
         nexCol = texture2D.GetPixel(43, 221);
         pixels = texture2D.GetPixels();
-        onUpdateTexture.Invoke();
+        onUpdateTexture?.Invoke();
         RenderTexture.active = currentRT;
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465245, g: 0.4963522, b: 0.5747857, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25617,7 +25617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592253009}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 105, y: 23.7, z: -38}
+  m_LocalPosition: {x: 42, y: 24, z: -24}
   m_LocalScale: {x: 0.97675, y: 0.97675, z: 0.97675}
   m_Children: []
   m_Father: {fileID: 618325020}
@@ -25690,7 +25690,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 197.6
+  orthographic size: 429.7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -26072,7 +26072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &618325020
 Transform:
   m_ObjectHideFlags: 0
@@ -32634,7 +32634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802168055}
   m_LocalRotation: {x: 0.7071068, y: 0.00000025537307, z: 0.00000025323945, w: 0.70710677}
-  m_LocalPosition: {x: 105, y: 23.7, z: -38}
+  m_LocalPosition: {x: 42, y: 24, z: -24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618325020}
@@ -32692,7 +32692,7 @@ Projector:
   m_FieldOfView: 60
   m_AspectRatio: 1
   m_Orthographic: 1
-  m_OrthographicSize: 194.59
+  m_OrthographicSize: 429.7
   m_Material: {fileID: 2100000, guid: 9c491b57629dfd14c8d2af62a1afbc99, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
@@ -42820,7 +42820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034258588}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 105, y: 23.7, z: -38}
+  m_LocalPosition: {x: 42, y: 24, z: -24}
   m_LocalScale: {x: 0.97675, y: 0.97675, z: 0.97675}
   m_Children: []
   m_Father: {fileID: 618325020}
@@ -42893,7 +42893,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 197.6
+  orthographic size: 429.7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -47121,6 +47121,7 @@ GameObject:
   - component: {fileID: 1121040663}
   - component: {fileID: 1121040661}
   - component: {fileID: 1121040664}
+  - component: {fileID: 1121040665}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47350,6 +47351,24 @@ MonoBehaviour:
   ressourceText: {fileID: 1676801345}
   currentNexusLevel: 0
   pityTimerCount: 2
+--- !u!114 &1121040665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121040654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb039f98ecdb1742bfdebe70ce92ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matFog: {fileID: 2100000, guid: 9c491b57629dfd14c8d2af62a1afbc99, type: 2}
+  nexCol: {r: 0, g: 0, b: 0, a: 0}
+  pixels: []
+  lightFogCam: {fileID: 1034258592}
+  texture2D: {fileID: 0}
+  timeForNewText: 1
 --- !u!1001 &1121644032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85274,7 +85293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036971875}
   m_LocalRotation: {x: 0.7071068, y: 0.00000025537307, z: 0.00000025323945, w: 0.70710677}
-  m_LocalPosition: {x: 105, y: 23.7, z: -38}
+  m_LocalPosition: {x: 42, y: 24, z: -24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618325020}
@@ -85316,7 +85335,7 @@ Projector:
   m_FieldOfView: 60
   m_AspectRatio: 1
   m_Orthographic: 1
-  m_OrthographicSize: 194.59
+  m_OrthographicSize: 429.7
   m_Material: {fileID: 2100000, guid: 05ad999ff5801f645b296f1874cf670a, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
