@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2749085907056834235
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -288.4173
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -49.370785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 298.28757
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971327108340666073, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847760369529432738, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_Name
+      value: Herbe2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847760369529432738, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284701646749465624, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5596ac9132485942a2c66354099ed6b, type: 2}
+    - target: {fileID: 8309793095162307607, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd337dd0d5dc5414694657ba6c15f7b9, type: 3}

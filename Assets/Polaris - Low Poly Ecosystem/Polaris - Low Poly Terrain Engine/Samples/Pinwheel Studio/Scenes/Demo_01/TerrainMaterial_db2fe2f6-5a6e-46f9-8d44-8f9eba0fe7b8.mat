@@ -24,15 +24,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorBlend:
-        m_Texture: {fileID: -2812753877779992945, guid: 9213dfcf6003cb44f87e44d234a793a0, type: 2}
+        m_Texture: {fileID: -6623128555538101177, guid: 69d7ebcdbcc4c0a48aa2f110a8b3d52a, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorByHeight:
-        m_Texture: {fileID: 7781697995410447693, guid: 9213dfcf6003cb44f87e44d234a793a0, type: 2}
+        m_Texture: {fileID: -8736172126779268446, guid: 69d7ebcdbcc4c0a48aa2f110a8b3d52a, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorByNormal:
-        m_Texture: {fileID: 901147113743866520, guid: 9213dfcf6003cb44f87e44d234a793a0, type: 2}
+        m_Texture: {fileID: 5472249317460334087, guid: 69d7ebcdbcc4c0a48aa2f110a8b3d52a, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -52,11 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 312323268460719155, guid: 9213dfcf6003cb44f87e44d234a793a0, type: 2}
+        m_Texture: {fileID: -6764330071660633739, guid: 69d7ebcdbcc4c0a48aa2f110a8b3d52a, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 47a91f8808e6f334a84f127655c54663, type: 3}
+        m_Texture: {fileID: 4524582072752385402, guid: 69d7ebcdbcc4c0a48aa2f110a8b3d52a, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -104,6 +104,6 @@ Material:
     - __dirty: 1
     m_Colors:
     - _Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    - _Dimension: {r: 512, g: 256, b: 512, a: 0}
+    - _Dimension: {r: 900, g: 900, b: 900, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
