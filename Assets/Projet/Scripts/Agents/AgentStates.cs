@@ -164,7 +164,7 @@ public class AgentStates : MonoBehaviour
 
     // Que fais l'agent lorsqu'il entre dans un état. Actions jouées une seule fois
     // Permet l'utilisation de feedback sans utiliser l'Update
-    // NB : ajout d'un OnEnterState si besoin un jour
+    // NB : ajout d'un OnExitState si besoin un jour
     private void OnEnterState()
     {
         switch (myState)

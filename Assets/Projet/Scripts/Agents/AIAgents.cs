@@ -16,6 +16,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(AgentStates))]
 public class AIAgents : MonoBehaviour
 {
+    public delegate void EventAI();
+    public EventAI onFindingEnemy;
+
+
     private AgentStates aS;
     
     private ClassAgentContainer cac;
@@ -43,10 +47,15 @@ public class AIAgents : MonoBehaviour
     private void AttackOrder()
     {
         aS.SetTarget(newTarget);
+
         // On ne remet un agent déjà aggresif dans cet état
         // Un agent se dirigeant vers un endroit précis n'attaque pas tant qu'il n'est pas arrivé (permet fuite entre autre
 
-        if (aS.myState != AgentStates.states.Aggressive && aS.myState != AgentStates.states.Follow) aS.SetState(AgentStates.states.Aggressive);
+        if (aS.myState != AgentStates.states.Aggressive && aS.myState != AgentStates.states.Follow)
+        { 
+            aS.SetState(AgentStates.states.Aggressive);
+            onFindingEnemy?.Invoke();
+        }
     }
 
     private void DrawRadiusVision()
@@ -70,7 +79,7 @@ public class AIAgents : MonoBehaviour
     {
         if (aS.myState != AgentStates.states.Aggressive || IsCapableOfSuperAgression())
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision);
+            Collider[] hits = Physics.OverlapSphere(transform.position, radiusVision, LayerMask.GetMask("GameplayUnits"));
             if (hits.Length > 0)
             {
                 for (int i = 0; i < hits.Length; i++)

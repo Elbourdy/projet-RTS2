@@ -184,6 +184,20 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 45
+--- !u!114 &1988656151908275915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146548163194609839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a427c836cdbc2e49b2c8206122073a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 0
+  radiusHelp: 15
 --- !u!114 &5711409623802829557
 MonoBehaviour:
   m_ObjectHideFlags: 0

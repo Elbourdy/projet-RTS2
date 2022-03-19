@@ -29,9 +29,7 @@ public class HideInLightFog : MonoBehaviour
 
     private void CheckPixel()
     {
-        Debug.Log("Tttttttttt");
         GetScreenPos();
-        Debug.Log("tex OK");
         int x = Mathf.FloorToInt(currentPixelPos.x);
         int y = Mathf.FloorToInt(currentPixelPos.y);
         colorPixel = TextureDataStorage.instance.texture2D.GetPixel(x, y);
