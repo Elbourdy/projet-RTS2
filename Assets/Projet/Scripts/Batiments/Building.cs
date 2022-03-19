@@ -107,6 +107,7 @@ public class Building : MonoBehaviour
         GameObject instance = Instantiate(productionQueue[0].unitPrefab, spawnPosition.position, Quaternion.identity);
         instance.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
         instance.GetComponent<AgentStates>().MoveAgent(rallyPoint.transform.position);
+        instance.GetComponent<AgentStates>().SetRestDest(rallyPoint.transform.position);
         if (instance.GetComponent<OnCreateSound>()) instance.GetComponent<OnCreateSound>().LaunchSoundCreation();
     }
 

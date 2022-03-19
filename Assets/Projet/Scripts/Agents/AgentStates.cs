@@ -37,7 +37,7 @@ public class AgentStates : MonoBehaviour
     
     // Navmesh et vaiable de destination/objectif de nos agents
     private NavMeshAgent navM;
-    private GameObject objectDestination;
+    private Vector3 restDestination;
     [SerializeField] private GameObject targetToAttack;
 
 
@@ -53,6 +53,7 @@ public class AgentStates : MonoBehaviour
         navM.speed = speed;
         navM.acceleration = 60f;
         navM.avoidancePriority = Random.Range(1, 100);
+        restDestination = transform.position;
         if (GetComponent<AIAgents>()) myAI = GetComponent<AIAgents>();
     }
 
@@ -75,6 +76,11 @@ public class AgentStates : MonoBehaviour
         switch (myState)
         {
             case states.Idle:
+                if (Vector3.Distance(transform.position, restDestination) > 1f)
+                {
+                    MoveAgent(restDestination);
+                    SetState(states.Follow);
+                }
                 break;
             case states.Aggressive:
                 // Update position si la target a bougé de sa position initiale
@@ -189,10 +195,6 @@ public class AgentStates : MonoBehaviour
     }
 
 
-    public void SetObjectDestination (GameObject newObject)
-    {
-        objectDestination = newObject;
-    }
 
     public void SetTarget (GameObject newGO)
     {
@@ -243,4 +245,8 @@ public class AgentStates : MonoBehaviour
         return targetToAttack;
     }
 
+    public void SetRestDest(Vector3 dest)
+    {
+        restDestination = dest;
+    }
 }

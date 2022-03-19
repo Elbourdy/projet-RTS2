@@ -97,9 +97,11 @@ public class InputPlayer : MonoBehaviour
             }
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
-                agent.GetComponent<AgentStates>().MoveAgent(target);
-                if(agent.GetComponent<AgentStates>().myState != AgentStates.states.Follow)
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Follow);
+                var asAgent = agent.GetComponent<AgentStates>();
+                asAgent.MoveAgent(target);
+                if(asAgent.myState != AgentStates.states.Follow)
+                asAgent.SetState(AgentStates.states.Follow);
+                asAgent.SetRestDest(target);
             }
         }
         CreateVfxOnMoveOrder(hit.point);
