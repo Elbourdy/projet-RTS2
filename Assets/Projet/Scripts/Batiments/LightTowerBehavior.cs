@@ -12,7 +12,7 @@ public class LightTowerBehavior : MonoBehaviour
     private HealthSystem hS;
 
     public float timeToStart, minSize, maxSize;
-    public GameObject cookieFog;
+    public ParticleSystem cookieFog;
 
     // Start is called before the first frame update
     void Start()

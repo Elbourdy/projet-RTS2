@@ -39,7 +39,8 @@ public class TextureDataStorage : MonoBehaviour
 
     private void UpdateTexture()
     {
-        Texture mainTexture = matFog.GetTexture("_CurrTexture");
+        Texture mainTexture = matFog.GetTexture("render_texture");
+        Debug.Log(mainTexture);
         texture2D = new Texture2D(mainTexture.width, mainTexture.height, TextureFormat.RGBA32, false);
 
         RenderTexture currentRT = RenderTexture.active;
