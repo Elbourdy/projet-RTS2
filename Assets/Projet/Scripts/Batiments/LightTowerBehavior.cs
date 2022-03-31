@@ -20,6 +20,7 @@ public class LightTowerBehavior : MonoBehaviour
         hS = GetComponent<HealthSystem>();
 
         animator = transform.GetChild(0).GetComponent<Animator>();
+        cookieFog.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class LightTowerBehavior : MonoBehaviour
                 animator.SetBool("Activated", true);
 
             towerState = statesBuilding.Active;
+            cookieFog.gameObject.SetActive(true);
         }
 
         else
@@ -39,6 +41,7 @@ public class LightTowerBehavior : MonoBehaviour
                 animator.SetBool("Activated", false);
 
             towerState = statesBuilding.Deactivated;
+            cookieFog.gameObject.SetActive(false);
         }
 
 

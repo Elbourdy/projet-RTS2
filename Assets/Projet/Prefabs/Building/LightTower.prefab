@@ -284,7 +284,7 @@ MonoBehaviour:
   timeToStart: 5
   minSize: 0
   maxSize: 3
-  cookieFog: {fileID: 7262885953925922032}
+  cookieFog: {fileID: 7262885953925922039}
 --- !u!114 &6453394275760653191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,14 +528,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62915d8856523ae4983f9ab7119b0c89, type: 3}
---- !u!1 &7262885953925922032 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3727739123409817045, guid: 62915d8856523ae4983f9ab7119b0c89, type: 3}
-  m_PrefabInstance: {fileID: 6300925862087143717}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7262885953925922033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3727739123409817044, guid: 62915d8856523ae4983f9ab7119b0c89, type: 3}
+  m_PrefabInstance: {fileID: 6300925862087143717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7262885953925922039 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3727739123409817042, guid: 62915d8856523ae4983f9ab7119b0c89, type: 3}
   m_PrefabInstance: {fileID: 6300925862087143717}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6453394275694843502
