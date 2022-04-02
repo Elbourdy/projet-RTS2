@@ -56,21 +56,24 @@ public class InputPlayer : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
-        {
-            GoToTarget(hit);
-        }
-
-        else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
         {
             if (hit.collider.GetComponent<Agent_Type>() != null)
             {
                 if (hit.collider.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Enemy)
                 {
+                    Debug.Log("attaque");
                     AttaqueWithAgent(hit);
                 }
             }
         }
+
+        else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+        {
+            GoToTarget(hit);
+        }
+
+        
 
     }
 
@@ -128,11 +131,16 @@ public class InputPlayer : MonoBehaviour
 
         foreach (var agent in sp.selectedUnits )
         {
+            
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
-                agent.GetComponent<AgentStates>().SetTarget(hit.collider.gameObject);
-                agent.GetComponent<AgentStates>().SetState(AgentStates.states.Aggressive);
-                agent.GetComponent<AgentStates>().MoveAgent(hit.point);
+                var agentState = agent.GetComponent<AgentStates>();
+                if (agentState.ReturnTarget() != hit.collider.gameObject)
+                {
+                    agentState.SetTarget(hit.collider.gameObject);
+                    agentState.SetState(AgentStates.states.Aggressive);
+                    agentState.MoveAgent(hit.point);
+                }
             }
         }
         onGlobalOrder?.Invoke();
