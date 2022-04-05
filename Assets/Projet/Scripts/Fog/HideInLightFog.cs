@@ -14,7 +14,6 @@ public class HideInLightFog : MonoBehaviour
     public Renderer myRenderer;
     public GameObject uiToDisable;
 
-    public bool debug = false;
 
     private void OnEnable()
     {
@@ -33,7 +32,6 @@ public class HideInLightFog : MonoBehaviour
         int x = Mathf.FloorToInt(currentPixelPos.x);
         int y = Mathf.FloorToInt(currentPixelPos.y);
         colorPixel = TextureDataStorage.instance.texture2D.GetPixel(x, y);
-        if (debug) Debug.Log(colorPixel.a);
         if (colorPixel.r < alphaMax && colorPixel.g < alphaMax && colorPixel.b < alphaMax)
         {
             myRenderer.enabled = false;

@@ -42,7 +42,6 @@ public class MessagesBraodcaster : MonoBehaviour
                     var unitBroadcaster = hits[i].GetComponent<MessagesBraodcaster>();
                     if (unitBroadcaster.myType == myType)
                     {
-                        Debug.Log("Find ally");
                         AskForHelp(unitBroadcaster);
                     }
                 }

@@ -11,6 +11,7 @@ public class AgentStates : MonoBehaviour
     // Event d'actions
     public delegate void EventAction();
     public EventAction onAttack;
+    public EventAction onSpeAttack;
     public EventAction onFollowEnter;
     public EventAction onIdleEnter;
 
@@ -45,6 +46,11 @@ public class AgentStates : MonoBehaviour
     private ClassAgentContainer container;
 
     private AIAgents myAI;
+
+
+    // Spé-Attack 
+    [Header("Spe Attack READ ONLY")]
+    public bool canSpeAttack = false;
 
     private void Awake()
     {
@@ -85,6 +91,11 @@ public class AgentStates : MonoBehaviour
             case states.Aggressive:
                 // Update position si la target a bougé de sa position initiale
                 UpdatePositionTarget();
+                if (canSpeAttack)
+                {
+                    var spe = GetComponent<SpeAttackClass>();
+                    ChangeAttackValue(spe.attackRange, spe.attackDamage);
+                }
                 if (targetToAttack != null)
                 {
                     if (navM.remainingDistance > attackRange)
@@ -208,13 +219,40 @@ public class AgentStates : MonoBehaviour
         {
             if (rateOfFireCD <= 0)
             {
-                onAttack?.Invoke();
-                rateOfFireCD = rateOfFire;
-                target.GetComponent<HealthSystem>().HealthChange(-damage);
 
+                if (canSpeAttack)
+                {
+                    SpeAttackBehaviour(target);
+                }
+                else 
+                {
+                    AttackBehaviour(target);
+                }
                 
             }
         }
+    }
+
+    private void AttackBehaviour(GameObject target)
+    {
+        onAttack?.Invoke();
+        rateOfFireCD = rateOfFire;
+        target.GetComponent<HealthSystem>().HealthChange(-damage);
+    }
+
+    private void SpeAttackBehaviour(GameObject target)
+    {
+        Debug.Log("Spe attack");
+        onSpeAttack?.Invoke();
+        rateOfFireCD = rateOfFire;
+        canSpeAttack = false;
+        ChangeAttackValue(container.myClass.rangeAttaque, container.myClass.attackDamage);
+    }
+
+    public void ChangeAttackValue(float _attackRange, float _damage)
+    {
+        attackRange = _attackRange + 0.7f;
+        damage = _damage;
     }
 
     private void OnDrawGizmos()
