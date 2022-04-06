@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NightAttack", menuName = "ScriptableObjects/Managers/NightAttack")]
 public class NightAttackScriptable : ScriptableObject
 {
-    public List<int> numSpawnerActive = new List<int>();
-    public List<int> costByNight = new List<int>();
+    public int[] numSpawnerActive = new int[10];
+    public int[] costByNight = new int[10];
     public int[] nightBeforeUnitSpawn = new int[4];
-    [SerializeField]public int[,] customWaves = new int[10, 5];
+    public int[] customWaves = new int[50];
+    public int height, width;
 }

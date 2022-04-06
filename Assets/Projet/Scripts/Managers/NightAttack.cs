@@ -69,18 +69,21 @@ public class NightAttack : MonoBehaviour
                 x++;
             }
 
-            for (int j = 0; j < (night >= nAS.numSpawnerActive.Count? nAS.numSpawnerActive[nAS.numSpawnerActive.Count-1] : nAS.numSpawnerActive[night]); j++)
+            for (int j = 0; j < (night >= nAS.numSpawnerActive.Length ? nAS.numSpawnerActive[nAS.numSpawnerActive.Length - 1] : nAS.numSpawnerActive[night]); j++)
             {
                 List<GameObject> ennemiesToSpawn = new List<GameObject>();
 
-                if (nAS.customWaves[night, 0] == 1)
+                Debug.Log(night >= nAS.height ? nAS.height - 1 : night);
+                if (nAS.customWaves[(night >= nAS.height ? nAS.height-1 : night) * nAS.width] == 1)
                 {
-                    for(int i = 1; i < nAS.customWaves.GetLength(1); i++)
+                    ennemiesAvailable = GameDataStorage.instance.tempEnnemiesAgentClassStorage;
+                    Debug.Log(ennemiesAvailable.Count);
+                    for(int i = 0; i < ennemiesAvailable.Count; i++)
                     {
-                        for (int y = 0; y < nAS.customWaves[night, i]; y++)
+                        for (int y = 0; y < nAS.customWaves[i + nAS.width * (night >= nAS.height ? nAS.height - 1 : night) + 1]; y++)
                         {
                             Debug.Log("Creating ennemies custom");
-                            ennemiesToSpawn.Add(ennemiesAvailable[i - 1]);
+                            ennemiesToSpawn.Add(ennemiesAvailable[i]);
                         }
                     }
                 }
@@ -111,7 +114,7 @@ public class NightAttack : MonoBehaviour
     {
         List<GameObject> list = new List<GameObject>();
 
-        int cost = night >= nAS.costByNight.Count ? nAS.costByNight[nAS.costByNight.Count - 1] : nAS.costByNight[night];
+        int cost = night >= nAS.costByNight.Length ? nAS.costByNight[nAS.costByNight.Length - 1] : nAS.costByNight[night];
         int actualCost = 0;
 
         while (actualCost < cost)
