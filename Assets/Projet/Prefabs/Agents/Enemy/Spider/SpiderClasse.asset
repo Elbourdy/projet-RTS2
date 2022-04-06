@@ -25,6 +25,7 @@ MonoBehaviour:
   movementSpeed: 8
   radiusVision: 10
   ressourcesCost: 320000000000000000000000
+  spawnerCost: 3
   constructionSpeed: 1
   rangeConstruction: 1
   healthToConstruction: 1

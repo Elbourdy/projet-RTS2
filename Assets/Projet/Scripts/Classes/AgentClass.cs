@@ -19,6 +19,7 @@ public class AgentClass : UnitClass
     public float radiusVision = 5;
 
     public int[] ressourcesCost  = new int[]{50, 0, 0};
+    public int spawnerCost = 0;
 
     [Header("Stats Worker")]
     [DrawIf("Job", AgentJob.Worker)] public float constructionSpeed = 1;

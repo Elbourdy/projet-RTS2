@@ -19,10 +19,14 @@ public class NightAttack : MonoBehaviour
         public float distanceFromNexus;
     }
 
-    [Header("Attaque de nuit")]
-    [SerializeField] private int totalNumEnnemyToSpawn = 5;
-    [SerializeField] private int numSpawnerActivatedByNight = 3;
-    [SerializeField] private Material matSpawnerActive, matSpawnerInactive;
+    //[Header("Attaque de nuit")]
+    //[SerializeField] private Material matSpawnerActive, matSpawnerInactive;
+
+    public NightAttackScriptable nAS;
+
+    /*public List<int> numSpawnerActivatedByNight = new List<int>();
+    public List<int> nightBeforeSpawn = new List<int>();
+    public List<int> costByNight = new List<int>();*/
 
     private List<Spawner> spawnerList = new List<Spawner>();
     private List<GameObject> ennemiesRemaining = new List<GameObject>();
@@ -36,7 +40,7 @@ public class NightAttack : MonoBehaviour
     {
         nexus = GameObject.Find("Nexus");
         InitializeSpawnerList();
-        FeedbackSpawnerReset();
+        //FeedbackSpawnerReset();
     }
 
     // Update is called once per frame
@@ -48,17 +52,47 @@ public class NightAttack : MonoBehaviour
         }
     }
 
-    public void SpawnEnnemies()
+    public void SpawnEnnemies(int night)
     {
         if (!isActive)
         {
             isActive = true;
 
-            for (int j = 0; j < numSpawnerActivatedByNight; j++)
+            List<GameObject> ennemiesAvailable = new List<GameObject>();
+
+            int x = 0;
+
+            foreach(GameObject e in GameDataStorage.instance.tempEnnemiesAgentClassStorage)
             {
-                for (int i = 0; i < totalNumEnnemyToSpawn; i++)
+                if (nAS.nightBeforeUnitSpawn[x] <= night)
+                    ennemiesAvailable.Add(e);
+                x++;
+            }
+
+            for (int j = 0; j < (night >= nAS.numSpawnerActive.Count? nAS.numSpawnerActive[nAS.numSpawnerActive.Count-1] : nAS.numSpawnerActive[night]); j++)
+            {
+                List<GameObject> ennemiesToSpawn = new List<GameObject>();
+
+                if (nAS.customWaves[night, 0] == 1)
                 {
-                    GameObject instance = Instantiate(GameDataStorage.instance.tempEnnemiesAgentClassStorage[0], spawnerList[j].spawnerGameObject.transform.position, Quaternion.identity);
+                    for(int i = 1; i < nAS.customWaves.GetLength(1); i++)
+                    {
+                        for (int y = 0; y < nAS.customWaves[night, i]; y++)
+                        {
+                            Debug.Log("Creating ennemies custom");
+                            ennemiesToSpawn.Add(ennemiesAvailable[i - 1]);
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.Log("Creating ennemies random");
+                    ennemiesToSpawn = CreateListEnnemiesToSpawn(night, ennemiesAvailable);
+                }
+                
+                for (int i = 0; i < ennemiesToSpawn.Count; i++)
+                {
+                    GameObject instance = Instantiate(ennemiesToSpawn[i], spawnerList[j].spawnerGameObject.transform.position, Quaternion.identity);
                     instance.GetComponent<AgentStates>().SetTarget(HQBehavior.instance.gameObject);
 
                     instance.GetComponent<AgentStates>().isSuperAggressive = true;
@@ -71,6 +105,23 @@ public class NightAttack : MonoBehaviour
 
             FMODUnity.RuntimeManager.PlayOneShot(soundEnnemiesSpawnAtNight);
         }
+    }
+
+    private List<GameObject> CreateListEnnemiesToSpawn(int night, List<GameObject> ennemies)
+    {
+        List<GameObject> list = new List<GameObject>();
+
+        int cost = night >= nAS.costByNight.Count ? nAS.costByNight[nAS.costByNight.Count - 1] : nAS.costByNight[night];
+        int actualCost = 0;
+
+        while (actualCost < cost)
+        {
+            int rand = Random.Range(0, ennemies.Count);
+            list.Add(ennemies[rand]);
+            actualCost += ennemies[rand].GetComponent<ClassAgentContainer>().myClass.spawnerCost;
+        }
+
+        return list;
     }
 
     private void CheckIfEnnemiesDead()
@@ -97,7 +148,7 @@ public class NightAttack : MonoBehaviour
 
             HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Move;
 
-            FeedbackSpawnerReset();
+            //FeedbackSpawnerReset();
 
             FMODUnity.RuntimeManager.PlayOneShot(soundNexusOnMouvement, HQBehavior.instance.transform.position);
             isActive = false;
@@ -151,24 +202,24 @@ public class NightAttack : MonoBehaviour
     {
         SetDistanceSpawnerNexus();
         SortListSpawner();
-        FeedbackSpawnerActive();
+        //FeedbackSpawnerActive();
     }
 
-    private void FeedbackSpawnerActive()
+    /*private void FeedbackSpawnerActive()
     {
         for (int i = 0; i < numSpawnerActivatedByNight; i++)
         {
             spawnerList[i].spawnerGameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = matSpawnerActive;
         }
-    }
+    }*/
 
-    private void FeedbackSpawnerReset()
+    /*private void FeedbackSpawnerReset()
     {
         for (int i = 0; i < spawnerList.Count; i++)
         {
             spawnerList[i].spawnerGameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = matSpawnerInactive;
         }
-    }
+    }*/
 
     public void CancelNightAttack() // pour le debug uniquement
     {

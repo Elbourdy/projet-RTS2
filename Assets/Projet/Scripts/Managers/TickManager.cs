@@ -25,6 +25,8 @@ public class TickManager : MonoBehaviour
     private string soundNexusStop = "event:/Building/Build_Nexus/Build_Nex_OnStop/Build_Nex_OnStop";
     FMOD.Studio.EventInstance soundEnvironnementManager;
 
+    public int numberOfDaysPassed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +61,7 @@ public class TickManager : MonoBehaviour
                 break; 
 
             case statesDay.Night:
-                NightAttack.instance.SpawnEnnemies();
+                NightAttack.instance.SpawnEnnemies(numberOfDaysPassed);
                 break;
 
             case statesDay.Dawn:
@@ -68,6 +70,7 @@ public class TickManager : MonoBehaviour
                 {
                     dayState = statesDay.Day;
                     timerCount = 0;
+                    numberOfDaysPassed++;
                 }
                 break;
         } 
