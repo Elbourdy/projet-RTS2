@@ -149,7 +149,7 @@ BoxCollider:
   m_GameObject: {fileID: 653373888101749374}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
@@ -281,7 +281,7 @@ BoxCollider:
   m_GameObject: {fileID: 1820377693294551190}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
@@ -413,7 +413,7 @@ BoxCollider:
   m_GameObject: {fileID: 3299448559472431439}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
@@ -545,7 +545,7 @@ BoxCollider:
   m_GameObject: {fileID: 5034378955054949378}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
@@ -677,7 +677,7 @@ BoxCollider:
   m_GameObject: {fileID: 5002059770526104621}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
@@ -809,7 +809,7 @@ BoxCollider:
   m_GameObject: {fileID: 7226643151666384571}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
@@ -941,7 +941,7 @@ BoxCollider:
   m_GameObject: {fileID: 8166850436351378210}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14798065, y: 0.16234672, z: 0.26999393}
   m_Center: {x: 0.0000000014692019, y: 3.4433574e-11, z: 0.03035393}
