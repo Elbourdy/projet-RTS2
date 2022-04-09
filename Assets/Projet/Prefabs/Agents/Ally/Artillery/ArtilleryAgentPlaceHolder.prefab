@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1631914532294894533
+--- !u!1001 &979652425661668497
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597188, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -360.71732
+      value: -405.75638
       objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597188, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000015258789
+      value: 0.00024604797
       objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597188, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 289.5067
+      value: 314.46735
       objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597188, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,12 +53,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597189, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_Name
-      value: TankAgentPlaceHolder
+      value: ArtilleryAgentPlaceHolder
       objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597213, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: myClass
       value: 
-      objectReference: {fileID: 11400000, guid: c3f047acf8821184fbe22f0a555a252b, type: 2}
+      objectReference: {fileID: 11400000, guid: 7d1336d3ff26fe248a4d91cc07b665ac, type: 2}
     - target: {fileID: 6725324134844066616, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -89,43 +89,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9823700b60c152e4b91c81125139e998, type: 3}
---- !u!1 &1121585980568415360 stripped
+--- !u!1 &1489980848131494868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1816381248506597189, guid: 9823700b60c152e4b91c81125139e998, type: 3}
-  m_PrefabInstance: {fileID: 1631914532294894533}
+  m_PrefabInstance: {fileID: 979652425661668497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1121585980568415388 stripped
+--- !u!114 &1489980848131494856 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1816381248506597209, guid: 9823700b60c152e4b91c81125139e998, type: 3}
-  m_PrefabInstance: {fileID: 1631914532294894533}
+  m_PrefabInstance: {fileID: 979652425661668497}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121585980568415360}
+  m_GameObject: {fileID: 1489980848131494868}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24f34b5028156bb43bc4a00faac30734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-145217911606245940
+--- !u!114 &1702919358034916997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121585980568415360}
+  m_GameObject: {fileID: 1489980848131494868}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cc1b88f16d4f144892c554d4016eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAgentState: {fileID: 1121585980568415388}
+  myAgentState: {fileID: 1489980848131494856}
   myValues:
-    mySpe: 0
-    attackDamage: 100
+    mySpe: 1
+    attackDamage: 10
     attackRange: 4
     cooldownAttack: 3
-  attackTank: {fileID: 5965138973211243425, guid: 8a3472005a7bb2a4b90ed7972e96e96c, type: 3}
+  attackTank: {fileID: 0}
   distCone: 3
   attackRange: 1
   attackDamage: 1
-  poisonArea: {fileID: 0}
-  distArea: 0
+  poisonArea: {fileID: 1103379876045294256, guid: e5d877e1e83a836418154e2412694635, type: 3}
+  distArea: 6

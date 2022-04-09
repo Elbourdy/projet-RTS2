@@ -26,6 +26,7 @@ public class SpeAttackClass : MonoBehaviour
         public SpeAttackType mySpe;
         public float attackDamage;
         public float attackRange;
+        public float cooldownAttack;
     };
 
     public SpeAttackValues myValues;
@@ -36,6 +37,10 @@ public class SpeAttackClass : MonoBehaviour
     public float distCone = 1f;
     public float attackRange = 1f;
     public float attackDamage = 1f;
+
+    public GameObject poisonArea;
+    public float distArea;
+
 
     private void OnEnable()
     {
@@ -83,7 +88,7 @@ public class SpeAttackClass : MonoBehaviour
     private IEnumerator TimerSpeAttack()
     {
         myAgentState.canSpeAttack = false;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(myValues.cooldownAttack);
         myAgentState.canSpeAttack = true;
     }
 
@@ -100,8 +105,21 @@ public class SpeAttackClass : MonoBehaviour
 
     private void ArtilleryAttack()
     {
-
+        SpawnPoisonArea();
+        StartCoroutine(TimerSpeAttack());
     }
+
+    public void SpawnPoisonArea()
+    {
+        var pos = transform.position + transform.forward * distArea;
+        var go = GameObject.Instantiate(poisonArea, pos, Quaternion.identity) as GameObject;
+        go.GetComponent<ContinuousDamageOnContact>().typeToDamage = GetComponent<AIAgents>().typeToTarget;
+        go.GetComponent<ContinuousDamageOnContact>().damage = attackDamage;
+    }
+
+
+
+
 
     private void ScoutAttack()
     {
