@@ -62,15 +62,15 @@ PrefabInstance:
     - target: {fileID: 6725324134844066616, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e0b354439b3c6024f989f96177d50975, type: 2}
+      objectReference: {fileID: 2100000, guid: a9a75f56559ee1e40817d190144cf7dd, type: 2}
     - target: {fileID: 6725324134844066616, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: e0b354439b3c6024f989f96177d50975, type: 2}
+      objectReference: {fileID: 2100000, guid: a9a75f56559ee1e40817d190144cf7dd, type: 2}
     - target: {fileID: 6725324134844066616, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: e0b354439b3c6024f989f96177d50975, type: 2}
+      objectReference: {fileID: 2100000, guid: a9a75f56559ee1e40817d190144cf7dd, type: 2}
     - target: {fileID: 7097196553555822871, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

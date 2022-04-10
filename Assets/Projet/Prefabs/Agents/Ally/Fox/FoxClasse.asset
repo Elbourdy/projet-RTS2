@@ -25,6 +25,12 @@ MonoBehaviour:
   movementSpeed: 10
   radiusVision: 5
   ressourcesCost: 320000000000000000000000
-  constructionSpeed: 1
-  rangeConstruction: 1
-  healthToConstruction: 1
+  spawnerCost: 0
+  mySpe: 0
+  areaToSpawn: {fileID: 0}
+  damageTank: 0
+  cooldownAttack: 0
+  poisonArea: {fileID: 0}
+  damagePoison: 0
+  cooldownAttackPoison: 0
+  speedTick: 0

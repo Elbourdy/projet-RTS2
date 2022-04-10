@@ -8,6 +8,9 @@ public class AgentClass : UnitClass
     public enum AgentJob { Worker, Soldier};
     public AgentJob Job;
 
+
+
+
     public float timerCreation;
     public GameObject unitPrefab;
     public Sprite unitSprite;
@@ -21,10 +24,29 @@ public class AgentClass : UnitClass
     public int[] ressourcesCost  = new int[]{50, 0, 0};
     public int spawnerCost = 0;
 
-    [Header("Stats Worker")]
-    [DrawIf("Job", AgentJob.Worker)] public float constructionSpeed = 1;
-    [DrawIf("Job", AgentJob.Worker)] public float rangeConstruction = 1;
-    [DrawIf("Job", AgentJob.Worker)] public float healthToConstruction = 1;
 
+    
+    public enum AgentSpe
+    {
+        None, Tank, Artillery, Scout
+    };
+    [Header("Attack Spéciale")]
+    public AgentSpe mySpe;
+
+    #region Tank
+    [DrawIf("mySpe", AgentSpe.Tank)] public GameObject areaToSpawn;
+    [DrawIf("mySpe", AgentSpe.Tank)] public float damageTank;
+    [DrawIf("mySpe", AgentSpe.Tank)] public float cooldownAttack;
+
+    #endregion
+
+
+    #region Artillery
+    [DrawIf("mySpe", AgentSpe.Artillery)] public GameObject poisonArea;
+    [DrawIf("mySpe", AgentSpe.Artillery)] public float damagePoison;
+    [DrawIf("mySpe", AgentSpe.Artillery)] public float cooldownAttackPoison;
+    [DrawIf("mySpe", AgentSpe.Artillery)] public float speedTick;
+
+    #endregion
 
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
   m_Name: Test 1
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   name: Artillery
   health: 105
   Job: 1
@@ -26,6 +26,11 @@ MonoBehaviour:
   radiusVision: 5
   ressourcesCost: 320000000000000000000000
   spawnerCost: 0
-  constructionSpeed: 1
-  rangeConstruction: 1
-  healthToConstruction: 1
+  mySpe: 2
+  areaToSpawn: {fileID: 0}
+  damageTank: 0
+  cooldownAttack: 0
+  poisonArea: {fileID: 0}
+  damagePoison: 0
+  cooldownAttackPoison: 0
+  speedTick: 0
