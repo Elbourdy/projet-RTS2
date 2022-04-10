@@ -151,7 +151,7 @@ public class NightAttack : MonoBehaviour
 
             HQBehavior.instance.currentNexusState = HQBehavior.statesNexus.Move;
 
-            //FeedbackSpawnerReset();
+            FeedbackSpawnerReset();
 
             FMODUnity.RuntimeManager.PlayOneShot(soundNexusOnMouvement, HQBehavior.instance.transform.position);
             isActive = false;
@@ -205,24 +205,27 @@ public class NightAttack : MonoBehaviour
     {
         SetDistanceSpawnerNexus();
         SortListSpawner();
-        //FeedbackSpawnerActive();
+        FeedbackSpawnerActive();
     }
 
-    /*private void FeedbackSpawnerActive()
+    private void FeedbackSpawnerActive()
     {
-        for (int i = 0; i < numSpawnerActivatedByNight; i++)
-        {
-            spawnerList[i].spawnerGameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = matSpawnerActive;
-        }
-    }*/
+        int night = nAS.numSpawnerActive[nAS.numSpawnerActive.Length < TickManager.instance.numberOfDaysPassed ? nAS.numSpawnerActive[nAS.numSpawnerActive.Length - 1]
+            : nAS.numSpawnerActive[TickManager.instance.numberOfDaysPassed]];
 
-    /*private void FeedbackSpawnerReset()
+        for (int i = 0; i < night; i++)
+        {
+            spawnerList[i].spawnerGameObject.GetComponent<SpawnerAnimation>().StartNight();
+        }
+    }
+
+    private void FeedbackSpawnerReset()
     {
         for (int i = 0; i < spawnerList.Count; i++)
         {
-            spawnerList[i].spawnerGameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material = matSpawnerInactive;
+            spawnerList[i].spawnerGameObject.GetComponent<SpawnerAnimation>().EndNight();
         }
-    }*/
+    }
 
     public void CancelNightAttack() // pour le debug uniquement
     {

@@ -11,7 +11,7 @@ public class NightDayCicle : MonoBehaviour
     [SerializeField] private Light light;
     [SerializeField] private AnimationCurve curveLightIntensity;
     [SerializeField] private Gradient gradientColorLight;
-    [SerializeField] private float maxIntensity = 2.25f;
+    [SerializeField] private float maxIntensity = 2.25f, minIntensity;
     [SerializeField] private float threhsoldCurveDawn = 0.25f;
     [SerializeField] private float thresoldCurveDusk = 0.75f;
 
@@ -40,26 +40,26 @@ public class NightDayCicle : MonoBehaviour
         switch(currentState)
         {
             case TickManager.statesDay.Day:
-                newIntensity = curveLightIntensity.Evaluate(threhsoldCurveDawn + TickManager.instance.GetDayAvancement()/2) * maxIntensity;
+                newIntensity = curveLightIntensity.Evaluate(threhsoldCurveDawn + TickManager.instance.GetDayAvancement()/2) * (maxIntensity - minIntensity) + minIntensity;
                 newColor = gradientColorLight.Evaluate(threhsoldCurveDawn + TickManager.instance.GetDayAvancement()/2);
                 timeCount = 0;
                 break;
 
             case TickManager.statesDay.Dusk:
                 timeCount += Time.deltaTime;
-                newIntensity = curveLightIntensity.Evaluate(thresoldCurveDusk + (timeCount / durationDawnAndDuskTransition)/4) * maxIntensity;
+                newIntensity = curveLightIntensity.Evaluate(thresoldCurveDusk + (timeCount / durationDawnAndDuskTransition)/4) * (maxIntensity - minIntensity) + minIntensity;
                 newColor = gradientColorLight.Evaluate(thresoldCurveDusk + (timeCount / durationDawnAndDuskTransition)/4);
                 break;
 
             case TickManager.statesDay.Night:
-                newIntensity = curveLightIntensity.Evaluate(1);
+                newIntensity = curveLightIntensity.Evaluate(1) * (maxIntensity - minIntensity) + minIntensity;
                 newColor = gradientColorLight.Evaluate(1);
                 timeCount = 0f;
                 break;
 
             case TickManager.statesDay.Dawn:
                 timeCount += Time.deltaTime;
-                newIntensity = curveLightIntensity.Evaluate((timeCount / durationDawnAndDuskTransition)/4) * maxIntensity;
+                newIntensity = curveLightIntensity.Evaluate((timeCount / durationDawnAndDuskTransition)/4) * (maxIntensity - minIntensity) + minIntensity;
                 newColor = gradientColorLight.Evaluate((timeCount / durationDawnAndDuskTransition)/4);
                 break;
         }
