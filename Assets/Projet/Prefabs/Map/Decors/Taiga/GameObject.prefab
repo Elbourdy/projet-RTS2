@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2694363201666936487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3414206996784691177}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3414206996784691177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694363201666936487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3030954152855657546}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4277833289216319302
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3414206996784691177}
+    m_Modifications:
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.40698466
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.45796946
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.57462424
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.54261816
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -94.879
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 20.134995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 84.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875228784921205174, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+      propertyPath: m_Name
+      value: Taiga_Tronc1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+--- !u!4 &3030954152855657546 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1246923187806044940, guid: e7d7101bbfed46c489160d8a3f29fe4d, type: 3}
+  m_PrefabInstance: {fileID: 4277833289216319302}
+  m_PrefabAsset: {fileID: 0}
