@@ -88,14 +88,16 @@ public class BaliseBehavior : MonoBehaviour
         else
             animatorCentral.SetBool("Chris1", false);
 
-        if (countTotal > 1)
-            animatorCentral.SetBool("Chris2", true);
-        else
+        if (switchList.Count > 1)
+            if (countTotal > 1)
+                animatorCentral.SetBool("Chris2", true);
+            else
             animatorCentral.SetBool("Chris2", false);
 
-        if (countTotal > 2)
+        if (switchList.Count > 2)
+            if (countTotal > 2)
             animatorCentral.SetBool("Chris3", true);
-        else
+            else
             animatorCentral.SetBool("Chris3", false);
     }
 }

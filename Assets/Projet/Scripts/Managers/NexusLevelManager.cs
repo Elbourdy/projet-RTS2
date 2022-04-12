@@ -16,9 +16,8 @@ public class NexusLevelManager : MonoBehaviour
     [Header("Nexus Niveau Changement")]
     [SerializeField] private List<int> levelThresholdRessources = new List<int>();
     [SerializeField] private List<float> vitesseNexus = new List<float>();
-    [SerializeField] private List<float> vitesseCollecte = new List<float>();
     [SerializeField] private List<float> multiplicatorConsumption = new List<float>();
-    [SerializeField] private List<float> multiplicatorSpeedProd = new List<float>();
+    
     [SerializeField] private List<float> rangeNexusMultiplier = new List<float>();
     [SerializeField] private List<Material> materialNexusLevel = new List<Material>();
     [SerializeField] private List<float> animationSpeedNexus = new List<float>();
@@ -33,6 +32,10 @@ public class NexusLevelManager : MonoBehaviour
     [Header("OnReadOnly")]
     [SerializeField] public int currentNexusLevel = 0;
     [SerializeField] private float pityTimerCount;
+
+    [Header("Don't touch")]
+    [SerializeField] private List<float> multiplicatorSpeedProd = new List<float>();
+    [SerializeField] private List<float> vitesseCollecte = new List<float>();
 
     private int maxNexusLevel, newNexusLevel;
     private bool stopSound = false;
@@ -130,7 +133,7 @@ public class NexusLevelManager : MonoBehaviour
     {
         for (int i = 0; i < maxNexusLevel; i++)
         {
-            if (i < currentNexusLevel && i < newNexusLevel)
+            if (i <= currentNexusLevel && i <= newNexusLevel)
                 feedbackLevel[i].sprite = levelOn;
             else if (i < currentNexusLevel && i >= newNexusLevel && newNexusLevel != currentNexusLevel)
                 feedbackLevel[i].sprite = levelTemp;
@@ -143,7 +146,7 @@ public class NexusLevelManager : MonoBehaviour
     {
         int ressourcesToLerp = 0, highBar = 0;
 
-        if (newNexusLevel < 5)
+        if (newNexusLevel < levelThresholdRessources.Count - 1)
         {
             ressourcesToLerp = Global_Ressources.instance.CheckRessources(0) -  levelThresholdRessources[newNexusLevel];
             highBar = levelThresholdRessources[newNexusLevel + 1] - ((newNexusLevel == 0)? 0 : levelThresholdRessources[newNexusLevel]);
@@ -155,7 +158,7 @@ public class NexusLevelManager : MonoBehaviour
             ressourceBar.SetHealth(1);
         }
 
-        ressourceText.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(0).ToString()+"/" + ((currentNexusLevel < 5)? levelThresholdRessources[currentNexusLevel + 1] : 3000);
+        ressourceText.GetComponent<Text>().text = Global_Ressources.instance.CheckRessources(0).ToString()+"/" + ((currentNexusLevel < levelThresholdRessources.Count - 1) ? levelThresholdRessources[currentNexusLevel + 1] : levelThresholdRessources[levelThresholdRessources.Count - 1]);
     } 
 
     private void SetFeedbackNexusLevel(Material newMaterial, float speedAnimation)
