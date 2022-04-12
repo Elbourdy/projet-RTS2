@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
     public delegate void HealthEvent();
     public HealthEvent onHealthEvent;
     public HealthEvent onBatteryEvent;
+    public HealthEvent onDamaged;
 
     public HealthEvent onDeathEvent;
     
@@ -116,6 +117,7 @@ public class HealthSystem : MonoBehaviour
         {
             health = maxHealth;
         }
+        if (damageNumber < 0) onDamaged?.Invoke();
         onHealthEvent?.Invoke();
         CheckIfKill();
     }

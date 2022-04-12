@@ -43,7 +43,7 @@ public class AgentStates : MonoBehaviour
 
 
     // Permet de récupérer les stats de nos agents
-    private ClassAgentContainer container;
+    public ClassAgentContainer container;
 
     private AIAgents myAI;
 

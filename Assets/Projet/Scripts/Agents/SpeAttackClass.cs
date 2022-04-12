@@ -8,8 +8,9 @@ public class SpeAttackClass : MonoBehaviour
 {
 
     [SerializeField] private AgentStates myAgentState;
-
-
+    [SerializeField] private ClassAgentContainer myContainer;
+    [SerializeField] private Agent_Type myAgentType;
+    [SerializeField] private HealthSystem myHs;
 
     public enum SpeAttackType
     {
@@ -33,6 +34,7 @@ public class SpeAttackClass : MonoBehaviour
 
 
     [Header("Ne pas toucher")]
+    // TANK VALUES
     public GameObject attackTank;
     public float distCone = 1f;
     public float attackRange = 1f;
@@ -41,20 +43,48 @@ public class SpeAttackClass : MonoBehaviour
     public GameObject poisonArea;
     public float distArea;
 
+    public float timerInvisibility = 5f;
+
+
+
+    private void InitTank()
+    {
+
+    }
+
+    private void InitArtillery()
+    {
+
+    }
+
+
+    private void InitScout()
+    {
+
+    }
+
 
     private void OnEnable()
     {
-        if (myAgentState == null) GetComponent<AgentStates>();
+        if (myAgentState == null) myAgentState = GetComponent<AgentStates>();
         myAgentState.onSpeAttack += LaunchSpeAttack;
         myAgentState.canSpeAttack = true;
         attackDamage = myValues.attackDamage;
         attackRange = myValues.attackRange;
         myAgentState.ChangeAttackValue(attackRange, attackDamage);
+
+        if (myValues.mySpe == SpeAttackType.Scout)
+        {
+            myHs.onDamaged += ScoutAttack;
+            myAgentState.canSpeAttack = false;
+        }
     }
 
     private void OnDisable()
     {
         myAgentState.onSpeAttack -= LaunchSpeAttack;
+
+        myHs.onDamaged -= ScoutAttack;
     }
 
     public void LaunchSpeAttack()
@@ -67,13 +97,12 @@ public class SpeAttackClass : MonoBehaviour
             case SpeAttackType.Artillery:
                 ArtilleryAttack();
                 break;
-            case SpeAttackType.Scout:
-                ScoutAttack();
-                break;
             default:
                 break;
         }
     }
+
+    
 
 
 
@@ -81,7 +110,9 @@ public class SpeAttackClass : MonoBehaviour
     {
         SpawnAttackCone();
         StartCoroutine(TimerSpeAttack());
+        myAgentState.ChangeAttackValue(myAgentState.container.myClass.rangeAttaque, myAgentState.container.myClass.attackDamage);
     }
+
 
 
 
@@ -89,6 +120,7 @@ public class SpeAttackClass : MonoBehaviour
     {
         myAgentState.canSpeAttack = false;
         yield return new WaitForSeconds(myValues.cooldownAttack);
+        if (myValues.mySpe != SpeAttackType.Scout) myAgentState.ChangeAttackValue(myValues.attackRange, myValues.attackDamage);
         myAgentState.canSpeAttack = true;
     }
 
@@ -107,6 +139,7 @@ public class SpeAttackClass : MonoBehaviour
     {
         SpawnPoisonArea();
         StartCoroutine(TimerSpeAttack());
+        myAgentState.ChangeAttackValue(myAgentState.container.myClass.rangeAttaque, myAgentState.container.myClass.attackDamage);
     }
 
     public void SpawnPoisonArea()
@@ -121,8 +154,21 @@ public class SpeAttackClass : MonoBehaviour
 
 
 
-    private void ScoutAttack()
+    public void ScoutAttack()
     {
+        SetInvisibility();
+        StartCoroutine(TimerSpeAttack());
+    }
 
+    private void SetInvisibility()
+    {
+        myAgentType.SetIsTargetable(false);
+        StartCoroutine(TimerInvisbility());
+    }
+
+    private IEnumerator TimerInvisbility()
+    {
+        yield return new WaitForSeconds(timerInvisibility);
+        myAgentType.SetIsTargetable(true);
     }
 }

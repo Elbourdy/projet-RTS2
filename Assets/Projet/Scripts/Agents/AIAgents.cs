@@ -40,8 +40,19 @@ public class AIAgents : MonoBehaviour
     private void Update()
     {
         SearchForTarget();
+        CheckVisbilityTarget();
     }
 
+    private void CheckVisbilityTarget()
+    {
+        if (aS.HasTarget())
+        {
+            if (!aS.ReturnTarget().GetComponent<Agent_Type>().GetIsTargetable())
+            {
+                aS.SetTarget(null);
+            }
+        }
+    }
 
 
     private void AttackOrder()
@@ -86,12 +97,13 @@ public class AIAgents : MonoBehaviour
                 {
                     if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == typeToTarget)
                     {
+                        if (hits[i].GetComponent<Agent_Type>().GetIsTargetable())
                         hasTargetInSight = true;
                         newTarget = hits[i].gameObject;
                         AttackOrder();
                         break;
                     }
-                    hasTargetInSight =false;
+                    hasTargetInSight = false;
                 }
             }
         }

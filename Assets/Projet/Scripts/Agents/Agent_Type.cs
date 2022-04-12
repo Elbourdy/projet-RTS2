@@ -23,6 +23,8 @@ public class Agent_Type : MonoBehaviour
     private SelectionPlayer sp;
     private BatteryManager myBatteryManager;
 
+    private bool isTargetable = true;
+
     public void Start()
     {
         // Mise en place de la couleur des barres de vie
@@ -62,5 +64,16 @@ public class Agent_Type : MonoBehaviour
         sp.selectedUnits.Remove(gameObject);
 
         if (Type == TypeAgent.Ally && gameObject.name != "Nexus") myBatteryManager.batteries.Remove(gameObject);
+    }
+
+
+    public  bool GetIsTargetable()
+    {
+        return isTargetable;
+    }
+
+    public void SetIsTargetable(bool _newBool)
+    {
+        isTargetable = _newBool;
     }
 }
