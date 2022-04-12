@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5c20f2135eb5594428a1e37635be0fd4
+guid: 2411b841d6838ab419fb28b06d5411e2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -7,9 +7,14 @@ ModelImporter:
       74: -623603649343465320
     second: Rise
   - first:
-      74: 1562879932768932988
-    second: Initialisation
-  externalObjects: {}
+      74: -3100369314251171874
+    second: Idle
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 7bb26594dfc1eae4eb8a888453440e42, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -42,7 +47,7 @@ ModelImporter:
       takeName: Scene
       internalID: 0
       firstFrame: 1
-      lastFrame: 210
+      lastFrame: 119
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -65,13 +70,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Initialisation
+      name: Idle
       takeName: Scene
       internalID: 0
-      firstFrame: 1
-      lastFrame: 1
+      firstFrame: 120
+      lastFrame: 360
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

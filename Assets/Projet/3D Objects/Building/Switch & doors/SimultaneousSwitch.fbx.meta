@@ -1,18 +1,23 @@
 fileFormatVersion: 2
-guid: 3ee8e73269a824e4fabef4f5ef4cec44
+guid: 5f6e0358ab3256c4383201b4b268a46c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -623603649343465320
-    second: Initialisation
+    second: Idle
   - first:
       74: 3199983197705893700
     second: Rise
   - first:
-      74: -3100369314251171874
-    second: Idle
-  externalObjects: {}
+      74: 5917537482288442099
+    second: Fall
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 7bb26594dfc1eae4eb8a888453440e42, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -44,7 +49,7 @@ ModelImporter:
       name: Rise
       takeName: Scene
       internalID: 0
-      firstFrame: 0
+      firstFrame: 1
       lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
@@ -68,7 +73,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Idle
       takeName: Scene
@@ -97,13 +102,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Initialisation
+      name: Fall
       takeName: Scene
       internalID: 0
-      firstFrame: 0
-      lastFrame: 1
+      firstFrame: 1
+      lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -126,7 +131,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []

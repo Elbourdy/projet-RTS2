@@ -12,7 +12,7 @@ public class SwitchBehavior : MonoBehaviour
     public bool activated = false;
 
     public float countdownTime = 15f;
-    private float simultaneousTime = 0.5f, count = 0f;
+    private float simultaneousTime = 2f, count = 0f;
 
     private LineRenderer lR;
     public Material matOn, matOff;
@@ -32,7 +32,6 @@ public class SwitchBehavior : MonoBehaviour
             bar = transform.GetChild(1).GetChild(0).GetComponent<HealthBar>();
             bar.gameObject.SetActive(false);
         }
-            
 
         lR = GetComponent<LineRenderer>();
         InitialiseLineRenderer();
@@ -122,7 +121,7 @@ public class SwitchBehavior : MonoBehaviour
     {
         lR.positionCount = 2;
         lR.SetPosition(0, transform.position);
-        lR.SetPosition(1, bB.door.transform.position);
+        lR.SetPosition(1, bB.spawnPoint.position);
         lR.material = matOff;
     }
 }
