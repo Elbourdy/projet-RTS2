@@ -85,8 +85,9 @@ MonoBehaviour:
   switchList:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   spawnPoint: {fileID: 5273126911321150804}
-  cooldown: 6
+  cooldown: 28
 --- !u!1001 &5889571493279299411
 PrefabInstance:
   m_ObjectHideFlags: 0

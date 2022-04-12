@@ -62,7 +62,7 @@ public class BaliseBehavior : MonoBehaviour
     {
         animatorDoor.SetBool("Open", true);
         SetCentralAnimator();
-        navMesh.BuildNavMesh();
+        //navMesh.BuildNavMesh();
         foreach (SwitchBehavior e in switchList)
         Destroy(e);
         Destroy(this);
