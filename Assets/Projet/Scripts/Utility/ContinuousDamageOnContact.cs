@@ -14,7 +14,7 @@ public class ContinuousDamageOnContact : MonoBehaviour
 
     private float timerTick = 0f;
 
-
+    //
     private float numberAgentInArea = 0;
 
     private void Awake()
