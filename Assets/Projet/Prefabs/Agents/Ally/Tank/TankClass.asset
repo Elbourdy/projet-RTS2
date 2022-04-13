@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   nameAgent: Tank
-  health: 140
-  attackDamage: 35
+  health: 350
+  attackDamage: 55
   rangeAttaque: 3
-  rateOfFire: 1.2
+  rateOfFire: 3
   movementSpeed: 5
   radiusVision: 5
   ressourcesCost: 4b0000000000000000000000
@@ -27,8 +27,8 @@ MonoBehaviour:
   unitSprite: {fileID: 21300000, guid: 30041babd73b37243b96cfa974f0cf02, type: 3}
   mySpe: 1
   tankAttackGo: {fileID: 5965138973211243425, guid: 8a3472005a7bb2a4b90ed7972e96e96c, type: 3}
-  damageTank: 70
-  cooldownAttackTank: 4
+  damageTank: 20
+  cooldownAttackTank: 10
   attackRangeTank: 3
   distanceSpawnTankAttack: 1.3
   poisonArea: {fileID: 0}
