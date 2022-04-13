@@ -15,6 +15,8 @@ public class ContinuousDamageOnContact : MonoBehaviour
     private float timerTick = 0f;
 
 
+    private float numberAgentInArea = 0;
+
     private void Awake()
     {
         canDamage = true;
@@ -31,8 +33,16 @@ public class ContinuousDamageOnContact : MonoBehaviour
                 timerTick = 0f;
             }
         }
-    }
 
+        else
+        {
+            if (numberAgentInArea > 0)
+            {
+                canDamage = false;
+                numberAgentInArea = 0;
+            }
+        }
+    }
 
 
 
@@ -44,8 +54,8 @@ public class ContinuousDamageOnContact : MonoBehaviour
             {
                 if (type.Type == typeToDamage)
                 {
-                    other.gameObject.GetComponent<HealthSystem>().HealthChange(-damage);
-                    canDamage = false;
+                    other.GetComponent<HealthSystem>().HealthChange(-damage);
+                    numberAgentInArea++;
                 }
             }
         }
