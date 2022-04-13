@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   nameAgent: Serpent
-  health: 105
-  attackDamage: 30
-  rangeAttaque: 4
+  health: 80
+  attackDamage: 25
+  rangeAttaque: 5
   rateOfFire: 1.2
   movementSpeed: 10
   radiusVision: 5
-  ressourcesCost: 320000000000000000000000
+  ressourcesCost: 410000000000000000000000
   spawnerCost: 0
   timerCreation: 2
   unitPrefab: {fileID: 1489980848131494868, guid: 9f8fc47c978f22446a799601e555ea3d, type: 3}
@@ -32,9 +32,9 @@ MonoBehaviour:
   attackRangeTank: 0
   distanceSpawnTankAttack: 0
   poisonArea: {fileID: 1103379876045294256, guid: e5d877e1e83a836418154e2412694635, type: 3}
-  damagePoison: 10
-  cooldownAttackPoison: 10
-  speedTick: 2
+  damagePoison: 15
+  cooldownAttackPoison: 5
+  speedTick: 1
   attackRangePoison: 5
   distanceSpawnPoison: 5
   timerInvisibility: 0
