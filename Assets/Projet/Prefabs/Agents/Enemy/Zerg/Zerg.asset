@@ -15,10 +15,10 @@ MonoBehaviour:
   ID: 0
   nameAgent: Zerg
   health: 40
-  attackDamage: 14
+  attackDamage: 12
   rangeAttaque: 3
-  rateOfFire: 1
-  movementSpeed: 10
+  rateOfFire: 0.4
+  movementSpeed: 15
   radiusVision: 10
   ressourcesCost: 320000000000000000000000
   spawnerCost: 2
