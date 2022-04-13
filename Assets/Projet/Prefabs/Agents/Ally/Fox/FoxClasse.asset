@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: FoxClasse
   m_EditorClassIdentifier: 
   ID: 0
-  name: Renard
+  nameAgent: Renard
   health: 105
-  Job: 1
-  timerCreation: 2
-  unitPrefab: {fileID: 1816381248506597189, guid: 9823700b60c152e4b91c81125139e998, type: 3}
-  unitSprite: {fileID: 21300000, guid: 30041babd73b37243b96cfa974f0cf02, type: 3}
   attackDamage: 30
   rangeAttaque: 4
   rateOfFire: 1.2
@@ -26,11 +22,20 @@ MonoBehaviour:
   radiusVision: 5
   ressourcesCost: 320000000000000000000000
   spawnerCost: 0
+  timerCreation: 2
+  unitPrefab: {fileID: 1816381248506597189, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+  unitSprite: {fileID: 21300000, guid: 30041babd73b37243b96cfa974f0cf02, type: 3}
   mySpe: 0
-  areaToSpawn: {fileID: 0}
+  tankAttackGo: {fileID: 0}
   damageTank: 0
-  cooldownAttack: 0
+  cooldownAttackTank: 0
+  attackRangeTank: 0
+  distanceSpawnTankAttack: 0
   poisonArea: {fileID: 0}
   damagePoison: 0
   cooldownAttackPoison: 0
   speedTick: 0
+  attackRangePoison: 0
+  distanceSpawnPoison: 0
+  timerInvisibility: 0
+  cooldownInvisibility: 0

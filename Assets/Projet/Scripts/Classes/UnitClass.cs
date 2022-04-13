@@ -6,8 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Unit", menuName = "ScriptableObjects/Unit")]
 public class UnitClass : ScriptableObject
 {
+    [Header("Identité")]
     public int ID;
-    public string name;
+    public string nameAgent;
+    [Header("Valeurs de combats et exploration")]
     public float health = 1;
-    bool isSelected = false;
 }

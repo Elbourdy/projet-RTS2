@@ -91,10 +91,10 @@ public class AgentStates : MonoBehaviour
             case states.Aggressive:
                 // Update position si la target a bougé de sa position initiale
                 UpdatePositionTarget();
-                if (canSpeAttack)
+                if (canSpeAttack && container.myClass.mySpe != AgentClass.AgentSpe.Scout)
                 {
                     var spe = GetComponent<SpeAttackClass>();
-                    ChangeAttackValue(spe.attackRange, spe.attackDamage);
+                    ChangeAttackValue(spe.speAttackRange, spe.speAttackDamage);
                 }
                 if (targetToAttack != null)
                 {
@@ -220,7 +220,7 @@ public class AgentStates : MonoBehaviour
             if (rateOfFireCD <= 0)
             {
 
-                if (canSpeAttack)
+                if (canSpeAttack && container.myClass.mySpe != AgentClass.AgentSpe.Scout)
                 {
                     SpeAttackBehaviour(target);
                 }

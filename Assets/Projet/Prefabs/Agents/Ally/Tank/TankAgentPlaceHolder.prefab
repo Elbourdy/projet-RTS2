@@ -105,6 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f34b5028156bb43bc4a00faac30734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1121585980568415384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1816381248506597213, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+  m_PrefabInstance: {fileID: 1631914532294894533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121585980568415360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-145217911606245940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAgentState: {fileID: 1121585980568415388}
+  myContainer: {fileID: 1121585980568415384}
+  myAgentType: {fileID: 0}
+  myHs: {fileID: 0}
   myValues:
     mySpe: 0
     attackDamage: 100
@@ -129,3 +143,4 @@ MonoBehaviour:
   attackDamage: 1
   poisonArea: {fileID: 0}
   distArea: 0
+  timerInvisibility: 5

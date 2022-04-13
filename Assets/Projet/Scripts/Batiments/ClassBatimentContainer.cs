@@ -8,6 +8,6 @@ public class ClassBatimentContainer : MonoBehaviour
 
     private void Start()
     {
-        gameObject.name = myClass.name;
+        gameObject.name = myClass.nameAgent;
     }
 }

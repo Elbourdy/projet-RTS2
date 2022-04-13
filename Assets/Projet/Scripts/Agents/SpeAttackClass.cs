@@ -12,89 +12,101 @@ public class SpeAttackClass : MonoBehaviour
     [SerializeField] private Agent_Type myAgentType;
     [SerializeField] private HealthSystem myHs;
 
-    public enum SpeAttackType
-    {
-        TankAgressive,
-        Artillery,
-        Scout
-    };
+
+    // Type d'attaque
+    private AgentClass.AgentSpe agentSpe;
+
+    private float cooldownAttack;
+    private float timerInvisibility;
 
 
+    public float speAttackRange = 1f;
+    public float speAttackDamage = 1f;
+    public GameObject attackToSpawn;
+    private float distAttack;
 
-    [System.Serializable]
-    public struct SpeAttackValues
-    {
-        public SpeAttackType mySpe;
-        public float attackDamage;
-        public float attackRange;
-        public float cooldownAttack;
-    };
-
-    public SpeAttackValues myValues;
-
-
-    [Header("Ne pas toucher")]
-    // TANK VALUES
-    public GameObject attackTank;
-    public float distCone = 1f;
-    public float attackRange = 1f;
-    public float attackDamage = 1f;
-
-    public GameObject poisonArea;
-    public float distArea;
-
-    public float timerInvisibility = 5f;
-
-
-
+    // myContainer.myClass
     private void InitTank()
     {
+        speAttackDamage = myContainer.myClass.damageTank;
+        speAttackRange = myContainer.myClass.attackRangeTank;
+        cooldownAttack = myContainer.myClass.cooldownAttackTank;
+        attackToSpawn = myContainer.myClass.tankAttackGo;
+        distAttack = myContainer.myClass.distanceSpawnTankAttack;
+        myAgentState.ChangeAttackValue(speAttackRange, speAttackDamage);
 
     }
 
     private void InitArtillery()
     {
-
+        speAttackDamage = myContainer.myClass.damagePoison;
+        speAttackRange = myContainer.myClass.attackRangePoison;
+        cooldownAttack = myContainer.myClass.cooldownAttackPoison;
+        attackToSpawn = myContainer.myClass.poisonArea;
+        distAttack = myContainer.myClass.distanceSpawnPoison;
+        myAgentState.ChangeAttackValue(speAttackRange, speAttackDamage);
     }
 
 
     private void InitScout()
     {
+        cooldownAttack = myContainer.myClass.cooldownInvisibility + timerInvisibility;
+        timerInvisibility = myContainer.myClass.timerInvisibility;
+    }
 
+
+    private void InitValues()
+    {
+        if (myAgentState == null) myAgentState = GetComponent<AgentStates>();
+        if (myContainer == null) myContainer = GetComponent<ClassAgentContainer>();
+        agentSpe = myContainer.myClass.mySpe;
+        myAgentState.canSpeAttack = true;
+        switch (agentSpe)
+        {
+            case AgentClass.AgentSpe.None:
+                break;
+            case AgentClass.AgentSpe.Tank:
+                InitTank();
+                myAgentState.onSpeAttack += LaunchSpeAttack;
+                break;
+            case AgentClass.AgentSpe.Artillery:
+                InitArtillery();
+                myAgentState.onSpeAttack += LaunchSpeAttack;
+                break;
+            case AgentClass.AgentSpe.Scout:
+                InitScout();
+                myHs.onDamaged += ScoutAttack;
+                myAgentState.onAttack += DeactivateInvisibilitySooner;
+                break;
+            default:
+                break;
+        }
     }
 
 
     private void OnEnable()
     {
-        if (myAgentState == null) myAgentState = GetComponent<AgentStates>();
-        myAgentState.onSpeAttack += LaunchSpeAttack;
-        myAgentState.canSpeAttack = true;
-        attackDamage = myValues.attackDamage;
-        attackRange = myValues.attackRange;
-        myAgentState.ChangeAttackValue(attackRange, attackDamage);
-
-        if (myValues.mySpe == SpeAttackType.Scout)
-        {
-            myHs.onDamaged += ScoutAttack;
-            myAgentState.canSpeAttack = false;
-        }
+        InitValues();
     }
 
     private void OnDisable()
     {
-        myAgentState.onSpeAttack -= LaunchSpeAttack;
-
-        myHs.onDamaged -= ScoutAttack;
+        if (agentSpe != AgentClass.AgentSpe.Scout) myAgentState.onSpeAttack -= LaunchSpeAttack;
+        else
+        {
+            myHs.onDamaged -= ScoutAttack;
+            myAgentState.onAttack -= DeactivateInvisibilitySooner;
+        }
     }
 
     public void LaunchSpeAttack()
     {
-        switch (myValues.mySpe)
+        switch (agentSpe)
         {
-            case SpeAttackType.TankAgressive:
+            case AgentClass.AgentSpe.Tank:
                 TankAttack();
                 break;
-            case SpeAttackType.Artillery:
+            case AgentClass.AgentSpe.Artillery:
                 ArtilleryAttack();
                 break;
             default:
@@ -110,7 +122,7 @@ public class SpeAttackClass : MonoBehaviour
     {
         SpawnAttackCone();
         StartCoroutine(TimerSpeAttack());
-        myAgentState.ChangeAttackValue(myAgentState.container.myClass.rangeAttaque, myAgentState.container.myClass.attackDamage);
+        myAgentState.ChangeAttackValue(myContainer.myClass.rangeAttaque, myContainer.myClass.attackDamage);
     }
 
 
@@ -119,8 +131,8 @@ public class SpeAttackClass : MonoBehaviour
     private IEnumerator TimerSpeAttack()
     {
         myAgentState.canSpeAttack = false;
-        yield return new WaitForSeconds(myValues.cooldownAttack);
-        if (myValues.mySpe != SpeAttackType.Scout) myAgentState.ChangeAttackValue(myValues.attackRange, myValues.attackDamage);
+        yield return new WaitForSeconds(cooldownAttack);
+        if (agentSpe != AgentClass.AgentSpe.Scout) myAgentState.ChangeAttackValue(speAttackRange, speAttackDamage);
         myAgentState.canSpeAttack = true;
     }
 
@@ -129,25 +141,25 @@ public class SpeAttackClass : MonoBehaviour
 
     public void SpawnAttackCone()
     {
-        var pos = transform.position + transform.forward * distCone;
-        var go = GameObject.Instantiate(attackTank, pos, transform.rotation) as GameObject;
+        var pos = transform.position + transform.forward * distAttack;
+        var go = GameObject.Instantiate(attackToSpawn, pos, transform.rotation) as GameObject;
         go.GetComponent<DamageOnContact>().typeToDamage = GetComponent<AIAgents>().typeToTarget;
-        go.GetComponent<DamageOnContact>().damage = attackDamage;
+        go.GetComponent<DamageOnContact>().damage = speAttackDamage;
     }
 
     private void ArtilleryAttack()
     {
         SpawnPoisonArea();
         StartCoroutine(TimerSpeAttack());
-        myAgentState.ChangeAttackValue(myAgentState.container.myClass.rangeAttaque, myAgentState.container.myClass.attackDamage);
+        myAgentState.ChangeAttackValue(myContainer.myClass.rangeAttaque, myContainer.myClass.attackDamage);
     }
 
     public void SpawnPoisonArea()
     {
-        var pos = transform.position + transform.forward * distArea;
-        var go = GameObject.Instantiate(poisonArea, pos, Quaternion.identity) as GameObject;
+        var pos = transform.position + transform.forward * distAttack;
+        var go = GameObject.Instantiate(attackToSpawn, pos, Quaternion.identity) as GameObject;
         go.GetComponent<ContinuousDamageOnContact>().typeToDamage = GetComponent<AIAgents>().typeToTarget;
-        go.GetComponent<ContinuousDamageOnContact>().damage = attackDamage;
+        go.GetComponent<ContinuousDamageOnContact>().damage = speAttackDamage;
     }
 
 
@@ -156,19 +168,41 @@ public class SpeAttackClass : MonoBehaviour
 
     public void ScoutAttack()
     {
-        SetInvisibility();
-        StartCoroutine(TimerSpeAttack());
+        if (myAgentState.canSpeAttack)
+        {
+            SetInvisibility();
+            StartCoroutine(TimerSpeAttack());
+        }
     }
 
     private void SetInvisibility()
     {
         myAgentType.SetIsTargetable(false);
+        SetAIandTarget(false);
         StartCoroutine(TimerInvisbility());
+    }
+
+
+    private void SetAIandTarget(bool _bool)
+    {
+        if(!_bool) myAgentState.SetTarget(null);
+        GetComponent<AIAgents>().canSearch = _bool;
     }
 
     private IEnumerator TimerInvisbility()
     {
         yield return new WaitForSeconds(timerInvisibility);
         myAgentType.SetIsTargetable(true);
+        SetAIandTarget(true);
+    }
+
+    private void DeactivateInvisibilitySooner()
+    {
+        if (!myAgentType.GetIsTargetable())
+        {
+            StopCoroutine(TimerInvisbility());
+            myAgentType.SetIsTargetable(true);
+            SetAIandTarget(true);
+        }
     }
 }

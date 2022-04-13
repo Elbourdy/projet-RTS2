@@ -30,7 +30,7 @@ public class AIAgents : MonoBehaviour
     public Agent_Type.TypeAgent typeToTarget;
     public bool hasTargetInSight = false;
 
-
+    public bool canSearch = true;
     private void Awake()
     {
         aS = GetComponent<AgentStates>();
@@ -39,8 +39,11 @@ public class AIAgents : MonoBehaviour
     }
     private void Update()
     {
-        SearchForTarget();
-        CheckVisbilityTarget();
+        if (canSearch)
+        {
+            SearchForTarget();
+            CheckVisbilityTarget();
+        }
     }
 
     private void CheckVisbilityTarget()

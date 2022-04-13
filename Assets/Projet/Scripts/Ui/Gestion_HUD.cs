@@ -75,7 +75,7 @@ public class Gestion_HUD : MonoBehaviour
 
         if (selectedUnit.GetComponent<ClassAgentContainer>() != null)
         {
-            oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = selectedUnit.GetComponent<ClassAgentContainer>().myClass.name;
+            oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = selectedUnit.GetComponent<ClassAgentContainer>().myClass.nameAgent;
             oneUnitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = selectedUnit.GetComponent<ClassAgentContainer>().myClass.unitSprite;
             if (selectedUnit.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
             {
@@ -90,7 +90,7 @@ public class Gestion_HUD : MonoBehaviour
 
         if (selectedUnit.GetComponent<ClassBatimentContainer>() != null)
         {
-            oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = selectedUnit.GetComponent<ClassBatimentContainer>().myClass.name;
+            oneUnitDisplay.transform.GetChild(0).GetComponent<Text>().text = selectedUnit.GetComponent<ClassBatimentContainer>().myClass.nameAgent;
             oneUnitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = selectedUnit.GetComponent<ClassBatimentContainer>().myClass.unitSprite;
             oneUnitDisplay.transform.GetChild(4).gameObject.SetActive(false);
             oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetColor(Color.green);

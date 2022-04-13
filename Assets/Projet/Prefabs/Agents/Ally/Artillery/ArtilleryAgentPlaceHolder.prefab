@@ -105,6 +105,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f34b5028156bb43bc4a00faac30734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1489980848131494858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1816381248506597211, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+  m_PrefabInstance: {fileID: 979652425661668497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489980848131494868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5504b354ce1040d4cb194de321765929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1489980848131494860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1816381248506597213, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+  m_PrefabInstance: {fileID: 979652425661668497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489980848131494868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6163307420297388173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6345602392430689308, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+  m_PrefabInstance: {fileID: 979652425661668497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489980848131494868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1702919358034916997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAgentState: {fileID: 1489980848131494856}
+  myContainer: {fileID: 1489980848131494860}
+  myAgentType: {fileID: 1489980848131494858}
+  myHs: {fileID: 6163307420297388173}
   myValues:
     mySpe: 1
     attackDamage: 10
@@ -129,3 +165,4 @@ MonoBehaviour:
   attackDamage: 1
   poisonArea: {fileID: 1103379876045294256, guid: e5d877e1e83a836418154e2412694635, type: 3}
   distArea: 6
+  timerInvisibility: 5
