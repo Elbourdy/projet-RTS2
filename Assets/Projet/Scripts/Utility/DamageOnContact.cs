@@ -16,6 +16,7 @@ public class DamageOnContact : MonoBehaviour
             if (type.Type == typeToDamage)
             {
                 other.gameObject.GetComponent<HealthSystem>().HealthChange(-damage);
+                Debug.Log("Cone damage");
             }
         }
     }
