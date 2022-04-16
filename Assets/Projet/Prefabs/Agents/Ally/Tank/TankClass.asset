@@ -27,7 +27,7 @@ MonoBehaviour:
   unitSprite: {fileID: 21300000, guid: 30041babd73b37243b96cfa974f0cf02, type: 3}
   mySpe: 1
   tankAttackGo: {fileID: 5965138973211243425, guid: 8a3472005a7bb2a4b90ed7972e96e96c, type: 3}
-  damageTank: 20
+  damageTank: 45
   cooldownAttackTank: 10
   attackRangeTank: 3
   distanceSpawnTankAttack: 1.3
