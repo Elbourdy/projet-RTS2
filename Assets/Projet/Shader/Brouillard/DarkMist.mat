@@ -121,11 +121,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - alpha_clip_threshold: 0.512
-    - base_gradient_scale: 2.74
-    - base_strenght: 2.29
+    - base_gradient_scale: 67.35
+    - base_strenght: 1.06
     - density: 10
     - dig: -1.88
-    - displacement_amount: 0.09
+    - displacement_amount: -0.33
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -133,7 +133,7 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - base_gradient_speed: {r: 0.01, g: 0, b: 0, a: 0}
     - edges: {r: 0, g: 1, b: 0, a: 0}
-    - noise_depth: {r: 0, g: 1, b: -0.33, a: 0.85}
+    - noise_depth: {r: 0, g: 1, b: -1.54, a: 0.31}
     - noise_scales: {r: 119.72, g: 120, b: 0, a: 0}
     - noise_speed: {r: 0.002, g: 0, b: 0, a: 0}
     - noise_speed2: {r: 0.003, g: 0, b: 0, a: 0}
