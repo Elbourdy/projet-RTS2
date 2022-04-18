@@ -237,7 +237,27 @@ public class AgentStates : MonoBehaviour
     {
         onAttack?.Invoke();
         rateOfFireCD = rateOfFire;
-        target.GetComponent<HealthSystem>().HealthChange(-damage);
+        if (!container.myClass.isRanged)
+        {
+            MeleeBehaviour(target);
+        }
+        else
+        {
+            RangedBehaviour(target);
+        }
+
+        
+    }
+
+    private void MeleeBehaviour(GameObject _target)
+    {
+        _target.GetComponent<HealthSystem>().HealthChange(-damage);
+    }
+
+    private void RangedBehaviour(GameObject _target)
+    {
+        GameObject ammo = Instantiate(container.myClass.ammo, transform.position, Quaternion.identity) as GameObject;
+        ammo.GetComponent<AmmoGoToTarget>().SetupAmmo(_target, damage);
     }
 
     private void SpeAttackBehaviour(GameObject target)

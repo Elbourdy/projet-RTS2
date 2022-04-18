@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
-  m_Name: SpiderClasse
+  m_Name: EnemyRangedClass
   m_EditorClassIdentifier: 
   ID: 0
-  nameAgent: Spider
+  nameAgent: Enemy Ranged
   health: 110
   attackDamage: 34
-  rangeAttaque: 3
+  rangeAttaque: 15
   rateOfFire: 1.5
   movementSpeed: 8
-  radiusVision: 10
-  isRanged: 0
-  ammo: {fileID: 0}
+  radiusVision: 15
+  isRanged: 1
+  ammo: {fileID: 329382037226477147, guid: b281ef64b59c1b846825fe7df138325c, type: 3}
   ressourcesCost: 320000000000000000000000
   spawnerCost: 3
   timerCreation: 2

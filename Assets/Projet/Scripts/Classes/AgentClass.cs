@@ -11,7 +11,9 @@ public class AgentClass : UnitClass
     public float rateOfFire;
     public float movementSpeed;
     public float radiusVision = 5;
+    public bool isRanged = false;
 
+    [DrawIf("isRanged", true)] public GameObject ammo;
 
     [Header("Valeurs de création")]
     public int[] ressourcesCost  = new int[]{50, 0, 0};
