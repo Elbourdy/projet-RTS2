@@ -120,10 +120,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - alpha_clip_threshold: 0.512
+    - alpha_clip_threshold: 0.244
     - base_gradient_scale: 67.35
-    - base_strenght: 1.06
-    - density: 10
+    - base_strenght: 0.65
+    - density: 7.68
     - dig: -1.88
     - displacement_amount: -0.33
     m_Colors:
