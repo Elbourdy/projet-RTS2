@@ -8,10 +8,10 @@ Instrument liée avec un paramètre qui va de 0 à 8
 Les nombres sont entiers
 Le paramètre correspond à l'augmentation ou la reduction du niveau du nexus.
 
-Niveau 1 : Gain au paramètre 4/ Perte au paramètre 8
-Niveau 2 : Gain au paramètre 3/ Perte au paramètre 7
-Niveau 3 : Gain au paramètre 2/ Perte au paramètre 6
-Niveau 1 : Gain au paramètre 1/ Perte au paramètre 5</value>
+Niveau 4 : Gain au paramètre 7/ Perte au paramètre 8
+Niveau 3 : Gain au paramètre 5/ Perte au paramètre 6
+Niveau 2 : Gain au paramètre 3/ Perte au paramètre 4
+Niveau 1 : Gain au paramètre 1/ Perte au paramètre 2</value>
 		</property>
 		<property name="color">
 			<value>Blue Light 1</value>
