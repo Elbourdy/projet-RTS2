@@ -101,10 +101,12 @@ public class AIAgents : MonoBehaviour
                     if (hits[i].GetComponent<Agent_Type>() != null && hits[i].GetComponent<Agent_Type>().Type == typeToTarget)
                     {
                         if (hits[i].GetComponent<Agent_Type>().GetIsTargetable())
-                        hasTargetInSight = true;
-                        newTarget = hits[i].gameObject;
-                        AttackOrder();
-                        break;
+                        {
+                            hasTargetInSight = true;
+                            newTarget = hits[i].gameObject;
+                            AttackOrder();
+                            break;
+                        }
                     }
                     hasTargetInSight = false;
                 }
