@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SceneShorcuts : MonoBehaviour
 {
     private bool lockCamera = false;
     private bool enabledShortcuts = false;
 
+    [SerializeField] TextMeshProUGUI feedbackUI;
+    [SerializeField] TextMeshProUGUI listShortcuts;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        feedbackUI.text = " ";
+        listShortcuts.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,14 +24,18 @@ public class SceneShorcuts : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P)) //lock/delock camera
         {
+            
             if (enabledShortcuts)
             {
                 enabledShortcuts = false;
+                feedbackUI.text = " ";
             }
             else
             {
                 enabledShortcuts = true;
+                feedbackUI.text = "Shortcuts ON";
             }
+            listShortcuts.gameObject.SetActive(enabledShortcuts);
         }
 
         if (enabledShortcuts)
@@ -84,7 +93,38 @@ public class SceneShorcuts : MonoBehaviour
             {
                 NightAttack.instance.CancelNightAttack();
             }
+
+            #region Level Loader
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SceneManager.LoadScene("LD test");
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SceneManager.LoadScene("LD lvl2");
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SceneManager.LoadScene("LD lvl3");
+            }
+            #endregion
+
+
+            
         }
+
         
+
+
+        
+
     }
+    #region Feedback UI
+    private void UpdateListShortcuts(bool _bool)
+    {
+
+        listShortcuts.gameObject.SetActive(_bool);
+    }
+    #endregion
+
 }
