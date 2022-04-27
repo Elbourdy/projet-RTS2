@@ -7,7 +7,7 @@ public class BlockCameraOOB : MonoBehaviour
     [SerializeField] private GameObject[] OOBPoints = new GameObject[4];
 
 
-    private void Update()
+    private void LateUpdate()
     {
         if (transform.position.x > OOBPoints[2].transform.position.x)
         {

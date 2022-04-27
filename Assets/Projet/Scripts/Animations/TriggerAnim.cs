@@ -22,6 +22,8 @@ public class TriggerAnim : MonoBehaviour
         myAs.onAttack += TriggerAttack;
         myAs.onFollowEnter += TriggerRun;
         myAs.onIdleEnter += TriggerIdle;
+
+        myAs.onSpeAttack += TriggerSpeAttack;
     }
 
 
@@ -61,6 +63,13 @@ public class TriggerAnim : MonoBehaviour
         }
     }
 
+    private void TriggerSpeAttack()
+    {
+        if (myMator != null)
+        {
+            myMator.SetTrigger("SpeAttackTrigger");
+        }
+    }
 
 
     private void ResetTrigger()
@@ -68,5 +77,6 @@ public class TriggerAnim : MonoBehaviour
         myMator.ResetTrigger("IdleTrigger");
         myMator.ResetTrigger("RunTrigger");
         myMator.ResetTrigger("AttackTrigger");
+        myMator.ResetTrigger("SpeAttackTrigger");
     }
 }
