@@ -135,7 +135,7 @@ public class Building : MonoBehaviour
 
         if (ButtonID == 11)
         {
-            SelectionPlayer.instance.canSelect = false;
+            NewSelectionManager.instance.canSelect = false;
             isMovingRallyPoint = true;
             return true;
         }
@@ -261,25 +261,7 @@ public class Building : MonoBehaviour
     //SELECTION
     public void CheckIfSelected() // vérifie si le nexus est dans la selction 
     {
-        int i = 0;
-        List<GameObject> tmp = SelectionPlayer.instance.selectedUnits;
-
-        foreach (GameObject e in tmp)
-        {
-            if (e.gameObject == gameObject)
-            {
-                i++;
-            }
-        }
-
-        if (i > 0)
-        {
-            isSelected = true;
-        }
-        else
-        {
-            isSelected = false;
-        }
+        isSelected = GetComponent<SelectableObject>().IsSelected;
     }
 
 

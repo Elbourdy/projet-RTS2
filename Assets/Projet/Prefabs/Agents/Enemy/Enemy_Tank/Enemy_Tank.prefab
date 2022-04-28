@@ -127,6 +127,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5179618936351359585, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: visualFeedback
+      value: 
+      objectReference: {fileID: 5278762486647700038}
+    - target: {fileID: -5179618936351359585, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: canBeMultiSelected
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -2634083210024080182, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: radiusVision
       value: 10
@@ -138,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 800330962530746306, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3137567354431631473, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_IsActive
@@ -297,6 +309,11 @@ MonoBehaviour:
 --- !u!1 &8303194345913318166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3578227317124674582, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+  m_PrefabInstance: {fileID: 4797096159894130432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5278762486647700038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 852124852569142598, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
   m_PrefabInstance: {fileID: 4797096159894130432}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &7591967789155772961

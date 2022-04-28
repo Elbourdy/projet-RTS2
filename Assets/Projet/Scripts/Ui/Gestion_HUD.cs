@@ -9,7 +9,8 @@ public class Gestion_HUD : MonoBehaviour
     //IMPORTANT modifiez le script pour que les fonctions ne s'activent que lors des triggers spécifiques : problème consommation dans le futur
 
     [SerializeField] private GameObject oneUnitDisplay;   //grosse image zoom sur une unité
-    [SerializeField] private SelectionPlayer selectionPlayer;      ///script de selection de perso c'est plus rapide vu que je l'appelle pelin de fois
+    //[SerializeField] private SelectionPlayer selectionPlayer;      ///script de selection de perso c'est plus rapide vu que je l'appelle pelin de fois
+    [SerializeField] private NewSelectionManager selectionManager;
     [SerializeField] private List<GameObject> shopCases = new List<GameObject>();   ///liste des petites cases d'actions
     [SerializeField] private List<GameObject> unitSelectionCases = new List<GameObject>();     //liste des cases qui montrent les personnages selectionnés
     [SerializeField] private Image gridSelectionCases;
@@ -18,7 +19,8 @@ public class Gestion_HUD : MonoBehaviour
 
     void Start()
     {
-        selectionPlayer = GameObject.Find("GameManager").GetComponent<SelectionPlayer>();
+        //selectionPlayer = GameObject.Find("GameManager").GetComponent<SelectionPlayer>();
+        selectionManager = NewSelectionManager.instance;
 
         for (int i = 0; i < shopCases.Count; i++)
         {
@@ -33,21 +35,21 @@ public class Gestion_HUD : MonoBehaviour
     
     void Update()
     {
-        if (selectionPlayer.selectedUnits.Count > 0)
+        if (selectionManager.selectedObjects.Count > 0)
         {
-            if (selectionPlayer.selectedUnits.Count > 1)
+            if (selectionManager.selectedObjects.Count > 1)
                 DisplayUnitSelectionCases();
             else
                 ResetUnitSelectionCases();
 
             OneUnitDisplayUpdate();
 
-            if (selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>())
+            if (selectionManager.selectedObjects[0].GetComponent<ClassBatimentContainer>())
             {
                 DisplayShopCasesForBuilding();
             }
 
-            if (selectionPlayer.selectedUnits[0].GetComponent<ClassAgentContainer>())
+            if (selectionManager.selectedObjects[0].GetComponent<ClassAgentContainer>())
             {
                 ResetShopCases(); 
                 //Here add the functions for displaying selection for unit and suppress the line above
@@ -68,7 +70,7 @@ public class Gestion_HUD : MonoBehaviour
         oneUnitDisplay.SetActive(true);
         oneUnitDisplay.transform.GetChild(2).gameObject.SetActive(true);
 
-        GameObject selectedUnit = selectionPlayer.selectedUnits[0];
+        GameObject selectedUnit = selectionManager.selectedObjects[0].gameObject;
 
         oneUnitDisplay.transform.GetChild(3).GetComponent<Text>().text = selectedUnit.GetComponent<HealthSystem>().GetHealth() + "/" + selectedUnit.GetComponent<HealthSystem>().GetMaxHealth();
         oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetHealth(selectedUnit.GetComponent<HealthSystem>().GetHealth() / selectedUnit.GetComponent<HealthSystem>().GetMaxHealth());
@@ -111,7 +113,7 @@ public class Gestion_HUD : MonoBehaviour
     void DisplayShopCasesForBuilding()   //fonction qui remplit le contenu des shop cases pour les batiments (sera changé quand on ajoutera des fonctions speciales
     {
         List<AgentClass> roasterUnits = new List<AgentClass>();
-        roasterUnits = selectionPlayer.selectedUnits[0].GetComponent<Building>().GetRoasterUnits(); //récuperation des unités qui peuvent être créee par le batiment selectionné
+        roasterUnits = selectionManager.selectedObjects[0].GetComponent<Building>().GetRoasterUnits(); //récuperation des unités qui peuvent être créee par le batiment selectionné
 
         for (int i = 0; i < 12; i++)
         {
@@ -149,7 +151,7 @@ public class Gestion_HUD : MonoBehaviour
             else if (i == 11)  // set rally point case
             {
                 shopCases[i].SetActive(true);
-                shopCases[i].GetComponent<Image>().sprite = selectionPlayer.selectedUnits[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
+                shopCases[i].GetComponent<Image>().sprite = selectionManager.selectedObjects[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
                 //shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
             }
             
@@ -174,7 +176,7 @@ public class Gestion_HUD : MonoBehaviour
     {
         int i = 0;
 
-        foreach (GameObject e in selectionPlayer.selectedUnits)
+        foreach (SelectableObject e in selectionManager.selectedObjects)
         {
             if (i <= unitSelectionCases.Count) //on remplit les cases tant qu'il y a des unités sauf pour la première (elle sera dans le zoom)
             {

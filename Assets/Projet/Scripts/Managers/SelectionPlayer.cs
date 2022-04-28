@@ -22,15 +22,6 @@ public class SelectionPlayer : MonoBehaviour
     public List<GameObject> allFriendlyUnits = new List<GameObject>();
     //The selection square we draw when we drag the mouse to select units
     public RectTransform selectionSquareTrans;
-    //To test the square's corners
-    //public Transform sphere1;
-    //public Transform sphere2;
-    //public Transform sphere3;
-    //public Transform sphere4;
-    //The materials
-    public Material normalMaterial;
-    public Material highlightMaterial;
-    public Material selectedMaterial;
 
     //All currently selected units
     public List<GameObject> selectedUnits = new List<GameObject>();
@@ -134,7 +125,10 @@ public class SelectionPlayer : MonoBehaviour
                     }
                 }
             }
-        }
+        } 
+
+
+
         //Holding down the mouse button
         if (Input.GetMouseButton(0))
         {
@@ -155,13 +149,11 @@ public class SelectionPlayer : MonoBehaviour
 
                     if (selectedUnits[i].GetComponent<MeshRenderer>())
                     {
-                        selectedUnits[i].GetComponent<MeshRenderer>().material = normalMaterial;
                         if (selectedUnits[i].transform.Find("TorusFeedback") != null)
                             selectedUnits[i].transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
                     else
                     {
-                        selectedUnits[i].GetComponentInChildren<MeshRenderer>().material = normalMaterial;
                         if (selectedUnits[i].transform.Find("TorusFeedback") != null)
                             selectedUnits[i].transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
@@ -189,7 +181,6 @@ public class SelectionPlayer : MonoBehaviour
 
                         else
                         {
-                            activeUnit.GetComponentInChildren<MeshRenderer>().material = selectedMaterial;
                             if (activeUnit.transform.Find("TorusFeedback") != null)
                                 activeUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                         }
@@ -227,14 +218,12 @@ public class SelectionPlayer : MonoBehaviour
                     //Is this unit within the square
                     if (IsWithinPolygon(currentUnit.transform.position))
                     {
-                        if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
                         if (currentUnit.transform.Find("TorusFeedback") != null)
                             currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }
                     //Otherwise deactivate
                     else
                     {
-                        if (currentUnit.GetComponent<MeshRenderer>()) currentUnit.GetComponent<MeshRenderer>().material = normalMaterial;
                         if (currentUnit.transform.Find("TorusFeedback") != null)
                             currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
@@ -265,13 +254,11 @@ public class SelectionPlayer : MonoBehaviour
                 {
                     if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
                     {
-                        highlightThisUnit.GetComponent<MeshRenderer>().material = normalMaterial;
                         if (highlightThisUnit.transform.Find("TorusFeedback") != null)
                             highlightThisUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
                     else
                     {
-                        highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = normalMaterial;
                         if (highlightThisUnit.transform.Find("TorusFeedback") != null)
                             highlightThisUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = false;
                     }
@@ -309,13 +296,11 @@ public class SelectionPlayer : MonoBehaviour
                     highlightThisUnit = currentObj;
                     if (highlightThisUnit.GetComponent<MeshRenderer>() != null)
                     {
-                        highlightThisUnit.GetComponent<MeshRenderer>().material = highlightMaterial;
                         if (highlightThisUnit.transform.Find("TorusFeedback") != null)
                             highlightThisUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }
                     else
                     {
-                        if (highlightThisUnit.GetComponentInChildren<MeshRenderer>()) highlightThisUnit.GetComponentInChildren<MeshRenderer>().material = highlightMaterial;
                         if (highlightThisUnit.transform.Find("TorusFeedback") != null)
                             highlightThisUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                     }

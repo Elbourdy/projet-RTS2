@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(SelectionPlayer))]
 public class BatteryManager : MonoBehaviour
 {
     [SerializeField] public float damagePerTic = -1;

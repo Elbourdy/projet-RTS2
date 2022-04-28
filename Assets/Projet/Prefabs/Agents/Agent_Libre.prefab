@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: -2634083210024080182}
   - component: {fileID: -3106538262334270096}
   - component: {fileID: 4803672079397123581}
+  - component: {fileID: -5179618936351359585}
   m_Layer: 7
   m_Name: Agent_Libre
   m_TagString: Untagged
@@ -384,21 +385,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myState: 0
-  isSuperAggressif: 0
+  isSuperAggressive: 0
   speed: 10
-  rangeAttaque: 1
+  attackRange: 1
   damage: 1
   rateOfFire: 0.5
   radiusVision: 5
   rateOfFireCD: 0
-  constructionObjet: {fileID: 7144872679487563968, guid: 8adab05e36064ba48a7eb59a14e7227a, type: 3}
-  rangeConstruction: 4
-  RecolteColor: {r: 0.0068565607, g: 1, b: 0, a: 0}
-  IdleColor: {r: 1, g: 1, b: 1, a: 0}
-  AgressifColor: {r: 1, g: 0, b: 0.6779156, a: 0}
-  ConstructionColor: {r: 0, g: 0.8429804, b: 1, a: 0}
-  FollowColor: {r: 1, g: 0.91764706, b: 0, a: 0}
   targetToAttack: {fileID: 0}
+  container: {fileID: 0}
+  canSpeAttack: 0
 --- !u!114 &5189708736748838382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,10 +471,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f7a4a625efc89449b7f9f3a6e0aaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
+  newTarget: {fileID: 0}
   radiusVision: 5
   typeToTarget: 1
   hasTargetInSight: 0
+  canSearch: 1
 --- !u!114 &-3106538262334270096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +512,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onCreateSound: event:/Unit/Unit_Ally/UnitA_Global/UnitA_Glob_Spawn
+--- !u!114 &-5179618936351359585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189708736748838384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265977a4a36f2dc40bf3a11bf26f1c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeMultiSelected: 1
 --- !u!1001 &509525611168352279
 PrefabInstance:
   m_ObjectHideFlags: 0

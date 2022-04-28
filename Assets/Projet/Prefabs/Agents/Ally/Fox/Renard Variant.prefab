@@ -583,6 +583,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5179618936351359585, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: visualFeedback
+      value: 
+      objectReference: {fileID: 6549292204138375155}
     - target: {fileID: 42937739378307068, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalScale.y
       value: 65.31634
@@ -599,9 +603,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 852124852569142598, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_CastShadows
@@ -833,6 +841,11 @@ GameObject:
 --- !u!4 &1816381248506597188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+  m_PrefabInstance: {fileID: 5850344719851016885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6549292204138375155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 852124852569142598, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
   m_PrefabInstance: {fileID: 5850344719851016885}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1899197268

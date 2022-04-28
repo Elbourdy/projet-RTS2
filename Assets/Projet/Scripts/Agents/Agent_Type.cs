@@ -20,7 +20,6 @@ public class Agent_Type : MonoBehaviour
     public bool isConstruction = false;
     
 
-    private SelectionPlayer sp;
     private BatteryManager myBatteryManager;
 
     private bool isTargetable = true;
@@ -40,7 +39,6 @@ public class Agent_Type : MonoBehaviour
 
     private void OnEnable()
     {
-        sp = GameObject.Find("GameManager").GetComponent<SelectionPlayer>();
         myBatteryManager = GameObject.Find("GameManager").GetComponent<BatteryManager>();
 
         // Ajout de l'unité dans nos managers, permet d'utiliser la multi-sélection et le système de batterie
@@ -54,14 +52,11 @@ public class Agent_Type : MonoBehaviour
 
     private void AddToManager()
     {
-        if (Type == TypeAgent.Ally && !isConstruction) sp.allFriendlyUnits.Add(gameObject);
         if (Type == TypeAgent.Ally && gameObject.name != "Nexus") myBatteryManager.batteries.Add(gameObject);
     }
 
     private void RemoveFromManager()
     {
-        if (Type == TypeAgent.Ally && !isConstruction) sp.allFriendlyUnits.Remove(gameObject);
-        sp.selectedUnits.Remove(gameObject);
 
         if (Type == TypeAgent.Ally && gameObject.name != "Nexus") myBatteryManager.batteries.Remove(gameObject);
     }

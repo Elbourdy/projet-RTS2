@@ -84,6 +84,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5179618936351359585, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: visualFeedback
+      value: 
+      objectReference: {fileID: 1084616811596990199}
     - target: {fileID: 42937739378307068, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalScale.y
       value: 65.31634
@@ -102,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_CastShadows
@@ -358,6 +362,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1084616811596990199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 852124852569142598, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+  m_PrefabInstance: {fileID: 350733453472150449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &2528822157571916207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -456,18 +465,9 @@ MonoBehaviour:
   myContainer: {fileID: 0}
   myAgentType: {fileID: 5538163851501661791}
   myHs: {fileID: 1008397780985830680}
-  myValues:
-    mySpe: 2
-    attackDamage: 0
-    attackRange: 0
-    cooldownAttack: 0
-  attackTank: {fileID: 0}
-  distCone: 1
-  attackRange: 1
-  attackDamage: 1
-  poisonArea: {fileID: 0}
-  distArea: 0
-  timerInvisibility: 5
+  speAttackRange: 1
+  speAttackDamage: 1
+  attackToSpawn: {fileID: 0}
 --- !u!1001 &7730002452961142703
 PrefabInstance:
   m_ObjectHideFlags: 0

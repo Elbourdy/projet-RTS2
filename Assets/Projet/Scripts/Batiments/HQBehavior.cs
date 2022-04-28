@@ -45,12 +45,12 @@ public class HQBehavior : Building
 
     private void OnEnable()
     {
-        if (AllowMultipleSelection) GameObject.Find("GameManager").GetComponent<SelectionPlayer>().allFriendlyUnits.Add(gameObject);
+        //if (AllowMultipleSelection) GameObject.Find("GameManager").GetComponent<SelectionPlayer>().allFriendlyUnits.Add(gameObject);
     }
 
     private void OnDisable()
     {
-        if (AllowMultipleSelection) GameObject.Find("GameManager").GetComponent<SelectionPlayer>().allFriendlyUnits.Remove(gameObject);
+        //if (AllowMultipleSelection) GameObject.Find("GameManager").GetComponent<SelectionPlayer>().allFriendlyUnits.Remove(gameObject);
     }
 
     void Start()
@@ -76,7 +76,6 @@ public class HQBehavior : Building
         SetAnimator();
 
         CheckIfSelected();
-
         if (GetIsSelected()) // si nexus selectionné déplace le point d'arrivée / le rally point
         {
             if (Input.GetMouseButtonUp(1))
@@ -88,7 +87,7 @@ public class HQBehavior : Building
                     RaycastHit hit;
                     Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
                     SetRallyPoint(hit.point);
-                    SelectionPlayer.instance.canSelect = true;
+                    NewSelectionManager.instance.canSelect = true;
                     SetIsMovingRallyPoint(false);
                 }
                 else // means moving nexus

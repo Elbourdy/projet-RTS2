@@ -5,8 +5,7 @@ using UnityEngine;
 public class InputPlayer : MonoBehaviour
 {
 
-    private SelectionPlayer sp;
-
+    private NewSelectionManager selectionManager;
 
     private int myLayer = 1 << 3;
 
@@ -31,7 +30,7 @@ public class InputPlayer : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        sp = GetComponent<SelectionPlayer>();
+        selectionManager = GetComponent<NewSelectionManager>();
         onGlobalOrder += LaunchSoundOrder;
 
         attenuationPoint = Camera.main.transform.Find("attenuationpoint").gameObject;
@@ -42,7 +41,7 @@ public class InputPlayer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (sp.selectedUnits.Count > 0)
+            if (selectionManager.selectedObjects.Count > 0)
             {
                 CheckHitType();
             }
@@ -92,9 +91,9 @@ public class InputPlayer : MonoBehaviour
     private void GoToTarget (RaycastHit hit)
     {
         Vector3 target = hit.point;
-        foreach (var agent in sp.selectedUnits)
+        foreach (var agent in selectionManager.selectedObjects)
         {
-            if (sp.selectedUnits.Count > 1)
+            if (selectionManager.selectedObjects.Count > 1)
             {
                 target = RandomizeTargetLocation(target, 2);
             }
@@ -129,7 +128,7 @@ public class InputPlayer : MonoBehaviour
     private void AttaqueWithAgent (RaycastHit hit)
     {
 
-        foreach (var agent in sp.selectedUnits )
+        foreach (var agent in selectionManager.selectedObjects)
         {
             
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)

@@ -18,7 +18,7 @@ public class KillButton : MonoBehaviour
 
     void Update()
     {
-        if (SelectionPlayer.instance.selectedUnits.Count > 0 && SelectionPlayer.instance.selectedUnits[0].GetComponent<ClassAgentContainer>() != null)
+        if (NewSelectionManager.instance.selectedObjects.Count > 0 && NewSelectionManager.instance.selectedObjects[0].GetComponent<ClassAgentContainer>() != null)
         {
             image.enabled = true;
         }

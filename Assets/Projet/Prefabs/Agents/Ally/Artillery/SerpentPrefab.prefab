@@ -274,6 +274,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5179618936351359585, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+      propertyPath: visualFeedback
+      value: 
+      objectReference: {fileID: 8584127420787918800}
     - target: {fileID: 42937739378307068, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalScale.y
       value: 65.31634
@@ -292,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1212496866366051475, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_CastShadows
@@ -570,6 +574,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8584127420787918800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 852124852569142598, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+  m_PrefabInstance: {fileID: 9003726316057096854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &303064787407363054
 BoxCollider:
   m_ObjectHideFlags: 0
