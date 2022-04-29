@@ -20,6 +20,9 @@ public class NewSelectionManager : MonoBehaviour
     float delay = 0.3f;
     float clickTime = 0f;
 
+    float delayDoubleClick = 0.3f;
+    float clickTimeDoubleClick = 0f;
+
     //The selection square we draw when we drag the mouse to select units
     public RectTransform selectionSquareTrans;
     //The start and end coordinates of the square we are making
@@ -30,7 +33,7 @@ public class NewSelectionManager : MonoBehaviour
     //The selection squares 4 corner positions
     Vector3 TL, TR, BL, BR;
 
-
+    bool hasDoubleClick;
 
     private SelectableObject hoveredObject = null;
 
@@ -60,12 +63,13 @@ public class NewSelectionManager : MonoBehaviour
         //Are we clicking with left mouse or holding down left mouse
         bool isClicking = false;
         bool isHoldingDown = false;
+        bool isDoubleClicking = false;
 
         //Click the mouse button
         if (Input.GetMouseButtonDown(0))
         {
             clickTime = Time.time;
-
+            
             //We dont yet know if we are drawing a square, but we need the first coordinate in case we do draw a square
             RaycastHit hit;
             //Fire ray from camera
@@ -74,15 +78,21 @@ public class NewSelectionManager : MonoBehaviour
                 //The corner position of the square
                 squareStartPos = hit.point;
             }
+            if (Time.time - clickTimeDoubleClick <= delayDoubleClick)
+            {
+                isDoubleClicking = true;
+            }
+
         }
         //Release the mouse button
         if (Input.GetMouseButtonUp(0))
         {
-
-            if (Time.time - clickTime <= delay)
+            clickTimeDoubleClick = Time.time;
+            if (Time.time - clickTime <= delay && !hasDoubleClick)
             {
                 isClicking = true;
             }
+            hasDoubleClick = false;
 
             //Select all units within the square if we have created a square
             if (hasCreatedSquare)
@@ -92,11 +102,7 @@ public class NewSelectionManager : MonoBehaviour
                 //Deactivate the square selection image
                 selectionSquareTrans.gameObject.SetActive(false);
                 //Clear the list with selected unit
-                foreach (var item in selectedObjects)
-                {
-                    item.IsSelected = false;
-                }
-                selectedObjects.Clear();
+                ClearSelection();
                 //Select the units
                 for (int i = 0; i < selectableList.Count; i++)
                 {
@@ -145,11 +151,7 @@ public class NewSelectionManager : MonoBehaviour
                 if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
                 {
                     //Clear the list with selected units
-                    foreach (var item in selectedObjects)
-                    {
-                        item.IsSelected = false;
-                    }
-                    selectedObjects.Clear();
+                    ClearSelection();
                 }
 
 
@@ -163,7 +165,6 @@ public class NewSelectionManager : MonoBehaviour
                 //Fire ray from camera
                 //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits") + LayerMask.GetMask("Crystal")))
                 {
-                    Debug.Log("Hit box");
                     if (hit.collider.gameObject.GetComponent<SelectableObject>() != null)
                     {
                         GameObject activeUnit = hit.collider.gameObject;
@@ -175,6 +176,8 @@ public class NewSelectionManager : MonoBehaviour
                 }
             }
         }
+
+        
 
         //Drag the mouse to select all units within the square
         if (isHoldingDown)
@@ -212,6 +215,45 @@ public class NewSelectionManager : MonoBehaviour
 
             }
         }
+
+        //Select all the same unit by double-clicking
+        if (isDoubleClicking)
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
+            {
+                if (!EventSystem.current.IsPointerOverGameObject())  ///// j'ai rajouté ça guillaume
+                {
+                    //Clear the list with selected units
+                    ClearSelection();
+                }
+
+                //Try to select a new unit
+                RaycastHit hit;
+
+
+                if (Physics.BoxCast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, boxSize, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, Quaternion.identity, Mathf.Infinity, LayerMask.GetMask("GameplayUnits") + LayerMask.GetMask("Crystal")))
+                //Fire ray from camera
+                //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits") + LayerMask.GetMask("Crystal")))
+                {
+
+                    if (hit.collider.gameObject.TryGetComponent(out Agent_Type type))
+                    {
+                        if (type.Type == Agent_Type.TypeAgent.Ally)
+                        {
+                            foreach (var item in selectableList)
+                            {
+                                if (item.name == type.name)
+                                {
+                                    selectedObjects.Add(item);
+                                    item.IsSelected = true;
+                                }
+                            }
+                            hasDoubleClick = true;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void HighlightUnits()
@@ -236,6 +278,16 @@ public class NewSelectionManager : MonoBehaviour
             }
         }
 
+    }
+
+
+    private void ClearSelection ()
+    {
+        foreach (var item in selectedObjects)
+        {
+            item.IsSelected = false;
+        }
+        selectedObjects.Clear();
     }
 
     #endregion
