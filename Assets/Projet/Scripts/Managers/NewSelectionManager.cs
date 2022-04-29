@@ -34,10 +34,17 @@ public class NewSelectionManager : MonoBehaviour
     Vector3 TL, TR, BL, BR;
 
     bool hasDoubleClick;
+    private bool isHoldingCTRL;
 
     private SelectableObject hoveredObject = null;
 
     private Vector3 boxSize = new Vector3(1.5f, 1.5f, 1.5f);
+
+
+    [Header("Inputs Player")]
+    public KeyCode myInput;
+
+
 
     private void Awake()
     {
@@ -64,6 +71,17 @@ public class NewSelectionManager : MonoBehaviour
         bool isClicking = false;
         bool isHoldingDown = false;
         bool isDoubleClicking = false;
+        isHoldingCTRL = false;
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            isHoldingCTRL = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            isHoldingCTRL = false;
+        }
 
         //Click the mouse button
         if (Input.GetMouseButtonDown(0))
@@ -94,6 +112,7 @@ public class NewSelectionManager : MonoBehaviour
             }
             hasDoubleClick = false;
 
+
             //Select all units within the square if we have created a square
             if (hasCreatedSquare)
             {
@@ -102,6 +121,7 @@ public class NewSelectionManager : MonoBehaviour
                 //Deactivate the square selection image
                 selectionSquareTrans.gameObject.SetActive(false);
                 //Clear the list with selected unit
+                if (!isHoldingCTRL)
                 ClearSelection();
                 //Select the units
                 for (int i = 0; i < selectableList.Count; i++)
@@ -114,11 +134,19 @@ public class NewSelectionManager : MonoBehaviour
                         //Is this unit within the square
                         if (IsWithinPolygon(currentUnit.transform.position))
                         {
-                            //LaunchSoundSelectionForUnit(currentUnit);
-                            selectedObjects.Add(currentUnit);
-                            currentUnit.IsSelected = true;
-                            //if (currentUnit.transform.Find("TorusFeedback") != null)
-                            //    currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
+                            if (!isHoldingCTRL)
+                            {
+                                //LaunchSoundSelectionForUnit(currentUnit);
+                                selectedObjects.Add(currentUnit);
+                                currentUnit.IsSelected = true;
+                                //if (currentUnit.transform.Find("TorusFeedback") != null)
+                                //    currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
+                            }
+
+                            else
+                            {
+                                CTRLChecking(currentUnit.gameObject);
+                            }
                         }
                         //Otherwise deselect the unit if it's not in the square
                         else
@@ -170,8 +198,16 @@ public class NewSelectionManager : MonoBehaviour
                         GameObject activeUnit = hit.collider.gameObject;
                         //Set this unit to selected
                         //LaunchSoundSelectionForUnit(activeUnit);
-                        selectedObjects.Add(activeUnit.GetComponent<SelectableObject>());
-                        activeUnit.GetComponent<SelectableObject>().IsSelected = true;
+                        if (!isHoldingCTRL)
+                        {
+                            selectedObjects.Add(activeUnit.GetComponent<SelectableObject>());
+                            activeUnit.GetComponent<SelectableObject>().IsSelected = true;
+                        }
+
+                        else
+                        {
+                            CTRLChecking(activeUnit);
+                        }
                     }
                 }
             }
@@ -283,12 +319,40 @@ public class NewSelectionManager : MonoBehaviour
 
     private void ClearSelection ()
     {
+        if (!isHoldingCTRL)
+        {
+            foreach (var item in selectedObjects)
+            {
+                item.IsSelected = false;
+            }
+            selectedObjects.Clear();
+        }
+    }
+
+    private void CTRLChecking(GameObject goToAnalyse)
+    {
+        var tmp = goToAnalyse.GetComponent<SelectableObject>();
+        bool isInList = false;
         foreach (var item in selectedObjects)
         {
-            item.IsSelected = false;
+            if (tmp.gameObject == item.gameObject)
+            {
+                isInList = true;
+                break;
+            }
         }
-        selectedObjects.Clear();
+        if (isInList)
+        {
+            tmp.IsSelected = false;
+            selectedObjects.Remove(tmp);
+        }
+        else
+        {
+            selectedObjects.Add(tmp);
+            tmp.IsSelected = true;
+        }
     }
+
 
     #endregion
 
