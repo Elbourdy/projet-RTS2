@@ -17,9 +17,11 @@ MonoBehaviour:
   health: 105
   attackDamage: 30
   rangeAttaque: 4
-  rateOfFire: 1.2
+  rateOfFire: 2.7
   movementSpeed: 10
   radiusVision: 8
+  isRanged: 0
+  ammo: {fileID: 0}
   ressourcesCost: 320000000000000000000000
   spawnerCost: 0
   timerCreation: 2
