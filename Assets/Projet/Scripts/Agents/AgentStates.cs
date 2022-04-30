@@ -51,6 +51,7 @@ public class AgentStates : MonoBehaviour
     // Spé-Attack 
     [Header("Spe Attack READ ONLY")]
     public bool canSpeAttack = false;
+    public bool allowAutomaticAttack = true;
 
     private void Awake()
     {
@@ -219,8 +220,7 @@ public class AgentStates : MonoBehaviour
         {
             if (rateOfFireCD <= 0)
             {
-
-                if (canSpeAttack && container.myClass.mySpe != AgentClass.AgentSpe.Scout)
+                if (canSpeAttack && container.myClass.mySpe != AgentClass.AgentSpe.Scout && allowAutomaticAttack)
                 {
                     SpeAttackBehaviour(target);
                 }

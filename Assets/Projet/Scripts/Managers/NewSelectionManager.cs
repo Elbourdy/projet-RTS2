@@ -8,12 +8,13 @@ public class NewSelectionManager : MonoBehaviour
 {
     public static NewSelectionManager instance;
 
-
+    public delegate void SelectionEvent();
+    public SelectionEvent onChangeSelection;
 
 
     // Lists de selection
     public List<SelectableObject> selectableList = new List<SelectableObject>(); // = allfriendlyUnits
-    public List<SelectableObject> selectedObjects = new List<SelectableObject>(); // = selectedUnits
+    private List<SelectableObject> selectedObjects = new List<SelectableObject>(); // = selectedUnits
 
     public bool canSelect = true;
     //To determine if we are clicking with left mouse or holding down left mouse
@@ -44,7 +45,13 @@ public class NewSelectionManager : MonoBehaviour
     [Header("Inputs Player")]
     public KeyCode myInput;
 
-
+    public List<SelectableObject> SelectedObjects 
+    { get => selectedObjects; 
+        set 
+        {
+            selectedObjects = value;
+        } 
+    }
 
     private void Awake()
     {
@@ -59,6 +66,7 @@ public class NewSelectionManager : MonoBehaviour
             SelectUnits();
             HighlightUnits();
         }
+
     }
 
 
@@ -137,8 +145,9 @@ public class NewSelectionManager : MonoBehaviour
                             if (!isHoldingCTRL)
                             {
                                 //LaunchSoundSelectionForUnit(currentUnit);
-                                selectedObjects.Add(currentUnit);
+                                SelectedObjects.Add(currentUnit);
                                 currentUnit.IsSelected = true;
+                                onChangeSelection?.Invoke();
                                 //if (currentUnit.transform.Find("TorusFeedback") != null)
                                 //    currentUnit.transform.Find("TorusFeedback").GetComponent<MeshRenderer>().enabled = true;
                             }
@@ -200,8 +209,9 @@ public class NewSelectionManager : MonoBehaviour
                         //LaunchSoundSelectionForUnit(activeUnit);
                         if (!isHoldingCTRL)
                         {
-                            selectedObjects.Add(activeUnit.GetComponent<SelectableObject>());
+                            SelectedObjects.Add(activeUnit.GetComponent<SelectableObject>());
                             activeUnit.GetComponent<SelectableObject>().IsSelected = true;
+                            onChangeSelection?.Invoke();
                         }
 
                         else
@@ -280,8 +290,9 @@ public class NewSelectionManager : MonoBehaviour
                             {
                                 if (item.name == type.name)
                                 {
-                                    selectedObjects.Add(item);
+                                    SelectedObjects.Add(item);
                                     item.IsSelected = true;
+                                    onChangeSelection?.Invoke();
                                 }
                             }
                             hasDoubleClick = true;
@@ -321,11 +332,12 @@ public class NewSelectionManager : MonoBehaviour
     {
         if (!isHoldingCTRL)
         {
-            foreach (var item in selectedObjects)
+            foreach (var item in SelectedObjects)
             {
                 item.IsSelected = false;
             }
-            selectedObjects.Clear();
+            SelectedObjects.Clear();
+            onChangeSelection?.Invoke();
         }
     }
 
@@ -333,7 +345,7 @@ public class NewSelectionManager : MonoBehaviour
     {
         var tmp = goToAnalyse.GetComponent<SelectableObject>();
         bool isInList = false;
-        foreach (var item in selectedObjects)
+        foreach (var item in SelectedObjects)
         {
             if (tmp.gameObject == item.gameObject)
             {
@@ -344,13 +356,14 @@ public class NewSelectionManager : MonoBehaviour
         if (isInList)
         {
             tmp.IsSelected = false;
-            selectedObjects.Remove(tmp);
+            SelectedObjects.Remove(tmp);
         }
         else
         {
-            selectedObjects.Add(tmp);
+            SelectedObjects.Add(tmp);
             tmp.IsSelected = true;
         }
+        onChangeSelection?.Invoke();
     }
 
 

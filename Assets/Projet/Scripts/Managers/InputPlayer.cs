@@ -41,7 +41,7 @@ public class InputPlayer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (selectionManager.selectedObjects.Count > 0)
+            if (selectionManager.SelectedObjects.Count > 0)
             {
                 CheckHitType();
             }
@@ -91,9 +91,9 @@ public class InputPlayer : MonoBehaviour
     private void GoToTarget (RaycastHit hit)
     {
         Vector3 target = hit.point;
-        foreach (var agent in selectionManager.selectedObjects)
+        foreach (var agent in selectionManager.SelectedObjects)
         {
-            if (selectionManager.selectedObjects.Count > 1)
+            if (selectionManager.SelectedObjects.Count > 1)
             {
                 target = RandomizeTargetLocation(target, 2);
             }
@@ -128,7 +128,7 @@ public class InputPlayer : MonoBehaviour
     private void AttaqueWithAgent (RaycastHit hit)
     {
 
-        foreach (var agent in selectionManager.selectedObjects)
+        foreach (var agent in selectionManager.SelectedObjects)
         {
             
             if (agent.GetComponent<AgentStates>() != null && agent.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)

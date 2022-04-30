@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(SelectableObject))]
 public class ToggleSpeAttack : MonoBehaviour
 {
-    public bool allowAutomaticSpeAttack = true;
+    public bool allowToggle = true;
 
     [SerializeField] private SelectableObject mySelectable;
     [SerializeField] private SpeAttackClass mySpeClass;
@@ -17,7 +17,7 @@ public class ToggleSpeAttack : MonoBehaviour
 
     private void Update()
     {
-        if (mySelectable.IsSelected)
+        if (mySelectable.IsSelected && allowToggle)
         {
             ToggleCanSpe();
         }
@@ -28,8 +28,21 @@ public class ToggleSpeAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            myAgent.canSpeAttack = !myAgent.canSpeAttack;
+            myAgent.allowAutomaticAttack = !myAgent.allowAutomaticAttack;
         }
     }
 
+
+    public void toggleButtonSpeAttack()
+    {
+        if (mySelectable.IsSelected && allowToggle)
+        {
+            myAgent.allowAutomaticAttack = !myAgent.allowAutomaticAttack;
+        }
+    }
+
+    public bool GetStateAuto()
+    {
+        return myAgent.allowAutomaticAttack;
+    }
 }

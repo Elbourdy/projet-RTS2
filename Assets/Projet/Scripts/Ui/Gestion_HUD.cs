@@ -35,21 +35,21 @@ public class Gestion_HUD : MonoBehaviour
     
     void Update()
     {
-        if (selectionManager.selectedObjects.Count > 0)
+        if (selectionManager.SelectedObjects.Count > 0)
         {
-            if (selectionManager.selectedObjects.Count > 1)
+            if (selectionManager.SelectedObjects.Count > 1)
                 DisplayUnitSelectionCases();
             else
                 ResetUnitSelectionCases();
 
             OneUnitDisplayUpdate();
 
-            if (selectionManager.selectedObjects[0].GetComponent<ClassBatimentContainer>())
+            if (selectionManager.SelectedObjects[0].GetComponent<ClassBatimentContainer>())
             {
                 DisplayShopCasesForBuilding();
             }
 
-            if (selectionManager.selectedObjects[0].GetComponent<ClassAgentContainer>())
+            if (selectionManager.SelectedObjects[0].GetComponent<ClassAgentContainer>())
             {
                 ResetShopCases(); 
                 //Here add the functions for displaying selection for unit and suppress the line above
@@ -70,7 +70,7 @@ public class Gestion_HUD : MonoBehaviour
         oneUnitDisplay.SetActive(true);
         oneUnitDisplay.transform.GetChild(2).gameObject.SetActive(true);
 
-        GameObject selectedUnit = selectionManager.selectedObjects[0].gameObject;
+        GameObject selectedUnit = selectionManager.SelectedObjects[0].gameObject;
 
         oneUnitDisplay.transform.GetChild(3).GetComponent<Text>().text = selectedUnit.GetComponent<HealthSystem>().GetHealth() + "/" + selectedUnit.GetComponent<HealthSystem>().GetMaxHealth();
         oneUnitDisplay.transform.GetChild(2).GetComponent<HealthBar>().SetHealth(selectedUnit.GetComponent<HealthSystem>().GetHealth() / selectedUnit.GetComponent<HealthSystem>().GetMaxHealth());
@@ -113,7 +113,7 @@ public class Gestion_HUD : MonoBehaviour
     void DisplayShopCasesForBuilding()   //fonction qui remplit le contenu des shop cases pour les batiments (sera changé quand on ajoutera des fonctions speciales
     {
         List<AgentClass> roasterUnits = new List<AgentClass>();
-        roasterUnits = selectionManager.selectedObjects[0].GetComponent<Building>().GetRoasterUnits(); //récuperation des unités qui peuvent être créee par le batiment selectionné
+        roasterUnits = selectionManager.SelectedObjects[0].GetComponent<Building>().GetRoasterUnits(); //récuperation des unités qui peuvent être créee par le batiment selectionné
 
         for (int i = 0; i < 12; i++)
         {
@@ -151,7 +151,7 @@ public class Gestion_HUD : MonoBehaviour
             else if (i == 11)  // set rally point case
             {
                 shopCases[i].SetActive(true);
-                shopCases[i].GetComponent<Image>().sprite = selectionManager.selectedObjects[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
+                shopCases[i].GetComponent<Image>().sprite = selectionManager.SelectedObjects[0].GetComponent<ClassBatimentContainer>().myClass.rallyPointSprite;
                 //shopCases[i].transform.GetChild(0).GetComponent<Text>().text = "Rally Point";
             }
             
@@ -176,7 +176,7 @@ public class Gestion_HUD : MonoBehaviour
     {
         int i = 0;
 
-        foreach (SelectableObject e in selectionManager.selectedObjects)
+        foreach (SelectableObject e in selectionManager.SelectedObjects)
         {
             if (i <= unitSelectionCases.Count) //on remplit les cases tant qu'il y a des unités sauf pour la première (elle sera dans le zoom)
             {
