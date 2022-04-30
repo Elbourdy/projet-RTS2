@@ -444,15 +444,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -400.77533
+      value: -400.13315
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.013009071
+      value: 0.020748138
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 324.44922
+      value: 321.49527
       objectReference: {fileID: 0}
     - target: {fileID: 5189708736748838385, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
       propertyPath: m_LocalRotation.w
@@ -574,6 +574,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ced9fd1766e34088798fa2268112a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4966878183221137161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5179618936351359585, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
+  m_PrefabInstance: {fileID: 9003726316057096854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816279485600018278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265977a4a36f2dc40bf3a11bf26f1c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8584127420787918800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 852124852569142598, guid: e50188151a7e2bd4a85c43843c4e0d72, type: 3}
@@ -661,6 +672,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 0
   radiusHelp: 15
+--- !u!114 &4707166504337009259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816279485600018278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb0c6c65ecaab649acf2db9386f2cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowAutomaticSpeAttack: 1
+  mySelectable: {fileID: 4966878183221137161}
+  mySpeClass: {fileID: 8209648926261831014}
+  myAgent: {fileID: 3816279485600018298}
 --- !u!114 &8209648926261831014
 MonoBehaviour:
   m_ObjectHideFlags: 0
