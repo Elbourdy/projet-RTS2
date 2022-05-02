@@ -13,7 +13,6 @@ public class ToggleSpeAttack : MonoBehaviour
     [SerializeField] private SpeAttackClass mySpeClass;
     [SerializeField] private AgentStates myAgent;
 
-    
 
     private void Update()
     {
@@ -45,4 +44,7 @@ public class ToggleSpeAttack : MonoBehaviour
     {
         return myAgent.allowAutomaticAttack;
     }
+
+
+    
 }

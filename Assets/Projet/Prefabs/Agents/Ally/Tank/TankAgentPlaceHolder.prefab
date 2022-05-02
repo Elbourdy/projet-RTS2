@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankAgentPlaceHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 1816381248506597209, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+      propertyPath: container
+      value: 
+      objectReference: {fileID: 1121585980568415384}
+    - target: {fileID: 1816381248506597209, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1816381248506597213, guid: 9823700b60c152e4b91c81125139e998, type: 3}
       propertyPath: myClass
       value: 
@@ -116,6 +124,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2f824854ad2fe45bac3ef8478be05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9190558338060029167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7579229983989477162, guid: 9823700b60c152e4b91c81125139e998, type: 3}
+  m_PrefabInstance: {fileID: 1631914532294894533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121585980568415360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265977a4a36f2dc40bf3a11bf26f1c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-145217911606245940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,15 +151,22 @@ MonoBehaviour:
   myContainer: {fileID: 1121585980568415384}
   myAgentType: {fileID: 0}
   myHs: {fileID: 0}
-  myValues:
-    mySpe: 0
-    attackDamage: 100
-    attackRange: 4
-    cooldownAttack: 3
-  attackTank: {fileID: 5965138973211243425, guid: 8a3472005a7bb2a4b90ed7972e96e96c, type: 3}
-  distCone: 3
-  attackRange: 1
-  attackDamage: 1
-  poisonArea: {fileID: 0}
-  distArea: 0
-  timerInvisibility: 5
+  speAttackRange: 1
+  speAttackDamage: 1
+  attackToSpawn: {fileID: 0}
+--- !u!114 &3253582980008264379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121585980568415360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb0c6c65ecaab649acf2db9386f2cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowToggle: 1
+  mySelectable: {fileID: 9190558338060029167}
+  mySpeClass: {fileID: -145217911606245940}
+  myAgent: {fileID: 1121585980568415388}
