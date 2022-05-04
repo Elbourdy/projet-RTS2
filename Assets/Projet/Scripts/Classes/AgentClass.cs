@@ -72,4 +72,16 @@ public class AgentClass : UnitClass
 
     #endregion
 
+
+
+
+    public static AgentClass.AgentSpe GetSpe(GameObject go)
+    {
+        if (go.TryGetComponent(out ClassAgentContainer container))
+        {
+            return container.myClass.mySpe;
+        }
+
+        return AgentSpe.None;
+    }
 }

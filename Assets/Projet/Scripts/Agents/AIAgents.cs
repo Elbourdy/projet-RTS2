@@ -48,12 +48,13 @@ public class AIAgents : MonoBehaviour
 
     private void CheckVisbilityTarget()
     {
-        if (aS.HasTarget())
+        if (aS.HasTarget() && aS.ReturnTarget().TryGetComponent(out Agent_Type targetType))
         {
-            if (!aS.ReturnTarget().GetComponent<Agent_Type>().GetIsTargetable())
+            if (!targetType.GetIsTargetable())
             {
                 aS.SetTarget(null);
             }
+
         }
     }
 

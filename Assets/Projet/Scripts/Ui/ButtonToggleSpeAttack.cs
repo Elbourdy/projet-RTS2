@@ -53,23 +53,30 @@ public class ButtonToggleSpeAttack : MonoBehaviour
 
     private void CheckSelectionList()
     {
-
-        foreach (var item in NewSelectionManager.instance.SelectedObjects)
+        if (NewSelectionManager.instance.SelectedObjects.Count > 0)
         {
-            if (item.GetComponent<SpeAttackClass>())
+            foreach (var item in NewSelectionManager.instance.SelectedObjects)
             {
-                button.SetActive(true);
-                break;
-            }
+                if (item.GetComponent<SpeAttackClass>())
+                {
+                    button.SetActive(true);
+                    Debug.Log(item);
+                    break;
+                }
 
-            else
-            {
-                button.SetActive(false);
+                else
+                {
+                    button.SetActive(false);
+                }
             }
+            Debug.Log("Check Selection");
         }
 
+        else
+        {
+            button.SetActive(false);
+        }
 
-        
     }
 
 }

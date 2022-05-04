@@ -14,7 +14,8 @@ public class NewSelectionManager : MonoBehaviour
 
     // Lists de selection
     public List<SelectableObject> selectableList = new List<SelectableObject>(); // = allfriendlyUnits
-    private List<SelectableObject> selectedObjects = new List<SelectableObject>(); // = selectedUnits
+    
+    [SerializeField] private List<SelectableObject> selectedObjects = new List<SelectableObject>(); // = selectedUnits
 
     public bool canSelect = true;
     //To determine if we are clicking with left mouse or holding down left mouse

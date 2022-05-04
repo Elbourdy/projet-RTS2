@@ -231,6 +231,19 @@ public class AgentStates : MonoBehaviour
                 
             }
         }
+
+        else if (target.name == "TmpTargetSetup")
+        {
+            if (rateOfFireCD <= 0)
+            {
+                if (canSpeAttack)
+                {
+                    SpeAttackBehaviour(target);
+                    SetRestDest(transform.position);
+                    Destroy(target);
+                }
+            }
+        }
     }
 
     private void AttackBehaviour(GameObject target)
