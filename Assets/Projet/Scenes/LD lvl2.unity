@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465245, g: 0.4963522, b: 0.5747857, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16721,6 +16721,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5046507074774606656, guid: a5e017971b383814684c18b5d95586ac, type: 3}
   m_PrefabInstance: {fileID: 623422019}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1076646685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3692042209584680391, guid: dc272b011380e2d4fb0e3a5dbb862a98, type: 3}
+  m_PrefabInstance: {fileID: 271204054}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1076646697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076646685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265977a4a36f2dc40bf3a11bf26f1c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeMultiSelected: 0
+  visualFeedback: {fileID: 0}
 --- !u!1001 &1078515073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24897,7 +24916,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1646741149}
   - component: {fileID: 1646741159}
-  - component: {fileID: 1646741158}
   - component: {fileID: 1646741157}
   - component: {fileID: 1646741156}
   - component: {fileID: 1646741155}
@@ -24907,6 +24925,7 @@ GameObject:
   - component: {fileID: 1646741151}
   - component: {fileID: 1646741150}
   - component: {fileID: 1646741160}
+  - component: {fileID: 1646741158}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -25111,13 +25130,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1646741148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e9c37b0b54d8140903c087748545c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 38e22a0f9443c7d479672b74b09df703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allFriendlyUnits: []
-  selectionSquareTrans: {fileID: 1948837003}
-  selectedUnits: []
+  selectableList: []
+  selectedObjects: []
   canSelect: 1
+  selectionSquareTrans: {fileID: 1948837003}
+  myInput: 0
 --- !u!114 &1646741159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31829,7 +31849,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4287
+    m_Bits: 12479
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

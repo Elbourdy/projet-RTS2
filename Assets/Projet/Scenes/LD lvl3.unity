@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44652492, g: 0.49635231, b: 0.57478637, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465245, g: 0.4963522, b: 0.5747857, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3409,7 +3409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneUnitDisplay: {fileID: 1458540032}
-  selectionPlayer: {fileID: 0}
+  selectionManager: {fileID: 0}
   shopCases:
   - {fileID: 1739760913}
   - {fileID: 2082783004}
@@ -23520,6 +23520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59be2963f641af489b668b649e77278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feedbackUI: {fileID: 0}
+  listShortcuts: {fileID: 0}
 --- !u!114 &1646741153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23623,9 +23625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allFriendlyUnits: []
   selectionSquareTrans: {fileID: 1948837003}
-  normalMaterial: {fileID: 2100000, guid: 17dddbbaea489b34b9ac1ba1b267e106, type: 2}
-  highlightMaterial: {fileID: 2100000, guid: e9a3823425ab1a147a3a3b1f5b19a91a, type: 2}
-  selectedMaterial: {fileID: 2100000, guid: 9173ac8c74a22734bb053278f84cd78f, type: 2}
   selectedUnits: []
   canSelect: 1
 --- !u!114 &1646741159
@@ -30141,7 +30140,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4287
+    m_Bits: 12479
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
