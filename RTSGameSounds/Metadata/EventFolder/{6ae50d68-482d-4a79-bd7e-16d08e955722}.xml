@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EventFolder" id="{6ae50d68-482d-4a79-bd7e-16d08e955722}">
+		<property name="color">
+			<value>Blue Light 1</value>
+		</property>
+		<property name="name">
+			<value>Build_UnlitBat_Rise</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f770f7e3-a0bd-428a-9dfe-edd0785b77fd}</destination>
+		</relationship>
+	</object>
+</objects>

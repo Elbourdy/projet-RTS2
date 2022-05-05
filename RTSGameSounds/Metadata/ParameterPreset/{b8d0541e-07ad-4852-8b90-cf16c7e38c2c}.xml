@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{b8d0541e-07ad-4852-8b90-cf16c7e38c2c}">
+		<property name="name">
+			<value>SpawnerStop</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3e3b86c5-b48f-4699-b806-61e538bfb910}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d039586d-f0e2-48bb-a6fd-fcbed1f6fa0a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d039586d-f0e2-48bb-a6fd-fcbed1f6fa0a}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
