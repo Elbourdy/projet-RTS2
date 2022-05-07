@@ -105,7 +105,7 @@ public class SceneShorcuts : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                SceneManager.LoadScene("LD lvl3");
+                SceneManager.LoadScene("LD Demo biomes");
             }
             #endregion
 
