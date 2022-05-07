@@ -12,8 +12,9 @@ public class SoundFeedbacks : MonoBehaviour
     [FMODUnity.EventRef]
     public string onSelectedSound;
 
+    [FMODUnity.EventRef]
+    public string onSpeAttackSound;
 
-    
 
     public void LaunchAttackSound ()
     {
@@ -33,6 +34,10 @@ public class SoundFeedbacks : MonoBehaviour
         return onSelectedSound;
     }
 
-
+    public void LaunchSpeAttackSound ()
+    {
+        if (onSpeAttackSound != null)
+            FMODUnity.RuntimeManager.PlayOneShot(onSpeAttackSound, transform.position);
+    }
 
 }
