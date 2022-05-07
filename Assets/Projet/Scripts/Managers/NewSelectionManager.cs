@@ -46,6 +46,13 @@ public class NewSelectionManager : MonoBehaviour
     [Header("Inputs Player")]
     public KeyCode myInput;
 
+
+
+    //Sounds
+    private List<string> sounds = new List<string>();
+
+
+
     public List<SelectableObject> SelectedObjects 
     { get => selectedObjects; 
         set 
@@ -67,7 +74,7 @@ public class NewSelectionManager : MonoBehaviour
             SelectUnits();
             HighlightUnits();
         }
-
+        sounds.Clear();
     }
 
 
@@ -145,7 +152,7 @@ public class NewSelectionManager : MonoBehaviour
                         {
                             if (!isHoldingCTRL)
                             {
-                                //LaunchSoundSelectionForUnit(currentUnit);
+                                LaunchSoundSelectionForUnit(currentUnit.gameObject);
                                 SelectedObjects.Add(currentUnit);
                                 currentUnit.IsSelected = true;
                                 onChangeSelection?.Invoke();
@@ -207,7 +214,7 @@ public class NewSelectionManager : MonoBehaviour
                     {
                         GameObject activeUnit = hit.collider.gameObject;
                         //Set this unit to selected
-                        //LaunchSoundSelectionForUnit(activeUnit);
+                        LaunchSoundSelectionForUnit(activeUnit);
                         if (!isHoldingCTRL)
                         {
                             SelectedObjects.Add(activeUnit.GetComponent<SelectableObject>());
@@ -369,6 +376,48 @@ public class NewSelectionManager : MonoBehaviour
 
 
     #endregion
+
+
+    #region Sound Functions
+    private void LaunchSoundSelectionForUnit(GameObject currentUnit)
+    {
+        string currentSound;
+        if (currentUnit.GetComponent<SoundFeedbacks>() || currentUnit.GetComponentInChildren<SoundFeedbacks>())
+        {
+            if (currentUnit.GetComponent<SoundFeedbacks>())
+                currentSound = currentUnit.GetComponent<SoundFeedbacks>().GetSoundNameSelection();
+            else currentSound = currentUnit.GetComponentInChildren<SoundFeedbacks>().GetSoundNameSelection();
+
+            if (sounds.Count > 0)
+            {
+                foreach (var item in sounds)
+                {
+                    if (currentSound == item)
+                    {
+                        Debug.Log(item + " " + currentSound);
+                        break;
+                    }
+
+                    else
+                    {
+                        Debug.Log("Launch Sound");
+                        sounds.Add(currentSound);
+                        if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
+                        else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+                    }
+                }
+            }
+
+            else
+            {
+                sounds.Add(currentSound);
+                if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
+                else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+            }
+        }
+    }
+    #endregion
+
 
     #region Maths Fonctions Pour Selection
     //Is a unit within a polygon determined by 4 corners

@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Death
+  Event: event:/Unit/Unit_Enemy/UnitE_BasicJarsan/UnitE_BasicJarsan_Death/UnitE_BasicJarsan_Death
   PlayEvent: 2
   StopEvent: 0
   AllowFadeout: 1
