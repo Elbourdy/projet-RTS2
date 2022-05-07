@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="SnapshotGroup" id="{4c324f23-06cb-4ee0-a298-002b85d4f3da}">
+		<property name="name">
+			<value>Night</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2e565002-1afd-4757-a746-ba3faea4af84}</destination>
+		</relationship>
+		<relationship name="items">
+			<destination>{c54f5f17-c3de-4d51-b361-7517e8c07e0f}</destination>
+		</relationship>
+	</object>
+</objects>

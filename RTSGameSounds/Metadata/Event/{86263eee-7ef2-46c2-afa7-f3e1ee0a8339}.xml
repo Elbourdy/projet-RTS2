@@ -806,6 +806,9 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	</object>
 	<object class="MixerBusFader" id="{03963332-a8be-4657-ae1d-3d60573fe3cf}" />
 	<object class="SpatialiserEffect" id="{8dbaae14-b086-423c-adf9-5b73b55186bf}">
+		<property name="minimumDistance">
+			<value>0</value>
+		</property>
 		<property name="maximumDistance">
 			<value>45</value>
 		</property>

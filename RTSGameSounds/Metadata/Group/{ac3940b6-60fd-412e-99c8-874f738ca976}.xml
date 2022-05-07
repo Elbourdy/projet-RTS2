@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="MixerGroup" id="{ac3940b6-60fd-412e-99c8-874f738ca976}">
+		<property name="name">
+			<value>Night</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{0aa2901a-65b7-428b-800b-7cabc2033b15}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{70a35db8-cd35-4ed1-9a2b-488754891e5f}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{770914af-e0ea-4ed8-bb5e-454bd5ffc369}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{0aa2901a-65b7-428b-800b-7cabc2033b15}">
+		<relationship name="effects">
+			<destination>{ff8a2e11-5bea-45ae-83af-3614d5643212}</destination>
+			<destination>{a4d7b860-4a08-428a-9e78-a31dd9bd9ea5}</destination>
+			<destination>{4bd82dc4-29dd-4c97-b2e8-2fdf1555ab04}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{70a35db8-cd35-4ed1-9a2b-488754891e5f}" />
+	<object class="MixerBusFader" id="{ff8a2e11-5bea-45ae-83af-3614d5643212}" />
+	<object class="ThreeEQEffect" id="{a4d7b860-4a08-428a-9e78-a31dd9bd9ea5}" />
+	<object class="SFXReverbEffect" id="{4bd82dc4-29dd-4c97-b2e8-2fdf1555ab04}" />
+</objects>

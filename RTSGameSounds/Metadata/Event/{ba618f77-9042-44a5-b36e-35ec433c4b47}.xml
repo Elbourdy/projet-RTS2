@@ -3,7 +3,7 @@
 	<object class="Event" id="{ba618f77-9042-44a5-b36e-35ec433c4b47}">
 		<property name="note">
 			<value>Paramètre Day_Or_Night (soit 0 soit 1) :
-Se paramètre permet de passer d'un event loop à un autre par une transition. 
+Ce paramètre permet de passer d'un event loop à un autre par une transition. 
 Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'il fait nuit</value>
 		</property>
 		<property name="color">
@@ -37,6 +37,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 		<relationship name="groupTracks">
 			<destination>{c5725882-a6fa-4d87-9c79-0dee05015662}</destination>
+			<destination>{0e19f16c-6b5c-4169-988a-f7010c341cff}</destination>
 		</relationship>
 		<relationship name="timeline">
 			<destination>{99f31045-36a9-4e35-9208-d0db69db42ec}</destination>
@@ -92,10 +93,23 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<destination>{7385cf5f-7504-40a6-8027-328f6d50b006}</destination>
 		</relationship>
 	</object>
+	<object class="GroupTrack" id="{0e19f16c-6b5c-4169-988a-f7010c341cff}">
+		<relationship name="modules">
+			<destination>{56d8cc8f-d391-4814-af8e-70508124ac0e}</destination>
+			<destination>{6c15ca29-9e08-441b-9b4f-5b684802c652}</destination>
+			<destination>{102c7eb5-d017-4ba8-9038-c292de6b2391}</destination>
+			<destination>{68351f93-198f-4f69-8290-eb9de0b710b5}</destination>
+			<destination>{dfc75443-55e1-4156-b2d7-34e14ac1dae9}</destination>
+		</relationship>
+		<relationship name="mixerGroup">
+			<destination>{371c73a0-7323-48f2-a71c-a456629407c9}</destination>
+		</relationship>
+	</object>
 	<object class="Timeline" id="{99f31045-36a9-4e35-9208-d0db69db42ec}">
 		<relationship name="modules">
 			<destination>{77e35b1e-6a19-41cc-9f27-bb70322c4420}</destination>
 			<destination>{c1400c31-5a56-4477-b4a6-7a30175d0dd3}</destination>
+			<destination>{dfc75443-55e1-4156-b2d7-34e14ac1dae9}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{6d7b88f6-0f86-407e-9dd9-28a8ddb7d18c}</destination>
@@ -224,6 +238,69 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 		<relationship name="panner">
 			<destination>{4bec4909-5bac-4f71-8a8a-d8f44ca44f2f}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{a1ff9bb2-631d-4124-b286-78d05c954dda}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{56d8cc8f-d391-4814-af8e-70508124ac0e}">
+		<property name="length">
+			<value>5</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{035a0628-39c3-42d5-9cd4-ee9ff7d5f952}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{6c15ca29-9e08-441b-9b4f-5b684802c652}">
+		<property name="start">
+			<value>5</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{102c7eb5-d017-4ba8-9038-c292de6b2391}">
+		<property name="length">
+			<value>5</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{87ea9692-1a97-4652-a0f7-b53b029ac5f7}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{68351f93-198f-4f69-8290-eb9de0b710b5}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="SnapshotModule" id="{dfc75443-55e1-4156-b2d7-34e14ac1dae9}">
+		<property name="start">
+			<value>24</value>
+		</property>
+		<property name="length">
+			<value>11.349070294784582</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{6fa7f348-bbf2-4f64-b250-8a004a97d243}</destination>
+		</relationship>
+		<relationship name="fadeOutCurve">
+			<destination>{b2882e9f-e341-44f3-a077-158e223bcf43}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{c54f5f17-c3de-4d51-b361-7517e8c07e0f}</destination>
+		</relationship>
+	</object>
+	<object class="EventMixerGroup" id="{371c73a0-7323-48f2-a71c-a456629407c9}">
+		<property name="volume">
+			<value>-22</value>
+		</property>
+		<property name="name">
+			<value>Audio 2</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{1b8e4635-c5c0-49b4-bfa3-f2288c8d001f}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{ce2bb739-2e6b-47c4-8a43-2a3e59d3ddea}</destination>
 		</relationship>
 		<relationship name="output">
 			<destination>{a1ff9bb2-631d-4124-b286-78d05c954dda}</destination>
@@ -360,6 +437,44 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4bec4909-5bac-4f71-8a8a-d8f44ca44f2f}" />
+	<object class="TransitionSourceFadeOutCurve" id="{035a0628-39c3-42d5-9cd4-ee9ff7d5f952}">
+		<relationship name="startPoint">
+			<destination>{e7008cb8-15a2-4a59-98b0-acf207a82900}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2cc658e7-7064-483f-a091-dc9f0164e782}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{87ea9692-1a97-4652-a0f7-b53b029ac5f7}">
+		<relationship name="startPoint">
+			<destination>{f5aad215-0edf-446a-8544-d292b5d0bbff}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{1febe5eb-c42c-4523-8eaf-af09da893c47}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{6fa7f348-bbf2-4f64-b250-8a004a97d243}">
+		<relationship name="startPoint">
+			<destination>{b7cb9bfd-7b48-4010-8557-f60285c0ace2}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{f6e66bf2-4a38-40eb-b2cc-944954daa039}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{b2882e9f-e341-44f3-a077-158e223bcf43}">
+		<relationship name="startPoint">
+			<destination>{042e09a6-107c-47e8-8d4c-17be65f8716e}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{baa6b54c-0a23-4d4a-98c0-4d7a81d868a8}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{1b8e4635-c5c0-49b4-bfa3-f2288c8d001f}">
+		<relationship name="effects">
+			<destination>{034cf06f-b30c-439c-ba4b-f8051e7cb7aa}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{ce2bb739-2e6b-47c4-8a43-2a3e59d3ddea}" />
 	<object class="ParameterCondition" id="{f7fbcdf0-a02b-43c4-976a-889877eba6ce}">
 		<property name="minimum">
 			<value>0</value>
@@ -391,6 +506,8 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<destination>{b9aebe15-cef9-40cf-aeb8-d00dd7b04704}</destination>
 			<destination>{ac8f42e5-88ff-4b23-9a85-e2d3a3d617d0}</destination>
 			<destination>{948c118b-4435-4077-8bdc-6971f5c4ca21}</destination>
+			<destination>{56d8cc8f-d391-4814-af8e-70508124ac0e}</destination>
+			<destination>{6c15ca29-9e08-441b-9b4f-5b684802c652}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterCondition" id="{48ecdbf5-a078-454d-8354-41b6b50d716b}">
@@ -413,6 +530,8 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<destination>{55cbc854-7242-48ba-8351-9dcec53c3f8c}</destination>
 			<destination>{eb94456b-b359-495e-be31-05f02eb05ab0}</destination>
 			<destination>{8c6071d0-cac4-4155-b461-8fd1ddfebfc1}</destination>
+			<destination>{68351f93-198f-4f69-8290-eb9de0b710b5}</destination>
+			<destination>{102c7eb5-d017-4ba8-9038-c292de6b2391}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterCondition" id="{961e9281-b93a-432c-a92a-2481e5e994b1}">
@@ -507,4 +626,75 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{873c2be0-385e-4de4-a8aa-07b3b62e9da1}" />
+	<object class="AutomationPoint" id="{e7008cb8-15a2-4a59-98b0-acf207a82900}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2cc658e7-7064-483f-a091-dc9f0164e782}">
+		<property name="position">
+			<value>5</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f5aad215-0edf-446a-8544-d292b5d0bbff}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{1febe5eb-c42c-4523-8eaf-af09da893c47}">
+		<property name="position">
+			<value>5</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b7cb9bfd-7b48-4010-8557-f60285c0ace2}">
+		<property name="position">
+			<value>24</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f6e66bf2-4a38-40eb-b2cc-944954daa039}">
+		<property name="position">
+			<value>26</value>
+		</property>
+		<property name="value">
+			<value>100</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{042e09a6-107c-47e8-8d4c-17be65f8716e}">
+		<property name="position">
+			<value>33.5</value>
+		</property>
+		<property name="value">
+			<value>100</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{baa6b54c-0a23-4d4a-98c0-4d7a81d868a8}">
+		<property name="position">
+			<value>35.349070294784582</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="MixerBusFader" id="{034cf06f-b30c-439c-ba4b-f8051e7cb7aa}" />
 </objects>
