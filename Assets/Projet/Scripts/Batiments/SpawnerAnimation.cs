@@ -18,7 +18,7 @@ public class SpawnerAnimation : MonoBehaviour
 
     public void StartSpawn()
     {
-        spawnerPlay.setParameterByName("SpawnerStop", 0);
+        spawnerPlay.setParameterByName("SpawnerStop", 1);
     }
 
     public void EndNight()

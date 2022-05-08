@@ -17,6 +17,13 @@ public class BaliseBehavior : MonoBehaviour
 
     [DrawIf("baliseBehavior", statesBalise.CountDown)] public float cooldown = 5f;
 
+    FMOD.Studio.EventInstance doorLoop, doorOneShot, switchCentralRise;
+
+    string crystalUp = "event:/Building/Build_Switch/Build_Switch_CrystOn/Build_Switch_CrystOn";
+    private float count;
+
+    bool activated = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,12 +39,25 @@ public class BaliseBehavior : MonoBehaviour
         }
 
         animatorCentral.runtimeAnimatorController = animatorTab[switchList.Count - 1];
+
+        doorLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Door/Build_Dr_Idle/Build_Dr_Idle");
+        doorLoop.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(animatorDoor.transform.position));
+        doorLoop.start();
+
+        doorOneShot = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Door/Build_Dr_Opening/Build_Dr_Opening");
+        doorOneShot.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(animatorDoor.transform.position));
+
+        switchCentralRise = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Switch/Build_Switch_Rise/Build_Switch_Rise");
+        switchCentralRise.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
     }
 
     // Update is called once per frame
     void Update()
     {
         SetCentralAnimator();
+
+        if (Input.GetKeyDown(KeyCode.O))
+            Open();
     }
 
     public void Switch()
@@ -60,18 +80,26 @@ public class BaliseBehavior : MonoBehaviour
 
     private void Open()
     {
+        doorLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        doorOneShot.start();
+
         animatorDoor.SetBool("Open", true);
         SetCentralAnimator();
         //navMesh.BuildNavMesh();
         foreach (SwitchBehavior e in switchList)
         Destroy(e);
-        Destroy(this);
+        Destroy(this, 10);
     }
 
     private void SetCentralAnimator()
     {
-        if (Vector2.Distance(HQBehavior.instance.transform.position, transform.position) < 30)
+        if (Vector2.Distance(HQBehavior.instance.transform.position, transform.position) < 25 && !activated)
+        {
+            switchCentralRise.start();
             animatorCentral.SetBool("On", true);
+            activated = true;
+        }
+            
 
         int countTotal = 0;
         foreach (SwitchBehavior e in switchList)
@@ -99,5 +127,12 @@ public class BaliseBehavior : MonoBehaviour
             animatorCentral.SetBool("Chris3", true);
             else
             animatorCentral.SetBool("Chris3", false);
+
+        if (count < countTotal)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(crystalUp);
+        }
+        count = countTotal;
     }
+
 }

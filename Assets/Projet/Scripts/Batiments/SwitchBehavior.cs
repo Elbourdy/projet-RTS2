@@ -19,6 +19,8 @@ public class SwitchBehavior : MonoBehaviour
 
     private HealthBar bar;
 
+    FMOD.Studio.EventInstance switchOn;
+
     private void OnDestroy()
     {
         if (switchBehavior == BaliseBehavior.statesBalise.CountDown)
@@ -37,6 +39,9 @@ public class SwitchBehavior : MonoBehaviour
         InitialiseLineRenderer();
 
         animator = transform.GetChild(0).GetComponent<Animator>();
+
+        switchOn = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_UnlimitedBattery/Build_UnlitBat_Rise/Build_UnlitBat_Rise");
+        switchOn.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
     }
 
     // Update is called once per frame
@@ -74,6 +79,7 @@ public class SwitchBehavior : MonoBehaviour
             case BaliseBehavior.statesBalise.Classic:
                 if (activated != state)
                 {
+                    switchOn.start();
                     activated = state;
                     lR.material = matOn;
                     animator.SetBool("Activated", true);

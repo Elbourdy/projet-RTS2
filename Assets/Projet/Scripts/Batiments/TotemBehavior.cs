@@ -14,6 +14,15 @@ public class TotemBehavior : MonoBehaviour
     private float count;
     private bool activated = true;
 
+    FMOD.Studio.EventInstance totemIdle;
+    string totemActivate = "event:/Building/Build_Temple/Build_Templ_Activation/Build_Templ_Activation";
+
+    private void Start()
+    {
+        totemIdle = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Temple/Build_Templ_Idle/Build_Templ_Idle");
+        totemIdle.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        totemIdle.start();
+    }
 
     void Update()
     {
@@ -27,6 +36,7 @@ public class TotemBehavior : MonoBehaviour
             {
                 HQBehavior.instance.AddToRoaster(rosterUnit);
                 activated = false;
+                FMODUnity.RuntimeManager.PlayOneShot(totemActivate);
             }
         }
         else
