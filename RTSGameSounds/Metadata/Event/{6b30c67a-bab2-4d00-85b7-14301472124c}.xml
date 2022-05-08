@@ -8,7 +8,7 @@
 			<value>Build_Templ_Activation</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a6b54543-cf88-4929-8948-f161f49ddcd5}</destination>
@@ -119,7 +119,6 @@
 	<object class="MixerBusEffectChain" id="{0a0300af-e993-4355-8bac-9880fda10282}">
 		<relationship name="effects">
 			<destination>{6f9fd2e3-c6d1-4554-a6bf-d6a188db4b3b}</destination>
-			<destination>{e8e587f7-b11c-4bc7-b11f-c82e45f35f96}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{188f080d-49b3-49b5-8541-f93c942ac994}" />
@@ -131,6 +130,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{24195ce7-f039-4677-a72b-95d4f4d7f2f8}" />
 	<object class="MixerBusFader" id="{6f9fd2e3-c6d1-4554-a6bf-d6a188db4b3b}" />
-	<object class="SpatialiserEffect" id="{e8e587f7-b11c-4bc7-b11f-c82e45f35f96}" />
 	<object class="MixerBusFader" id="{184e8f04-ac95-41f0-8b0e-b914a526d92d}" />
 </objects>
