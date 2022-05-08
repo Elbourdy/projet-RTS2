@@ -189,7 +189,7 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	</object>
 	<object class="EventMixerMaster" id="{76ea362a-b05b-4516-a2c6-362a3e3b31fa}">
 		<property name="volume">
-			<value>-9</value>
+			<value>-29.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{b0a50c47-73bc-484c-b43b-3a7041dcd23e}</destination>
