@@ -228,7 +228,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="EventMixerGroup" id="{7385cf5f-7504-40a6-8027-328f6d50b006}">
 		<property name="volume">
-			<value>-22</value>
+			<value>-6.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -291,7 +291,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="EventMixerGroup" id="{371c73a0-7323-48f2-a71c-a456629407c9}">
 		<property name="volume">
-			<value>-22</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -325,10 +325,10 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="LoopRegion" id="{89657904-861d-4ae1-a595-84023087a6a2}">
 		<property name="position">
-			<value>24</value>
+			<value>26</value>
 		</property>
 		<property name="length">
-			<value>11.349070294784582</value>
+			<value>7.5</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{99f31045-36a9-4e35-9208-d0db69db42ec}</destination>

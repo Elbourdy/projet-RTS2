@@ -189,7 +189,7 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 	</object>
 	<object class="EventMixerMaster" id="{76ea362a-b05b-4516-a2c6-362a3e3b31fa}">
 		<property name="volume">
-			<value>-16.5</value>
+			<value>-9</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{b0a50c47-73bc-484c-b43b-3a7041dcd23e}</destination>
@@ -469,9 +469,6 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</property>
 	</object>
 	<object class="EventMixerGroup" id="{96cceb8d-ffda-4ba7-a7ea-c5bf5d24e2a8}">
-		<property name="volume">
-			<value>-6.5</value>
-		</property>
 		<property name="name">
 			<value>Audio 3</value>
 		</property>
@@ -513,9 +510,6 @@ Le paramètre passe à 1 si le joueur casse le lien entre lui et le cristale AVA
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{e8873548-5f33-4435-b12e-98fec2d2fd04}">
-		<property name="volume">
-			<value>-6.5</value>
-		</property>
 		<property name="name">
 			<value>Audio 4</value>
 		</property>
