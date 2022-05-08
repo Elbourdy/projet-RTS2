@@ -8,7 +8,7 @@
 			<value>Build_Switch_CrystOn</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{195b8410-4e42-4318-a0d9-565205ac4e7e}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{a6a19f94-cbb0-4929-aa81-9cc58e17d671}">
 		<relationship name="effects">
 			<destination>{75ee965a-f317-4ef1-b549-9a0a1421a207}</destination>
-			<destination>{ad396765-65a7-465d-b830-86915584624a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8204552c-e341-4328-9478-e24158357b26}" />
@@ -130,7 +129,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{27a7c5d8-5afe-4b97-a040-856fc65fdfc9}" />
 	<object class="MixerBusFader" id="{75ee965a-f317-4ef1-b549-9a0a1421a207}" />
-	<object class="SpatialiserEffect" id="{ad396765-65a7-465d-b830-86915584624a}" />
 	<object class="MixerBusFader" id="{5ef55136-db09-4a28-9ee0-4d219ba87c6d}" />
 	<object class="ThreeEQEffect" id="{1c7f9614-a6f1-4496-81d4-b06494e171c7}">
 		<property name="bypass">

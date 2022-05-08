@@ -8,7 +8,7 @@
 			<value>Build_Switch_CrystOff</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{6eda68c0-6154-4d3b-9c6d-2bdb64db8838}</destination>
@@ -122,7 +122,6 @@
 	<object class="MixerBusEffectChain" id="{23dc8994-1b3f-43ed-8021-b0389663594e}">
 		<relationship name="effects">
 			<destination>{be884d0b-dcc7-462c-bdf5-16d7106b2659}</destination>
-			<destination>{567fd46f-b4cf-4a34-9a23-deb30a13b971}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{0af86aef-0100-498b-8647-4b6eede5fd7b}" />
@@ -143,7 +142,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{a9d5b7ea-9560-4045-866c-b8322b9bcbf8}" />
 	<object class="MixerBusFader" id="{be884d0b-dcc7-462c-bdf5-16d7106b2659}" />
-	<object class="SpatialiserEffect" id="{567fd46f-b4cf-4a34-9a23-deb30a13b971}" />
 	<object class="AutomationPoint" id="{17f893a8-90d5-4ca1-8b0c-193b8f11ea7a}">
 		<property name="position">
 			<value>0</value>
