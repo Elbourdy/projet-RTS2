@@ -43,15 +43,17 @@ public class NewSelectionManager : MonoBehaviour
     private Vector3 boxSize = new Vector3(1.5f, 1.5f, 1.5f);
 
 
-    [Header("Inputs Player")]
-    public KeyCode myInput;
+    
 
 
 
     //Sounds
     private List<string> sounds = new List<string>();
 
-
+    [Header("Selection Keyboard")]
+    public GameObject nexus;
+    public GameObject renard;
+    public GameObject serpent;
 
     public List<SelectableObject> SelectedObjects 
     { get => selectedObjects; 
@@ -73,6 +75,7 @@ public class NewSelectionManager : MonoBehaviour
         {
             SelectUnits();
             HighlightUnits();
+            CheckKeyboardInputs();
         }
         sounds.Clear();
     }
@@ -377,6 +380,85 @@ public class NewSelectionManager : MonoBehaviour
 
     #endregion
 
+    #region Selection Keyboard Functions
+
+    private void CheckKeyboardInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        {
+            ClearSelection();
+            if (!isHoldingCTRL)
+            {
+                SelectedObjects.Add(nexus.GetComponent<SelectableObject>());
+                nexus.GetComponent<SelectableObject>().IsSelected = true;
+                onChangeSelection?.Invoke();
+            }
+
+            else
+            {
+                CTRLChecking(nexus);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ClearSelection();
+            var classSelec = renard.GetComponent<ClassAgentContainer>();
+            foreach (var item in selectableList)
+            {
+                if (item.gameObject.TryGetComponent(out ClassAgentContainer classItem))
+                {
+                    if (classItem.myClass == classSelec.myClass)
+                    {
+                        if (!isHoldingCTRL)
+                        {
+
+                            selectedObjects.Add(item);
+                            item.IsSelected = true;
+                        }
+
+                        else
+                        {
+                            CTRLChecking(item.gameObject);
+                        }
+                    }
+                }
+            }
+            onChangeSelection?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ClearSelection();
+            var classSelec = serpent.GetComponent<ClassAgentContainer>();
+            foreach (var item in selectableList)
+            {
+                if (item.gameObject.TryGetComponent(out ClassAgentContainer classItem))
+                {
+                    if (classItem.myClass == classSelec.myClass)
+                    {
+                        if (!isHoldingCTRL)
+                        {
+
+                            selectedObjects.Add(item);
+                            item.IsSelected = true;
+                        }
+
+                        else
+                        {
+                            CTRLChecking(item.gameObject);
+                        }
+                    }
+                }
+            }
+            onChangeSelection?.Invoke();
+        }
+
+
+    }
+
+
+    #endregion
 
     #region Sound Functions
     private void LaunchSoundSelectionForUnit(GameObject currentUnit)
@@ -416,6 +498,10 @@ public class NewSelectionManager : MonoBehaviour
             }
         }
     }
+
+
+
+
     #endregion
 
 

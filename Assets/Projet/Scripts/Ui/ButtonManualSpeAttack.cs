@@ -45,7 +45,6 @@ public class ButtonManualSpeAttack : MonoBehaviour
                 if (item.GetComponent<SpeAttackClass>())
                 {
                     button.SetActive(true);
-                    Debug.Log(item);
                     break;
                 }
 
@@ -54,7 +53,6 @@ public class ButtonManualSpeAttack : MonoBehaviour
                     button.SetActive(false);
                 }
             }
-            Debug.Log("Check Selection");
         }
 
         else

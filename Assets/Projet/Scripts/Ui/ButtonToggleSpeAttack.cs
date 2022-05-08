@@ -69,7 +69,6 @@ public class ButtonToggleSpeAttack : MonoBehaviour
                     button.SetActive(false);
                 }
             }
-            Debug.Log("Check Selection");
         }
 
         else
