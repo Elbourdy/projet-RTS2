@@ -55,7 +55,7 @@
 			<destination>{7855fd83-0569-4d67-b95a-37e7fd2869bd}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{770914af-e0ea-4ed8-bb5e-454bd5ffc369}</destination>
+			<destination>{ac3940b6-60fd-412e-99c8-874f738ca976}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{c4e4c367-548f-4d2e-87cd-a3e6c470c96c}" />
@@ -298,7 +298,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{e51b63b8-4e80-464d-b7be-4c4d98b35242}" />
 	<object class="MixerBusFader" id="{26992db1-da6d-44d0-8c23-8e5eb9f9d09c}" />
-	<object class="SpatialiserEffect" id="{97d40cd6-6da1-494d-8fbe-6f780857f185}" />
+	<object class="SpatialiserEffect" id="{97d40cd6-6da1-494d-8fbe-6f780857f185}">
+		<property name="minimumDistance">
+			<value>0.100000001</value>
+		</property>
+		<property name="maximumDistance">
+			<value>50</value>
+		</property>
+	</object>
 	<object class="AutomationCurve" id="{f8f344c7-8f34-4692-b2a4-d3c9b291db2e}">
 		<relationship name="parameter">
 			<destination>{4801b1fb-4d27-4987-95a1-24b538112e0f}</destination>
@@ -352,7 +359,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-8</value>
+			<value>-11.6346664</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{023f6694-1be2-4e4c-ad6c-85d919b7ca2e}">
@@ -360,7 +367,7 @@
 			<value>6</value>
 		</property>
 		<property name="value">
-			<value>-2</value>
+			<value>-5.63466644</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{85f1e2b8-af0c-4b3a-a016-5860308bf3ee}">
@@ -368,7 +375,7 @@
 			<value>12</value>
 		</property>
 		<property name="value">
-			<value>-8</value>
+			<value>-11.6346664</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{df6ff400-fa7a-465c-a15b-a8d645fb08f6}">

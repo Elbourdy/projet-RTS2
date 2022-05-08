@@ -73,7 +73,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 			<destination>{173984c1-47d0-4849-a7fe-39f20e83c3f2}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{770914af-e0ea-4ed8-bb5e-454bd5ffc369}</destination>
+			<destination>{ac3940b6-60fd-412e-99c8-874f738ca976}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{94b4e7dc-15d7-49bc-afae-099fa7bfe66a}" />
@@ -124,6 +124,9 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{a1ff9bb2-631d-4124-b286-78d05c954dda}">
+		<property name="volume">
+			<value>-14</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{328f9da9-7ef4-4f6b-8954-27cd8150607d}</destination>
 		</relationship>
@@ -228,7 +231,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="EventMixerGroup" id="{7385cf5f-7504-40a6-8027-328f6d50b006}">
 		<property name="volume">
-			<value>-6.5</value>
+			<value>-5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -279,20 +282,11 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		<property name="length">
 			<value>11.349070294784582</value>
 		</property>
-		<relationship name="fadeInCurve">
-			<destination>{6fa7f348-bbf2-4f64-b250-8a004a97d243}</destination>
-		</relationship>
-		<relationship name="fadeOutCurve">
-			<destination>{b2882e9f-e341-44f3-a077-158e223bcf43}</destination>
-		</relationship>
 		<relationship name="event">
 			<destination>{c54f5f17-c3de-4d51-b361-7517e8c07e0f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{371c73a0-7323-48f2-a71c-a456629407c9}">
-		<property name="volume">
-			<value>-6</value>
-		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -325,10 +319,10 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="LoopRegion" id="{89657904-861d-4ae1-a595-84023087a6a2}">
 		<property name="position">
-			<value>26</value>
+			<value>24</value>
 		</property>
 		<property name="length">
-			<value>7.5</value>
+			<value>11.349070294784582</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{99f31045-36a9-4e35-9208-d0db69db42ec}</destination>
@@ -451,22 +445,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{1febe5eb-c42c-4523-8eaf-af09da893c47}</destination>
-		</relationship>
-	</object>
-	<object class="FadeCurve" id="{6fa7f348-bbf2-4f64-b250-8a004a97d243}">
-		<relationship name="startPoint">
-			<destination>{b7cb9bfd-7b48-4010-8557-f60285c0ace2}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{f6e66bf2-4a38-40eb-b2cc-944954daa039}</destination>
-		</relationship>
-	</object>
-	<object class="FadeCurve" id="{b2882e9f-e341-44f3-a077-158e223bcf43}">
-		<relationship name="startPoint">
-			<destination>{042e09a6-107c-47e8-8d4c-17be65f8716e}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{baa6b54c-0a23-4d4a-98c0-4d7a81d868a8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{1b8e4635-c5c0-49b4-bfa3-f2288c8d001f}">
@@ -662,38 +640,6 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 		</property>
 		<property name="value">
 			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{b7cb9bfd-7b48-4010-8557-f60285c0ace2}">
-		<property name="position">
-			<value>24</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f6e66bf2-4a38-40eb-b2cc-944954daa039}">
-		<property name="position">
-			<value>26</value>
-		</property>
-		<property name="value">
-			<value>100</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{042e09a6-107c-47e8-8d4c-17be65f8716e}">
-		<property name="position">
-			<value>33.5</value>
-		</property>
-		<property name="value">
-			<value>100</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{baa6b54c-0a23-4d4a-98c0-4d7a81d868a8}">
-		<property name="position">
-			<value>35.349070294784582</value>
-		</property>
-		<property name="value">
-			<value>0</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{034cf06f-b30c-439c-ba4b-f8051e7cb7aa}" />

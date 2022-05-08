@@ -56,7 +56,7 @@
 			<destination>{c6762c6f-2f9e-46be-9b91-fba736f8299c}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{770914af-e0ea-4ed8-bb5e-454bd5ffc369}</destination>
+			<destination>{ac3940b6-60fd-412e-99c8-874f738ca976}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{dec7761a-40ce-4879-a95c-d49d2062f6e1}" />
@@ -100,6 +100,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{7bae0d21-7dd6-463a-8f00-0ddbdaa5e7b1}">
+		<property name="volume">
+			<value>-1</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -128,6 +131,10 @@
 	</object>
 	<object class="MixerBusPanner" id="{390e5959-bdc6-465e-8c06-cef2077223a5}" />
 	<object class="MixerBusFader" id="{cf79f4e1-a060-4ac5-8b8b-d18f44edc762}" />
-	<object class="SpatialiserEffect" id="{221c485d-1a03-4ee3-8cc0-3aa12dec407b}" />
+	<object class="SpatialiserEffect" id="{221c485d-1a03-4ee3-8cc0-3aa12dec407b}">
+		<property name="maximumDistance">
+			<value>55</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b2e4f51c-44ab-4fbb-a0d5-1f74befd848f}" />
 </objects>

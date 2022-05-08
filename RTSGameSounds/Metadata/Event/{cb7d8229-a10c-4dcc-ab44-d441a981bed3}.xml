@@ -56,7 +56,7 @@
 			<destination>{69c100d4-2c8d-4500-8598-7fc24914499b}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{770914af-e0ea-4ed8-bb5e-454bd5ffc369}</destination>
+			<destination>{ac3940b6-60fd-412e-99c8-874f738ca976}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{6da13c33-ded9-447a-989d-0fd83448f733}" />
@@ -75,6 +75,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{4f458569-465a-4bdc-9c6b-5b0dd633d3cd}">
+		<property name="volume">
+			<value>-14</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{417f93d2-e888-4b42-9987-218f4c312716}</destination>
 		</relationship>
@@ -132,7 +135,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{233ca0ee-d12e-49c1-8d95-f0ff3bc2a970}" />
 	<object class="MixerBusFader" id="{42cab8e7-c457-4e9a-b222-f8f9b46e55dd}" />
-	<object class="SpatialiserEffect" id="{3df1aea6-275c-410e-bb58-a78f66d8ab32}" />
+	<object class="SpatialiserEffect" id="{3df1aea6-275c-410e-bb58-a78f66d8ab32}">
+		<property name="maximumDistance">
+			<value>55</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{9a62acb6-34f4-4d40-8ec2-b640f51dc12c}" />
 	<object class="SFXReverbEffect" id="{0b6b39ba-3386-4caa-85a9-529612805acb}">
 		<property name="decayTime">

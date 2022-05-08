@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{4777faad-5cc1-4fa4-b245-0e20da3478a6}">
+		<property name="color">
+			<value>Red Light 1</value>
+		</property>
 		<property name="name">
 			<value>UnitE_BasicJarsan_Attack</value>
 		</property>
@@ -53,7 +56,7 @@
 			<destination>{04a164df-dbe4-490d-987d-252f159f5b9e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{770914af-e0ea-4ed8-bb5e-454bd5ffc369}</destination>
+			<destination>{ac3940b6-60fd-412e-99c8-874f738ca976}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{872dc673-6300-4431-88b9-94751994c5e7}" />
@@ -72,6 +75,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{7a7becf7-3c17-47f9-ad62-626c0e9e23e8}">
+		<property name="volume">
+			<value>-4.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{eae62dc0-550d-4499-86d9-107ea8a5213e}</destination>
 		</relationship>
@@ -97,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9759e93a-d14d-4705-bf5a-4eebb5e23d49}">
+		<property name="volume">
+			<value>-14.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -125,6 +134,10 @@
 	</object>
 	<object class="MixerBusPanner" id="{aad6610b-a376-43e4-8662-2510958e58fa}" />
 	<object class="MixerBusFader" id="{43f82c41-a188-4b08-81a8-4984860c98e5}" />
-	<object class="SpatialiserEffect" id="{0cabd640-c2e6-4df5-8101-a5db649c369f}" />
+	<object class="SpatialiserEffect" id="{0cabd640-c2e6-4df5-8101-a5db649c369f}">
+		<property name="maximumDistance">
+			<value>55</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{5e7bd638-9b1b-43b4-b138-7d2b87bbf7ea}" />
 </objects>
