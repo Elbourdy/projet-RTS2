@@ -43,7 +43,7 @@
 			<value>highGain</value>
 		</property>
 		<property name="value">
-			<value>3.5</value>
+			<value>3</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{a4d7b860-4a08-428a-9e78-a31dd9bd9ea5}</destination>
@@ -54,7 +54,7 @@
 			<value>midGain</value>
 		</property>
 		<property name="value">
-			<value>-9</value>
+			<value>-6.5</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{a4d7b860-4a08-428a-9e78-a31dd9bd9ea5}</destination>
@@ -109,7 +109,7 @@
 			<value>lowShelfGain</value>
 		</property>
 		<property name="value">
-			<value>6</value>
+			<value>0</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{4bd82dc4-29dd-4c97-b2e8-2fdf1555ab04}</destination>
@@ -131,7 +131,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="value">
-			<value>0.5</value>
+			<value>0</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{ac3940b6-60fd-412e-99c8-874f738ca976}</destination>
