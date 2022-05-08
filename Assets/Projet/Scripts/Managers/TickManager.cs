@@ -27,6 +27,8 @@ public class TickManager : MonoBehaviour
 
     public int numberOfDaysPassed = 0;
 
+    private bool startNight = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +53,19 @@ public class TickManager : MonoBehaviour
                 break;
 
             case statesDay.Dusk:
-                NightAttack.instance.PreparationStartAttack();
+                if (!startNight)
+                {
+                    NightAttack.instance.PreparationStartAttack();
+                    startNight = true;
+                }
+                    
+
                 timerCount += Time.deltaTime;
                 if (timerCount >= timeTransitionDuskAndDawn)
                 {
                     dayState = statesDay.Night;
                     timerCount = 0;
+                    startNight = false;
                 }
                 break; 
 

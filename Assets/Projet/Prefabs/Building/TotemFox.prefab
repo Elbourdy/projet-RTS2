@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rosterUnit: 0
   timeToCollect: 3
-  rangeCollection: 5
+  rangeCollection: 10
 --- !u!1 &6322699970961946546
 GameObject:
   m_ObjectHideFlags: 0

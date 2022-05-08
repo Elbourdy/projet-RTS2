@@ -107,6 +107,11 @@ public class NightAttack : MonoBehaviour
             }
 
             FMODUnity.RuntimeManager.PlayOneShot(soundEnnemiesSpawnAtNight);
+
+            for (int i = 0; i < spawnerList.Count; i++)
+            {
+                spawnerList[i].spawnerGameObject.GetComponent<SpawnerAnimation>().StartSpawn();
+            }
         }
     }
 
