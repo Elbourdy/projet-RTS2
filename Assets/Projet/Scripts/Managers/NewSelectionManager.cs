@@ -48,12 +48,18 @@ public class NewSelectionManager : MonoBehaviour
 
 
     //Sounds
-    private List<string> sounds = new List<string>();
+    private List<SoundFeedbacks> sounds = new List<SoundFeedbacks>();
+
+
 
     [Header("Selection Keyboard")]
     public GameObject nexus;
     public GameObject renard;
     public GameObject serpent;
+
+
+
+
 
     public List<SelectableObject> SelectedObjects 
     { get => selectedObjects; 
@@ -463,39 +469,66 @@ public class NewSelectionManager : MonoBehaviour
     #region Sound Functions
     private void LaunchSoundSelectionForUnit(GameObject currentUnit)
     {
-        string currentSound;
+        SoundFeedbacks currentSound;
+
         if (currentUnit.GetComponent<SoundFeedbacks>() || currentUnit.GetComponentInChildren<SoundFeedbacks>())
         {
             if (currentUnit.GetComponent<SoundFeedbacks>())
-                currentSound = currentUnit.GetComponent<SoundFeedbacks>().GetSoundNameSelection();
-            else currentSound = currentUnit.GetComponentInChildren<SoundFeedbacks>().GetSoundNameSelection();
-
-            if (sounds.Count > 0)
+                currentSound = currentUnit.GetComponent<SoundFeedbacks>();
+            else currentSound = currentUnit.GetComponentInChildren<SoundFeedbacks>();
+        
+            if (sounds.Count == 0)
             {
-                foreach (var item in sounds)
-                {
-                    if (currentSound == item)
-                    {
-                        Debug.Log(item + " " + currentSound);
-                        break;
-                    }
-
-                    else
-                    {
-                        Debug.Log("Launch Sound");
-                        sounds.Add(currentSound);
-                        if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
-                        else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
-                    }
-                }
+                sounds.Add(currentSound);
+                currentSound.LaunchSelectedSound();
             }
 
             else
             {
-                sounds.Add(currentSound);
-                if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
-                else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+                bool isAlreadyLaunch = false;
+                foreach (var item in sounds)
+                {
+                    if (item.GetSoundNameSelection() == currentSound.GetSoundNameSelection())
+                    {
+                        isAlreadyLaunch = true;
+                        break;
+                    }
+                }
+
+                if (!isAlreadyLaunch)
+                {
+                    sounds.Add(currentSound);
+                    currentSound.LaunchSelectedSound();
+                }
             }
+
+
+
+        //    if (sounds.Count > 0)
+        //    {
+        //        foreach (var item in sounds)
+        //        {
+        //            if (currentSound == item)
+        //            {
+        //                Debug.Log(item + " " + currentSound);
+        //            }
+        //
+        //            else
+        //            {
+        //                Debug.Log("Launch Sound");
+        //                sounds.Add(currentSound);
+        //                if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
+        //                else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+        //            }
+        //        }
+        //    }
+        //
+        //    else
+        //    {
+        //        sounds.Add(currentSound);
+        //        if (currentUnit.GetComponent<SoundFeedbacks>()) currentUnit.GetComponent<SoundFeedbacks>().LaunchSelectedSound();
+        //        else if (currentUnit.GetComponentInChildren<SoundFeedbacks>()) currentUnit.GetComponentInChildren<SoundFeedbacks>().LaunchSelectedSound();
+        //    }
         }
     }
 
