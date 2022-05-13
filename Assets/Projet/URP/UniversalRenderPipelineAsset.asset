@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 473d1dd045edc7d439c0a3b498448e53, type: 2}
   - {fileID: 11400000, guid: 1a1e1f7a23d9c0546998f6f38167cc49, type: 2}
   m_DefaultRendererIndex: 1
-  m_RequireDepthTexture: 0
+  m_RequireDepthTexture: 1
   m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 0
   m_SupportsTerrainHoles: 1
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_ShadowDepthBias: 1
   m_ShadowNormalBias: 1
   m_SoftShadowsSupported: 1
-  m_UseSRPBatcher: 1
+  m_UseSRPBatcher: 0
   m_SupportsDynamicBatching: 1
   m_MixedLightingSupported: 1
   m_DebugLevel: 0

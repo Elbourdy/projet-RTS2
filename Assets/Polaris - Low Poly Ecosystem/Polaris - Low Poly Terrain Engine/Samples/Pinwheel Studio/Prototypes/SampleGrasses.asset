@@ -16,7 +16,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 4297f73e4e711ca4a8e2e727fa0a2d8b, type: 3}
     prefab: {fileID: 0}
     size: {x: 0.5, y: 0.5, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 0
     customMesh: {fileID: 0}
     detailMesh: {fileID: 0}
@@ -31,7 +31,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: a5e3b9884db02aa4bb3b73c6e0244c05, type: 3}
     prefab: {fileID: 0}
     size: {x: 0.7, y: 0.7, z: 0.7}
-    layer: 0
+    layer: 14
     shape: 0
     customMesh: {fileID: 0}
     detailMesh: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: 07cfa61b0d7483f4b9e9f31242b13c52, type: 3}
     prefab: {fileID: 0}
     size: {x: 0.7, y: 0.7, z: 0.7}
-    layer: 0
+    layer: 14
     shape: 2
     customMesh: {fileID: 0}
     detailMesh: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: f72eaeae56b8a7b40aeff21652acc071, type: 3}
     prefab: {fileID: 0}
     size: {x: 0.6, y: 0.6, z: 0.6}
-    layer: 0
+    layer: 14
     shape: 3
     customMesh: {fileID: 0}
     detailMesh: {fileID: 0}
@@ -76,7 +76,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: f72eaeae56b8a7b40aeff21652acc071, type: 3}
     prefab: {fileID: 0}
     size: {x: 0.5, y: 0.7, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 2
     customMesh: {fileID: 0}
     detailMesh: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   - texture: {fileID: 2800000, guid: f72eaeae56b8a7b40aeff21652acc071, type: 3}
     prefab: {fileID: 0}
     size: {x: 0.5, y: 1, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 3
     customMesh: {fileID: 0}
     detailMesh: {fileID: 4300000, guid: 68c4929527d2bd04a9e26d656695f93e, type: 3}
@@ -106,7 +106,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     prefab: {fileID: 1205254296907068, guid: 2b48895e6ddc0e4409b245952f9896d4, type: 3}
     size: {x: 0.5, y: 0.5, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 4
     customMesh: {fileID: 0}
     detailMesh: {fileID: 4300000, guid: 68c4929527d2bd04a9e26d656695f93e, type: 3}
@@ -121,7 +121,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     prefab: {fileID: 1716280037582520, guid: 7193ffee25d9e0145bd111d59ed99356, type: 3}
     size: {x: 0.5, y: 0.5, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 4
     customMesh: {fileID: 0}
     detailMesh: {fileID: 4300000, guid: 6dee3b2715f2ad045b2216dc29de66ab, type: 3}
@@ -136,7 +136,7 @@ MonoBehaviour:
   - texture: {fileID: 0}
     prefab: {fileID: 1406009099456752, guid: b0d744330c6776943844b07ecd94eb1f, type: 3}
     size: {x: 0.5, y: 0.5, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 4
     customMesh: {fileID: 0}
     detailMesh: {fileID: 4300000, guid: 9d41d779e7ef1334b84018f265dc17ca, type: 3}
@@ -151,11 +151,11 @@ MonoBehaviour:
   - texture: {fileID: 0}
     prefab: {fileID: 1523950091251354, guid: ebd70366c46843d4eb94412901f7ba92, type: 3}
     size: {x: 0.5, y: 0.5, z: 0.5}
-    layer: 0
+    layer: 14
     shape: 4
     customMesh: {fileID: 0}
     detailMesh: {fileID: 4300000, guid: 2eef5ce709657ae4fbd4f74a88689e08, type: 3}
-    detailMaterial: {fileID: 2100000, guid: 734ed51a95631de45bcbdbb13da48839, type: 2}
+    detailMaterial: {fileID: 2100000, guid: e9a8616ab18ff1746be41c820b58078f, type: 2}
     shadowCastingMode: 1
     receiveShadow: 1
     alignToSurface: 1
