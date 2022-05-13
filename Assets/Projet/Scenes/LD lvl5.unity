@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44652492, g: 0.49635231, b: 0.57478625, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465245, g: 0.4963522, b: 0.5747857, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16406,7 +16406,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 12479
+    m_Bits: 28863
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -18854,9 +18854,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectableList: []
+  selectedObjects: []
   canSelect: 1
   selectionSquareTrans: {fileID: 1675672969}
-  myInput: 0
+  nexus: {fileID: 0}
+  renard: {fileID: 0}
+  serpent: {fileID: 0}
 --- !u!1001 &1122289220
 PrefabInstance:
   m_ObjectHideFlags: 0

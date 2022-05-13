@@ -23340,7 +23340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536102632}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ----ARBRES----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25137,7 +25137,9 @@ MonoBehaviour:
   selectedObjects: []
   canSelect: 1
   selectionSquareTrans: {fileID: 1948837003}
-  myInput: 0
+  nexus: {fileID: 0}
+  renard: {fileID: 0}
+  serpent: {fileID: 0}
 --- !u!114 &1646741159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31849,7 +31851,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 12479
+    m_Bits: 28863
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

@@ -15078,6 +15078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &395488579
 Animator:
   serializedVersion: 3
@@ -19674,6 +19675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &516495070
 Animator:
   serializedVersion: 3
@@ -29475,6 +29477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &791903383
 Animator:
   serializedVersion: 3
@@ -46833,6 +46836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &1282148979
 Animator:
   serializedVersion: 3
@@ -48061,6 +48065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &1323058944
 Animator:
   serializedVersion: 3
@@ -48176,6 +48181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &1323373177
 Animator:
   serializedVersion: 3
@@ -56181,6 +56187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &1533001485
 Animator:
   serializedVersion: 3
@@ -60253,6 +60260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 
 --- !u!95 &1655917693
 Animator:
   serializedVersion: 3
@@ -75559,7 +75567,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 12479
+    m_Bits: 28863
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

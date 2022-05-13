@@ -21353,7 +21353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536102632}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ----ARBRES----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30140,7 +30140,7 @@ Camera:
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 12479
+    m_Bits: 28863
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
