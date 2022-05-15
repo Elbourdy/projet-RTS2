@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_BasicJarsan/UnitE_BasicJarsan_Attack/UnitE_BasicJarsan_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_BasicJarsan/UnitE_BasicJarsan_Select/UnitE_BasicJarsan_Select
+  onSpeAttackSound: 
 --- !u!1001 &4110615470937521503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,6 +573,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.4690285}
   m_Center: {x: 0, y: 0, z: -0.23451424}
+--- !u!114 &-4085945304396223024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146548163194609839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a689c7bdb014b47ab6ec050e8cb981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualEffect: {fileID: 7532542411872288768, guid: 832f7e3073be99b4099b8ac7d5ac1ee5, type: 3}
+  yOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &431128738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,3 +1273,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Attack
   onSelectedSound: event:/Unit/Unit_Enemy/UnitE_Spider/UnitE_Spi_Select
+  onSpeAttackSound: 

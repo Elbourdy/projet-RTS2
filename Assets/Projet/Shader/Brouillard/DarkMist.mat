@@ -137,6 +137,6 @@ Material:
     - noise_scales: {r: 119.72, g: 120, b: 0, a: 0}
     - noise_speed: {r: 0.002, g: 0, b: 0, a: 0}
     - noise_speed2: {r: 0.003, g: 0, b: 0, a: 0}
-    - peak_color: {r: 0.31798774, g: 0.23336194, b: 0.41799998, a: 1}
-    - valley_color: {r: 0.4846903, g: 0.35686275, b: 0.6392157, a: 1}
+    - peak_color: {r: 0.101960786, g: 0.17254902, b: 0.25490198, a: 1}
+    - valley_color: {r: 0.24705882, g: 0.26666668, b: 0.44313726, a: 1}
   m_BuildTextureStacks: []
