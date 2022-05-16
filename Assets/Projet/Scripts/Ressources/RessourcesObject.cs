@@ -54,7 +54,7 @@ public class RessourcesObject : MonoBehaviour
         ResMaxValuePASTOUCHE = stockRessources;
         nexus = GameObject.Find("Nexus");
         lR = GetComponent<LineRenderer>();
-        nexusCenter = nexus.transform.GetChild(3).GetChild(6);
+        nexusCenter = GameObject.Find("Icosphere_Nexus").transform;
 
 
         soundRessourceSuckLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Crystals/Cryst_OnCollect");

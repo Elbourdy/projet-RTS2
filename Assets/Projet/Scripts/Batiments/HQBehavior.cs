@@ -66,7 +66,7 @@ public class HQBehavior : Building
 
         SetConstructionHealth(100f); //annule le système de construction
 
-        InitialisationRange();
+        //InitialisationRange();
     }
 
     // Update is called once per frame
