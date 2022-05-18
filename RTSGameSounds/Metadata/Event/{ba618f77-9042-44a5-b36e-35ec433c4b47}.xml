@@ -125,7 +125,7 @@ Mettre le paramètre à 0 lorsqu'il fait jour, passer le paramètre à 1 lorsqu'
 	</object>
 	<object class="EventMixerMaster" id="{a1ff9bb2-631d-4124-b286-78d05c954dda}">
 		<property name="volume">
-			<value>-10</value>
+			<value>-9.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{328f9da9-7ef4-4f6b-8954-27cd8150607d}</destination>

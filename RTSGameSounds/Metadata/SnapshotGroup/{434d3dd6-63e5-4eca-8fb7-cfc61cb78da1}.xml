@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="SnapshotGroup" id="{434d3dd6-63e5-4eca-8fb7-cfc61cb78da1}">
+		<property name="name">
+			<value>Door_Opening</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2e565002-1afd-4757-a746-ba3faea4af84}</destination>
+		</relationship>
+		<relationship name="items">
+			<destination>{4c7d2c6e-5c22-4e97-a431-2309d7345d95}</destination>
+		</relationship>
+	</object>
+</objects>
