@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Burrow
-    second: {fileID: 2100000, guid: e25e59ed28106db488c4097ec8a63b30, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Crystals
     second: {fileID: 2100000, guid: d43e8d9aa36b3a34e8bc8aed6746d52e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Crystals
+    second: {fileID: 2100000, guid: 6db03eb3c7a880f42ba6ee172a68855b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Rock
-    second: {fileID: 2100000, guid: 1a27724745b44cd4086b2d5f2fb470e4, type: 2}
+    second: {fileID: 2100000, guid: 6db03eb3c7a880f42ba6ee172a68855b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Roots
-    second: {fileID: 2100000, guid: 32be18dcf01fbe54e8bb86c0be323720, type: 2}
+    second: {fileID: 2100000, guid: 6db03eb3c7a880f42ba6ee172a68855b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
