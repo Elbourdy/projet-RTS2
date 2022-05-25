@@ -23,7 +23,7 @@ Material:
   m_Name: NewMatDoor
   m_Shader: {fileID: -6465566751694194690, guid: dfc25f3495604ff45b11976dd1b61b6f, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -89,7 +89,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_f06c564c510e42b986414e3abc66a02e: 4.09
+    - Vector1_f06c564c510e42b986414e3abc66a02e: 2.18
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -117,8 +117,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1818b25cee784a24819be2d4b3fee02a: {r: 0.17562975, g: 0.58543247, b: 0.69886, a: 1}
-    - Color_d210b2b1b45a41939dfd59f98d66dcdf: {r: 1011.95294, g: 0, b: 60.235294, a: 0}
+    - Color_1818b25cee784a24819be2d4b3fee02a: {r: 26.975431, g: 46.852066, b: 271.17407, a: 0.36862746}
+    - Color_d210b2b1b45a41939dfd59f98d66dcdf: {r: 208.31902, g: 376.44162, b: 802.97504, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
