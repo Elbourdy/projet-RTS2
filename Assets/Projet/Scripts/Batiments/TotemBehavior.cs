@@ -44,6 +44,7 @@ public class TotemBehavior : MonoBehaviour
                 activated = false;
                 FMODUnity.RuntimeManager.PlayOneShot(totemActivate);
                 vfxTotem.SetActive(false);
+                NewSelectionManager.instance.onChangeSelection();
             }
         }
         else

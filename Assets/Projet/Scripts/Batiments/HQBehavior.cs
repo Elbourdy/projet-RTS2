@@ -55,6 +55,8 @@ public class HQBehavior : Building
 
     void Start()
     {
+        UIInitialisation();
+
         lRBattery = GetComponent<LineRenderer>();
 
         foreach (int e in desiredRoaster)

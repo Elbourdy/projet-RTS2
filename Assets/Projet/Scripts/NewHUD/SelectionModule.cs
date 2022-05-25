@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SelectionModule : MonoBehaviour
 {
-    public LosangeBehavior bigLosange;
+    public LosangeBehavior bigLosange, losangeSkill, losangeSkillToggle;
     public List<LosangeBehavior> losangeSelection = new List<LosangeBehavior>();
     public List<LosangeBehavior> losangeSup = new List<LosangeBehavior>();
     public List<LosangeBehavior> losangeShop = new List<LosangeBehavior>();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ButtonAS : MonoBehaviour
 {
-    public enum typeButton {ShopCase, Skill, Selection, GroupSelection, Flag, WaitingList }
+    public enum typeButton {ShopCase, Skill, Selection, GroupSelection, Flag, WaitingList, SkillToggle }
     public typeButton type = typeButton.ShopCase;
 
     public int ID;
