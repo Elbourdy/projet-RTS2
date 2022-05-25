@@ -14,7 +14,7 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] public float timeOfATickInSeconds = 1f;
     [SerializeField] public Image feedbackTimerTick;
 
-    public int energyConsumeByTick;
+    private int energyConsumeByTick = 1;
     public float radiusBattery = 10f;
     public static BatteryManager instance;
     public List<GameObject> batteries = new List<GameObject>();
@@ -60,7 +60,7 @@ public class BatteryManager : MonoBehaviour
 
         timerRechargeCount += Time.deltaTime;
 
-        feedbackTimerTick.fillAmount = 1 - timerRechargeCount / timeOfATickInSeconds;
+        EnergyModule.instance.UpdateConsoBar(timerRechargeCount / timeOfATickInSeconds, energyConsumeByTick);
 
         SetFeedbackAlimentation();
     }

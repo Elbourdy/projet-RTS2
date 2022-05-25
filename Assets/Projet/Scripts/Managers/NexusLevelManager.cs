@@ -14,7 +14,7 @@ public class NexusLevelManager : MonoBehaviour
     }
 
     [Header("Nexus Niveau Changement")]
-    [SerializeField] private List<int> levelThresholdRessources = new List<int>();
+    [SerializeField] public List<int> levelThresholdRessources = new List<int>();
     [SerializeField] private List<float> vitesseNexus = new List<float>();
     [SerializeField] private List<float> multiplicatorConsumption = new List<float>();
     
@@ -61,6 +61,7 @@ public class NexusLevelManager : MonoBehaviour
 
         if (newNexusLevel < currentNexusLevel)
         {
+            EnergyModule.instance.InitialiseLevelNexus(newNexusLevel+1, false);
             pityTimerCount += Time.deltaTime;
 
             if (pityTimerCount > pityTimerLevel) //le nexus conserve son niveau quelque temps après une baisse
@@ -76,6 +77,7 @@ public class NexusLevelManager : MonoBehaviour
         }
         else if (newNexusLevel > currentNexusLevel)
         {
+            EnergyModule.instance.InitialiseLevelNexus(newNexusLevel, true);
             currentNexusLevel = newNexusLevel;
             SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
             

@@ -49,7 +49,13 @@ public class SelectableObject : MonoBehaviour
 
     private void OnDisable()
     {
-        NewSelectionManager.instance.selectableList.Remove(this);
+        if(isSelected)
+        {
+            NewSelectionManager.instance.SelectedObjects.Remove(this);
+            NewSelectionManager.instance.onChangeSelection?.Invoke();
+        }
+          
+        NewSelectionManager.instance.selectableList.Remove(this); 
         onSelected -= ShowVisualFeeback;
         onDeselected -= HideVisualFeedback;
     }

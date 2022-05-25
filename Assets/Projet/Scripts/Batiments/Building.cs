@@ -12,8 +12,8 @@ public class Building : MonoBehaviour
     [Header("Roster and Unit production")]
     [SerializeField] private Transform spawnPosition;
     [SerializeField] private GameObject rallyPoint;
-    [SerializeField] private HealthBar productionBar; 
-    [SerializeField] private List<Image> recapProduction;
+    [SerializeField] private Image productionBar; 
+    [SerializeField] private List<LosangeBehavior> recapProduction = new List<LosangeBehavior>();
     [SerializeField] private List<AgentClass> roasterUnits = new List<AgentClass>();
     [SerializeField] public float refundPercentageUnit = 0.5f;
 
@@ -33,7 +33,12 @@ public class Building : MonoBehaviour
     private bool isSelected, isConstructed, isMovingRallyPoint = false;
     public float constructionHealthActual;
 
-    
+    public void UIInitialisation()
+    {
+        recapProduction = SelectionModule.instance.waitingList;
+        productionBar = SelectionModule.instance.waitingBar;
+    }
+
     //PRODUCTION D'UNITE
     public void AddToRoaster(int IDNumberRoaster) // ajoute une unité au roster du batiment (unité que le joueur peut créer dans ce batiment)
     {
@@ -78,7 +83,7 @@ public class Building : MonoBehaviour
     public void ProcessQueue() // gère la file d'attente de création du batiment 
     {
         if (actualTimer != 0)
-            productionBar.SetHealth(timerCount / actualTimer);
+            productionBar.fillAmount = timerCount / actualTimer;
 
         if (productionQueue.Count != 0)
         {
@@ -132,15 +137,13 @@ public class Building : MonoBehaviour
             }
             return true;
         }
-
-        if (ButtonID == 11)
-        {
-            NewSelectionManager.instance.canSelect = false;
-            isMovingRallyPoint = true;
-            return true;
-        }
-
         return false;
+    }
+
+    public void MoveFlagInit()
+    {
+        NewSelectionManager.instance.canSelect = false;
+        isMovingRallyPoint = true;
     }
 
 
@@ -161,7 +164,7 @@ public class Building : MonoBehaviour
             //healthBar.gameObject.SetActive(false);
             //rallyPoint.SetActive(false);
 
-            //recapProduction[0].transform.parent.gameObject.SetActive(false);
+            recapProduction[0].transform.parent.gameObject.SetActive(false);
         }
 
         if (productionQueue.Count > 0)
@@ -183,9 +186,10 @@ public class Building : MonoBehaviour
 
     public void SetOneRecapProduction(int IDInList, int numberUnitCurrentlyProduce, Sprite unitCurrentlyProduce, bool active)
     {
-        recapProduction[IDInList].sprite = unitCurrentlyProduce;
-        recapProduction[IDInList].transform.GetChild(0).GetComponent<Text>().text = numberUnitCurrentlyProduce.ToString();
-        recapProduction[IDInList].transform.gameObject.SetActive(active);
+        recapProduction[IDInList].gameObject.SetActive(true);
+        recapProduction[IDInList].HideEverything();
+        recapProduction[IDInList].SetSprite(unitCurrentlyProduce);
+        recapProduction[IDInList].SetRightText(numberUnitCurrentlyProduce);
     }
 
     public void SetRecapProductionTotal()
@@ -236,7 +240,7 @@ public class Building : MonoBehaviour
 
         for (int j = i; j < recapProduction.Count; j++)
         {
-            SetOneRecapProduction(j, 0, null, false);
+            recapProduction[j].gameObject.SetActive(false);
         }
     }
 
@@ -284,16 +288,6 @@ public class Building : MonoBehaviour
     public bool GetIsConstructed()
     {
         return isConstructed;
-    }
-
-    public void SetProductionBar(HealthBar productionBar)
-    {
-        this.productionBar = productionBar;
-    }
-
-    public void SetProductionRecap(List<Image> productionRecap)
-    {
-        this.recapProduction = productionRecap;
     }
 
     public void SetRallyPoint (Vector3 rallyPoint)

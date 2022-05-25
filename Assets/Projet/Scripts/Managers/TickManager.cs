@@ -42,7 +42,7 @@ public class TickManager : MonoBehaviour
         switch(dayState)
         {
             case statesDay.Day:
-                SetFeedbackTimer();
+                NightDayModule.instance.UpdateHUD(timerCount/timerForATick * 1.0f);
                 timerCount += Time.deltaTime;
 
                 if (timerCount >= timerForATick)
@@ -74,6 +74,9 @@ public class TickManager : MonoBehaviour
                 break;
 
             case statesDay.Dawn:
+                if (timerCount == 0)
+                    NightDayModule.instance.SwitchDay();
+
                 timerCount += Time.deltaTime;
                 if (timerCount >= timeTransitionDuskAndDawn)
                 {
@@ -85,13 +88,6 @@ public class TickManager : MonoBehaviour
         } 
     }
 
-    public void SetFeedbackTimer()
-    {
-        float fillValue = timerCount / timerForATick;
-        hBTick.transform.GetChild(1).GetComponent<Image>().fillAmount = fillValue;
-        hBTick.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = (Mathf.Round(timerForATick - timerCount)).ToString();
-    }
-
     public void TickEffect() //s'applique quand un tick supplementaire apparaît
     {
         dayState = statesDay.Dusk;
@@ -101,6 +97,8 @@ public class TickManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot(soundNexusStop, HQBehavior.instance.gameObject.transform.position);
 
         soundEnvironnementManager.setParameterByName("Day_Or_Night", 1);
+
+        NightDayModule.instance.SwitchNight();
     }
 
     public void ResetTickCounter()
