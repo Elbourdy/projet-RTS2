@@ -10,14 +10,14 @@ public class ButtonManualSpeAttack : MonoBehaviour
     private void OnEnable()
     {
         NewSelectionManager.instance.onChangeSelection += CheckSelectionList;
-        SpeAttackUse.instance.OnVisualUseChange += ChangeText;
+        //SpeAttackUse.instance.OnVisualUseChange += ChangeText;
         button.SetActive(false);
     }
 
     private void OnDisable()
     {
         NewSelectionManager.instance.onChangeSelection -= CheckSelectionList;
-        SpeAttackUse.instance.OnVisualUseChange -= ChangeText;
+        //SpeAttackUse.instance.OnVisualUseChange -= ChangeText;
     }
 
 

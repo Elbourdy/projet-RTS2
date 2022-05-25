@@ -60,6 +60,7 @@ public class SelectionModule : MonoBehaviour
                     {
                         losangeSelection[i].SetHealth(list[i].GetComponent<HealthSystem>().GetHealth() / list[i].GetComponent<HealthSystem>().GetMaxHealth(), 0);
                         losangeSelection[i].SetEnergy(list[i].GetComponent<HealthSystem>().GetBatteryHealth() / list[i].GetComponent<HealthSystem>().GetMaxBatteryHealth(), 0);
+                        losangeSelection[i].SetCooldown(list[i].GetComponent<SpeAttackClass>().GetRemainingTime());
                     }
                 }
                 break;
@@ -71,6 +72,7 @@ public class SelectionModule : MonoBehaviour
             case selected.SoloAlly:
                 bigLosange.SetHealth(list[0].GetComponent<HealthSystem>().GetHealth() / list[0].GetComponent<HealthSystem>().GetMaxHealth(), list[0].GetComponent<HealthSystem>().GetHealth());
                 bigLosange.SetEnergy(list[0].GetComponent<HealthSystem>().GetBatteryHealth() / list[0].GetComponent<HealthSystem>().GetMaxBatteryHealth(), list[0].GetComponent<HealthSystem>().GetBatteryHealth());
+                bigLosange.SetCooldown(list[0].GetComponent<SpeAttackClass>().GetRemainingTime());
                 break;
         }
     }
@@ -154,6 +156,8 @@ public class SelectionModule : MonoBehaviour
                         losangeSelection[i].gameObject.SetActive(true);
                         losangeSelection[i].HideText();
                         losangeSelection[i].SetSprite(list[i].GetComponent<ClassAgentContainer>().myClass.unitSprite);
+                        losangeSelection[i].cooldown.gameObject.SetActive(true);
+                        losangeSelection[i].SetCooldown(list[i].GetComponent<SpeAttackClass>().GetRemainingTime());
                     }
                 }
                 break;
@@ -189,6 +193,8 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.gameObject.SetActive(true);
                 bigLosange.ResetLosange();
                 bigLosange.SetSprite(list[0].GetComponent<ClassAgentContainer>().myClass.unitSprite);
+                bigLosange.cooldown.gameObject.SetActive(true);
+                bigLosange.SetCooldown(list[0].GetComponent<SpeAttackClass>().GetRemainingTime());
                 break;
         }
     }

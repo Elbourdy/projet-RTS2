@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ButtonToggleSpeAttack : MonoBehaviour
 {
-
+    public Sprite spriteOn, spriteOff;
 
     [SerializeField] private GameObject button;
 
@@ -42,11 +43,11 @@ public class ButtonToggleSpeAttack : MonoBehaviour
             myToggle.toggleButtonSpeAttack();
             if (myToggle.GetStateAuto())
             {
-                button.GetComponentInChildren<TextMeshProUGUI>().text = "Atk Spéciale Auto ON";
+                button.GetComponent<Image>().sprite = spriteOn;
             }
             else
             {
-                button.GetComponentInChildren<TextMeshProUGUI>().text = "Atk Spéciale Auto OFF";
+                button.GetComponent<Image>().sprite = spriteOff;
             }
         }
     }
@@ -61,6 +62,15 @@ public class ButtonToggleSpeAttack : MonoBehaviour
                 {
                     button.SetActive(true);
                     Debug.Log(item);
+
+                    if (item.GetComponent<ToggleSpeAttack>().GetStateAuto())
+                    {
+                        button.GetComponent<Image>().sprite = spriteOn;
+                    }
+                    else
+                    {
+                        button.GetComponent<Image>().sprite = spriteOff;
+                    }
                     break;
                 }
 

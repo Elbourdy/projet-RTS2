@@ -25,6 +25,8 @@ public class SpeAttackClass : MonoBehaviour
     public GameObject attackToSpawn;
     private float distAttack;
 
+    private float timeRemaining = 20;
+
     // myContainer.myClass
     private void InitTank()
     {
@@ -99,6 +101,11 @@ public class SpeAttackClass : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        timeRemaining += Time.deltaTime;
+    }
+
     public void LaunchSpeAttack()
     {
         switch (agentSpe)
@@ -136,7 +143,7 @@ public class SpeAttackClass : MonoBehaviour
         myAgentState.canSpeAttack = true;
     }
 
-
+   
 
 
     public void SpawnAttackCone()
@@ -152,6 +159,7 @@ public class SpeAttackClass : MonoBehaviour
         SpawnPoisonArea();
         StartCoroutine(TimerSpeAttack());
         myAgentState.ChangeAttackValue(myContainer.myClass.rangeAttaque, myContainer.myClass.attackDamage);
+        timeRemaining = 0;
     }
 
     public void SpawnPoisonArea()
@@ -204,5 +212,10 @@ public class SpeAttackClass : MonoBehaviour
             myAgentType.SetIsTargetable(true);
             SetAIandTarget(true);
         }
+    }
+
+    public float GetRemainingTime()
+    {
+        return timeRemaining / cooldownAttack;
     }
 }

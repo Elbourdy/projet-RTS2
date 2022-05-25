@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LosangeBehavior : MonoBehaviour
 {
-    public Image healthBar, energyBar, spriteCenter, bgLeft, bgRight;
+    public Image healthBar, energyBar, spriteCenter, bgLeft, bgRight, cooldown;
     public Text healthValue, energyValue, numberRight;
     public Color colorHealth, colorEnergy, colorOff, colorHealthEnnemi;
 
@@ -64,6 +64,7 @@ public class LosangeBehavior : MonoBehaviour
         energyBar.gameObject.SetActive(true);
         bgLeft.gameObject.SetActive(true);
         bgRight.gameObject.SetActive(true);
+        cooldown.gameObject.SetActive(false);
     }
 
     public void IsEnnemi()
@@ -78,5 +79,12 @@ public class LosangeBehavior : MonoBehaviour
         energyBar.gameObject.SetActive(false);
         bgLeft.gameObject.SetActive(false);
         bgRight.gameObject.SetActive(false);
+        cooldown.gameObject.SetActive(false);
+    }
+
+    public void SetCooldown(float value)
+    {
+        cooldown.fillAmount = 1 - value;
+        Debug.Log(value);
     }
 }
