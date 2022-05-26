@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{281ef2b3-1224-4b69-ab7f-8ab38d1430bf}">
+		<property name="assetPath">
+			<value>VisionTwr_Earthquake_Rise.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.246553287981859</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b8406c4-98ac-4502-b843-950f85d17554}</destination>
+		</relationship>
+	</object>
+</objects>
