@@ -25,7 +25,7 @@ public class InputPlayer : MonoBehaviour
 
 
     private GameObject attenuationPoint;
-
+    [SerializeField] private Vector3 boxSize = new Vector3(1.5f, 1.5f, 1.5f);
 
     private void Awake()
     {
@@ -55,7 +55,8 @@ public class InputPlayer : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
+        if (Physics.BoxCast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, boxSize, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, Quaternion.identity, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
         {
             if (hit.collider.GetComponent<Agent_Type>() != null)
             {
