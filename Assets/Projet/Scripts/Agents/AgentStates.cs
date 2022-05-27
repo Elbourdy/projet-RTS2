@@ -137,6 +137,11 @@ public class AgentStates : MonoBehaviour
 
                     else SetState(states.Idle);
                 }
+
+                if (navM.hasPath && Vector3.Distance(transform.position, restDestination) < 0.5f)
+                {
+                    SetState(states.Idle);
+                }
                 break;
 
             default:
