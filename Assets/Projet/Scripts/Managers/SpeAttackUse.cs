@@ -108,6 +108,7 @@ public class SpeAttackUse : MonoBehaviour
                 var target = GameObject.Instantiate(tmpTargetSetupTemplate, newPosition, Quaternion.identity) as GameObject;
                 target.name = "TmpTargetSetup";
                 var statesItem = item.gameObject.GetComponent<AgentStates>();
+                statesItem.ChangeAttackValue(statesItem.container.myClass.attackRangePoison, statesItem.container.myClass.damagePoison);
                 statesItem.SetTarget(target);
                 statesItem.SetState(AgentStates.states.Aggressive);
                 statesItem.MoveAgent(target.transform.position);

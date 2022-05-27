@@ -164,7 +164,12 @@ public class SpeAttackClass : MonoBehaviour
 
     public void SpawnPoisonArea()
     {
-        var pos = transform.position + transform.forward * distAttack;
+        Vector3 pos;
+        if (myAgentState.HasTarget())
+        {
+            pos = myAgentState.ReturnTarget().transform.position;
+        }
+        else pos = transform.position + transform.forward * distAttack;
         var go = GameObject.Instantiate(attackToSpawn, pos, Quaternion.identity) as GameObject;
         go.GetComponent<ContinuousDamageOnContact>().typeToDamage = GetComponent<AIAgents>().typeToTarget;
         go.GetComponent<ContinuousDamageOnContact>().damage = speAttackDamage;
