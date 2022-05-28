@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2894329620860213108}
   - component: {fileID: 2271330309147236561}
   - component: {fileID: 4062692888698186779}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: champiC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2894329620860213108
 Transform:

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1248805968079129369}
   - component: {fileID: 2808977314395817148}
   - component: {fileID: 80935832413892726}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CrystalAmbiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1248805968079129369
 Transform:

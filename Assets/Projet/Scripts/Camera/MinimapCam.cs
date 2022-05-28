@@ -87,9 +87,9 @@ public class MinimapCam : MonoBehaviour
 
         if (wheelDir > 0)
         {
-            var actualMousePos = new Vector3 (Input.mousePosition.x, 0, Input.mousePosition.y);
+            var actualMousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0);
             direction = actualMousePos - mapZone.transform.position;
-            direction = new Vector3(direction.z, 0, -direction.x);
+            direction = new Vector3(direction.y, 0, -direction.x);
             transform.position += direction * Time.deltaTime * camDirSpeed;
         }
 

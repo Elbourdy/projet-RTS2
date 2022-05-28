@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 813852154148673730}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: triplechampi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &813852154148673730
 Transform:
@@ -46,12 +46,12 @@ GameObject:
   - component: {fileID: 3130573880239448266}
   - component: {fileID: 2882510850054218752}
   - component: {fileID: 7787896206747606506}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Circle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3130573880239448266
 Transform:
@@ -127,12 +127,12 @@ GameObject:
   - component: {fileID: 2517766947461174112}
   - component: {fileID: 8715875997329804988}
   - component: {fileID: 7670644729280748167}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2517766947461174112
 Transform:
@@ -208,12 +208,12 @@ GameObject:
   - component: {fileID: 1983567642211383764}
   - component: {fileID: 8259340688391725943}
   - component: {fileID: 5691568316279321145}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1983567642211383764
 Transform:
@@ -289,12 +289,12 @@ GameObject:
   - component: {fileID: 8160297458373729046}
   - component: {fileID: 151544834500544121}
   - component: {fileID: 4578047732949149872}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Circle.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8160297458373729046
 Transform:
@@ -370,12 +370,12 @@ GameObject:
   - component: {fileID: 1662227868615716644}
   - component: {fileID: 4131826825173618319}
   - component: {fileID: 761264961477486290}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1662227868615716644
 Transform:

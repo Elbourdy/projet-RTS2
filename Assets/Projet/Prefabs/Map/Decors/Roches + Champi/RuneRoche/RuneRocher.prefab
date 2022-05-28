@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1318801503301055860}
   - component: {fileID: 2729895436584073937}
   - component: {fileID: 145942741516111387}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RuneRocher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1318801503301055860
 Transform:

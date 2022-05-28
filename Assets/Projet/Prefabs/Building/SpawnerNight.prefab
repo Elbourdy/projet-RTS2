@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1844195373861399569
 Transform:
@@ -108,7 +108,7 @@ GameObject:
   m_TagString: SpawnerNight
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3861889638557197301
 Transform:
@@ -204,13 +204,33 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6db03eb3c7a880f42ba6ee172a68855b, type: 2}
+    - target: {fileID: -1018664272722485354, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -208595431880416365, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
       propertyPath: m_Name
       value: Spawnner_Burrow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342855658915744305, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e0408c1fa6cf645ab4d97a8a5321b7, type: 3}
