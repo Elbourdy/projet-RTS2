@@ -17,7 +17,7 @@ public class HQBehavior : Building
 
     [Header("Feedback Visuel")]
     [SerializeField] private List<MeshRenderer> nexusRenderers = new List<MeshRenderer>();
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] private Color colorRadiusBattery = Color.blue;
     private LineRenderer lRBattery;
 
@@ -29,13 +29,16 @@ public class HQBehavior : Building
     [Header("Selection System")]
     [SerializeField] private bool AllowMultipleSelection = false;
 
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
 
     public static HQBehavior instance;
 
     [Header("VisionFog")]
     [SerializeField] private float radiusVision = 30f;
     [SerializeField] private GameObject cookie;
+
+    public Material matNexus;
+    public float timeToSwitch = 30;
 
     private void Awake()
     {
@@ -75,7 +78,6 @@ public class HQBehavior : Building
     void Update()
     {
         DisplayRange(BatteryManager.instance.radiusBattery * NexusLevelManager.instance.GetMultiplicatorRangeNexus(), colorRadiusBattery);
-        SetAnimator();
 
         CheckIfSelected();
         if (GetIsSelected()) // si nexus selectionné déplace le point d'arrivée / le rally point
@@ -123,11 +125,16 @@ public class HQBehavior : Building
             }
         }
 
-        if (currentNexusState == statesNexus.Move) navM.isStopped = false;
+        if (currentNexusState == statesNexus.Move)
+        {
+            navM.isStopped = false;
+            animator.SetBool("Stopped", false);
+        }
         else
         {
             navM.isStopped = true;
             navM.ResetPath();
+            animator.SetBool("Stopped", true);
         }
 
         navM.speed = speed * NexusLevelManager.instance.GetVitesseNexus();
@@ -174,41 +181,20 @@ public class HQBehavior : Building
         }
     }
 
-    public void SetAnimator() // actualise l'animator
+    public IEnumerator SetNexusMaterial(Material firstMat, Material secondMat, float count) //feedback visuel du nexus quand change de niveau
     {
-        switch(currentNexusState)
+        matNexus.Lerp(firstMat, secondMat, count / timeToSwitch);
+        float newCount = count + Time.deltaTime;
+        
+
+        if (count < timeToSwitch)
         {
-            case statesNexus.Move:
-                animator.SetBool("Stop", false);
-                break;
-
-            case statesNexus.Immobilize:
-                animator.SetBool("Stop", true);
-                break;
-
-            case statesNexus.ForcedImmobilize:
-                animator.SetBool("Stop", true);
-                break;
+            Debug.Log("Yes");
+            yield return new WaitForSeconds(Time.deltaTime);
+            StartCoroutine(SetNexusMaterial(firstMat, secondMat, newCount));
         }
-    }
-
-    public void SetNexusMaterial(Material newMaterial) //feedback visuel du nexus quand change de niveau
-    {
-        Material[] matList = new Material[2];
-        matList[0] = nexusRenderers[0].materials[0];
-        matList[1] = newMaterial;
-
-        foreach (MeshRenderer e in nexusRenderers)
-        {
-            if (e.materials.Length == 2)
-            {
-                e.materials = matList;
-            }
-            else
-            {
-                e.material = newMaterial;
-            }
-        }
+        else
+            yield return null;
     }
 
     public void SetIdleAnimationSpeed(float newSpeed) 

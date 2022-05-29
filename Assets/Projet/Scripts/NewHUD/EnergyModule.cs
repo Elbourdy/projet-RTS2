@@ -42,7 +42,6 @@ public class EnergyModule : MonoBehaviour
 
         if (animationLevelTimeCount < animationLevelTime)
         {
-            Debug.Log("Updating");
             UpdateLevelNexus();
             animationLevelTimeCount += Time.deltaTime;
         }

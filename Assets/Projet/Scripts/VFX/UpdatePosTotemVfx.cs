@@ -12,7 +12,6 @@ public class UpdatePosTotemVfx : MonoBehaviour
         public Transform pos3;
     };
 
-
     public positionsVFX[] myVFX;
 
 

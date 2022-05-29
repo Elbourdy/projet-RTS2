@@ -1,10 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: eef433cff24434c49b78caae3acfe13c
+=======
+guid: 89ad15990a68bdc4b9aea3b7d6716c9a
+>>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -623603649343465320
+<<<<<<< Updated upstream
     second: Fall
   - first:
       74: -5670878680123936714
@@ -20,6 +25,23 @@ ModelImporter:
     second: Idle2
   - first:
       74: 704440246077113048
+=======
+    second: Stop
+  - first:
+      74: 3199983197705893700
+    second: 0to1
+  - first:
+      74: -4454139077703410880
+    second: Idle1
+  - first:
+      74: 163946661222951639
+    second: 1to2
+  - first:
+      74: -2867762225416997021
+    second: Idle2
+  - first:
+      74: -1762091521222982064
+>>>>>>> Stashed changes
     second: 2to3
   - first:
       74: -2603478504544128241
@@ -29,7 +51,11 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_EmissiveNExus
+<<<<<<< Updated upstream
     second: {fileID: 2100000, guid: a522307a86f030f43b825ff197ccf41c, type: 2}
+=======
+    second: {fileID: 2100000, guid: 5b56e342ea177564da180364dd4df6be, type: 2}
+>>>>>>> Stashed changes
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -63,7 +89,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
+<<<<<<< Updated upstream
       name: Fall
+=======
+      name: Stop
+>>>>>>> Stashed changes
       takeName: Scene
       internalID: 0
       firstFrame: 1
@@ -212,7 +242,11 @@ ModelImporter:
       takeName: Scene
       internalID: 0
       firstFrame: 872
+<<<<<<< Updated upstream
       lastFrame: 1092
+=======
+      lastFrame: 932
+>>>>>>> Stashed changes
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

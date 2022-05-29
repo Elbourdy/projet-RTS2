@@ -49,7 +49,7 @@ public class NexusLevelManager : MonoBehaviour
 
         currentNexusLevel = CheckNexusLevel();
 
-        SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+        SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
 
         soundNexusLevelChange = FMODUnity.RuntimeManager.CreateInstance("event:/Building/Build_Nexus/Build_Nex_Level/Build_Nex_LvL_Up/Build_Nex_LvL_Up");
     }
@@ -67,7 +67,7 @@ public class NexusLevelManager : MonoBehaviour
             if (pityTimerCount > pityTimerLevel) //le nexus conserve son niveau quelque temps après une baisse
             {
                 currentNexusLevel = newNexusLevel;
-                SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+                SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel+1], materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
 
                 soundNexusLevelChange.setParameterByName("Nex_Level_Up", (currentNexusLevel + 1) * 2);
                 soundNexusLevelChange.start();
@@ -79,7 +79,7 @@ public class NexusLevelManager : MonoBehaviour
         {
             EnergyModule.instance.InitialiseLevelNexus(newNexusLevel, true);
             currentNexusLevel = newNexusLevel;
-            SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
+            SetFeedbackNexusLevel(materialNexusLevel[currentNexusLevel-1], materialNexusLevel[currentNexusLevel], animationSpeedNexus[currentNexusLevel]);
             
             soundNexusLevelChange.setParameterByName("Nex_Level_Up", currentNexusLevel * 2 - 1);
             soundNexusLevelChange.start();
@@ -128,10 +128,26 @@ public class NexusLevelManager : MonoBehaviour
         return rangeNexusMultiplier[currentNexusLevel];
     }
 
-    private void SetFeedbackNexusLevel(Material newMaterial, float speedAnimation)
+    private void SetFeedbackNexusLevel(Material matOne, Material matTwo, float speedAnimation)
     {
-        HQBehavior.instance.SetNexusMaterial(newMaterial);
+        StartCoroutine(HQBehavior.instance.SetNexusMaterial(matOne, matTwo, 0));
         HQBehavior.instance.SetIdleAnimationSpeed(speedAnimation);
-        BatteryManager.instance.SetLineRendererMaterial(newMaterial);
+        BatteryManager.instance.SetLineRendererMaterial(HQBehavior.instance.matNexus);
+
+        if(currentNexusLevel == 0)
+        {
+            HQBehavior.instance.animator.SetBool("Level2", false);
+            HQBehavior.instance.animator.SetBool("Level3", false);
+        }
+        else if (currentNexusLevel == 1)
+        {
+            HQBehavior.instance.animator.SetBool("Level2", true);
+            HQBehavior.instance.animator.SetBool("Level3", false);
+        }
+        else
+        {
+            HQBehavior.instance.animator.SetBool("Level2", true);
+            HQBehavior.instance.animator.SetBool("Level3", true);
+        }
     }
 }
