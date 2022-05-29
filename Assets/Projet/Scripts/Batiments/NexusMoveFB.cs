@@ -11,7 +11,7 @@ public class NexusMoveFB : MonoBehaviour
 
     private void Start()
     {
-        currentHeight = transform.GetChild(0).localPosition.y;
+        currentHeight = transform.localPosition.y;
     }
 
     // Update is called once per frame
@@ -26,12 +26,12 @@ public class NexusMoveFB : MonoBehaviour
         if(TickManager.instance.dayState == TickManager.statesDay.Day)
         {
             if (up)
-                transform.GetChild(0).position += Vector3.up * heightVariation * speedVariation * Time.deltaTime;
+                transform.position += Vector3.up * heightVariation * speedVariation * Time.deltaTime;
             else
-                transform.GetChild(0).position -= Vector3.up * heightVariation * speedVariation * Time.deltaTime;
+                transform.position -= Vector3.up * heightVariation * speedVariation * Time.deltaTime;
 
-            if (currentHeight + heightVariation < transform.GetChild(0).localPosition.y) up = false;
-            if (currentHeight - heightVariation > transform.GetChild(0).localPosition.y) up = true;
+            if (currentHeight + heightVariation < transform.localPosition.y) up = false;
+            if (currentHeight - heightVariation > transform.localPosition.y) up = true;
         }
     }
 
