@@ -29,7 +29,10 @@ public class LightTowerBehavior : MonoBehaviour
         if (hS.GetBatteryHealth() > 0)
         {
             if (towerState != statesBuilding.Active)
+            {
                 animator.SetBool("Activated", true);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Building/Build_VisionTower/Build_VisTwr_Rise/Build_VisTwr_Rise", transform.position);
+            }   
 
             towerState = statesBuilding.Active;
             cookieFog.gameObject.SetActive(true);
@@ -38,7 +41,10 @@ public class LightTowerBehavior : MonoBehaviour
         else
         {
             if (towerState != statesBuilding.Deactivated)
+            {
                 animator.SetBool("Activated", false);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Building/Build_VisionTower/Build_VisTwr_Fall/Build_VisTwr_Fall", transform.position);
+            }   
 
             towerState = statesBuilding.Deactivated;
             cookieFog.gameObject.SetActive(false);
