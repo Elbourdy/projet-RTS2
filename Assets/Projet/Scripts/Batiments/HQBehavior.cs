@@ -84,12 +84,13 @@ public class HQBehavior : Building
         {
             if (Input.GetMouseButtonUp(1))
             {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (GetIsMovingRallyPoint())
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Interface/UI_Interf_Flag/UI_Interf_Flag");
 
                     RaycastHit hit;
-                    Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+                    Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground"));
                     SetRallyPoint(hit.point);
                     NewSelectionManager.instance.canSelect = true;
                     SetIsMovingRallyPoint(false);
@@ -97,7 +98,7 @@ public class HQBehavior : Building
                 else // means moving nexus
                 {
                     RaycastHit hit;
-                    Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+                    Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground"));
                     targetPosition = hit.point;
                     targetPosition.y = transform.position.y;
                     if (ActivateNewMovementSystem) NewMovement();
