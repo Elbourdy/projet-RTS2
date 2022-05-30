@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tower
   m_EditorClassIdentifier: 
   ID: 1
-  name: Tower
+  nameAgent: Tower
   health: 100
   speedToBeConstruct: 2
-  unitSprite: {fileID: 0}
+  unitSprite: {fileID: 21300000, guid: c8e1e157d305741499da39c0297c615a, type: 3}
   rallyPointSprite: {fileID: 0}
   demolishSprite: {fileID: 0}
   upgradeSprite: {fileID: 0}

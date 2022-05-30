@@ -201,6 +201,15 @@ public class RessourcesObject : MonoBehaviour
         return timeToRefill;
     }
 
+    public float GetCurrentRessource()
+    {
+        return stockRessources;
+    }
+
+    public float GetRatioRessources()
+    {
+        return remainingEnergyFloat;
+    }
 
 
 

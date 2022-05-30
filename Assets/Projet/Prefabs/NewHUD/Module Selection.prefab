@@ -1080,6 +1080,7 @@ MonoBehaviour:
   hudOut: 0
   hudIn: -228
   waitingBar: {fileID: 8330463242533931862}
+  ressourceSprite: {fileID: 21300000, guid: 24a441cf882277a40b8ae62e66eaad7d, type: 3}
 --- !u!1 &8330463243638660724
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2a9b74e0289f546b746fab79bdd53a, type: 3}
+  m_Name: LightTower
+  m_EditorClassIdentifier: 
+  ID: 1
+  nameAgent: LightTower
+  health: 1
+  speedToBeConstruct: 1
+  unitSprite: {fileID: 21300000, guid: 8d922b520beb7c14e8d31dff1fbcf75f, type: 3}
+  rallyPointSprite: {fileID: 0}
+  demolishSprite: {fileID: 0}
+  upgradeSprite: {fileID: 0}
+  upFreeSprite: {fileID: 0}
+  upLockedSprite: {fileID: 0}
+  downSprite: {fileID: 0}

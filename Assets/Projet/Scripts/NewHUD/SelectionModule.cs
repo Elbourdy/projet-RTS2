@@ -15,6 +15,7 @@ public class SelectionModule : MonoBehaviour
     public float hudOut, hudIn;
     public Image waitingBar;
 
+    public Sprite ressourceSprite;
 
     public static SelectionModule instance;
     private void Awake()
@@ -74,6 +75,14 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.SetEnergy(list[0].GetComponent<HealthSystem>().GetBatteryHealth() / list[0].GetComponent<HealthSystem>().GetMaxBatteryHealth(), list[0].GetComponent<HealthSystem>().GetBatteryHealth());
                 if (list[0].GetComponent<SpeAttackClass>() != null) bigLosange.SetCooldown(list[0].GetComponent<SpeAttackClass>().GetRemainingTime());
                 break;
+
+            case selected.Ressources:
+                bigLosange.SetEnergy(list[0].GetComponent<RessourcesObject>().GetRatioRessources(), list[0].GetComponent<RessourcesObject>().GetCurrentRessource());
+                break;
+
+            case selected.Building:
+                bigLosange.SetEnergy(list[0].GetComponent<HealthSystem>().GetBatteryHealth() / list[0].GetComponent<HealthSystem>().GetMaxBatteryHealth(), list[0].GetComponent<HealthSystem>().GetBatteryHealth());
+                break;
         }
     }
 
@@ -86,7 +95,7 @@ public class SelectionModule : MonoBehaviour
 
         else if(list.Count == 1)
         {
-            if (list[0].gameObject.GetComponent<ClassAgentContainer>() != null);
+            if (list[0].gameObject.GetComponent<ClassAgentContainer>() != null)
             {
                 if (list[0].gameObject.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Ally)
                     typeSelection = selected.SoloAlly;
@@ -99,6 +108,9 @@ public class SelectionModule : MonoBehaviour
                     typeSelection = selected.Nexus;
                 else
                     typeSelection = selected.Building;
+
+            if (list[0].gameObject.GetComponent<RessourcesObject>() != null)
+                typeSelection = selected.Ressources;
         }
         else
         {
@@ -156,8 +168,12 @@ public class SelectionModule : MonoBehaviour
                         losangeSelection[i].gameObject.SetActive(true);
                         losangeSelection[i].HideText();
                         losangeSelection[i].SetSprite(list[i].GetComponent<ClassAgentContainer>().myClass.unitSprite);
-                        losangeSelection[i].cooldown.gameObject.SetActive(true);
-                        if (list[i].GetComponent<SpeAttackClass>() != null) losangeSelection[i].SetCooldown(list[i].GetComponent<SpeAttackClass>().GetRemainingTime());
+
+                        if (list[i].GetComponent<SpeAttackClass>() != null)
+                        {
+                            losangeSelection[i].SetCooldown(list[i].GetComponent<SpeAttackClass>().GetRemainingTime());
+                            losangeSelection[i].cooldown.gameObject.SetActive(true);
+                        }
                     }
                 }
                 break;
@@ -193,8 +209,26 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.gameObject.SetActive(true);
                 bigLosange.ResetLosange();
                 bigLosange.SetSprite(list[0].GetComponent<ClassAgentContainer>().myClass.unitSprite);
-                bigLosange.cooldown.gameObject.SetActive(true);
-                if (list[0].GetComponent<SpeAttackClass>() != null) bigLosange.SetCooldown(list[0].GetComponent<SpeAttackClass>().GetRemainingTime());
+
+                if (list[0].GetComponent<SpeAttackClass>() != null)
+                {
+                    bigLosange.SetCooldown(list[0].GetComponent<SpeAttackClass>().GetRemainingTime());
+                    bigLosange.cooldown.gameObject.SetActive(true);
+                }
+                break;
+
+            case selected.Ressources:
+                bigLosange.gameObject.SetActive(true);
+                bigLosange.ResetLosange();
+                bigLosange.SetSprite(ressourceSprite);
+                bigLosange.HideHealth();
+                break;
+
+            case selected.Building:
+                bigLosange.gameObject.SetActive(true);
+                bigLosange.ResetLosange();
+                bigLosange.SetSprite(list[0].GetComponent<ClassBatimentContainer>().myClass.unitSprite);
+                bigLosange.HideHealth();
                 break;
         }
     }
