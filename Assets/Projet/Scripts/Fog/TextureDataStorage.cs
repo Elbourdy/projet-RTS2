@@ -27,7 +27,7 @@ public class TextureDataStorage : MonoBehaviour
         if (lightFogCam == null) GameObject.Find("LightFogCam").GetComponent<Camera>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         timer += Time.deltaTime;
         if (timer >= timeForNewText)
