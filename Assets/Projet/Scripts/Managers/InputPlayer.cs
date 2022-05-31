@@ -56,24 +56,16 @@ public class InputPlayer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         //if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
-        if (Physics.BoxCast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, boxSize, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, Quaternion.identity, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")))
+        if (Physics.BoxCast(Camera.main.ScreenPointToRay(Input.mousePosition).origin, boxSize, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, Quaternion.identity, Mathf.Infinity, LayerMask.GetMask("GameplayUnits")) && hit.collider.TryGetComponent(out Agent_Type typeHit) && typeHit.Type == Agent_Type.TypeAgent.Enemy)
         {
-            if (hit.collider.GetComponent<Agent_Type>() != null)
-            {
-                if (hit.collider.GetComponent<Agent_Type>().Type == Agent_Type.TypeAgent.Enemy)
-                {
-                    Debug.Log("attaque");
-                    AttaqueWithAgent(hit);
-                }
-            }
+            Debug.Log("attaque");
+            AttaqueWithAgent(hit);
         }
 
         else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             GoToTarget(hit);
         }
-
-        
 
     }
 

@@ -130,6 +130,14 @@ public class SpeAttackUse : MonoBehaviour
         {
             DeleteFeedBack();
         }
+        //NewSelectionManager.instance.canSelect = !NewSelectionManager.instance.canSelect;
+        StartCoroutine(selectTimer());
+    }
+
+    private IEnumerator selectTimer()
+    {
+        yield return new WaitForSeconds(0.4f);
+        NewSelectionManager.instance.canSelect = !NewSelectionManager.instance.canSelect;
     }
 
     public void SpawnVisualSpeAttack()
@@ -167,7 +175,7 @@ public class SpeAttackUse : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground") + LayerMask.GetMask("Wood")))
         {
             if (hit.collider.gameObject.layer == 3)
             {

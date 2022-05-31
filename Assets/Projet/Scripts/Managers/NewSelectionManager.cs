@@ -83,6 +83,12 @@ public class NewSelectionManager : MonoBehaviour
             HighlightUnits();
             CheckKeyboardInputs();
         }
+        
+        else
+        {
+            hasCreatedSquare = false;
+            clickTime = Time.time;
+        }
         sounds.Clear();
     }
 
@@ -617,22 +623,22 @@ public class NewSelectionManager : MonoBehaviour
         RaycastHit hit;
         int i = 0;
         //Fire ray from camera
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(TL), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(TL), out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             TL = hit.point;
             i++;
         }
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(TR), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(TR), out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             TR = hit.point;
             i++;
         }
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(BL), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(BL), out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             BL = hit.point;
             i++;
         }
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(BR), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(BR), out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
         {
             BR = hit.point;
             i++;
