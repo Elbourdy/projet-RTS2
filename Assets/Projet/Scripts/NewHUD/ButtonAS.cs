@@ -19,6 +19,18 @@ public class ButtonAS : MonoBehaviour
         selectionManager = NewSelectionManager.instance;
     }
 
+    private void Update()
+    {
+        if(type == typeButton.Flag)
+        {
+            if (HQBehavior.instance.GetIsMovingRallyPoint())
+                GetComponent<Button>().interactable = false;
+            else
+                GetComponent<Button>().interactable = true;
+
+        }
+    }
+
     public void ButtonPress()
     {
         switch(type)
