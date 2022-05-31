@@ -13,7 +13,7 @@ public class GlowingRecepter : MonoBehaviour
 
     private void Start()
     {
-        if (myLight == null) GetComponent<Light>();
+        if (myLight == null) myLight = GetComponent<Light>();
         intensityMax = myLight.intensity;
         myLight.intensity = 0f;
     }
@@ -22,8 +22,9 @@ public class GlowingRecepter : MonoBehaviour
     {
         if (activateBehaviour)
         {
-            LerpLight();
+            LerpLightUp();
         }
+        else if (myLight.intensity > 0) LerpLightDown();
     }
 
 
@@ -33,9 +34,24 @@ public class GlowingRecepter : MonoBehaviour
         activateBehaviour = true;
     }
 
-    private void LerpLight()
+    private void OnTriggerExit(Collider other)
+    {
+        activateBehaviour = false;
+    }
+
+    private void LerpLightUp()
     {
         myLight.intensity += speedIntensity * Time.deltaTime;
-        if (myLight.intensity >= intensityMax) myLight.intensity = intensityMax;
+        if (myLight.intensity > intensityMax) myLight.intensity = intensityMax;
     }
+
+    private void LerpLightDown()
+    {
+        myLight.intensity -= intensityMax * Time.deltaTime;
+        if (myLight.intensity < 0f) myLight.intensity = 0;
+    }
+
+
+
+
 }
