@@ -95,15 +95,15 @@ public class SceneShorcuts : MonoBehaviour
             }
 
             #region Level Loader
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.F1))
             {
                 SceneManager.LoadScene("LD test");
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.F2))
             {
                 SceneManager.LoadScene("LD lvl2");
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.F3))
             {
                 SceneManager.LoadScene("LD Demo biomes");
             }

@@ -126,6 +126,7 @@ MonoBehaviour:
   camZoomSpeed: 4
   ZoomLimit: 40
   camDirSpeed: 6
+  startPos: {x: -97.30441, y: 0, z: 99.76648}
   activateMinimapCamBehaviour: 1
 --- !u!1 &6128947259366772950
 GameObject:
