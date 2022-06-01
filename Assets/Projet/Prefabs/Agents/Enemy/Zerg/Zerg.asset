@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c390ae6f8e90478565c703663e341, type: 3}
   m_Name: Zerg
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   nameAgent: Zerg
   health: 40
   attackDamage: 14

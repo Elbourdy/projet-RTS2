@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 
 public class Onmousse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject Affiche;
+    public GameObject mouseOver;
    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Affiche.SetActive(true);
+        mouseOver.SetActive(true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        Affiche.SetActive(false);
+        mouseOver.SetActive(false);
     }
 }

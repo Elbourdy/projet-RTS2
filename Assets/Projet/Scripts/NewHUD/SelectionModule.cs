@@ -17,6 +17,9 @@ public class SelectionModule : MonoBehaviour
 
     public Sprite ressourceSprite;
 
+    public Image changingMousOver;
+    public Sprite moNexus, moUnitOne, moUnitTwo, moEnOne, moEnTwo, moTower, molTower, moMine;
+
     public static SelectionModule instance;
     private void Awake()
     {
@@ -139,6 +142,7 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.ResetLosange();
                 bigLosange.HideEnergy();
                 bigLosange.SetSprite(list[0].GetComponent<ClassBatimentContainer>().myClass.unitSprite);
+                changingMousOver.sprite = moNexus;
 
                 List<AgentClass> rosterList = HQBehavior.instance.GetRoasterUnits();
 
@@ -203,6 +207,12 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.HideEnergy();
                 bigLosange.SetSprite(list[0].GetComponent<ClassAgentContainer>().myClass.unitSprite);
                 bigLosange.IsEnnemi();
+
+                if(list[0].GetComponent<ClassAgentContainer>().myClass.ID == 0)
+                    changingMousOver.sprite = moEnOne;
+                else
+                    changingMousOver.sprite = moEnTwo;
+
                 break;
 
             case selected.SoloAlly:
@@ -212,9 +222,12 @@ public class SelectionModule : MonoBehaviour
 
                 if (list[0].GetComponent<SpeAttackClass>() != null)
                 {
+                    changingMousOver.sprite = moUnitTwo;
                     bigLosange.SetCooldown(list[0].GetComponent<SpeAttackClass>().GetRemainingTime());
                     bigLosange.cooldown.gameObject.SetActive(true);
                 }
+                else
+                    changingMousOver.sprite = moUnitOne;
                 break;
 
             case selected.Ressources:
@@ -222,6 +235,7 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.ResetLosange();
                 bigLosange.SetSprite(ressourceSprite);
                 bigLosange.HideHealth();
+                changingMousOver.sprite = moMine;
                 break;
 
             case selected.Building:
@@ -229,6 +243,13 @@ public class SelectionModule : MonoBehaviour
                 bigLosange.ResetLosange();
                 bigLosange.SetSprite(list[0].GetComponent<ClassBatimentContainer>().myClass.unitSprite);
                 bigLosange.HideHealth();
+
+                if (list[0].GetComponent<ClassBatimentContainer>().myClass.ID == 0)
+                    changingMousOver.sprite = moTower;
+                else
+                    changingMousOver.sprite = molTower;
+
+
                 break;
         }
     }
