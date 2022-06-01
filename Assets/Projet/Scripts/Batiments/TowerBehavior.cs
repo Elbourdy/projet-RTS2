@@ -84,38 +84,34 @@ public class TowerBehavior : MonoBehaviour
         {
             lerpmaterialCount += Time.deltaTime;
         }
-
-        if (towerState == statesBuilding.Active)
-            towerMaterialLerpValue = lerpmaterialCount / lerpMaterialTimer;
-        if (towerState == statesBuilding.Deactivated)
-            towerMaterialLerpValue = 1 - (lerpmaterialCount / lerpMaterialTimer);
-
+            
         SetTowerMaterial(towerMaterialLerpValue);
 
 
         if (towerState == statesBuilding.Active)
         {
             reloadSpeedCount += Time.deltaTime;
+            towerMaterialLerpValue = lerpmaterialCount / lerpMaterialTimer;
+
+            animator.SetBool("ActivateTower", true);
+            lRBattery.enabled = true;
 
             if (reloadSpeedCount > reloadSpeed)
             {
                 Fire();
             }
-            animator.SetBool("ActivateTower", true);
-            lRBattery.enabled = true;
-
-            
         }
 
         if (towerState == statesBuilding.Deactivated)
         {
+            towerMaterialLerpValue = 1 - (lerpmaterialCount / lerpMaterialTimer);
             animator.SetBool("ActivateTower", false);
             lRBattery.enabled = false;
 
             SetTowerMaterial(0);
         }
 
-        UpdateVisionRange();
+       // UpdateVisionRange();
     }
 
     private void Fire()
