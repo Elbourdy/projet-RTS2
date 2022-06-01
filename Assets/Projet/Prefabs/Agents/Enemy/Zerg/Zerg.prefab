@@ -503,6 +503,7 @@ MonoBehaviour:
   alphaMax: 0.4
   myRenderer: {fileID: 915706635891493265}
   uiToDisable: {fileID: 622548107374365001}
+  lightObject: {fileID: 2159421146652500759}
 --- !u!1001 &8018926360382628866
 PrefabInstance:
   m_ObjectHideFlags: 0
