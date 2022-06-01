@@ -13,7 +13,7 @@ public class HideInLightFog : MonoBehaviour
 
     public Renderer myRenderer;
     public GameObject uiToDisable;
-
+    [SerializeField] private GameObject lightObject;
 
     private void OnEnable()
     {
@@ -36,11 +36,13 @@ public class HideInLightFog : MonoBehaviour
         {
             myRenderer.enabled = false;
             uiToDisable.SetActive(false);
+            if (lightObject != null) lightObject.SetActive(false);
         }
         else if (colorPixel.r > alphaMax)
         {
             myRenderer.enabled = true;
             uiToDisable.SetActive(true);
+            if (lightObject != null) lightObject.SetActive(true);
         }
     }
 

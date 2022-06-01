@@ -29,6 +29,7 @@ public class MinimapCam : MonoBehaviour
     [SerializeField] private float camZoomSpeed = 2;
     [SerializeField] private float ZoomLimit = 3;
     [SerializeField] private float camDirSpeed = 3;
+    [SerializeField] private Vector3 startPos;
     public bool activateMinimapCamBehaviour = true;
 
 
@@ -37,6 +38,14 @@ public class MinimapCam : MonoBehaviour
         originPos = transform.position;
         miniCam = GetComponent<Camera>();
         originSize = miniCam.orthographicSize;
+        InitPosAndSize();
+    }
+
+
+    private void InitPosAndSize()
+    {
+        miniCam.orthographicSize = (originSize + ZoomLimit) / 2;
+        transform.localPosition = startPos;
     }
 
     private void Update()
