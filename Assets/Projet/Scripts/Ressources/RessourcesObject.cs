@@ -41,9 +41,18 @@ public class RessourcesObject : MonoBehaviour
     FMOD.Studio.EventInstance soundRessourceSuckLoop;
     private string soundReloadFinish = "event:/Crystals/Cryst_Recharge";
 
+
+    /// <NewVFXSystem>
+    [SerializeField] private GameObject[] newVFX;
+
     private void Awake()
     {
         SetIdRessource();
+        foreach (var item in newVFX)
+        {
+            item.SetActive(false);
+        }
+
     }
 
     [SerializeField] private float onRead;
@@ -159,10 +168,8 @@ public class RessourcesObject : MonoBehaviour
        
     public void SetFeedbackNexusCollecting()
     {
-        lR.enabled = true;
-        lR.SetPosition(0, transform.position);
-        lR.SetPosition(1, nexusCenter.position);
-
+        //OldVisualFeedbackOn();
+        NewVisualFeedbackOn();
         if (playSound)
         {
             playSound = false;
@@ -175,8 +182,8 @@ public class RessourcesObject : MonoBehaviour
 
     public void DisableFeedbackCollectionNexus()
     {
-        lR.enabled = false;
-
+        //OldVisualFeedbackOff();
+        NewVisualFeedbackOff();
         if (!playSound)
         {
             soundRessourceSuckLoop.setParameterByName("Suck_Stop", 1);
@@ -211,8 +218,32 @@ public class RessourcesObject : MonoBehaviour
         return remainingEnergyFloat;
     }
 
+    private void OldVisualFeedbackOn()
+    {
+        lR.enabled = true;
+        lR.SetPosition(0, transform.position);
+        lR.SetPosition(1, nexusCenter.position);
+    }
 
+    private void OldVisualFeedbackOff()
+    {
+        lR.enabled = false;
+    }
 
+    private void NewVisualFeedbackOn()
+    {
+        foreach (var item in newVFX)
+        {
+            item.SetActive(true);
+        }
+    }
 
+    private void NewVisualFeedbackOff()
+    {
+        foreach (var item in newVFX)
+        {
+            item.SetActive(false);
+        }
+    }
 
 }

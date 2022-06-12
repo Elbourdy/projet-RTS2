@@ -3282,12 +3282,7 @@ MonoBehaviour:
   m_EnumValues: []
   m_ValueFilter: 0
   m_Tooltip: 
-  m_Nodes:
-  - m_Id: 0
-    linkedSlots: []
-    position: {x: 471.2, y: 896}
-    expandedSlots: []
-    expanded: 1
+  m_Nodes: []
 --- !u!114 &8926484042661614714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,7 +3332,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 509, y: 676}
+  m_UIPosition: {x: 647, y: 693}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
